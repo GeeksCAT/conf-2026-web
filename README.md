@@ -7,7 +7,7 @@ Official website for GeeksCAT Conf 2026, the geeks' conference for geeks in Cata
 - [Astro](https://astro.build) v6 (SSG) + TypeScript strict
 - [Tailwind CSS](https://tailwindcss.com) v4 via `@tailwindcss/vite`
 - [Biome](https://biomejs.dev) for lint + format
-- pnpm + Node 22 LTS
+- pnpm 11 + Node 22 LTS
 
 ## Dev
 
