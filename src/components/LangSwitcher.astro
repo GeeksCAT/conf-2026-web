@@ -5,6 +5,8 @@ const locale = getLocale(Astro.currentLocale);
 const alternates = getAlternateLocales(Astro.url.pathname, locale);
 ---
 
+<!-- NOTE: Disable locales because we don't plan for now to have the web page in different languages -->
+<!--
 <nav aria-label="Language switcher" class="flex items-center font-mono text-xs uppercase tracking-widest">
   {alternates.map(({ locale: l, href, isCurrent }, i) => (
     <>
@@ -22,3 +24,4 @@ const alternates = getAlternateLocales(Astro.url.pathname, locale);
     </>
   ))}
 </nav>
+-->
