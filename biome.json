@@ -7,8 +7,15 @@
   },
   "files": {
     "ignoreUnknown": false,
-    "includes": ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.json"],
-    "ignore": ["dist/**", "node_modules/**", ".astro/**"]
+    "includes": [
+      "**/*.ts",
+      "**/*.tsx",
+      "**/*.js",
+      "**/*.json",
+      "!!**/dist",
+      "!!**/node_modules",
+      "!!**/.astro"
+    ]
   },
   "formatter": {
     "enabled": true,

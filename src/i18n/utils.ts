@@ -1,4 +1,4 @@
-import { defaultLocale, ui, type Locale, type UIKey } from './ui';
+import { defaultLocale, type Locale, type UIKey, ui } from './ui';
 
 export function getLocale(locale: string | undefined): Locale {
   if (locale === 'en' || locale === 'es' || locale === 'ca') return locale;
@@ -18,7 +18,10 @@ export function localizedPath(path: string, locale: Locale): string {
 
 export function getAlternateLocales(currentPath: string, currentLocale: Locale) {
   const locales: Locale[] = ['ca', 'en', 'es'];
-  const basePath = currentLocale === defaultLocale ? currentPath : currentPath.replace(`/${currentLocale}`, '') || '/';
+  const basePath =
+    currentLocale === defaultLocale
+      ? currentPath
+      : currentPath.replace(`/${currentLocale}`, '') || '/';
 
   return locales.map((locale) => ({
     locale,
