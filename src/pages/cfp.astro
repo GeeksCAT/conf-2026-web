@@ -9,49 +9,48 @@ const t = useTranslations(locale);
 
 const tracks = [
   {
-    index: '01_',
+    index: '1',
     name: 'Open Source',
     accent: 'primary-container',
     topics: ['Contribucions a projectes', 'Governança de comunitats', 'Llicències i sostenibilitat', 'Casos d\'èxit locals'],
   },
   {
-    index: '02_',
-    name: 'DevOps & SRE',
+    index: '2',
+    name: 'Dev, Ops, SRE ...',
     accent: 'secondary-container',
-    topics: ['Infraestructura com a codi', 'Observabilitat i SLOs', 'CI/CD i GitOps', 'Kubernetes i plataformes'],
+    topics: ['Arquitectures modernes', 'Rendiment i Core Web Vitals', 'Observabilitat i SLOs', 'CI/CD i GitOps', 'Kubernetes i plataformes'],
   },
   {
-    index: '03_',
+    index: '3',
     name: 'AI & Data',
     accent: 'primary-fixed-dim',
     topics: ['LLMs en producció', 'MLOps i pipelines', 'IA responsable', 'Casos d\'ús reals'],
   },
   {
-    index: '04_',
-    name: 'Web Dev',
+    index: '4',
+    name: 'Lideratge',
     accent: 'secondary-fixed-dim',
-    topics: ['Arquitectures modernes', 'Rendiment i Core Web Vitals', 'Accessibilitat', 'Seguretat web'],
+    topics: ["Lideratge d'equips tècnics", 'Direcció tècnica'],
   },
 ] as const;
 
 const formats = [
-  { label: 'XERRADA', duration: '40 min', description: 'Format principal. Xerrada tècnica completa amb temps per a preguntes.' },
-  { label: 'LIGHTNING TALK', duration: '10 min', description: 'Presentació ràpida d\'una idea, eina o experiment. Alt impacte, baix temps.' },
-  { label: 'TALLER', duration: '90 min', description: 'Sessió pràctica amb participants. Requereix proposta detallada.' },
+  { label: 'XERRADA', duration: '40 min + 15 min per preguntes', description: 'Format principal. Xerrada tècnica completa amb temps per a preguntes.' },
+  { label: 'LIGHTNING TALK', duration: '10 min + 10 mins per preguntes', description: 'Presentació ràpida d\'una idea, eina o experiment. Alt impacte, baix temps.' },
+  { label: 'TALLER', duration: '120 min <= X <= 180 min', description: 'Sessió pràctica amb participants. Requereix proposta detallada.' },
 ] as const;
 
 const gratificacions = [
-  'Entrada gratuïta a la conferència (tots els tracks)',
-  'Cobertura de desplaçament per a speakers de fora de Catalunya (fins a un límit)',
-  'Allotjament per a speakers de fora de la comarca (nit anterior i/o posterior)',
-  'Accés a la zona de speakers amb networking exclusiu',
-  'Gravació professional de la teva xerrada i distribució en obert',
-  'Visibilitat en web, programa i xarxes socials de GeeksCAT',
+  'Entrada gratuïta completa a la conferència',
+  'Assortiment de cortesia',
+  'Descompte del 50% en la primers quota de sòcia de GeeksCAT (vàlid fins al 26 de novembre del 2026) ',
+  'Sopar exclusiu de per ponents i organitzadors',
+  'Possible subvenció per desplaçament, estancia i dietes (pressupost limitat)',
 ] as const;
 ---
 
 <BaseLayout
-  title="02_CFP"
+    title="t('cfp.title')"
   description="Presenta la teva xerrada a GeeksCAT Conf 2026. CFP obert fins al 31 d'agost de 2026."
 >
 
@@ -61,21 +60,21 @@ const gratificacions = [
   <header class="relative pt-32 pb-20 px-6 overflow-hidden">
     <div class="absolute inset-0 grid-lines opacity-10 pointer-events-none" aria-hidden="true"></div>
     <div class="max-w-5xl mx-auto relative z-10">
-      <span class="font-mono text-code-sm text-primary-container uppercase tracking-widest block mb-6">
-        [ CFP_STATUS: OPEN ]
+      <span class="font-mono text-code-sm text-primary-container uppercase tracking-widest block mb-6 uppercase">
+        [ CFP_STATUS: {t('speakers.cfp-status')} ]
       </span>
       <h1 class="font-display uppercase tracking-tighter mb-4 leading-none"
           style="font-size: clamp(2.5rem, 8vw, 5rem)">
         {t('cfp.headline')}
       </h1>
       <p class="font-body text-body-lg text-on-surface-variant mb-8 max-w-xl">
-        Tens un projecte, una experiència o una idea que val la pena compartir? Presenta la teva xerrada a GeeksCAT Conf 2026.
+        Tens un projecte, una experiència o una idea que val la pena compartir i inspirar la comunitat tècnica catalana? Presenta la teva xerrada a GeeksCAT Conf 2026.
       </p>
       <div class="flex flex-wrap gap-4 items-center">
-        <span class="font-mono text-code-sm border-2 border-primary-container text-primary-container px-5 py-2">
+        <span class="font-mono text-code-sm border-2 border-primary-container text-primary-container px-5 py-2 uppercase">
           DEADLINE: {t('cfp.deadline')}
         </span>
-        <span class="font-mono text-code-sm text-on-surface-variant border border-outline-variant px-5 py-2">
+        <span class="font-mono text-code-sm text-on-surface-variant border border-outline-variant px-5 py-2 uppercase">
           IDIOMES: CAT / ENG / ESP
         </span>
       </div>
@@ -92,13 +91,13 @@ const gratificacions = [
       <div class="grid lg:grid-cols-2 gap-16">
         <div class="space-y-5">
           <p class="font-body text-body-lg text-on-surface leading-relaxed">
-            Busquem xerrades tècniques de qualitat, amb profunditat real i experiència pràctica. No importa si és la teva primera vegada presentant en públic — importa que tinguis alguna cosa rellevant per explicar.
+            No busquem presentacions corporatives. Busquem profunditat tècnica, lideratge, "live coding" arriscat, arquitectures complexes i històries de guerra reals. Si el teu codi fa coses increïbles (o ha explotat de forma èpica).
           </p>
           <p class="font-body text-body-md text-on-surface-variant leading-relaxed">
-            Valorem especialment les xerrades basades en experiències reals: projectes que has implementat, errors que has patit, solucions que has trobat. Les teories sense proves no ens interessen tant com les trinxeres.
+            Geeks apassionats per compartir coneixement sobre qualsevol aspecte tècnic (Arquitectura i Enginyeria de Programari / Sistemes, SRE, AI & Data, ...), i si hi ha Open Source, encara millor. No cal que tinguis experiència, només ganes.
           </p>
           <p class="font-body text-body-md text-on-surface-variant leading-relaxed">
-            Totes les xerrades acceptades es gravaran i es publicaran en obert després de l'event, amplificant el teu impacte més enllà del dia de la conferència.
+            L'aspecte tècnic no ho és tot, el seu lideratge i inspiracions també, per tant, si líderes un equip tècnic o saps com inspirar la comunitat catalana per impulsar el seu talent o fer ús conscient de la tecnologia, aquesta és la teva conferencia.
           </p>
         </div>
 
@@ -108,7 +107,7 @@ const gratificacions = [
             <ul class="space-y-3 list-none">
               <li class="flex gap-3 items-start">
                 <span class="text-primary-container font-mono mt-0.5 shrink-0" aria-hidden="true">→</span>
-                <span class="font-body text-body-md text-on-surface-variant"><strong class="text-on-surface font-display uppercase tracking-tight">Profunditat</strong> — contingut tècnic real, no slides de màrqueting</span>
+                <span class="font-body text-body-md text-on-surface-variant"><strong class="text-on-surface font-display uppercase tracking-tight">Profunditat</strong> — volem entrar fins al fons del "kernel"</span>
               </li>
               <li class="flex gap-3 items-start">
                 <span class="text-primary-container font-mono mt-0.5 shrink-0" aria-hidden="true">→</span>
@@ -116,7 +115,7 @@ const gratificacions = [
               </li>
               <li class="flex gap-3 items-start">
                 <span class="text-primary-container font-mono mt-0.5 shrink-0" aria-hidden="true">→</span>
-                <span class="font-body text-body-md text-on-surface-variant"><strong class="text-on-surface font-display uppercase tracking-tight">Cultura Geek</strong> — passió per la tecnologia per sobre dels interessos comercials</span>
+                <span class="font-body text-body-md text-on-surface-variant"><strong class="text-on-surface font-display uppercase tracking-tight">Cultura Geek</strong> — passió per la tecnologia, eperit hacker</span>
               </li>
               <li class="flex gap-3 items-start">
                 <span class="text-primary-container font-mono mt-0.5 shrink-0" aria-hidden="true">→</span>
@@ -127,7 +126,7 @@ const gratificacions = [
 
           <div class="border-t border-outline-variant pt-6">
             <p class="font-mono text-code-sm text-outline uppercase tracking-widest mb-2">// NO ACCEPTEM</p>
-            <p class="font-body text-body-md text-outline">Presentacions de productes comercials, demos de vendes o contingut sense base tècnica.</p>
+            <p class="font-body text-body-md text-outline">Presentacions de productes comercials ni demos de vendes.</p>
           </div>
         </div>
       </div>
@@ -162,12 +161,12 @@ const gratificacions = [
   ═══════════════════════════════════════════════ -->
   <section class="py-20 px-6 bg-surface-container-low" aria-labelledby="tracks-heading">
     <div class="max-w-5xl mx-auto">
-      <SectionHeader tag="ÀREES TEMÀTIQUES" title="TRACKS DISPONIBLES" />
+      <SectionHeader tag="ALGUNES DE LES ÀREES TEMÀTIQUES PROPOSADES" title="" />
 
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
         {tracks.map(({ index, name, accent, topics }) => (
           <article class={`bg-surface-container border-l-4 border-${accent} p-8`}>
-            <p class={`font-mono text-code-sm text-${accent} uppercase tracking-widest mb-4`}>{index}TRACK</p>
+            <p class={`font-mono text-code-sm text-${accent} uppercase tracking-widest mb-4`}>{index}</p>
             <h3 class="font-display text-headline-md uppercase tracking-tight mb-5">{name}</h3>
             <ul class="space-y-2 list-none">
               {topics.map((topic) => (
@@ -182,7 +181,7 @@ const gratificacions = [
       </div>
 
       <p class="font-body text-body-md text-on-surface-variant mt-8 text-center">
-        No encaixa en cap track? Proposa'ns-ho igualment — la selecció és oberta a temes que no hem previst.
+        Les àrees temàtiques són merament una proposa, davant del dubte, presenta la teva xerrada
       </p>
     </div>
   </section>
@@ -192,7 +191,7 @@ const gratificacions = [
   ═══════════════════════════════════════════════ -->
   <section class="py-20 px-6" aria-labelledby="gratificacions-heading">
     <div class="max-w-5xl mx-auto">
-      <SectionHeader tag="PER ALS SPEAKERS" title="GRATIFICACIONS" />
+      <SectionHeader tag="PER ALS PONENTS" title="GRATIFICACIONS" />
 
       <div class="grid lg:grid-cols-2 gap-16 items-start">
         <ul class="space-y-4 list-none">
@@ -209,23 +208,19 @@ const gratificacions = [
           <div class="space-y-4">
             <div class="flex justify-between items-start border-b border-outline-variant/40 pb-3">
               <span class="font-mono text-code-sm text-on-surface-variant uppercase">Deadline CFP</span>
-              <span class="font-mono text-code-sm text-primary-container">{t('cfp.deadline')}</span>
+              <span class="font-mono text-code-sm text-primary-container uppercase">{t('cfp.deadline')}</span>
             </div>
             <div class="flex justify-between items-start border-b border-outline-variant/40 pb-3">
               <span class="font-mono text-code-sm text-on-surface-variant uppercase">Notificació</span>
-              <span class="font-mono text-code-sm text-on-surface">[ TBA ]</span>
+              <span class="font-mono text-code-sm text-on-surface uppercase">{t('cfp.notification')}</span>
             </div>
             <div class="flex justify-between items-start border-b border-outline-variant/40 pb-3">
               <span class="font-mono text-code-sm text-on-surface-variant uppercase">Data conf</span>
-              <span class="font-mono text-code-sm text-on-surface">[ TBA ]</span>
+              <span class="font-mono text-code-sm text-on-surface uppercase">{t('hero.date')}</span>
             </div>
             <div class="flex justify-between items-start border-b border-outline-variant/40 pb-3">
               <span class="font-mono text-code-sm text-on-surface-variant uppercase">Idiomes</span>
               <span class="font-mono text-code-sm text-on-surface">CAT / ENG / ESP</span>
-            </div>
-            <div class="flex justify-between items-start">
-              <span class="font-mono text-code-sm text-on-surface-variant uppercase">Durades</span>
-              <span class="font-mono text-code-sm text-on-surface">10 / 40 / 90 min</span>
             </div>
           </div>
         </div>
@@ -239,13 +234,10 @@ const gratificacions = [
   <section class="py-24 px-6 bg-surface-container-low relative overflow-hidden border-t border-outline-variant" id="submit">
     <div class="absolute inset-0 terminal-grid opacity-5 pointer-events-none" aria-hidden="true"></div>
     <div class="max-w-3xl mx-auto relative z-10 text-center">
-      <p class="font-mono text-code-sm text-primary-container uppercase tracking-widest mb-6">[ EXECUTA_CFP ]</p>
+      <p class="font-mono text-code-sm text-primary-container uppercase tracking-widest mb-6">[ EXEC ]</p>
       <h2 class="font-display text-headline-xl uppercase tracking-tighter mb-6 leading-none terminal-cursor">
         {t('cfp.cta')}
       </h2>
-      <p class="font-body text-body-lg text-on-surface-variant mb-10 max-w-xl mx-auto leading-relaxed">
-        Envia'ns el títol, una descripció de 300–500 paraules i el format que vols. Et respondrem en un termini de 2 setmanes.
-      </p>
       <CTAButton
         href={`mailto:cfp@geekscat.cat?subject=[CFP%202026]%20Proposta%20de%20xerrada&body=T%C3%ADtol%3A%20%0AFormat%3A%20Xerrada%20%2F%20Lightning%20Talk%20%2F%20Taller%0ATrack%3A%20%0ADescripci%C3%B3%3A%20%0A`}
         external

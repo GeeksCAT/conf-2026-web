@@ -52,22 +52,16 @@ const levelLabels: Record<string, string> = {
   <header class="relative pt-32 pb-16 px-6 border-b border-outline-variant overflow-hidden">
     <div class="absolute inset-0 grid-lines opacity-10 pointer-events-none" aria-hidden="true"></div>
     <div class="max-w-5xl mx-auto relative z-10">
-      <span class="font-mono text-code-sm text-primary-container uppercase tracking-widest block mb-6">
-        [ SCHEDULE_SYSTEM ]
-      </span>
       <h1 class="font-display uppercase tracking-tighter mb-4 leading-none"
           style="font-size: clamp(2.5rem, 8vw, 5rem)">
         {t('agenda.title')}
       </h1>
       <div class="flex flex-wrap gap-4 items-center">
         <span class="font-mono text-code-sm border border-outline-variant text-on-surface-variant px-5 py-2">
-          DATA: [ TBA ]
+          25 i 26 de setembre 2026
         </span>
         <span class="font-mono text-code-sm border border-outline-variant text-on-surface-variant px-5 py-2">
-          LLOC: [ TBA ]
-        </span>
-        <span class="font-mono text-code-sm border border-outline-variant text-on-surface-variant px-5 py-2">
-          TRACKS: 04
+          <a class="text-primary-container hover:underline" href="https://osm.org/go/xU1FGSMSV?node=4855572478" target="_blank" rel="noopener noreferrer">Centre Culturla de la Mercè - Pujada de la Mercè, 12, 17004 Girona</a>
         </span>
       </div>
     </div>
@@ -78,7 +72,7 @@ const levelLabels: Record<string, string> = {
   ═══════════════════════════════════════════════ -->
   <section class="py-20 px-6" aria-labelledby="schedule-heading">
     <div class="max-w-5xl mx-auto">
-      <SectionHeader tag="PROGRAMA" title="SCHEDULE" />
+      <SectionHeader tag="PROGRAMA" title="" />
 
       {schedule.length > 0 ? (
         /* ── Agenda amb dades ── */
@@ -191,9 +185,11 @@ const levelLabels: Record<string, string> = {
     </div>
   </section>
 
+  <!-- NOTE: It' hidden because we don't plan to do after hours-->
   <!-- ═══════════════════════════════════════════════
        AFTER_HOURS
   ═══════════════════════════════════════════════ -->
+  <!--
   <section class="py-20 px-6 bg-surface-container-low border-t border-outline-variant" aria-labelledby="afterhours-heading">
     <div class="max-w-5xl mx-auto">
       <SectionHeader tag="AFTER_HOURS" title="NETWORKING & SOCIAL" />
@@ -230,40 +226,38 @@ const levelLabels: Record<string, string> = {
       </div>
     </div>
   </section>
+  -->
 
   <!-- ═══════════════════════════════════════════════
        VENUE GUIDE
   ═══════════════════════════════════════════════ -->
   <section class="py-20 px-6" aria-labelledby="venue-heading">
     <div class="max-w-5xl mx-auto">
-      <SectionHeader tag="COM ARRIBAR" title="VENUE" />
+      <SectionHeader tag="COM ARRIBAR" title="" />
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div class="bg-surface-container border border-outline-variant p-6">
           <p class="font-mono text-code-sm text-primary-container uppercase tracking-widest mb-4">// TRANSPORT</p>
           <p class="font-display text-headline-md uppercase tracking-tight mb-3">TRANSPORT PÚBLIC</p>
           <p class="font-body text-body-md text-on-surface-variant leading-relaxed">
-            Accés en tren i bus des de les principals ciutats de Catalunya. Detalls quan es confirmi la localització.
+            Girona té accés amb tren i bus des de les principals ciutats de Catalunya i d'AVE desde Barcelona.
           </p>
-          <p class="font-mono text-code-sm text-on-surface-variant/40 mt-4">STATUS: [ TBA ]</p>
         </div>
 
         <div class="bg-surface-container border border-outline-variant p-6">
           <p class="font-mono text-code-sm text-secondary-container uppercase tracking-widest mb-4">// APARCAMENT</p>
           <p class="font-display text-headline-md uppercase tracking-tight mb-3">VEHICLE PRIVAT</p>
           <p class="font-body text-body-md text-on-surface-variant leading-relaxed">
-            Aparcament públic proper al recinte. Fomentem l'ús del transport compartit — coordineu-vos al canal de la comunitat.
+            Girona disposa de diversos aparcaments públics a tota la ciutat. Fomentem l'ús del transport compartit — coordineu-vos al canal <i>#general</i> del grup de Telegram <a class="text-primary-container hover:underline" href="https://t.me/silicongirona" target="_blank" rel="noopener noreferrer">Silicon Girona</a>.
           </p>
-          <p class="font-mono text-code-sm text-on-surface-variant/40 mt-4">STATUS: [ TBA ]</p>
         </div>
 
         <div class="bg-surface-container border border-outline-variant p-6">
           <p class="font-mono text-code-sm text-on-surface-variant uppercase tracking-widest mb-4">// ALLOTJAMENT</p>
           <p class="font-display text-headline-md uppercase tracking-tight mb-3">ON DORMIR</p>
           <p class="font-body text-body-md text-on-surface-variant leading-relaxed">
-            Recomanarem hotels i allotjaments propers amb descomptes per a assistents quan es confirmi la data.
+            Girona té una amplia gama d'hotels i apartaments turístics.
           </p>
-          <p class="font-mono text-code-sm text-on-surface-variant/40 mt-4">STATUS: [ TBA ]</p>
         </div>
       </div>
     </div>

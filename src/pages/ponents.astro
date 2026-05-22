@@ -31,8 +31,8 @@ const PLACEHOLDER_COUNT = 8;
 ---
 
 <BaseLayout
-  title="03_PONENTS"
-  description="Coneix els speakers de GeeksCAT Conf 2026. Professionals tècnics de referència de Catalunya i arreu."
+  title="{t('speakers.title')}"
+  description="Coneix els ponents de GeeksCAT Conf 2026. Professionals tècnics de referència de Catalunya i arreu."
 >
 
   <!-- ═══════════════════════════════════════════════
@@ -42,16 +42,16 @@ const PLACEHOLDER_COUNT = 8;
     <div class="absolute inset-0 grid-lines opacity-10 pointer-events-none" aria-hidden="true"></div>
     <div class="max-w-5xl mx-auto relative z-10">
       <span class="font-mono text-code-sm text-primary-container uppercase tracking-widest block mb-6">
-        {t('speakers.cfp-open')}
+        CFP_STATUS: {t('speakers.cfp-status')}
       </span>
-      <h1 class="font-display uppercase tracking-tighter mb-4 leading-none"
+      <h1 class="font-display uppercase tracking-tighter mb-4 leading-none uppercase"
           style="font-size: clamp(2.5rem, 8vw, 5rem)">
         {t('speakers.title')}
       </h1>
       <p class="font-body text-body-lg text-on-surface-variant max-w-xl">
         {speakers.length > 0
-          ? `${speakers.length} speakers confirmats. Professionals tècnics que compartiran el seu coneixement a GeeksCAT Conf 2026.`
-          : 'Els speakers de GeeksCAT Conf 2026 s\'anunciaran properament. El CFP és obert — potser ets tu el següent.'}
+          ? `${speakers.length} ponents confirmats. Professionals tècnics que compartiran el seu coneixement a GeeksCAT Conf 2026.`
+          : 'Els ponents de GeeksCAT Conf 2026 s\'anunciaran properament. El CFP és obert — potser ets tu el següent.'}
       </p>
     </div>
   </header>
@@ -61,7 +61,7 @@ const PLACEHOLDER_COUNT = 8;
   ═══════════════════════════════════════════════ -->
   <section class="py-20 px-6" aria-labelledby="speakers-grid-heading">
     <div class="max-w-5xl mx-auto">
-      <SectionHeader tag="LINEUP" title="SPEAKERS CONFIRMATS" />
+      <SectionHeader tag="LINEUP" title="PONENTS CONFIRMATS" />
 
       {speakers.length > 0 ? (
         <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 list-none">
@@ -153,7 +153,7 @@ const PLACEHOLDER_COUNT = 8;
                   </div>
                   <div class="p-6 flex flex-col gap-3">
                     <span class="font-mono text-code-sm text-primary-container">
-                      SPEAKER_{String(i + 1).padStart(2, '0')}
+                      PONENT_{String(i + 1).padStart(2, '0')}
                     </span>
                     <p class="font-display text-headline-md uppercase tracking-tight">PROPERAMENT</p>
                     <p class="font-body text-body-md text-on-surface-variant/50 text-sm">[ TBA ]</p>
@@ -168,7 +168,7 @@ const PLACEHOLDER_COUNT = 8;
 
           <div class="bg-surface-container border border-primary-container/20 p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             <div>
-              <p class="font-mono text-code-sm text-primary-container uppercase tracking-widest mb-1">[ VOLS SER SPEAKER? ]</p>
+              <p class="font-mono text-code-sm text-primary-container uppercase tracking-widest mb-1">[ VOLS SER PONENT? ]</p>
               <p class="font-body text-body-md text-on-surface-variant">El CFP és obert. Presenta la teva xerrada i forma part del lineup.</p>
             </div>
             <CTAButton href={cfpPath} variant="outline" class="shrink-0">
@@ -188,26 +188,26 @@ const PLACEHOLDER_COUNT = 8;
       <dl class="flex flex-wrap gap-x-10 gap-y-3">
         <div class="flex items-center gap-3">
           <dt class="font-mono text-code-sm text-on-surface-variant/60 uppercase">CFP_STATUS</dt>
-          <dd class="font-mono text-code-sm text-primary-container">[ OPEN ]</dd>
+          <dd class="font-mono text-code-sm text-primary-container uppercase">{t('speakers.cfp-status')}</dd>
         </div>
         <div class="flex items-center gap-3">
-          <dt class="font-mono text-code-sm text-on-surface-variant/60 uppercase">YEAR</dt>
-          <dd class="font-mono text-code-sm text-on-surface">2026_TBA</dd>
+          <dt class="font-mono text-code-sm text-on-surface-variant/60 uppercase">ANY</dt>
+          <dd class="font-mono text-code-sm text-on-surface">2026</dd>
         </div>
         <div class="flex items-center gap-3">
-          <dt class="font-mono text-code-sm text-on-surface-variant/60 uppercase">LOCATION</dt>
-          <dd class="font-mono text-code-sm text-on-surface">[ TBA ]</dd>
-        </div>
-        <div class="flex items-center gap-3">
-          <dt class="font-mono text-code-sm text-on-surface-variant/60 uppercase">TRACKS</dt>
-          <dd class="font-mono text-code-sm text-on-surface">04</dd>
+          <dt class="font-mono text-code-sm text-on-surface-variant/60 uppercase">LLOC</dt>
+          <dd class="font-mono text-code-sm text-on-surface">
+            <a href="https://osm.org/go/xU1FFgu" class="text-primary-container hover:underline" target="_blank" rel="noopner noreferrer">
+              GIRONA
+            </a>
+          </dd>
         </div>
         <div class="flex items-center gap-3">
           <dt class="font-mono text-code-sm text-on-surface-variant/60 uppercase">LANG</dt>
           <dd class="font-mono text-code-sm text-on-surface">CAT / ENG / ESP</dd>
         </div>
         <div class="flex items-center gap-3">
-          <dt class="font-mono text-code-sm text-on-surface-variant/60 uppercase">SPEAKERS</dt>
+          <dt class="font-mono text-code-sm text-on-surface-variant/60 uppercase">PONENTS</dt>
           <dd class="font-mono text-code-sm text-on-surface">
             {speakers.length > 0 ? speakers.length : '[ TBA ]'}
           </dd>

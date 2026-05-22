@@ -1,8 +1,11 @@
 ---
-import { getLocale, getAlternateLocales } from '../i18n/utils';
 
-const locale = getLocale(Astro.currentLocale);
-const alternates = getAlternateLocales(Astro.url.pathname, locale);
+// NOTE: Commented until the lang switcher is uncommented to avoid Astro warnings reported by
+// `astro check`.
+// import { getLocale, getAlternateLocales } from '../i18n/utils';
+//
+// const locale = getLocale(Astro.currentLocale);
+// const alternates = getAlternateLocales(Astro.url.pathname, locale);
 ---
 
 <!-- NOTE: Disable locales because we don't plan for now to have the web page in different languages -->

@@ -304,14 +304,6 @@ body {
   user-select: none;
 }
 
-/* Footer link >_ hover prefix */
-@utility footer-link {
-  &:hover::before {
-    content: '>_ ';
-    color: var(--gc-primary-container);
-  }
-}
-
 @utility custom-scrollbar {
   scrollbar-width: thin;
   scrollbar-color: var(--gc-surface-container-high) var(--gc-background);
