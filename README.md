@@ -23,4 +23,4 @@ pnpm check     # Astro type check + Biome
 
 Cloudflare Pages — build command `pnpm build`, output directory `dist/`, Node version `22`.
 
-Canonical domain: `2026.geekscat.org` · Alias: `2026.geeks.cat`
+Canonical domain: `conf.geeks.cat` · Alias: `conf.geekscat.org`
