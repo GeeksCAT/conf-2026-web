@@ -46,3 +46,9 @@ Quick checkpoints for PRs
 
 If you need more context
 - Read README.md and package.json first. They contain the minimal, authoritative developer commands.
+- Interrogate the engineer until you have precisely specified what you have to do.
+- Expose to the engineer the different alternative solutions to complete the requested task.
+  Explain the pros and cons and have to be done for each alternative.
+- Don't make any change until you interrogate the engineer and they have replied and indicated
+  which approach to take and they confirm you to make the changes.
+- Don't commit any change unless that the engineers explicitly say it.
