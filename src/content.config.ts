@@ -25,32 +25,48 @@ const speakers = defineCollection({
   }),
 });
 
-const talks = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './src/data/talks' }),
-  schema: z.object({
-    slug: z.string(),
-    title: z.string(),
-    abstract: z.string(),
-    speakerSlug: z.string(),
-    track: z.enum(['open-source', 'devops-sre', 'ai-data', 'web-dev']),
-    level: z.enum(['beginner', 'intermediate', 'advanced']).optional(),
-    room: z.string().optional(),
-    time: z.string().optional(),
-    lang: z.enum(['ca', 'en', 'es']).default('ca'),
-    locale: z.enum(['ca', 'en', 'es']).default('ca'),
-  }),
+// Fixed structure: all fields required and no defaults. Only fields currently
+// used by the site are present here.
+// Sessions cover talks/workshops/etc. Both session and spacer are required to
+// provide start `time` and explicit `end` fields. Sessions represent speaker-led
+// items and no longer carry `duration`, `track`, or `level` metadata.
+const sessionSchema = z.object({
+  type: z.literal('session'),
+  slug: z.string(),
+  title: z.string(),
+  abstract: z.string(),
+  speakerSlug: z.string(),
+  // Start and end time (HH:MM)
+  time: z.string(),
+  end: z.string(),
+  // Explicit day number (1 or 2).
+  day: z.number(),
+  draft: z.boolean(),
+  // Language shown in the UI and for content filtering.
+  lang: z.enum(['ca', 'en', 'es']),
+  locale: z.enum(['ca', 'en', 'es']),
 });
 
-const tracks = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './src/data/tracks' }),
-  schema: z.object({
-    slug: z.string(),
-    name: z.string(),
-    color: z.string(),
-    description: z.string(),
-    locale: z.enum(['ca', 'en', 'es']).default('ca'),
-  }),
+// Spacer entries are short non-talk rows (breaks, lunches). All fields are
+// required to keep the data structure fixed.
+const spacerSchema = z.object({
+  type: z.literal('spacer'),
+  slug: z.string(),
+  // Use `title` for spacer entries to be consistent with other content.
+  title: z.string(),
+  abstract: z.string(),
+  time: z.string(),
+  end: z.string(),
+  day: z.number(),
+  draft: z.boolean(),
+  locale: z.enum(['ca', 'en', 'es']),
 });
+
+const talks = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/data/agenda' }),
+  schema: z.discriminatedUnion('type', [sessionSchema, spacerSchema]),
+});
+
 
 const sponsors = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/data/sponsors' }),
@@ -73,4 +89,4 @@ const pages = defineCollection({
   }),
 });
 
-export const collections = { speakers, talks, tracks, sponsors, pages };
+export const collections = { speakers, talks, sponsors, pages };
