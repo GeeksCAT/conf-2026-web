@@ -7,7 +7,7 @@ import { getLocale, useTranslations } from '../i18n/utils';
 const locale = getLocale(Astro.currentLocale);
 const t = useTranslations(locale);
 
-const tracks = [
+const topics = [
   {
     index: '1',
     name: 'Open Source',
@@ -157,14 +157,14 @@ const gratificacions = [
   </section>
 
   <!-- ═══════════════════════════════════════════════
-       TRACKS
+       TOPICS
   ═══════════════════════════════════════════════ -->
-  <section class="py-20 px-6 bg-surface-container-low" aria-labelledby="tracks-heading">
+  <section class="py-20 px-6 bg-surface-container-low">
     <div class="max-w-5xl mx-auto">
       <SectionHeader tag="ALGUNES DE LES ÀREES TEMÀTIQUES PROPOSADES" title="" />
 
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        {tracks.map(({ index, name, accent, topics }) => (
+        {topics.map(({ index, name, accent, topics }) => (
           <article class={`bg-surface-container border-l-4 border-${accent} p-8`}>
             <p class={`font-mono text-code-sm text-${accent} uppercase tracking-widest mb-4`}>{index}</p>
             <h3 class="font-display text-headline-md uppercase tracking-tight mb-5">{name}</h3>
