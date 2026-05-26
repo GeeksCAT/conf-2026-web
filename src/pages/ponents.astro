@@ -67,7 +67,19 @@ const PLACEHOLDER_COUNT = 8;
         <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 list-none">
           {speakers.map((speaker) => (
             <li>
-              <article class="bg-surface-container border border-outline-variant flex flex-col h-full group">
+              <button
+                type="button"
+                class="w-full text-left bg-surface-container border border-outline-variant flex flex-col h-full group cursor-pointer hover:border-primary-container transition-colors"
+                data-speaker-slug={speaker.data.slug}
+                data-speaker-name={speaker.data.name}
+                data-speaker-role={speaker.data.role}
+                data-speaker-bio={speaker.data.bio}
+                data-speaker-photo={speaker.data.photo}
+                data-speaker-topics={JSON.stringify(speaker.data.topics)}
+                data-speaker-links={JSON.stringify(speaker.data.links)}
+                onclick="openSpeakerModal(this)"
+                aria-label={`Ver detalles de ${speaker.data.name}`}
+              >
                 <!-- Photo -->
                 <div class="w-full aspect-square overflow-hidden bg-surface-container-high border-b border-outline-variant">
                   {speaker.data.photo ? (
@@ -87,10 +99,10 @@ const PLACEHOLDER_COUNT = 8;
 
                 <!-- Info -->
                 <div class="p-6 flex flex-col gap-3 flex-1">
-                  <!-- Track badges -->
-                  {speaker.data.tracks.length > 0 && (
+                  <!-- Topic badges -->
+                  {speaker.data.topics.length > 0 && (
                     <div class="flex flex-wrap gap-2">
-                      {speaker.data.tracks.map((track) => (
+                      {speaker.data.topics.map((track) => (
                         <span class={`font-mono text-code-sm text-${trackAccents[track] ?? 'on-surface-variant'} border border-current/30 px-2 py-0.5 text-xs`}>
                           {trackLabels[track] ?? track}
                         </span>
@@ -103,39 +115,42 @@ const PLACEHOLDER_COUNT = 8;
                     <p class="font-body text-body-md text-on-surface-variant mt-1">{speaker.data.role}</p>
                   </div>
 
-                  {speaker.data.talkTitle && (
-                    <p class="font-mono text-code-sm text-on-surface-variant/60 border-t border-outline-variant pt-3 leading-snug">
-                      {speaker.data.talkTitle}
-                    </p>
-                  )}
-
                   <!-- Links -->
                   {Object.values(speaker.data.links).some(Boolean) && (
                     <div class="flex gap-3 pt-2 border-t border-outline-variant">
                       {speaker.data.links.web && (
                         <a href={speaker.data.links.web} rel="noopener noreferrer" target="_blank"
+                           onclick="(e) => e.stopPropagation()"
                            class="font-mono text-code-sm text-on-surface-variant hover:text-primary-container transition-colors duration-150"
                            aria-label={`Web de ${speaker.data.name}`}>WEB</a>
                       )}
                       {speaker.data.links.github && (
                         <a href={`https://github.com/${speaker.data.links.github}`} rel="noopener noreferrer" target="_blank"
+                           onclick="(e) => e.stopPropagation()"
                            class="font-mono text-code-sm text-on-surface-variant hover:text-primary-container transition-colors duration-150"
                            aria-label={`GitHub de ${speaker.data.name}`}>GH</a>
                       )}
-                      {speaker.data.links.twitter && (
-                        <a href={`https://twitter.com/${speaker.data.links.twitter}`} rel="noopener noreferrer" target="_blank"
+                      {speaker.data.links.x && (
+                        <a href={`https://x.com/${speaker.data.links.x}`} rel="noopener noreferrer" target="_blank"
+                           onclick="(e) => e.stopPropagation()"
                            class="font-mono text-code-sm text-on-surface-variant hover:text-primary-container transition-colors duration-150"
-                           aria-label={`Twitter de ${speaker.data.name}`}>TW</a>
+                           aria-label={`X de ${speaker.data.name}`}>X</a>
                       )}
                       {speaker.data.links.linkedin && (
                         <a href={`https://linkedin.com/in/${speaker.data.links.linkedin}`} rel="noopener noreferrer" target="_blank"
+                           onclick="(e) => e.stopPropagation()"
                            class="font-mono text-code-sm text-on-surface-variant hover:text-primary-container transition-colors duration-150"
                            aria-label={`LinkedIn de ${speaker.data.name}`}>LI</a>
                       )}
                     </div>
                   )}
+
+                  <!-- Click hint -->
+                  <div class="pt-2 border-t border-outline-variant">
+                    <span class="font-mono text-code-sm text-primary-container group-hover:underline">VER BIO →</span>
+                  </div>
                 </div>
-              </article>
+              </button>
             </li>
           ))}
         </ul>
@@ -215,5 +230,166 @@ const PLACEHOLDER_COUNT = 8;
       </dl>
     </div>
   </aside>
+
+  <!-- ═══════════════════════════════════════════════
+       SPEAKER MODAL
+  ═══════════════════════════════════════════════ -->
+  <div id="speaker-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/80" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="bg-surface-container border-2 border-primary-container max-w-2xl w-full max-h-[90vh] overflow-y-auto custom-scrollbar">
+      <!-- Header -->
+      <div class="sticky top-0 bg-surface-container border-b border-outline-variant p-6 flex items-start justify-between gap-4">
+        <div class="flex gap-4 items-start flex-1">
+          <img id="modal-photo" src="" alt="" class="w-20 h-20 object-cover border border-outline-variant">
+          <div class="flex-1">
+            <h2 id="modal-title" class="font-display text-headline-lg uppercase tracking-tight leading-tight"></h2>
+            <p id="modal-role" class="font-body text-body-md text-on-surface-variant mt-1"></p>
+            <div id="modal-topics" class="flex flex-wrap gap-2 mt-3"></div>
+          </div>
+        </div>
+        <button
+          type="button"
+          onclick="closeSpeakerModal()"
+          class="font-mono text-code-sm text-on-surface-variant hover:text-primary-container border border-outline-variant hover:border-primary-container px-3 py-2 transition-colors"
+          aria-label="Cerrar modal"
+        >
+          ✕ TANCAR
+        </button>
+      </div>
+
+      <!-- Bio -->
+      <div class="p-6">
+        <p class="font-mono text-code-sm text-primary-container uppercase tracking-widest mb-4">// BIOGRAFIA</p>
+        <div id="modal-bio" class="font-body text-body-lg text-on-surface leading-relaxed whitespace-pre-line space-y-4"></div>
+      </div>
+
+      <!-- Links -->
+      <div id="modal-links-container" class="px-6 pb-6 hidden">
+        <p class="font-mono text-code-sm text-secondary-container uppercase tracking-widest mb-3">// ENLLAÇOS</p>
+        <div id="modal-links" class="flex flex-wrap gap-3"></div>
+      </div>
+    </div>
+  </div>
+
+  <script is:inline>
+    const trackLabels = {
+      'open-source': 'Open Source',
+      'devops-sre': 'DevOps & SRE',
+      'ai-data': 'AI & Data',
+      'web-dev': 'Web Dev',
+    };
+
+    const trackAccents = {
+      'open-source': 'primary-container',
+      'devops-sre': 'secondary-container',
+      'ai-data': 'primary-fixed-dim',
+      'web-dev': 'secondary-fixed-dim',
+    };
+
+    function openSpeakerModal(button) {
+      const modal = document.getElementById('speaker-modal');
+      const name = button.dataset.speakerName;
+      const role = button.dataset.speakerRole;
+      const bio = button.dataset.speakerBio;
+      const photo = button.dataset.speakerPhoto;
+      const topics = JSON.parse(button.dataset.speakerTopics || '[]');
+      const links = JSON.parse(button.dataset.speakerLinks || '{}');
+
+      // Set content
+      document.getElementById('modal-title').textContent = name;
+      document.getElementById('modal-role').textContent = role;
+      document.getElementById('modal-bio').textContent = bio;
+      document.getElementById('modal-photo').src = photo;
+      document.getElementById('modal-photo').alt = name;
+
+      // Set topics
+      const topicsContainer = document.getElementById('modal-topics');
+      topicsContainer.innerHTML = '';
+      topics.forEach(topic => {
+        const span = document.createElement('span');
+        const accentClass = trackAccents[topic] || 'on-surface-variant';
+        span.className = `font-mono text-code-sm text-${accentClass} border border-current/30 px-2 py-0.5 text-xs`;
+        span.textContent = trackLabels[topic] || topic;
+        topicsContainer.appendChild(span);
+      });
+
+      // Set links
+      const linksContainer = document.getElementById('modal-links');
+      const linksWrapper = document.getElementById('modal-links-container');
+      linksContainer.innerHTML = '';
+      
+      const hasLinks = Object.values(links).some(Boolean);
+      if (hasLinks) {
+        linksWrapper.classList.remove('hidden');
+        
+        if (links.web) {
+          const a = document.createElement('a');
+          a.href = links.web;
+          a.target = '_blank';
+          a.rel = 'noopener noreferrer';
+          a.className = 'font-mono text-code-sm text-on-surface-variant hover:text-primary-container border border-outline-variant hover:border-primary-container px-4 py-2 transition-colors';
+          a.textContent = 'WEB →';
+          linksContainer.appendChild(a);
+        }
+        
+        if (links.github) {
+          const a = document.createElement('a');
+          a.href = `https://github.com/${links.github}`;
+          a.target = '_blank';
+          a.rel = 'noopener noreferrer';
+          a.className = 'font-mono text-code-sm text-on-surface-variant hover:text-primary-container border border-outline-variant hover:border-primary-container px-4 py-2 transition-colors';
+          a.textContent = 'GITHUB →';
+          linksContainer.appendChild(a);
+        }
+        
+        if (links.x) {
+          const a = document.createElement('a');
+          a.href = `https://x.com/${links.x}`;
+          a.target = '_blank';
+          a.rel = 'noopener noreferrer';
+          a.className = 'font-mono text-code-sm text-on-surface-variant hover:text-primary-container border border-outline-variant hover:border-primary-container px-4 py-2 transition-colors';
+          a.textContent = 'X →';
+          linksContainer.appendChild(a);
+        }
+        
+        if (links.linkedin) {
+          const a = document.createElement('a');
+          a.href = `https://linkedin.com/in/${links.linkedin}`;
+          a.target = '_blank';
+          a.rel = 'noopener noreferrer';
+          a.className = 'font-mono text-code-sm text-on-surface-variant hover:text-primary-container border border-outline-variant hover:border-primary-container px-4 py-2 transition-colors';
+          a.textContent = 'LINKEDIN →';
+          linksContainer.appendChild(a);
+        }
+      } else {
+        linksWrapper.classList.add('hidden');
+      }
+
+      // Show modal
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeSpeakerModal() {
+      const modal = document.getElementById('speaker-modal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      document.body.style.overflow = '';
+    }
+
+    // Close on escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeSpeakerModal();
+      }
+    });
+
+    // Close on backdrop click
+    document.getElementById('speaker-modal')?.addEventListener('click', (e) => {
+      if (e.target.id === 'speaker-modal') {
+        closeSpeakerModal();
+      }
+    });
+  </script>
 
 </BaseLayout>

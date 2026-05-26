@@ -9,19 +9,17 @@ const speakers = defineCollection({
     name: z.string(),
     role: z.string(),
     bio: z.string(),
-    talkTitle: z.string().optional(),
-    talkAbstract: z.string().optional(),
-    tracks: z.array(z.string()).default([]),
+    topics: z.array(z.string()).default([]),
     links: z
       .object({
         web: z.url().optional(),
-        twitter: z.string().optional(),
+        x: z.string().optional(),
         linkedin: z.string().optional(),
         github: z.string().optional(),
       })
       .default({}),
-    photo: z.string().optional(),
-    locale: z.enum(['ca', 'en', 'es']).default('ca'),
+    photo: z.string(),
+    locale: z.enum(['ca', 'en', 'es']),
   }),
 });
 
