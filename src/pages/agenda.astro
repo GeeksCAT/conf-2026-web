@@ -4,6 +4,7 @@ import BaseLayout from '../components/BaseLayout.astro';
 import CTAButton from '../components/CTAButton.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 import { getLocale, useTranslations, localizedPath } from '../i18n/utils';
+import { marked } from 'marked';
 
 const locale = getLocale(Astro.currentLocale);
 const t = useTranslations(locale);
@@ -16,6 +17,12 @@ const talks = allTalks.filter((tk) => tk.data.locale === locale);
 const allSpeakers = await getCollection('speakers');
 const speakerMap = new Map(allSpeakers.map((s) => [s.data.slug, s.data]));
 
+// Parse markdown body to HTML
+const parseMarkdown = (markdown: string | undefined) => {
+  if (!markdown) return '';
+  return marked.parse(markdown, { async: false });
+};
+
 // We render two tables side-by-side: Day 1 (left) and Day 2 (right).
 // Sessions (formerly "talk") and spacers must include explicit `time` and
 // `end` fields. The schema enforces required fields.
@@ -23,8 +30,6 @@ const speakerMap = new Map(allSpeakers.map((s) => [s.data.slug, s.data]));
 const itemsWithTime = talks
   .filter((tk) => !tk.data.draft)
   .sort((a, b) => a.data.time.localeCompare(b.data.time));
-
-// We will render the raw markdown body as plain text when expanding an entry.
 
 // Build separate schedules per day so each table only shows its own rows.
 const day1Times = Array.from(new Set(itemsWithTime.filter((tk) => tk.data.day === 1).map((tk) => tk.data.time))) as string[];
@@ -107,7 +112,7 @@ function formatTimeRange(item: (typeof talks)[number] | undefined) {
                                 {item.data.type === 'spacer' ? (
                                   <div class="bg-surface-container-low border border-outline-variant p-3 rounded">
                                     {item.data.title && <p class="font-display text-label-sm uppercase tracking-tight mb-1">{item.data.title}</p>}
-                                    <p class="font-body text-body-md text-on-surface-variant">{item.data.abstract}</p>
+                                    <div class="prose max-w-none text-on-surface-variant" set:html={parseMarkdown(item.body)} />
                                   </div>
                                 ) : (
                                   <div>
@@ -121,15 +126,13 @@ function formatTimeRange(item: (typeof talks)[number] | undefined) {
                                   </div>
                                 )}
                               </summary>
-                              <div class="mt-3 prose max-w-none text-on-surface-variant">
-                                {String(item.body)}
-                              </div>
+                              <div class="mt-3 prose max-w-none text-on-surface-variant" set:html={parseMarkdown(item.body)} />
                             </details>
                           ) : (
                             item.data.type === 'spacer' ? (
                               <div class="bg-surface-container-low border border-outline-variant p-3 rounded">
                                 {item.data.title && <p class="font-display text-label-sm uppercase tracking-tight mb-1">{item.data.title}</p>}
-                                <p class="font-body text-body-md text-on-surface-variant">{item.data.abstract}</p>
+                                <div class="prose max-w-none text-on-surface-variant" set:html={parseMarkdown(item.body)} />
                               </div>
                             ) : (
                               <div>
@@ -181,7 +184,7 @@ function formatTimeRange(item: (typeof talks)[number] | undefined) {
                                 {item.data.type === 'spacer' ? (
                                   <div class="bg-surface-container-low border border-outline-variant p-3 rounded">
                                     {item.data.title && <p class="font-display text-label-sm uppercase tracking-tight mb-1">{item.data.title}</p>}
-                                    <p class="font-body text-body-md text-on-surface-variant">{item.data.abstract}</p>
+                                    <div class="prose max-w-none text-on-surface-variant" set:html={parseMarkdown(item.body)} />
                                   </div>
                                 ) : (
                                   <div>
@@ -195,15 +198,13 @@ function formatTimeRange(item: (typeof talks)[number] | undefined) {
                                   </div>
                                 )}
                               </summary>
-                              <div class="mt-3 prose max-w-none text-on-surface-variant">
-                                {String(item.body)}
-                              </div>
+                              <div class="mt-3 prose max-w-none text-on-surface-variant" set:html={parseMarkdown(item.body)} />
                             </details>
                           ) : (
                             item.data.type === 'spacer' ? (
                               <div class="bg-surface-container-low border border-outline-variant p-3 rounded">
                                 {item.data.title && <p class="font-display text-label-sm uppercase tracking-tight mb-1">{item.data.title}</p>}
-                                <p class="font-body text-body-md text-on-surface-variant">{item.data.abstract}</p>
+                                <div class="prose max-w-none text-on-surface-variant" set:html={parseMarkdown(item.body)} />
                               </div>
                             ) : (
                               <div>

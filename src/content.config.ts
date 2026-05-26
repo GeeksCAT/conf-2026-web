@@ -34,7 +34,6 @@ const sessionSchema = z.object({
   type: z.literal('session'),
   slug: z.string(),
   title: z.string(),
-  abstract: z.string(),
   speakerSlug: z.string(),
   // Start and end time (HH:MM)
   time: z.string(),
@@ -54,7 +53,6 @@ const spacerSchema = z.object({
   slug: z.string(),
   // Use `title` for spacer entries to be consistent with other content.
   title: z.string(),
-  abstract: z.string(),
   time: z.string(),
   end: z.string(),
   day: z.number(),
