@@ -39,7 +39,7 @@ export const ui = {
     'theme.light': 'LIGHT_MODE',
     'theme.dark': 'DARK_MODE',
 
-    'cfp.title': '02_CFP',
+    'cfp.title': 'CFP',
     'cfp.headline': 'SYSCALL PONENTS',
     'cfp.deadline': '31 juliol 2026',
     'cfp.notification': '14 agost 2026',
@@ -94,7 +94,7 @@ export const ui = {
     'theme.light': 'LIGHT_MODE',
     'theme.dark': 'DARK_MODE',
 
-    'cfp.title': '02_CFP',
+    'cfp.title': 'CFP',
     'cfp.headline': 'SYSCALL SPEAKERS',
     'cfp.deadline': ' 31 July 2026 ',
     'cfp.notification': '14 August 2026',
@@ -149,7 +149,7 @@ export const ui = {
     'theme.light': 'LIGHT_MODE',
     'theme.dark': 'DARK_MODE',
 
-    'cfp.title': '02_CFP',
+    'cfp.title': 'CFP',
     'cfp.headline': 'SYSCALL PONENTES',
     'cfp.deadline': '31 julio 2026',
     'cfp.notification': '14 agosto 2026',
