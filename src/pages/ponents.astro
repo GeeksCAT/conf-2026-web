@@ -13,14 +13,14 @@ const cfpPath = localizedPath('/cfp', locale);
 const allSpeakers = await getCollection('speakers');
 const speakers = allSpeakers.filter((s) => s.data.locale === locale);
 
-const trackLabels: Record<string, string> = {
+const topicLabels: Record<string, string> = {
   'open-source': 'Open Source',
   'devops-sre': 'DevOps & SRE',
   'ai-data': 'AI & Data',
   'web-dev': 'Web Dev',
 };
 
-const trackAccents: Record<string, string> = {
+const topicAccents: Record<string, string> = {
   'open-source': 'primary-container',
   'devops-sre': 'secondary-container',
   'ai-data': 'primary-fixed-dim',
@@ -102,9 +102,9 @@ const PLACEHOLDER_COUNT = 8;
                   <!-- Topic badges -->
                   {speaker.data.topics.length > 0 && (
                     <div class="flex flex-wrap gap-2">
-                      {speaker.data.topics.map((track) => (
-                        <span class={`font-mono text-code-sm text-${trackAccents[track] ?? 'on-surface-variant'} border border-current/30 px-2 py-0.5 text-xs`}>
-                          {trackLabels[track] ?? track}
+                      {speaker.data.topics.map((topic) => (
+                        <span class={`font-mono text-code-sm text-${topicAccents[topic] ?? 'on-surface-variant'} border border-current/30 px-2 py-0.5 text-xs`}>
+                          {topicLabels[topic] ?? topic}
                         </span>
                       ))}
                     </div>
@@ -271,14 +271,14 @@ const PLACEHOLDER_COUNT = 8;
   </div>
 
   <script is:inline>
-    const trackLabels = {
+    const topicLabels = {
       'open-source': 'Open Source',
       'devops-sre': 'DevOps & SRE',
       'ai-data': 'AI & Data',
       'web-dev': 'Web Dev',
     };
 
-    const trackAccents = {
+    const topicAccents = {
       'open-source': 'primary-container',
       'devops-sre': 'secondary-container',
       'ai-data': 'primary-fixed-dim',
@@ -306,9 +306,9 @@ const PLACEHOLDER_COUNT = 8;
       topicsContainer.innerHTML = '';
       topics.forEach(topic => {
         const span = document.createElement('span');
-        const accentClass = trackAccents[topic] || 'on-surface-variant';
+        const accentClass = topicAccents[topic] || 'on-surface-variant';
         span.className = `font-mono text-code-sm text-${accentClass} border border-current/30 px-2 py-0.5 text-xs`;
-        span.textContent = trackLabels[topic] || topic;
+        span.textContent = topicLabels[topic] || topic;
         topicsContainer.appendChild(span);
       });
 
@@ -316,11 +316,11 @@ const PLACEHOLDER_COUNT = 8;
       const linksContainer = document.getElementById('modal-links');
       const linksWrapper = document.getElementById('modal-links-container');
       linksContainer.innerHTML = '';
-      
+
       const hasLinks = Object.values(links).some(Boolean);
       if (hasLinks) {
         linksWrapper.classList.remove('hidden');
-        
+
         if (links.web) {
           const a = document.createElement('a');
           a.href = links.web;
@@ -330,7 +330,7 @@ const PLACEHOLDER_COUNT = 8;
           a.textContent = 'WEB →';
           linksContainer.appendChild(a);
         }
-        
+
         if (links.github) {
           const a = document.createElement('a');
           a.href = `https://github.com/${links.github}`;
@@ -340,7 +340,7 @@ const PLACEHOLDER_COUNT = 8;
           a.textContent = 'GITHUB →';
           linksContainer.appendChild(a);
         }
-        
+
         if (links.x) {
           const a = document.createElement('a');
           a.href = `https://x.com/${links.x}`;
@@ -350,7 +350,7 @@ const PLACEHOLDER_COUNT = 8;
           a.textContent = 'X →';
           linksContainer.appendChild(a);
         }
-        
+
         if (links.linkedin) {
           const a = document.createElement('a');
           a.href = `https://linkedin.com/in/${links.linkedin}`;
