@@ -6,7 +6,7 @@ speakerSlug: "marc-giralt"
 time: "09:30"
 end: "10:00"
 day: 2
-draft: false
+draft: true
 lang: "es"
 locale: "es"
 ---

@@ -6,7 +6,7 @@ speakerSlug: "anna-marti"
 time: "09:30"
 end: "10:10"
 day: 1
-draft: false
+draft: true
 lang: "ca"
 locale: "ca"
 ---

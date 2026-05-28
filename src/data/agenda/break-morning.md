@@ -5,7 +5,7 @@ title: "PAUSA"
 time: "10:30"
 end: "11:00"
 day: 1
-draft: false
+draft: true
 locale: "ca"
 ---
 
