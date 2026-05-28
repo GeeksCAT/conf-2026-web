@@ -122,3 +122,51 @@ Bio format:
 - Keep the bio concise but informative (2-3 paragraphs recommended).
 - The file body (Markdown after frontmatter) is available but not currently
   used by the site templates.
+
+### Sponsors (`src/data/sponsors/*.md`)
+
+All sponsor files follow a fixed schema with all fields required except `order`.
+
+Required fields:
+- `name`: string (sponsor/company name)
+- `tier`: enum (sponsorship tier level)
+  - Allowed values: `pb` (Petabyte), `tb` (Terabyte), `gb` (Gigabyte), `mb` (Megabyte), `collaborator`
+- `logo`: string (path to logo image, e.g. `/img/sponsors/company-logo.png`)
+- `url`: URL string (sponsor website, must be a valid URL)
+- `locale`: one of `ca`, `en`, `es` (defaults to `ca`)
+- `draft`: boolean (set to `false` to publish, `true` to hide from production)
+
+Optional fields:
+- `order`: number (display order within the tier, lower numbers first, defaults to `99`)
+
+Draft behavior:
+- Sponsors with `draft: true` are excluded from the sponsors page
+- Set `draft: false` when the sponsor is confirmed and ready to display
+- Use `draft: true` for sponsors in negotiation or pending confirmation
+
+Tier slot behavior:
+- Each tier has a minimum number of display slots defined in the page:
+  - `pb` (Petabyte): 1 slot
+  - `tb` (Terabyte): 1 slot
+  - `gb` (Gigabyte): 2 slots
+  - `mb` (Megabyte): 3 slots
+  - `collaborator`: dynamic (shows all, no minimum)
+- If actual sponsors < minimum slots: placeholders fill remaining slots
+- If actual sponsors ≥ minimum slots: all sponsors are displayed (no cutting)
+
+Example template:
+- A complete example template is provided at `src/data/sponsors/_example-sponsor.md`.
+  Copy and edit it to create new sponsor entries.
+
+Validation:
+- The sponsor schema is enforced by `src/content.config.ts` (zod). The build
+  will fail if any Markdown file under `src/data/sponsors` does not match the
+  required schema structure.
+- The `url` field must be a valid URL (enforced by zod).
+
+Logo format:
+- Place logo images in `/public/img/sponsors/` or `/public/assets/sponsors/`.
+- Use PNG or SVG format for best quality.
+- Logos should have transparent backgrounds when possible.
+- The file body (Markdown after frontmatter) is available but not currently
+  used by the site templates.

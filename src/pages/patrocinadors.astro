@@ -1,4 +1,5 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseLayout from '../components/BaseLayout.astro';
 import CTAButton from '../components/CTAButton.astro';
 import SectionHeader from '../components/SectionHeader.astro';
@@ -6,6 +7,74 @@ import { getLocale, useTranslations } from '../i18n/utils';
 
 const locale = getLocale(Astro.currentLocale);
 const t = useTranslations(locale);
+
+// Load sponsors
+const allSponsors = await getCollection('sponsors');
+const sponsors = allSponsors
+  .filter((s) => s.data.locale === locale && !s.data.draft)
+  .sort((a, b) => a.data.order - b.data.order);
+
+// Group by tier
+const sponsorsByTier = {
+  pb: sponsors.filter((s) => s.data.tier === 'pb'),
+  tb: sponsors.filter((s) => s.data.tier === 'tb'),
+  gb: sponsors.filter((s) => s.data.tier === 'gb'),
+  mb: sponsors.filter((s) => s.data.tier === 'mb'),
+  collaborator: sponsors.filter((s) => s.data.tier === 'collaborator'),
+};
+
+// Define minimum slots per tier (for placeholders)
+const tierSlots = {
+  pb: 1,
+  tb: 1,
+  gb: 2,
+  mb: 3,
+};
+
+// Helper to get items + placeholders
+function getItemsWithPlaceholders(items: any[], minSlots: number) {
+  const count = Math.max(items.length, minSlots);
+  return Array.from({ length: count }, (_, i) => items[i] || null);
+}
+
+const tierConfig = {
+  pb: {
+    label: '[ PETABYTE ]',
+    color: 'primary-container',
+    borderClass: 'border-2 border-primary-container neon-glow',
+    hoverClass: 'hover:border-primary-container',
+    gridClass: 'grid grid-cols-1',
+    minHeight: 'min-h-45',
+    padding: 'p-12',
+  },
+  tb: {
+    label: '[ TERABYTE ]',
+    color: 'primary-fixed-dim',
+    borderClass: 'border border-primary-fixed-dim/40',
+    hoverClass: 'hover:border-primary-fixed-dim',
+    gridClass: 'grid grid-cols-1 sm:grid-cols-1',
+    minHeight: 'min-h-35',
+    padding: 'p-8',
+  },
+  gb: {
+    label: '[ GIGABYTE ]',
+    color: 'on-surface',
+    borderClass: 'border border-outline-variant',
+    hoverClass: 'hover:border-on-surface-variant',
+    gridClass: 'grid grid-cols-2 lg:grid-cols-2',
+    minHeight: 'min-h-30',
+    padding: 'p-6',
+  },
+  mb: {
+    label: '[ MEGABYTE ]',
+    color: 'on-surface-variant',
+    borderClass: 'border border-outline-variant/60',
+    hoverClass: 'hover:border-outline-variant',
+    gridClass: 'grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3',
+    minHeight: 'min-h-20',
+    padding: 'p-4',
+  },
+};
 ---
 
 <BaseLayout
@@ -83,70 +152,118 @@ const t = useTranslations(locale);
   ═══════════════════════════════════════════════ -->
   <section class="py-20 px-6" aria-labelledby="tiers-heading">
     <div class="max-w-5xl mx-auto">
-      <SectionHeader tag="NIVELLS DE PATROCINI" title="TRIA EL TEU NIVELL" />
+      <SectionHeader tag="ELS NOSTRES PATROCINADORS" title="" />
 
       <div class="space-y-16">
 
         <!-- PETABYTE — 1 slot, màxima prominència -->
         <div>
           <div class="flex items-baseline gap-4 mb-6">
-            <h2 class="font-display text-headline-lg uppercase tracking-tighter text-primary-container">[ PETABYTE ]</h2>
+            <h2 class="font-display text-headline-lg uppercase tracking-tighter text-primary-container">{tierConfig.pb.label}</h2>
           </div>
-          <div class="border-2 border-primary-container neon-glow p-12 flex items-center justify-center min-h-45 bg-surface-container">
-            <div class="text-center">
-              <p class="font-mono text-code-sm text-primary-container uppercase tracking-widest mb-2">espai disponible</p>
-              <p class="font-display text-headline-md text-on-surface-variant uppercase tracking-tight">TBA</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- TERABYTE — 2 slots -->
-        <div>
-          <div class="flex items-baseline gap-4 mb-6">
-            <h2 class="font-display text-headline-lg uppercase tracking-tighter text-primary-fixed-dim">[ TERABYTE ]</h2>
-          </div>
-          <div class="grid grid-cols-1 sm:grid-cols-1 gap-4">
-            {Array.from({ length: 1 }).map(() => (
-              <div class="border border-primary-fixed-dim/40 p-8 flex items-center justify-center min-h-35 bg-surface-container hover:border-primary-fixed-dim transition-colors duration-200">
-                <div class="text-center">
-                  <p class="font-mono text-code-sm text-primary-fixed-dim uppercase tracking-widest mb-1">espai disponible</p>
-                  <p class="font-display text-headline-md text-outline uppercase tracking-tight" aria-hidden="true">TBA</p>
+          <div class={tierConfig.pb.gridClass + ' gap-4'}>
+            {getItemsWithPlaceholders(sponsorsByTier.pb, tierSlots.pb).map((sponsor) => (
+              sponsor ? (
+                <a
+                  href={sponsor.data.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class={`${tierConfig.pb.borderClass} ${tierConfig.pb.padding} flex items-center justify-center ${tierConfig.pb.minHeight} bg-surface-container ${tierConfig.pb.hoverClass} transition-colors duration-200`}
+                >
+                  <img src={sponsor.data.logo} alt={sponsor.data.name} class="max-w-full max-h-full object-contain" />
+                </a>
+              ) : (
+                <div class={`${tierConfig.pb.borderClass} ${tierConfig.pb.padding} flex items-center justify-center ${tierConfig.pb.minHeight} bg-surface-container`}>
+                  <div class="text-center">
+                    <p class="font-mono text-code-sm text-primary-container uppercase tracking-widest mb-2">espai disponible</p>
+                    <p class="font-display text-headline-md text-on-surface-variant uppercase tracking-tight">TBA</p>
+                  </div>
                 </div>
-              </div>
+              )
             ))}
           </div>
         </div>
 
-        <!-- GIGABYTE — 4 slots -->
+        <!-- TERABYTE — 1 slot -->
         <div>
           <div class="flex items-baseline gap-4 mb-6">
-            <h2 class="font-display text-headline-lg uppercase tracking-tighter">[ GIGABYTE ]</h2>
+            <h2 class="font-display text-headline-lg uppercase tracking-tighter text-primary-fixed-dim">{tierConfig.tb.label}</h2>
           </div>
-          <div class="grid grid-cols-2 lg:grid-cols-2 gap-4">
-            {Array.from({ length: 2 }).map(() => (
-              <div class="border border-outline-variant p-6 flex items-center justify-center min-h-30 bg-surface-container hover:border-on-surface-variant transition-colors duration-200">
-                <div class="text-center">
-                  <p class="font-mono text-code-sm text-outline uppercase tracking-widest mb-1">espai disponible</p>
-                  <p class="font-display text-label-md text-outline uppercase tracking-tight" aria-hidden="true">TBA</p>
+          <div class={tierConfig.tb.gridClass + ' gap-4'}>
+            {getItemsWithPlaceholders(sponsorsByTier.tb, tierSlots.tb).map((sponsor) => (
+              sponsor ? (
+                <a
+                  href={sponsor.data.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class={`${tierConfig.tb.borderClass} ${tierConfig.tb.padding} flex items-center justify-center ${tierConfig.tb.minHeight} bg-surface-container ${tierConfig.tb.hoverClass} transition-colors duration-200`}
+                >
+                  <img src={sponsor.data.logo} alt={sponsor.data.name} class="max-w-full max-h-full object-contain" />
+                </a>
+              ) : (
+                <div class={`${tierConfig.tb.borderClass} ${tierConfig.tb.padding} flex items-center justify-center ${tierConfig.tb.minHeight} bg-surface-container ${tierConfig.tb.hoverClass} transition-colors duration-200`}>
+                  <div class="text-center">
+                    <p class="font-mono text-code-sm text-primary-fixed-dim uppercase tracking-widest mb-1">espai disponible</p>
+                    <p class="font-display text-headline-md text-outline uppercase tracking-tight" aria-hidden="true">TBA</p>
+                  </div>
                 </div>
-              </div>
+              )
             ))}
           </div>
         </div>
 
-        <!-- MEGABYTE — slots -->
+        <!-- GIGABYTE — 2 slots -->
         <div>
           <div class="flex items-baseline gap-4 mb-6">
-            <h2 class="font-display text-headline-lg uppercase tracking-tighter text-on-surface-variant">[ MEGABYTE ]</h2>
+            <h2 class="font-display text-headline-lg uppercase tracking-tighter">{tierConfig.gb.label}</h2>
           </div>
-          <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-3">
-            {Array.from({ length: 3 }).map(() => (
-              <div class="border border-outline-variant/60 p-4 flex items-center justify-center min-h-20 bg-surface-container hover:border-outline-variant transition-colors duration-200">
-                <div class="text-center">
-                  <p class="font-mono text-code-sm text-outline uppercase tracking-widest text-xs mb-0.5">espai disponible</p>
-                  <p class="font-display text-label-md text-outline uppercase tracking-tight text-xs" aria-hidden="true">TBA</p>
+          <div class={tierConfig.gb.gridClass + ' gap-4'}>
+            {getItemsWithPlaceholders(sponsorsByTier.gb, tierSlots.gb).map((sponsor) => (
+              sponsor ? (
+                <a
+                  href={sponsor.data.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class={`${tierConfig.gb.borderClass} ${tierConfig.gb.padding} flex items-center justify-center ${tierConfig.gb.minHeight} bg-surface-container ${tierConfig.gb.hoverClass} transition-colors duration-200`}
+                >
+                  <img src={sponsor.data.logo} alt={sponsor.data.name} class="max-w-full max-h-full object-contain" />
+                </a>
+              ) : (
+                <div class={`${tierConfig.gb.borderClass} ${tierConfig.gb.padding} flex items-center justify-center ${tierConfig.gb.minHeight} bg-surface-container ${tierConfig.gb.hoverClass} transition-colors duration-200`}>
+                  <div class="text-center">
+                    <p class="font-mono text-code-sm text-outline uppercase tracking-widest mb-1">espai disponible</p>
+                    <p class="font-display text-label-md text-outline uppercase tracking-tight" aria-hidden="true">TBA</p>
+                  </div>
                 </div>
-              </div>
+              )
+            ))}
+          </div>
+        </div>
+
+        <!-- MEGABYTE — 3 slots -->
+        <div>
+          <div class="flex items-baseline gap-4 mb-6">
+            <h2 class="font-display text-headline-lg uppercase tracking-tighter text-on-surface-variant">{tierConfig.mb.label}</h2>
+          </div>
+          <div class={tierConfig.mb.gridClass + ' gap-3'}>
+            {getItemsWithPlaceholders(sponsorsByTier.mb, tierSlots.mb).map((sponsor) => (
+              sponsor ? (
+                <a
+                  href={sponsor.data.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class={`${tierConfig.mb.borderClass} ${tierConfig.mb.padding} flex items-center justify-center ${tierConfig.mb.minHeight} bg-surface-container ${tierConfig.mb.hoverClass} transition-colors duration-200`}
+                >
+                  <img src={sponsor.data.logo} alt={sponsor.data.name} class="max-w-full max-h-full object-contain" />
+                </a>
+              ) : (
+                <div class={`${tierConfig.mb.borderClass} ${tierConfig.mb.padding} flex items-center justify-center ${tierConfig.mb.minHeight} bg-surface-container ${tierConfig.mb.hoverClass} transition-colors duration-200`}>
+                  <div class="text-center">
+                    <p class="font-mono text-code-sm text-outline uppercase tracking-widest text-xs mb-0.5">espai disponible</p>
+                    <p class="font-display text-label-md text-outline uppercase tracking-tight text-xs" aria-hidden="true">TBA</p>
+                  </div>
+                </div>
+              )
             ))}
           </div>
         </div>
@@ -157,25 +274,32 @@ const t = useTranslations(locale);
   <!-- ═══════════════════════════════════════════════
        COL·LABORADORS
   ═══════════════════════════════════════════════ -->
-  <section class="py-20 px-6 bg-surface-container-low border-t border-outline-variant" aria-labelledby="collaborators-heading">
-    <div class="max-w-5xl mx-auto">
-      <SectionHeader tag={t('sponsors.collaborators')} title="SUPORT INSTITUCIONAL" />
+  {sponsorsByTier.collaborator.length > 0 && (
+    <section class="py-20 px-6 bg-surface-container-low border-t border-outline-variant" aria-labelledby="collaborators-heading">
+      <div class="max-w-5xl mx-auto">
+        <SectionHeader tag={t('sponsors.collaborators')} title="" />
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4">
-
-        <!-- Diputació de Girona -->
-        <div class="bg-surface-container border border-outline-variant p-4 flex flex-col gap-4 max-w-md mx-auto">
-          <div class="w-full aspect-video border border-outline-variant/60 flex items-center justify-center bg-surface-container-high" aria-hidden="true">
-            <img src="/img/sponsors/logo-diputacio-girona.jpg"/>
-          </div>
-          <div>
-            <p class="font-mono text-code-sm text-on-surface-variant uppercase tracking-widest">COL·LABORADOR INSTITUCIONAL</p>
-            <p class="font-body text-body-md text-on-surface-variant mt-3">Suport institucional al foment de la cultura digital i tecnològica al territori de Girona.</p>
-          </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4">
+          {sponsorsByTier.collaborator.map((collaborator) => (
+            <div class="bg-surface-container border border-outline-variant p-4 flex flex-col gap-4 max-w-md mx-auto">
+              <a
+                href={collaborator.data.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-full aspect-video border border-outline-variant/60 flex items-center justify-center bg-surface-container-high hover:border-outline transition-colors"
+              >
+                <img src={collaborator.data.logo} alt={collaborator.data.name} class="max-w-full max-h-full object-contain p-4" />
+              </a>
+              <div>
+                <p class="font-mono text-code-sm text-on-surface-variant uppercase tracking-widest">COL·LABORADOR INSTITUCIONAL</p>
+                <p class="font-body text-body-md text-on-surface-variant mt-3">Suport institucional al foment de la cultura digital i tecnològica.</p>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  )}
 
   <!-- ═══════════════════════════════════════════════
        CTA — VOLS SER PATROCINADOR?

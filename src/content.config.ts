@@ -70,10 +70,11 @@ const sponsors = defineCollection({
   schema: z.object({
     name: z.string(),
     tier: z.enum(['mb', 'gb', 'tb', 'pb', 'collaborator']),
-    logo: z.string().optional(),
+    logo: z.string(),
     url: z.url(),
     order: z.number().default(99),
     locale: z.enum(['ca', 'en', 'es']).default('ca'),
+    draft: z.boolean(),
   }),
 });
 
