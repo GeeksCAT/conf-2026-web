@@ -4,7 +4,7 @@ slug: "marc-giralt"
 role: "Platform Engineer"
 links:
   x: "marcgiralt"
-photo: "/assets/speakers/marc-giralt.jpg"
+photo: "/img/speakers/anonymous-head-silhouette.webp"
 bio: |
   Marc is a platform engineer with a passion for Kubernetes, service meshes and developer productivity tooling.
 

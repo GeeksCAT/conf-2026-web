@@ -4,7 +4,7 @@ slug: "laura-puig"
 role: "Data Scientist"
 links:
   x: "laurapuig"
-photo: "/assets/speakers/laura-puig.jpg"
+photo: "/img/speakers/anonymous-head-silhouette.webp"
 bio: |
   Laura is a data scientist building ML systems for product teams. Her interests include model interpretability, dataset curation and MLOps.
 
