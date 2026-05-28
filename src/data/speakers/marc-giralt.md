@@ -9,9 +9,9 @@ bio: |
   Marc is a platform engineer with a passion for Kubernetes, service meshes and developer productivity tooling.
 
   He helps teams adopt cloud-native patterns and focuses on security and cost-effective operations.
-topics:
-  - "devops-sre"
+topic: "devops-sre"
 locale: "es"
+draft: false
 ---
 
 Marc Giralt works on cloud platforms and developer experience.

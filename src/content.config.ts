@@ -9,7 +9,7 @@ const speakers = defineCollection({
     name: z.string(),
     role: z.string(),
     bio: z.string(),
-    topics: z.array(z.string()).default([]),
+    topic: z.enum(['open-source', 'devops-sre', 'ai-data', 'soft-engineering', 'leadership']).optional(),
     links: z
       .object({
         web: z.url().optional(),
@@ -20,6 +20,7 @@ const speakers = defineCollection({
       .default({}),
     photo: z.string(),
     locale: z.enum(['ca', 'en', 'es']),
+    draft: z.boolean(),
   }),
 });
 

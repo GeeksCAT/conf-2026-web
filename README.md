@@ -32,7 +32,8 @@ explicit, fixed schemas for those files so tooling and the site can rely on ever
 field being present. New content should follow these rules; the schema is enforced
 by `src/content.config.ts` using zod.
 
-Agenda (`src/data/agenda/*.md`)
+### Agenda (`src/data/agenda/*.md`)
+
 - Two entry kinds: `session` and `spacer`. They are discriminated by `type`.
 - Both kinds must declare explicit `time` (start) and `end` (end) fields. There
   are no `duration` fields anymore — compute end time in the frontmatter.
@@ -83,3 +84,41 @@ Abstract vs body
 When creating agenda items: put the short blurb in `abstract` so the schedule
 looks tidy; put detailed content (examples, bios, extended abstracts) in the
 file body so it appears in the expanded detail view.
+
+### Speakers (`src/data/speakers/*.md`)
+
+All speaker files follow a fixed schema with required and optional fields.
+
+Required fields:
+- `slug`: string (unique identifier, kebab-case, should match filename)
+- `name`: string (full name of the speaker)
+- `role`: string (job title or role)
+- `bio`: string (multi-line biography, use YAML pipe `|` syntax)
+- `photo`: string (path to speaker photo, e.g. `/assets/speakers/name.jpg`)
+- `locale`: one of `ca`, `en`, `es`
+
+Optional fields:
+- `topic`: string (optional, single value)
+  - Allowed values: `open-source`, `devops-sre`, `ai-data`, `soft-engineering`, `leadership`
+- `links`: object (defaults to `{}`)
+  - `web`: URL string (speaker website)
+  - `x`: string (X/Twitter handle, without @)
+  - `linkedin`: string (LinkedIn profile identifier)
+  - `github`: string (GitHub username)
+
+Example template:
+- A complete example template is provided at `src/data/speakers/_example-speaker.md`
+  with `draft: true`. Copy and edit it to create new speaker profiles.
+- Note: `draft` field is not currently in the schema but can be added if needed
+  for filtering speakers during development.
+
+Validation:
+- The speaker schema is enforced by `src/content.config.ts` (zod). The build
+  will fail if any Markdown file under `src/data/speakers` does not match the
+  required schema structure.
+
+Bio format:
+- Use the YAML pipe `|` syntax for multi-line bios in the frontmatter.
+- Keep the bio concise but informative (2-3 paragraphs recommended).
+- The file body (Markdown after frontmatter) is available but not currently
+  used by the site templates.

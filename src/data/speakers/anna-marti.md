@@ -12,9 +12,9 @@ bio: |
   Anna is a senior software engineer focused on distributed systems and developer experience. She has over 10 years of experience building resilient backend services and mentoring engineering teams.
 
   She is active in the local open source community and enjoys giving workshops on observability and testing.
-topics:
-  - "devops-sre"
+topic: "leadership"
 locale: "ca"
+draft: false
 ---
 
 Anna Martí is a senior software engineer and speaker.

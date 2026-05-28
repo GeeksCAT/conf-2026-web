@@ -9,9 +9,9 @@ bio: |
   Laura is a data scientist building ML systems for product teams. Her interests include model interpretability, dataset curation and MLOps.
 
   She regularly speaks about responsible AI and reproducible experiments.
-topics:
-  - "ai-data"
+topic: "ai-data"
 locale: "ca"
+draft: true
 ---
 
 Laura Puig focuses on machine learning and data reliability.
