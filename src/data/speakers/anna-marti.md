@@ -14,7 +14,7 @@ bio: |
   She is active in the local open source community and enjoys giving workshops on observability and testing.
 topic: "leadership"
 locale: "ca"
-draft: false
+draft: true
 ---
 
 Anna Martí is a senior software engineer and speaker.

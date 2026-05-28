@@ -11,7 +11,7 @@ const t = useTranslations(locale);
 const cfpPath = localizedPath('/cfp', locale);
 
 const allSpeakers = await getCollection('speakers');
-const speakers = allSpeakers.filter((s) => s.data.locale === locale);
+const speakers = allSpeakers.filter((s) => s.data.locale === locale && !s.data.draft);
 
 const topicLabels: Record<string, string> = {
   'open-source': 'Open Source',

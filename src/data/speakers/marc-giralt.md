@@ -11,7 +11,7 @@ bio: |
   He helps teams adopt cloud-native patterns and focuses on security and cost-effective operations.
 topic: "devops-sre"
 locale: "es"
-draft: false
+draft: true
 ---
 
 Marc Giralt works on cloud platforms and developer experience.
