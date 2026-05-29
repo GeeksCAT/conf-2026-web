@@ -50,24 +50,24 @@ export const cfp = {
     'cfp.topics.opensource.2': 'Governança de comunitats',
     'cfp.topics.opensource.3': 'Llicències i sostenibilitat',
     'cfp.topics.opensource.4': "Casos d'èxit locals",
-    
+
     'cfp.topics.devops': 'Dev, Ops, SRE ...',
     'cfp.topics.devops.1': 'Arquitectures modernes',
     'cfp.topics.devops.2': 'Rendiment i Core Web Vitals',
     'cfp.topics.devops.3': 'Observabilitat i SLOs',
     'cfp.topics.devops.4': 'CI/CD i GitOps',
     'cfp.topics.devops.5': 'Kubernetes i plataformes',
-    
+
     'cfp.topics.aidata': 'AI & Data',
     'cfp.topics.aidata.1': 'LLMs en producció',
     'cfp.topics.aidata.2': 'MLOps i pipelines',
     'cfp.topics.aidata.3': 'IA responsable',
     'cfp.topics.aidata.4': "Casos d'ús reals",
-    
+
     'cfp.topics.leadership': 'Lideratge',
     'cfp.topics.leadership.1': "Lideratge d'equips tècnics",
     'cfp.topics.leadership.2': 'Direcció tècnica',
-    
+
     'cfp.topics.footer': 'Les àrees temàtiques són merament una proposa, davant del dubte, presenta la teva xerrada',
 
     // Benefits
@@ -76,7 +76,7 @@ export const cfp = {
     'cfp.benefits.1': 'Entrada gratuïta completa a la conferència',
     'cfp.benefits.2': 'Assortiment de cortesia',
     'cfp.benefits.3': 'Descompte del 50% en la primers quota de sòcia de GeeksCAT (vàlid fins al 26 de novembre del 2026)',
-    'cfp.benefits.4': 'Sopar exclusiu de per ponents i organitzadors',
+    'cfp.benefits.4': 'Sopar exclusiu de per ponents i patrocinadors',
     'cfp.benefits.5': 'Possible subvenció per desplaçament, estancia i dietes (pressupost limitat)',
 
     // Practical info
@@ -90,7 +90,6 @@ export const cfp = {
     // CTA
     'cfp.submit.tag': '[ EXEC ]',
     'cfp.submit.button': '>_ ENVIA LA TEVA PROPOSTA',
-    'cfp.submit.footer': 'cfp@geekscat.org // DEADLINE:',
   },
   en: {
     'cfp.title': 'CFP',
@@ -143,24 +142,24 @@ export const cfp = {
     'cfp.topics.opensource.2': 'Community governance',
     'cfp.topics.opensource.3': 'Licenses and sustainability',
     'cfp.topics.opensource.4': 'Local success stories',
-    
+
     'cfp.topics.devops': 'Dev, Ops, SRE ...',
     'cfp.topics.devops.1': 'Modern architectures',
     'cfp.topics.devops.2': 'Performance and Core Web Vitals',
     'cfp.topics.devops.3': 'Observability and SLOs',
     'cfp.topics.devops.4': 'CI/CD and GitOps',
     'cfp.topics.devops.5': 'Kubernetes and platforms',
-    
+
     'cfp.topics.aidata': 'AI & Data',
     'cfp.topics.aidata.1': 'LLMs in production',
     'cfp.topics.aidata.2': 'MLOps and pipelines',
     'cfp.topics.aidata.3': 'Responsible AI',
     'cfp.topics.aidata.4': 'Real use cases',
-    
+
     'cfp.topics.leadership': 'Leadership',
     'cfp.topics.leadership.1': 'Technical team leadership',
     'cfp.topics.leadership.2': 'Technical direction',
-    
+
     'cfp.topics.footer': 'The thematic areas are merely a proposal, when in doubt, submit your talk',
 
     // Benefits
@@ -169,7 +168,7 @@ export const cfp = {
     'cfp.benefits.1': 'Full free conference pass',
     'cfp.benefits.2': 'Courtesy swag',
     'cfp.benefits.3': '50% discount on the first GeeksCAT membership fee (valid until November 26, 2026)',
-    'cfp.benefits.4': 'Exclusive dinner for speakers and organizers',
+    'cfp.benefits.4': 'Exclusive dinner for speakers and sponsors',
     'cfp.benefits.5': 'Possible subsidy for travel, accommodation and expenses (limited budget)',
 
     // Practical info
@@ -183,7 +182,6 @@ export const cfp = {
     // CTA
     'cfp.submit.tag': '[ EXEC ]',
     'cfp.submit.button': '>_ SUBMIT YOUR PROPOSAL',
-    'cfp.submit.footer': 'cfp@geekscat.org // DEADLINE:',
   },
   es: {
     'cfp.title': 'CFP',
@@ -236,24 +234,24 @@ export const cfp = {
     'cfp.topics.opensource.2': 'Gobernanza de comunidades',
     'cfp.topics.opensource.3': 'Licencias y sostenibilidad',
     'cfp.topics.opensource.4': 'Casos de éxito locales',
-    
+
     'cfp.topics.devops': 'Dev, Ops, SRE ...',
     'cfp.topics.devops.1': 'Arquitecturas modernas',
     'cfp.topics.devops.2': 'Rendimiento y Core Web Vitals',
     'cfp.topics.devops.3': 'Observabilidad y SLOs',
     'cfp.topics.devops.4': 'CI/CD y GitOps',
     'cfp.topics.devops.5': 'Kubernetes y plataformas',
-    
+
     'cfp.topics.aidata': 'AI & Data',
     'cfp.topics.aidata.1': 'LLMs en producción',
     'cfp.topics.aidata.2': 'MLOps y pipelines',
     'cfp.topics.aidata.3': 'IA responsable',
     'cfp.topics.aidata.4': 'Casos de uso reales',
-    
+
     'cfp.topics.leadership': 'Liderazgo',
     'cfp.topics.leadership.1': 'Liderazgo de equipos técnicos',
     'cfp.topics.leadership.2': 'Dirección técnica',
-    
+
     'cfp.topics.footer': 'Las áreas temáticas son meramente una propuesta, ante la duda, presenta tu charla',
 
     // Benefits
@@ -262,7 +260,7 @@ export const cfp = {
     'cfp.benefits.1': 'Entrada gratuita completa a la conferencia',
     'cfp.benefits.2': 'Surtido de cortesía',
     'cfp.benefits.3': 'Descuento del 50% en la primera cuota de socio de GeeksCAT (válido hasta el 26 de noviembre de 2026)',
-    'cfp.benefits.4': 'Cena exclusiva para ponentes y organizadores',
+    'cfp.benefits.4': 'Cena exclusiva para ponentes y patrocinadores',
     'cfp.benefits.5': 'Posible subvención para desplazamiento, estancia y dietas (presupuesto limitado)',
 
     // Practical info
@@ -276,6 +274,5 @@ export const cfp = {
     // CTA
     'cfp.submit.tag': '[ EXEC ]',
     'cfp.submit.button': '>_ ENVIA TU PROPUESTA',
-    'cfp.submit.footer': 'cfp@geekscat.org // DEADLINE:',
   },
 } as const;

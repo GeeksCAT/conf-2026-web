@@ -341,12 +341,6 @@ function formatTimeRange(item: (typeof talks)[number] | undefined) {
           <dd class="font-mono text-code-sm text-on-surface">{t('hero.venue')}</dd>
         </div>
         <div class="flex items-center gap-3">
-          <dt class="font-mono text-code-sm text-on-surface-variant/60 uppercase">{t('agenda.status.talks')}</dt>
-          <dd class="font-mono text-code-sm text-on-surface">
-            {talks.length > 0 ? talks.length : '[ TBA ]'}
-          </dd>
-        </div>
-        <div class="flex items-center gap-3">
           <dt class="font-mono text-code-sm text-on-surface-variant/60 uppercase">{t('agenda.status.cfp')}</dt>
           <dd class="font-mono text-code-sm text-primary-container uppercase">{t('speakers.cfp-status')}</dd>
         </div>

@@ -8,15 +8,15 @@ export const index = {
     'index.about.p2': 'Tant si ets un professional del sector (enginyer/arquitecte de programari o sistemes, SREs, directiu tecnològic, ...),  si vols formar-hi part al futur, o només un entusiasta, aquesta és la teva conferencia.',
     'index.about.p3': "Ens enfoquem 100% a compartir coneixement d'alt nivell, sense filtres comercials amb  un fort recolzament a l'open source.",
     'index.about.p4': 'No som només una conferència de codi. Som el "core dump" de varies generacions de geeks catalans.',
-    
+
     'index.about.feature1.tag': '// 00',
     'index.about.feature1.title': '100% DIRIGIT PER COMUNITAT',
     'index.about.feature1.desc': 'Organitzat per la comunitat geek i voluntaris, 100% sense ànim de lucre.',
-    
+
     'index.about.feature2.tag': '// 01',
     'index.about.feature2.title': '100% TÈCNIC',
     'index.about.feature2.desc': 'Xerrades, tallers, taules rodones, espais compartits i de debat. Zero xerrades de vendes. Zero buzzwords buits.',
-    
+
     'index.about.feature3.tag': '// 10',
     'index.about.feature3.title': '100% OBERT',
     'index.about.feature3.desc': 'Codi de conducta, entrades asequibles i espai inclusiu per a tothom per fer xarxa, establir contactes i impulsar la comunitat.',
@@ -29,12 +29,7 @@ export const index = {
 
     'index.evolution.tag': '[ OS update ]',
     'index.evolution.title': 'De la "Festa Open Source" a la GeeksCAT Conf',
-    'index.evolution.2020': '2020: 100% online (killall covid)',
-    'index.evolution.2021': '2021: XXXXX',
-    'index.evolution.2022': '2022: XXXXX',
-    'index.evolution.2023': '2023: XXXXX',
-    'index.evolution.2024': '2024: 1 dia amb xerrades i tallers',
-    'index.evolution.footer': 'Després d\'una any en hibernació tornem amb bateries de nova generació carregades al 100%',
+    'index.evolution.footer': 'Després d\'un any d\'hibernació tornem amb bateries de nova generació carregades al 100%',
 
     // Mission
     'index.mission.tag': '[ MISSIÓ ]',
@@ -72,15 +67,15 @@ export const index = {
     'index.topics.dev.tag': '/dev',
     'index.topics.dev.title': 'Dev, Ops, Data, AI',
     'index.topics.dev.desc': 'Arquitectures modernes, Infraestructura com a codi, observabilitat, CI/CD, Kubernetes, bones pràctiques, IA aplicada, LLMs, pipelines, ...',
-    
+
     'index.topics.workshops.tag': '/lib',
     'index.topics.workshops.title': 'Tallers',
     'index.topics.workshops.desc': 'Desenvolupament, optimitzacions, microcontroladors, ....',
-    
+
     'index.topics.debates.tag': '/usr',
     'index.topics.debates.title': 'Debats',
     'index.topics.debates.desc': 'Contribucions, governança, comunitats i projectes de codi obert que estan canviant el món del programari.',
-    
+
     'index.topics.social.tag': '/etc',
     'index.topics.social.title': 'Epais',
     'index.topics.social.desc': 'Socialització, crea xarxa, comparteix experiències, ...',
@@ -94,15 +89,15 @@ export const index = {
     'index.about.p2': 'Whether you are a professional in the sector (software/systems engineer/architect, SREs, tech executive, ...), want to be part of it in the future, or just an enthusiast, this is your conference.',
     'index.about.p3': 'We focus 100% on sharing high-level knowledge, without commercial filters and with strong support for open source.',
     'index.about.p4': 'We are not just a code conference. We are the "core dump" of several generations of Catalan geeks.',
-    
+
     'index.about.feature1.tag': '// 00',
     'index.about.feature1.title': '100% COMMUNITY-DRIVEN',
     'index.about.feature1.desc': 'Organized by the geek community and volunteers, 100% non-profit.',
-    
+
     'index.about.feature2.tag': '// 01',
     'index.about.feature2.title': '100% TECHNICAL',
     'index.about.feature2.desc': 'Talks, workshops, round tables, shared spaces and debates. Zero sales pitches. Zero empty buzzwords.',
-    
+
     'index.about.feature3.tag': '// 10',
     'index.about.feature3.title': '100% OPEN',
     'index.about.feature3.desc': 'Code of conduct, affordable tickets and inclusive space for everyone to network, make connections and boost the community.',
@@ -115,11 +110,6 @@ export const index = {
 
     'index.evolution.tag': '[ OS update ]',
     'index.evolution.title': 'From "Festa Open Source" to GeeksCAT Conf',
-    'index.evolution.2020': '2020: 100% online (killall covid)',
-    'index.evolution.2021': '2021: XXXXX',
-    'index.evolution.2022': '2022: XXXXX',
-    'index.evolution.2023': '2023: XXXXX',
-    'index.evolution.2024': '2024: 1 day with talks and workshops',
     'index.evolution.footer': 'After a year in hibernation we return with new generation batteries charged at 100%',
 
     // Mission
@@ -158,15 +148,15 @@ export const index = {
     'index.topics.dev.tag': '/dev',
     'index.topics.dev.title': 'Dev, Ops, Data, AI',
     'index.topics.dev.desc': 'Modern architectures, Infrastructure as code, observability, CI/CD, Kubernetes, best practices, applied AI, LLMs, pipelines, ...',
-    
+
     'index.topics.workshops.tag': '/lib',
     'index.topics.workshops.title': 'Workshops',
     'index.topics.workshops.desc': 'Development, optimizations, microcontrollers, ....',
-    
+
     'index.topics.debates.tag': '/usr',
     'index.topics.debates.title': 'Debates',
     'index.topics.debates.desc': 'Contributions, governance, communities and open source projects that are changing the software world.',
-    
+
     'index.topics.social.tag': '/etc',
     'index.topics.social.title': 'Networking',
     'index.topics.social.desc': 'Socialization, network, share experiences, ...',
@@ -180,15 +170,15 @@ export const index = {
     'index.about.p2': 'Tanto si eres un profesional del sector (ingeniero/arquitecto de software o sistemas, SREs, directivo tecnológico, ...),  si quieres formar parte en el futuro, o solo un entusiasta, esta es tu conferencia.',
     'index.about.p3': 'Nos enfocamos 100% a compartir conocimiento de alto nivel, sin filtros comerciales con un fuerte apoyo al open source.',
     'index.about.p4': 'No somos solo una conferencia de código. Somos el "core dump" de varias generaciones de geeks catalanes.',
-    
+
     'index.about.feature1.tag': '// 00',
     'index.about.feature1.title': '100% DIRIGIDO POR COMUNIDAD',
     'index.about.feature1.desc': 'Organizado por la comunidad geek y voluntarios, 100% sin ánimo de lucro.',
-    
+
     'index.about.feature2.tag': '// 01',
     'index.about.feature2.title': '100% TÉCNICO',
     'index.about.feature2.desc': 'Charlas, talleres, mesas redondas, espacios compartidos y de debate. Cero charlas de ventas. Cero buzzwords vacíos.',
-    
+
     'index.about.feature3.tag': '// 10',
     'index.about.feature3.title': '100% ABIERTO',
     'index.about.feature3.desc': 'Código de conducta, entradas asequibles y espacio inclusivo para todos para hacer networking, establecer contactos e impulsar la comunidad.',
@@ -201,11 +191,6 @@ export const index = {
 
     'index.evolution.tag': '[ OS update ]',
     'index.evolution.title': 'De la "Festa Open Source" a la GeeksCAT Conf',
-    'index.evolution.2020': '2020: 100% online (killall covid)',
-    'index.evolution.2021': '2021: XXXXX',
-    'index.evolution.2022': '2022: XXXXX',
-    'index.evolution.2023': '2023: XXXXX',
-    'index.evolution.2024': '2024: 1 día con charlas y talleres',
     'index.evolution.footer': 'Después de un año en hibernación volvemos con baterías de nueva generación cargadas al 100%',
 
     // Mission
@@ -244,15 +229,15 @@ export const index = {
     'index.topics.dev.tag': '/dev',
     'index.topics.dev.title': 'Dev, Ops, Data, AI',
     'index.topics.dev.desc': 'Arquitecturas modernas, Infraestructura como código, observabilidad, CI/CD, Kubernetes, buenas prácticas, IA aplicada, LLMs, pipelines, ...',
-    
+
     'index.topics.workshops.tag': '/lib',
     'index.topics.workshops.title': 'Talleres',
     'index.topics.workshops.desc': 'Desarrollo, optimizaciones, microcontroladores, ....',
-    
+
     'index.topics.debates.tag': '/usr',
     'index.topics.debates.title': 'Debates',
     'index.topics.debates.desc': 'Contribuciones, gobernanza, comunidades y proyectos de código abierto que están cambiando el mundo del software.',
-    
+
     'index.topics.social.tag': '/etc',
     'index.topics.social.title': 'Networking',
     'index.topics.social.desc': 'Socialización, crea red, comparte experiencias, ...',
