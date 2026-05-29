@@ -1,0 +1,357 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../components/BaseLayout.astro';
+import CTAButton from '../../components/CTAButton.astro';
+import SectionHeader from '../../components/SectionHeader.astro';
+import { getLocale, useTranslations, localizedPath } from '../../i18n/utils';
+import { marked } from 'marked';
+
+const locale = getLocale(Astro.currentLocale);
+const t = useTranslations(locale);
+
+const cfpPath = localizedPath('/cfp', locale);
+
+const allTalks = await getCollection('talks');
+const talks = allTalks.filter((tk) => tk.data.locale === locale);
+
+const allSpeakers = await getCollection('speakers');
+const speakerMap = new Map(allSpeakers.map((s) => [s.data.slug, s.data]));
+
+// Parse markdown body to HTML
+const parseMarkdown = (markdown: string | undefined) => {
+  if (!markdown) return '';
+  return marked.parse(markdown, { async: false });
+};
+
+// We render two tables side-by-side: Day 1 (left) and Day 2 (right).
+// Sessions (formerly "talk") and spacers must include explicit `time` and
+// `end` fields. The schema enforces required fields.
+// All entries have `time`; only filter out drafts. Sort by time string.
+const itemsWithTime = talks
+  .filter((tk) => !tk.data.draft)
+  .sort((a, b) => a.data.time.localeCompare(b.data.time));
+
+// Build separate schedules per day so each table only shows its own rows.
+const day1Times = Array.from(new Set(itemsWithTime.filter((tk) => tk.data.day === 1).map((tk) => tk.data.time))) as string[];
+const day2Times = Array.from(new Set(itemsWithTime.filter((tk) => tk.data.day === 2).map((tk) => tk.data.time))) as string[];
+
+const day1Schedule = day1Times.map((time) => ({
+  time,
+  item: itemsWithTime.find((tk) => (tk.data.day ?? 1) === 1 && tk.data.time === time),
+}));
+
+const day2Schedule = day2Times.map((time) => ({
+  time,
+  item: itemsWithTime.find((tk) => tk.data.day === 2 && tk.data.time === time),
+}));
+
+// Format a time range for both session and spacer entries.
+function formatTimeRange(item: (typeof talks)[number] | undefined) {
+  if (!item) return undefined;
+  return `${item.data.time}–${item.data.end}`;
+}
+---
+
+<BaseLayout
+  title={t('agenda.title')}
+  description="Agenda de GeeksCAT Conf 2026. Tallers, ponencies, debats i molt més"
+>
+
+  <!-- ═══════════════════════════════════════════════
+       HERO
+  ═══════════════════════════════════════════════ -->
+  <header class="relative pt-32 pb-16 px-6 border-b border-outline-variant overflow-hidden">
+    <div class="absolute inset-0 grid-lines opacity-10 pointer-events-none" aria-hidden="true"></div>
+    <div class="max-w-5xl mx-auto relative z-10">
+      <h1 class="font-display uppercase tracking-tighter mb-4 leading-none uppercase"
+          style="font-size: clamp(2.5rem, 8vw, 5rem)">
+        {t('agenda.title')}
+      </h1>
+      <div class="flex flex-wrap gap-4 items-center">
+        <span class="font-mono text-code-sm border border-outline-variant text-on-surface-variant px-5 py-2">
+          {t('hero.date')}
+        </span>
+        <span class="font-mono text-code-sm border border-outline-variant text-on-surface-variant px-5 py-2">
+          <a class="text-primary-container hover:underline" href="https://osm.org/go/xU1FGSMSV?node=4855572478" target="_blank" rel="noopener noreferrer">{t('hero.venue')}</a>
+        </span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ═══════════════════════════════════════════════
+       SCHEDULE GRID
+  ═══════════════════════════════════════════════ -->
+  <section class="py-20 px-6" aria-labelledby="schedule-heading">
+    <div class="max-w-5xl mx-auto">
+      <SectionHeader tag={t('agenda.schedule.tag')} title="" />
+
+      {(day1Schedule.length > 0 || day2Schedule.length > 0) ? (
+        <div class="flex flex-col lg:flex-row gap-6">
+          {/* Left table: Day 1 */}
+          <div class="w-full lg:w-1/2">
+            <h3 class="font-display text-headline-md uppercase tracking-tight mb-4">{t('agenda.schedule.day1')}</h3>
+            <div class="overflow-x-auto custom-scrollbar -mx-6 px-6">
+              <table class="w-full min-w-[320px] border-collapse" role="grid" aria-label="Tallers">
+                <thead>
+                  <tr>
+                    <th class="w-20 shrink-0 font-mono text-code-sm text-on-surface-variant/60 uppercase tracking-widest text-left pb-4 pr-4">{t('agenda.schedule.time')}</th>
+                    <th class="font-mono text-code-sm uppercase tracking-widest text-left pb-4 px-3">{t('agenda.schedule.title')}</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-outline-variant/40">
+                  {day1Schedule.map(({ item }) => (
+                    <tr>
+                      <td class="py-4 pr-4 align-top">
+                        <span class="font-mono text-code-sm text-on-surface-variant/60 whitespace-nowrap">{formatTimeRange(item) ?? '—'}</span>
+                      </td>
+                      <td class="py-4 px-3 align-top">
+                        {item ? (
+                          (item.body && String(item.body).trim().length > 0) ? (
+                            <details class="group" id={`entry-${item.data.slug}`}>
+                              <summary class="list-none">
+                                {item.data.type === 'spacer' ? (
+                                  <div class="bg-surface-container-low border border-outline-variant p-3 rounded">
+                                    {item.data.title && <p class="font-display text-label-sm uppercase tracking-tight mb-1">{item.data.title}</p>}
+                                    <div class="prose max-w-none text-on-surface-variant" set:html={parseMarkdown(item.body)} />
+                                  </div>
+                                ) : (
+                                  <div>
+                                    <p class="font-display text-label-md uppercase tracking-tight leading-snug mb-1">{item.data.title}</p>
+                                    {speakerMap.get(item.data.speakerSlug) && (
+                                      <p class="font-body text-body-md text-on-surface-variant text-sm mb-2">{speakerMap.get(item.data.speakerSlug)?.name}</p>
+                                    )}
+                                    <div class="flex flex-wrap gap-2 items-center">
+                                      <span class="font-mono text-xs text-on-surface-variant/60 border border-outline-variant/60 px-2 py-0.5 uppercase">{item.data.lang}</span>
+                                    </div>
+                                  </div>
+                                )}
+                              </summary>
+                              <div class="mt-3 prose max-w-none text-on-surface-variant" set:html={parseMarkdown(item.body)} />
+                            </details>
+                          ) : (
+                            item.data.type === 'spacer' ? (
+                              <div class="bg-surface-container-low border border-outline-variant p-3 rounded">
+                                {item.data.title && <p class="font-display text-label-sm uppercase tracking-tight mb-1">{item.data.title}</p>}
+                                <div class="prose max-w-none text-on-surface-variant" set:html={parseMarkdown(item.body)} />
+                              </div>
+                            ) : (
+                              <div>
+                                <p class="font-display text-label-md uppercase tracking-tight leading-snug mb-1">{item.data.title}</p>
+                                {speakerMap.get(item.data.speakerSlug) && (
+                                  <p class="font-body text-body-md text-on-surface-variant text-sm mb-2">{speakerMap.get(item.data.speakerSlug)?.name}</p>
+                                )}
+                                <div class="flex flex-wrap gap-2 items-center">
+                                  {/* level removed from schema */}
+                                  <span class="font-mono text-xs text-on-surface-variant/60 border border-outline-variant/60 px-2 py-0.5 uppercase">{item.data.lang}</span>
+                                   {/* duration removed from schema */}
+                                </div>
+                              </div>
+                            )
+                          )
+                        ) : (
+                          <span class="font-mono text-code-sm text-on-surface-variant/20">—</span>
+                        )}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          {/* Right table: Day 2 */}
+          <div class="w-full lg:w-1/2">
+            <h3 class="font-display text-headline-md uppercase tracking-tight mb-4">{t('agenda.schedule.day2')}</h3>
+            <div class="overflow-x-auto custom-scrollbar -mx-6 px-6">
+              <table class="w-full min-w-[320px] border-collapse" role="grid" aria-label="Ponencies">
+                <thead>
+                  <tr>
+                    <th class="w-20 shrink-0 font-mono text-code-sm text-on-surface-variant/60 uppercase tracking-widest text-left pb-4 pr-4">{t('agenda.schedule.time')}</th>
+                    <th class="font-mono text-code-sm uppercase tracking-widest text-left pb-4 px-3">{t('agenda.schedule.title')}</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-outline-variant/40">
+                   {day2Schedule.map(({ item }) => (
+                    <tr>
+                      <td class="py-4 pr-4 align-top">
+                        <span class="font-mono text-code-sm text-on-surface-variant/60 whitespace-nowrap">{formatTimeRange(item) ?? '—'}</span>
+                      </td>
+                      <td class="py-4 px-3 align-top">
+                        {item ? (
+                          (item.body && String(item.body).trim().length > 0) ? (
+                            <details class="group" id={`entry-${item.data.slug}`}>
+                              <summary class="list-none">
+                                {item.data.type === 'spacer' ? (
+                                  <div class="bg-surface-container-low border border-outline-variant p-3 rounded">
+                                    {item.data.title && <p class="font-display text-label-sm uppercase tracking-tight mb-1">{item.data.title}</p>}
+                                    <div class="prose max-w-none text-on-surface-variant" set:html={parseMarkdown(item.body)} />
+                                  </div>
+                                ) : (
+                                  <div>
+                                    <p class="font-display text-label-md uppercase tracking-tight leading-snug mb-1">{item.data.title}</p>
+                                    {speakerMap.get(item.data.speakerSlug) && (
+                                      <p class="font-body text-body-md text-on-surface-variant text-sm mb-2">{speakerMap.get(item.data.speakerSlug)?.name}</p>
+                                    )}
+                                    <div class="flex flex-wrap gap-2 items-center">
+                                      <span class="font-mono text-xs text-on-surface-variant/60 border border-outline-variant/60 px-2 py-0.5 uppercase">{item.data.lang}</span>
+                                    </div>
+                                  </div>
+                                )}
+                              </summary>
+                              <div class="mt-3 prose max-w-none text-on-surface-variant" set:html={parseMarkdown(item.body)} />
+                            </details>
+                          ) : (
+                            item.data.type === 'spacer' ? (
+                              <div class="bg-surface-container-low border border-outline-variant p-3 rounded">
+                                {item.data.title && <p class="font-display text-label-sm uppercase tracking-tight mb-1">{item.data.title}</p>}
+                                <div class="prose max-w-none text-on-surface-variant" set:html={parseMarkdown(item.body)} />
+                              </div>
+                            ) : (
+                              <div>
+                                <p class="font-display text-label-md uppercase tracking-tight leading-snug mb-1">{item.data.title}</p>
+                                {speakerMap.get(item.data.speakerSlug) && (
+                                  <p class="font-body text-body-md text-on-surface-variant text-sm mb-2">{speakerMap.get(item.data.speakerSlug)?.name}</p>
+                                )}
+                                <div class="flex flex-wrap gap-2 items-center">
+                                  <span class="font-mono text-xs text-on-surface-variant/60 border border-outline-variant/60 px-2 py-0.5 uppercase">{item.data.lang}</span>
+                                </div>
+                              </div>
+                            )
+                          )
+                        ) : (
+                          <span class="font-mono text-code-sm text-on-surface-variant/20">—</span>
+                        )}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      ) : (
+        /* ── Estat buit ── */
+        <div class="border border-outline-variant p-8 text-center">
+          <p class="font-display text-headline-md uppercase tracking-tight text-on-surface-variant/40 terminal-cursor">{t('agenda.empty')}</p>
+        </div>
+      )}
+
+      {(day1Schedule.length === 0 && day2Schedule.length === 0) && (
+        <div class="mt-8 flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between bg-surface-container border border-primary-container/20 p-6">
+          <div>
+            <p class="font-mono text-code-sm text-primary-container uppercase tracking-widest mb-1">{t('agenda.cfp.tag')}</p>
+            <p class="font-body text-body-md text-on-surface-variant">{t('agenda.cfp.desc')}</p>
+          </div>
+          <CTAButton href={cfpPath} variant="outline" class="shrink-0">
+            {t('agenda.cfp.cta')}
+          </CTAButton>
+        </div>
+      )}
+    </div>
+  </section>
+
+  <!-- NOTE: It' hidden because we don't plan to do after hours-->
+  <!-- ═══════════════════════════════════════════════
+       AFTER_HOURS
+  ═══════════════════════════════════════════════ -->
+  <!--
+  <section class="py-20 px-6 bg-surface-container-low border-t border-outline-variant" aria-labelledby="afterhours-heading">
+    <div class="max-w-5xl mx-auto">
+      <SectionHeader tag="AFTER_HOURS" title="NETWORKING & SOCIAL" />
+
+      <div class="grid lg:grid-cols-2 gap-12">
+        <div class="space-y-5">
+          <p class="font-body text-body-lg text-on-surface leading-relaxed">
+            GeeksCAT Conf no acaba quan s'apaguen els projectors. L'after party és part essencial de l'experiència: el moment on es consoliden les connexions, neixen els projectes i es continuen les converses que han quedat a mitges.
+          </p>
+          <p class="font-body text-body-md text-on-surface-variant leading-relaxed">
+            Cerveses, pizza i geeks. La recepta clàssica. La localització exacta i els detalls s'anunciaran quan es confirmi la data de la conferència.
+          </p>
+        </div>
+
+        <div class="space-y-4">
+          <article class="bg-surface-container border border-outline-variant p-6 flex gap-5 items-start">
+            <span class="font-mono text-headline-md text-primary-container/40 select-none" aria-hidden="true">01</span>
+            <div>
+              <p class="font-display text-headline-md uppercase tracking-tight mb-1">AFTERPARTY OFICIAL</p>
+              <p class="font-body text-body-md text-on-surface-variant">Espai proper a la conferència. Begudes, menjar i networking sense agenda ni pantalles.</p>
+              <p class="font-mono text-code-sm text-on-surface-variant/40 mt-2">HORA & LLOC: [ TBA ]</p>
+            </div>
+          </article>
+
+          <article class="bg-surface-container border border-outline-variant p-6 flex gap-5 items-start">
+            <span class="font-mono text-headline-md text-primary-container/40 select-none" aria-hidden="true">02</span>
+            <div>
+              <p class="font-display text-headline-md uppercase tracking-tight mb-1">OPEN HACK</p>
+              <p class="font-body text-body-md text-on-surface-variant">Sessió informal de hacking i projectes en obert. Porta el teu portàtil si tens alguna cosa en construcció.</p>
+              <p class="font-mono text-code-sm text-on-surface-variant/40 mt-2">HORA & LLOC: [ TBA ]</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+  -->
+
+  <!-- ═══════════════════════════════════════════════
+       VENUE GUIDE
+  ═══════════════════════════════════════════════ -->
+  <section class="py-20 px-6" aria-labelledby="venue-heading">
+    <div class="max-w-5xl mx-auto">
+      <SectionHeader tag={t('agenda.venue.tag')} title="" />
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="bg-surface-container border border-outline-variant p-6">
+          <p class="font-mono text-code-sm text-primary-container uppercase tracking-widest mb-4">{t('agenda.venue.transport.tag')}</p>
+          <p class="font-display text-headline-md uppercase tracking-tight mb-3">{t('agenda.venue.transport.title')}</p>
+          <p class="font-body text-body-md text-on-surface-variant leading-relaxed">
+            {t('agenda.venue.transport.desc')}
+          </p>
+        </div>
+
+        <div class="bg-surface-container border border-outline-variant p-6">
+          <p class="font-mono text-code-sm text-secondary-container uppercase tracking-widest mb-4">{t('agenda.venue.parking.tag')}</p>
+          <p class="font-display text-headline-md uppercase tracking-tight mb-3">{t('agenda.venue.parking.title')}</p>
+          <p class="font-body text-body-md text-on-surface-variant leading-relaxed" set:html={t('agenda.venue.parking.desc')}></p>
+        </div>
+
+        <div class="bg-surface-container border border-outline-variant p-6">
+          <p class="font-mono text-code-sm text-on-surface-variant uppercase tracking-widest mb-4">{t('agenda.venue.accommodation.tag')}</p>
+          <p class="font-display text-headline-md uppercase tracking-tight mb-3">{t('agenda.venue.accommodation.title')}</p>
+          <p class="font-body text-body-md text-on-surface-variant leading-relaxed">
+            {t('agenda.venue.accommodation.desc')}
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       STATUS BAR
+  ═══════════════════════════════════════════════ -->
+  <aside class="border-t border-outline-variant bg-surface-container-lowest" aria-label="Estat de l'agenda">
+    <div class="max-w-5xl mx-auto px-6 py-6">
+      <dl class="flex flex-wrap gap-x-10 gap-y-3">
+        <div class="flex items-center gap-3">
+          <dt class="font-mono text-code-sm text-on-surface-variant/60 uppercase">{t('agenda.status.date')}</dt>
+          <dd class="font-mono text-code-sm text-on-surface">{t('hero.date')}</dd>
+        </div>
+        <div class="flex items-center gap-3">
+          <dt class="font-mono text-code-sm text-on-surface-variant/60 uppercase">{t('agenda.status.venue')}</dt>
+          <dd class="font-mono text-code-sm text-on-surface">{t('hero.venue')}</dd>
+        </div>
+        <div class="flex items-center gap-3">
+          <dt class="font-mono text-code-sm text-on-surface-variant/60 uppercase">{t('agenda.status.talks')}</dt>
+          <dd class="font-mono text-code-sm text-on-surface">
+            {talks.length > 0 ? talks.length : '[ TBA ]'}
+          </dd>
+        </div>
+        <div class="flex items-center gap-3">
+          <dt class="font-mono text-code-sm text-on-surface-variant/60 uppercase">{t('agenda.status.cfp')}</dt>
+          <dd class="font-mono text-code-sm text-primary-container uppercase">{t('speakers.cfp-status')}</dd>
+        </div>
+      </dl>
+    </div>
+  </aside>
+
+</BaseLayout>

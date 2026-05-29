@@ -1,0 +1,53 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../components/BaseLayout.astro';
+import { getLocale } from '../../i18n/utils';
+
+const locale = getLocale(Astro.currentLocale);
+
+// Load the COC page content based on locale
+const allPages = await getCollection('pages');
+const cocSlug = `coc-${locale}`;
+const cocPage = allPages.find(page => page.id === cocSlug);
+
+if (!cocPage) {
+  throw new Error(`COC page not found for locale: ${locale}`);
+}
+
+const { Content } = await render(cocPage);
+const { title, badge, description } = cocPage.data;
+---
+
+<BaseLayout title={title} description={description}>
+  <!-- ═══════════════════════════════════════════════
+       HERO
+  ═══════════════════════════════════════════════ -->
+  <header class="relative pt-32 pb-16 px-6 border-b border-outline-variant overflow-hidden">
+    <div class="absolute inset-0 grid-lines opacity-10 pointer-events-none" aria-hidden="true"></div>
+    <div class="max-w-5xl mx-auto relative z-10">
+      {badge && (
+        <span class="font-mono text-code-sm text-primary-container uppercase tracking-widest block mb-6">
+          {badge}
+        </span>
+      )}
+      <h1 class="font-display uppercase tracking-tighter mb-4 leading-none uppercase"
+          style="font-size: clamp(2.5rem, 8vw, 5rem)">
+        {title}
+      </h1>
+      {description && (
+        <p class="font-body text-body-lg text-on-surface-variant max-w-2xl">
+          {description}
+        </p>
+      )}
+    </div>
+  </header>
+
+  <!-- ═══════════════════════════════════════════════
+       CONTENT
+  ═══════════════════════════════════════════════ -->
+  <section class="py-20 px-6" aria-labelledby="content-heading">
+    <div class="max-w-3xl mx-auto prose prose-lg prose-invert prose-headings:font-display prose-headings:uppercase prose-headings:tracking-tight prose-p:font-body prose-p:text-body-lg prose-p:text-on-surface prose-p:leading-relaxed prose-p:mb-6 prose-strong:text-primary-container prose-strong:font-bold prose-ul:list-disc prose-ul:pl-6 prose-ul:mb-6 prose-ul:space-y-3 prose-li:font-body prose-li:text-body-lg prose-li:text-on-surface-variant prose-li:leading-relaxed">
+      <Content />
+    </div>
+  </section>
+</BaseLayout>

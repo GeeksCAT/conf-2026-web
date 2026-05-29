@@ -1,0 +1,328 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../components/BaseLayout.astro';
+import CTAButton from '../../components/CTAButton.astro';
+import SectionHeader from '../../components/SectionHeader.astro';
+import { getLocale, useTranslations } from '../../i18n/utils';
+
+const locale = getLocale(Astro.currentLocale);
+const t = useTranslations(locale);
+
+// Load sponsors
+const allSponsors = await getCollection('sponsors');
+const sponsors = allSponsors
+  .filter((s) => s.data.locale === locale && !s.data.draft)
+  .sort((a, b) => a.data.order - b.data.order);
+
+// Group by tier
+const sponsorsByTier = {
+  pb: sponsors.filter((s) => s.data.tier === 'pb'),
+  tb: sponsors.filter((s) => s.data.tier === 'tb'),
+  gb: sponsors.filter((s) => s.data.tier === 'gb'),
+  mb: sponsors.filter((s) => s.data.tier === 'mb'),
+  collaborator: sponsors.filter((s) => s.data.tier === 'collaborator'),
+};
+
+// Define minimum slots per tier (for placeholders)
+const tierSlots = {
+  pb: 1,
+  tb: 1,
+  gb: 2,
+  mb: 3,
+};
+
+// Helper to get items + placeholders
+function getItemsWithPlaceholders(items: any[], minSlots: number) {
+  const count = Math.max(items.length, minSlots);
+  return Array.from({ length: count }, (_, i) => items[i] || null);
+}
+
+const tierConfig = {
+  pb: {
+    label: '[ PETABYTE ]',
+    color: 'primary-container',
+    borderClass: 'border-2 border-primary-container neon-glow',
+    hoverClass: 'hover:border-primary-container',
+    gridClass: 'grid grid-cols-1',
+    minHeight: 'min-h-45',
+    padding: 'p-12',
+  },
+  tb: {
+    label: '[ TERABYTE ]',
+    color: 'primary-fixed-dim',
+    borderClass: 'border border-primary-fixed-dim/40',
+    hoverClass: 'hover:border-primary-fixed-dim',
+    gridClass: 'grid grid-cols-1 sm:grid-cols-1',
+    minHeight: 'min-h-35',
+    padding: 'p-8',
+  },
+  gb: {
+    label: '[ GIGABYTE ]',
+    color: 'on-surface',
+    borderClass: 'border border-outline-variant',
+    hoverClass: 'hover:border-on-surface-variant',
+    gridClass: 'grid grid-cols-2 lg:grid-cols-2',
+    minHeight: 'min-h-30',
+    padding: 'p-6',
+  },
+  mb: {
+    label: '[ MEGABYTE ]',
+    color: 'on-surface-variant',
+    borderClass: 'border border-outline-variant/60',
+    hoverClass: 'hover:border-outline-variant',
+    gridClass: 'grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3',
+    minHeight: 'min-h-20',
+    padding: 'p-4',
+  },
+};
+---
+
+<BaseLayout
+  title={t('sponsors.title')}
+  description="Patrocina GeeksCAT Conf 2026, la conferència tècnica de referència de Catalunya."
+>
+
+  <!-- ═══════════════════════════════════════════════
+       HERO
+  ═══════════════════════════════════════════════ -->
+  <header class="relative pt-32 pb-16 px-6 border-b border-outline-variant overflow-hidden">
+    <div class="absolute inset-0 grid-lines opacity-10 pointer-events-none" aria-hidden="true"></div>
+    <div class="max-w-5xl mx-auto relative z-10">
+      <span class="font-mono text-code-sm text-primary-container uppercase tracking-widest block mb-6">
+        {t('sponsors.hero.badge')}
+      </span>
+      <h1 class="font-display text-headline-xl uppercase tracking-tighter mb-4 leading-none uppercase">
+        {t('sponsors.title')}
+      </h1>
+      <p class="font-body text-body-lg text-on-surface-variant max-w-2xl">
+        {t('sponsors.hero.desc')}
+      </p>
+    </div>
+  </header>
+
+  <!-- ═══════════════════════════════════════════════
+       PITCH / INTRO
+  ═══════════════════════════════════════════════ -->
+  <section class="py-20 px-6 bg-surface-container-low" aria-labelledby="pitch-heading">
+    <div class="max-w-5xl mx-auto">
+      <SectionHeader tag={t('sponsors.pitch.tag')} title={t('sponsors.pitch.title')} />
+
+      <div class="grid lg:grid-cols-2 gap-16">
+        <div class="space-y-5">
+          <p class="font-body text-body-lg text-on-surface leading-relaxed">
+            {t('sponsors.pitch.p1')}
+          </p>
+          <p class="font-body text-body-md text-on-surface-variant leading-relaxed">
+            {t('sponsors.pitch.p2')}
+          </p>
+          <p class="font-body text-body-md text-on-surface-variant leading-relaxed">
+            {t('sponsors.pitch.p3')}
+          </p>
+        </div>
+
+        <ul class="space-y-4 list-none">
+          <li class="flex gap-4 items-start">
+            <span class="text-primary-container font-mono text-code-sm mt-1 shrink-0" aria-hidden="true">→</span>
+            <div>
+              <p class="font-display text-headline-md uppercase tracking-tight mb-1">{t('sponsors.pitch.visibility.title')}</p>
+              <p class="font-body text-body-md text-on-surface-variant">{t('sponsors.pitch.visibility.desc')}</p>
+            </div>
+          </li>
+          <li class="flex gap-4 items-start">
+            <span class="text-primary-container font-mono text-code-sm mt-1 shrink-0" aria-hidden="true">→</span>
+            <div>
+              <p class="font-display text-headline-md uppercase tracking-tight mb-1">{t('sponsors.pitch.talent.title')}</p>
+              <p class="font-body text-body-md text-on-surface-variant">{t('sponsors.pitch.talent.desc')}</p>
+            </div>
+          </li>
+          <li class="flex gap-4 items-start">
+            <span class="text-primary-container font-mono text-code-sm mt-1 shrink-0" aria-hidden="true">→</span>
+            <div>
+              <p class="font-display text-headline-md uppercase tracking-tight mb-1">{t('sponsors.pitch.impact.title')}</p>
+              <p class="font-body text-body-md text-on-surface-variant">{t('sponsors.pitch.impact.desc')}</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       TIERS
+  ═══════════════════════════════════════════════ -->
+  <section class="py-20 px-6" aria-labelledby="tiers-heading">
+    <div class="max-w-5xl mx-auto">
+      <SectionHeader tag={t('sponsors.tiers.tag')} title="" />
+
+      <div class="space-y-16">
+
+        <!-- PETABYTE — 1 slot, màxima prominència -->
+        <div>
+          <div class="flex items-baseline gap-4 mb-6">
+            <h2 class="font-display text-headline-lg uppercase tracking-tighter text-primary-container">{tierConfig.pb.label}</h2>
+          </div>
+          <div class={tierConfig.pb.gridClass + ' gap-4'}>
+            {getItemsWithPlaceholders(sponsorsByTier.pb, tierSlots.pb).map((sponsor) => (
+              sponsor ? (
+                <a
+                  href={sponsor.data.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class={`${tierConfig.pb.borderClass} ${tierConfig.pb.padding} flex items-center justify-center ${tierConfig.pb.minHeight} bg-surface-container ${tierConfig.pb.hoverClass} transition-colors duration-200`}
+                >
+                  <img src={sponsor.data.logo} alt={sponsor.data.name} class="max-w-full max-h-full object-contain" />
+                </a>
+              ) : (
+                <div class={`${tierConfig.pb.borderClass} ${tierConfig.pb.padding} flex items-center justify-center ${tierConfig.pb.minHeight} bg-surface-container`}>
+                  <div class="text-center">
+                    <p class="font-mono text-code-sm text-primary-container uppercase tracking-widest mb-2">{t('sponsors.tiers.available')}</p>
+                    <p class="font-display text-headline-md text-on-surface-variant uppercase tracking-tight">{t('sponsors.tiers.tba')}</p>
+                  </div>
+                </div>
+              )
+            ))}
+          </div>
+        </div>
+
+        <!-- TERABYTE — 1 slot -->
+        <div>
+          <div class="flex items-baseline gap-4 mb-6">
+            <h2 class="font-display text-headline-lg uppercase tracking-tighter text-primary-fixed-dim">{tierConfig.tb.label}</h2>
+          </div>
+          <div class={tierConfig.tb.gridClass + ' gap-4'}>
+            {getItemsWithPlaceholders(sponsorsByTier.tb, tierSlots.tb).map((sponsor) => (
+              sponsor ? (
+                <a
+                  href={sponsor.data.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class={`${tierConfig.tb.borderClass} ${tierConfig.tb.padding} flex items-center justify-center ${tierConfig.tb.minHeight} bg-surface-container ${tierConfig.tb.hoverClass} transition-colors duration-200`}
+                >
+                  <img src={sponsor.data.logo} alt={sponsor.data.name} class="max-w-full max-h-full object-contain" />
+                </a>
+              ) : (
+                <div class={`${tierConfig.tb.borderClass} ${tierConfig.tb.padding} flex items-center justify-center ${tierConfig.tb.minHeight} bg-surface-container ${tierConfig.tb.hoverClass} transition-colors duration-200`}>
+                  <div class="text-center">
+                    <p class="font-mono text-code-sm text-primary-fixed-dim uppercase tracking-widest mb-1">{t('sponsors.tiers.available')}</p>
+                    <p class="font-display text-headline-md text-outline uppercase tracking-tight" aria-hidden="true">{t('sponsors.tiers.tba')}</p>
+                  </div>
+                </div>
+              )
+            ))}
+          </div>
+        </div>
+
+        <!-- GIGABYTE — 2 slots -->
+        <div>
+          <div class="flex items-baseline gap-4 mb-6">
+            <h2 class="font-display text-headline-lg uppercase tracking-tighter">{tierConfig.gb.label}</h2>
+          </div>
+          <div class={tierConfig.gb.gridClass + ' gap-4'}>
+            {getItemsWithPlaceholders(sponsorsByTier.gb, tierSlots.gb).map((sponsor) => (
+              sponsor ? (
+                <a
+                  href={sponsor.data.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class={`${tierConfig.gb.borderClass} ${tierConfig.gb.padding} flex items-center justify-center ${tierConfig.gb.minHeight} bg-surface-container ${tierConfig.gb.hoverClass} transition-colors duration-200`}
+                >
+                  <img src={sponsor.data.logo} alt={sponsor.data.name} class="max-w-full max-h-full object-contain" />
+                </a>
+              ) : (
+                <div class={`${tierConfig.gb.borderClass} ${tierConfig.gb.padding} flex items-center justify-center ${tierConfig.gb.minHeight} bg-surface-container ${tierConfig.gb.hoverClass} transition-colors duration-200`}>
+                  <div class="text-center">
+                    <p class="font-mono text-code-sm text-outline uppercase tracking-widest mb-1">{t('sponsors.tiers.available')}</p>
+                    <p class="font-display text-label-md text-outline uppercase tracking-tight" aria-hidden="true">{t('sponsors.tiers.tba')}</p>
+                  </div>
+                </div>
+              )
+            ))}
+          </div>
+        </div>
+
+        <!-- MEGABYTE — 3 slots -->
+        <div>
+          <div class="flex items-baseline gap-4 mb-6">
+            <h2 class="font-display text-headline-lg uppercase tracking-tighter text-on-surface-variant">{tierConfig.mb.label}</h2>
+          </div>
+          <div class={tierConfig.mb.gridClass + ' gap-3'}>
+            {getItemsWithPlaceholders(sponsorsByTier.mb, tierSlots.mb).map((sponsor) => (
+              sponsor ? (
+                <a
+                  href={sponsor.data.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class={`${tierConfig.mb.borderClass} ${tierConfig.mb.padding} flex items-center justify-center ${tierConfig.mb.minHeight} bg-surface-container ${tierConfig.mb.hoverClass} transition-colors duration-200`}
+                >
+                  <img src={sponsor.data.logo} alt={sponsor.data.name} class="max-w-full max-h-full object-contain" />
+                </a>
+              ) : (
+                <div class={`${tierConfig.mb.borderClass} ${tierConfig.mb.padding} flex items-center justify-center ${tierConfig.mb.minHeight} bg-surface-container ${tierConfig.mb.hoverClass} transition-colors duration-200`}>
+                  <div class="text-center">
+                    <p class="font-mono text-code-sm text-outline uppercase tracking-widest text-xs mb-0.5">{t('sponsors.tiers.available')}</p>
+                    <p class="font-display text-label-md text-outline uppercase tracking-tight text-xs" aria-hidden="true">{t('sponsors.tiers.tba')}</p>
+                  </div>
+                </div>
+              )
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       COL·LABORADORS
+  ═══════════════════════════════════════════════ -->
+  {sponsorsByTier.collaborator.length > 0 && (
+    <section class="py-20 px-6 bg-surface-container-low border-t border-outline-variant" aria-labelledby="collaborators-heading">
+      <div class="max-w-5xl mx-auto">
+        <SectionHeader tag={t('sponsors.collaborators')} title="" />
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4">
+          {sponsorsByTier.collaborator.map((collaborator) => (
+            <div class="bg-surface-container border border-outline-variant p-4 flex flex-col gap-4 max-w-md mx-auto">
+              <a
+                href={collaborator.data.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-full aspect-video border border-outline-variant/60 flex items-center justify-center bg-surface-container-high hover:border-outline transition-colors"
+              >
+                <img src={collaborator.data.logo} alt={collaborator.data.name} class="max-w-full max-h-full object-contain p-4" />
+              </a>
+              <div>
+                <p class="font-mono text-code-sm text-on-surface-variant uppercase tracking-widest">{t('sponsors.collab.badge')}</p>
+                <p class="font-body text-body-md text-on-surface-variant mt-3">{t('sponsors.collab.desc')}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- ═══════════════════════════════════════════════
+       CTA — VOLS SER PATROCINADOR?
+  ═══════════════════════════════════════════════ -->
+  <section class="py-24 px-6 relative overflow-hidden" id="patrocinar" aria-labelledby="cta-sponsors-heading">
+    <div class="absolute inset-0 terminal-grid opacity-5 pointer-events-none" aria-hidden="true"></div>
+    <div class="max-w-3xl mx-auto relative z-10 text-center">
+      <p class="font-mono text-code-sm text-primary-container uppercase tracking-widest mb-6">{t('sponsors.cta.tag')}</p>
+      <h2 id="cta-sponsors-heading" class="font-display text-headline-xl uppercase tracking-tighter mb-6 leading-none">
+        {t('sponsors.become')}
+      </h2>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <CTAButton href="mailto:conf@geekscat.org?subject=[PATROCINI%202026]%20Interessat%20en%20patrocinar%20GeeksCAT%20Conf" external>
+          {t('sponsors.cta.contact')}
+        </CTAButton>
+        <CTAButton href="#" variant="outline">
+          {t('sponsors.cta.dossier')}
+        </CTAButton>
+      </div>
+      <p class="font-mono text-code-sm text-outline mt-10">
+        {t('sponsors.cta.email')}
+      </p>
+    </div>
+  </section>
+
+</BaseLayout>

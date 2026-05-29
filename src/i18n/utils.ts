@@ -17,8 +17,7 @@ export function localizedPath(path: string, locale: Locale): string {
 }
 
 export function getAlternateLocales(currentPath: string, currentLocale: Locale) {
-  // const locales: Locale[] = ['ca', 'en', 'es'];
-  const locales: Locale[] = ['ca', 'en'];
+  const locales: Locale[] = ['ca', 'en', 'es'];
   const basePath =
     currentLocale === defaultLocale
       ? currentPath
