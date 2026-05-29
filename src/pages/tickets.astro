@@ -1,0 +1,106 @@
+---
+import BaseLayout from '../components/BaseLayout.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import CTAButton from '../components/CTAButton.astro';
+
+const tiers = [
+  {
+    name: 'BIOS',
+    price: '18€',
+    status: 'Próximament disponibles',
+    active: false,
+    url: '#',
+  },
+  {
+    name: 'KERNEL',
+    price: '27€',
+    status: 'A partir de DATA o fins exhaurir BIOS',
+    active: false,
+    url: '#',
+  },
+  {
+    name: 'USER SPACE',
+    price: '35€',
+    status: 'A partir de DATA o fins exhaurir KERNEL',
+    active: false,
+    url: '#',
+  },
+];
+---
+
+<BaseLayout
+  title="Entrades"
+  description="Aconsegueix la teva entrada per GeeksCAT Conf 2026."
+>
+
+  <!-- ═══════════════════════════════════════════════
+       HERO
+  ═══════════════════════════════════════════════ -->
+  <header class="relative pt-32 pb-20 px-6 overflow-hidden">
+    <div class="absolute inset-0 grid-lines opacity-10 pointer-events-none" aria-hidden="true"></div>
+    <div class="max-w-5xl mx-auto relative z-10">
+      <span class="font-mono text-code-sm text-primary-container uppercase tracking-widest block mb-6">
+        [ SUDO ACCESS ]
+      </span>
+      <h1 class="font-display uppercase tracking-tighter mb-4 leading-none"
+          style="font-size: clamp(2.5rem, 8vw, 5rem)">
+        ENTRADES
+      </h1>
+      <p class="font-body text-body-lg text-on-surface-variant mb-8 max-w-2xl">
+        Les <b>nostres sòcies no necessiten adquirir entrades</b>, fes-te sòcia abans de que obrim la compra d'entrades i gaudeix d'aquest benefici, i si ja l'hem obert, et farem un decompte especial en preu d'aquesta
+      </p>
+      <div class="flex gap-4">
+        <CTAButton href="https://geekscat.org/#fes-te-soci" external>FES-TE SÒCIA</CTAButton>
+      </div>
+    </div>
+  </header>
+
+  <!-- ═══════════════════════════════════════════════
+       REGISTRATION TIERS
+  ═══════════════════════════════════════════════ -->
+  <section class="py-20 px-6 bg-surface-container-low border-t border-outline-variant" id="tiers" aria-labelledby="tiers-heading">
+    <div class="max-w-5xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        {tiers.map(({ name, price, status, active, url }) => (
+          <article class={`bg-surface-container border p-8 flex flex-col gap-6 transition-all ${
+            active
+              ? 'border-primary-container neon-glow'
+              : 'border-outline-variant opacity-50'
+          }`}>
+            <div>
+              <h3 class={`font-display text-headline-md uppercase tracking-tight mb-3 ${
+                active ? 'text-on-surface' : 'text-on-surface-variant'
+              }`}>{name}</h3>
+              <p class={`font-mono text-code-lg ${
+                active ? 'text-primary-container' : 'text-on-surface-variant'
+              }`}>{price}</p>
+            </div>
+            <div class="mt-auto flex flex-col gap-3">
+              <p class="font-mono text-code-xs text-on-surface-variant">
+                {status}
+              </p>
+              {active ? (
+                <a
+                  href={url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center justify-center font-mono font-bold text-sm px-4 py-3 uppercase tracking-tighter transition-colors duration-150 bg-primary-container text-on-primary-container hover:bg-primary-fixed-dim active:translate-y-px"
+                >
+                  COMPRAR →
+                </a>
+              ) : (
+                <button
+                  disabled
+                  class="inline-flex items-center justify-center font-mono font-bold text-sm px-4 py-3 uppercase tracking-tighter border border-outline text-outline opacity-50 cursor-not-allowed"
+                >
+                  NO DISPONIBLE
+                </button>
+              )}
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
