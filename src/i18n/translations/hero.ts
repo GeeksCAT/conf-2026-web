@@ -20,7 +20,7 @@ export const hero = {
   },
   es: {
     'hero.badge': '[ INIT_SYSTEM_ROOT ]',
-    'hero.tagline': 'La conferencia de geeks para geeks de Cataluña',
+    'hero.tagline': 'La conferència de geeks para geeks de Cataluña',
     'hero.leacy_tagline':
       'La evolución de la mítica "Festa Open Source". Mismo espiritu, nuevos retos',
     'hero.date': '25 y 26 de setiembre',

@@ -104,7 +104,7 @@ export const sponsors = {
     'sponsors.pitch.talent.desc': 'Conecta con profesionales que buscan nuevos retos, herramientas y oportunidades.',
     
     'sponsors.pitch.impact.title': 'IMPACTO DE COMUNIDAD',
-    'sponsors.pitch.impact.desc': 'Tu patrocinio ayuda a mantener las entradas asequibles y la conferencia accesible para todos.',
+    'sponsors.pitch.impact.desc': 'Tu patrocinio ayuda a mantener las entradas asequibles y la conferència accesible para todos.',
 
     // Tiers section
     'sponsors.tiers.tag': 'NUESTROS PATROCINADORES',

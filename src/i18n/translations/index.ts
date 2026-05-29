@@ -5,7 +5,7 @@ export const index = {
     'index.about.title': 'LA CONFERÈNCIA TÈCNICA DE CATALUNYA',
     'index.about.intro': "GeeksCAT Conf és l'esdeveniment anual de la comunitat tecnològica de Catalunya. Som el punt de trobada de tothom que li apasiona la tecnologia  desde el què, el perquè i el resultat produït d'aquestes dues.",
     'index.about.p1': 'Explora el nucli de la comunitat de Geeks de Catalunya. Des del codi font i el silici, fins a la cultura i socialització geek.',
-    'index.about.p2': 'Tant si ets un professional del sector (enginyer/arquitecte de programari o sistemes, SREs, directiu tecnològic, ...),  si vols formar-hi part al futur, o només un entusiasta, aquesta és la teva conferencia.',
+    'index.about.p2': 'Tant si ets un professional del sector (enginyer/arquitecte de programari o sistemes, SREs, directiu tecnològic, ...),  si vols formar-ne part en un futur o només ets un entusiasta, aquesta és la teva conferència.',
     'index.about.p3': "Ens enfoquem 100% a compartir coneixement d'alt nivell, sense filtres comercials amb  un fort recolzament a l'open source.",
     'index.about.p4': 'No som només una conferència de codi. Som el "core dump" de varies generacions de geeks catalans.',
 
@@ -23,7 +23,7 @@ export const index = {
 
     // History bento grid
     'index.history.tag': '[ HISTORIA ]',
-    'index.history.p1': 'GeeksCAT va néixer d\'una necessitat compartida per crear la comunitat tecnologica de Girona amb l\'ambició de ser-ho de Catalunya i continuen empenyent per aconseguir-ho.',
+    'index.history.p1': 'GeeksCAT va néixer d\'una necessitat compartida per crear la comunitat tecnològica de Girona amb l\'ambició de ser-ho de Catalunya i continuen empenyent per aconseguir-ho.',
     'index.history.p2': 'Volem un espai on els apassionats de la tecnologia a Catalunya puguem compartir coneixement sense barreres corporatives i on totes les sòcies tinguin els recursos d\'una associació per crear esdeveniments, activitats, comunitats, i tot allò que requereix una estructura legal organizativa, sans sentir-se soles davant de tots els mal de caps burocràtics que comporten.',
     'index.history.p3': 'El que va començar com una trobada informal de quatre entusiastes es va convertir en una associació sense ànim de lucre, des d\'on continuent fomentant i impulsant la tecnologia en activitats com la GeeksCAT Conf.',
 
@@ -167,9 +167,9 @@ export const index = {
     'index.about.title': 'LA CONFERENCIA TÉCNICA DE CATALUÑA',
     'index.about.intro': 'GeeksCAT Conf es el evento anual de la comunidad tecnológica de Cataluña. Somos el punto de encuentro de todos los que les apasiona la tecnología - desde el qué, el por qué y el resultado producido de estas dos.',
     'index.about.p1': 'Explora el núcleo de la comunidad de Geeks de Cataluña. Desde el código fuente y el silicio, hasta la cultura y socialización geek.',
-    'index.about.p2': 'Tanto si eres un profesional del sector (ingeniero/arquitecto de software o sistemas, SREs, directivo tecnológico, ...),  si quieres formar parte en el futuro, o solo un entusiasta, esta es tu conferencia.',
+    'index.about.p2': 'Tanto si eres un profesional del sector (ingeniero/arquitecto de software o sistemas, SREs, directivo tecnológico, ...),  si quieres formar parte en el futuro, o solo un entusiasta, esta es tu conferència.',
     'index.about.p3': 'Nos enfocamos 100% a compartir conocimiento de alto nivel, sin filtros comerciales con un fuerte apoyo al open source.',
-    'index.about.p4': 'No somos solo una conferencia de código. Somos el "core dump" de varias generaciones de geeks catalanes.',
+    'index.about.p4': 'No somos solo una conferència de código. Somos el "core dump" de varias generaciones de geeks catalanes.',
 
     'index.about.feature1.tag': '// 00',
     'index.about.feature1.title': '100% DIRIGIDO POR COMUNIDAD',

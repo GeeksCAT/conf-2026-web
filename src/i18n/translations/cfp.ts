@@ -15,7 +15,7 @@ export const cfp = {
     'cfp.looking.title': 'PRESENTA LA TEVA XERRADA',
     'cfp.looking.p1': 'No busquem presentacions corporatives. Busquem profunditat tècnica, lideratge, "live coding" arriscat, arquitectures complexes i històries de guerra reals. Si el teu codi fa coses increïbles (o ha explotat de forma èpica).',
     'cfp.looking.p2': 'Geeks apassionats per compartir coneixement sobre qualsevol aspecte tècnic (Arquitectura i Enginyeria de Programari / Sistemes, SRE, AI & Data, ...), i si hi ha Open Source, encara millor. No cal que tinguis experiència, només ganes.',
-    'cfp.looking.p3': "L'aspecte tècnic no ho és tot, el seu lideratge i inspiracions també, per tant, si líderes un equip tècnic o saps com inspirar la comunitat catalana per impulsar el seu talent o fer ús conscient de la tecnologia, aquesta és la teva conferencia.",
+    'cfp.looking.p3': "L'aspecte tècnic no ho és tot, el seu lideratge i inspiracions també, per tant, si líderes un equip tècnic o saps com inspirar la comunitat catalana per impulsar el seu talent o fer ús conscient de la tecnologia, aquesta és la teva conferència.",
 
     // Criteria
     'cfp.criteria.tag': '[ CRITERIS ]',
@@ -199,7 +199,7 @@ export const cfp = {
     'cfp.looking.title': 'PRESENTA TU CHARLA',
     'cfp.looking.p1': 'No buscamos presentaciones corporativas. Buscamos profundidad técnica, liderazgo, "live coding" arriesgado, arquitecturas complejas e historias de guerra reales. Si tu código hace cosas increíbles (o ha explotado de forma épica).',
     'cfp.looking.p2': 'Geeks apasionados por compartir conocimiento sobre cualquier aspecto técnico (Arquitectura e Ingeniería de Software / Sistemas, SRE, AI & Data, ...), y si hay Open Source, aún mejor. No hace falta que tengas experiencia, solo ganas.',
-    'cfp.looking.p3': 'El aspecto técnico no lo es todo, su liderazgo e inspiraciones también, por tanto, si lideras un equipo técnico o sabes cómo inspirar la comunidad catalana para impulsar su talento o hacer uso consciente de la tecnología, esta es tu conferencia.',
+    'cfp.looking.p3': 'El aspecto técnico no lo es todo, su liderazgo e inspiraciones también, por tanto, si lideras un equipo técnico o sabes cómo inspirar la comunidad catalana para impulsar su talento o hacer uso consciente de la tecnología, esta es tu conferència.',
 
     // Criteria
     'cfp.criteria.tag': '[ CRITERIOS ]',
@@ -257,7 +257,7 @@ export const cfp = {
     // Benefits
     'cfp.benefits.tag': 'PARA LOS PONENTES',
     'cfp.benefits.title': 'GRATIFICACIONES',
-    'cfp.benefits.1': 'Entrada gratuita completa a la conferencia',
+    'cfp.benefits.1': 'Entrada gratuita completa a la conferència',
     'cfp.benefits.2': 'Surtido de cortesía',
     'cfp.benefits.3': 'Descuento del 50% en la primera cuota de socio de GeeksCAT (válido hasta el 26 de noviembre de 2026)',
     'cfp.benefits.4': 'Cena exclusiva para ponentes y patrocinadores',
