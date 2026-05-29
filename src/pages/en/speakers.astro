@@ -1,9 +1,9 @@
 ---
 import { getCollection } from 'astro:content';
-import BaseLayout from '../components/BaseLayout.astro';
-import CTAButton from '../components/CTAButton.astro';
-import SectionHeader from '../components/SectionHeader.astro';
-import { getLocale, useTranslations, localizedPath } from '../i18n/utils';
+import BaseLayout from '../../components/BaseLayout.astro';
+import CTAButton from '../../components/CTAButton.astro';
+import SectionHeader from '../../components/SectionHeader.astro';
+import { getLocale, useTranslations, localizedPath } from '../../i18n/utils';
 
 const locale = getLocale(Astro.currentLocale);
 const t = useTranslations(locale);
@@ -55,8 +55,8 @@ const placeholderCount = speakers.length < PLACEHOLDER_COUNT ? PLACEHOLDER_COUNT
       </h1>
       <p class="font-body text-body-lg text-on-surface-variant max-w-xl">
         {speakers.length > 0
-          ? `${speakers.length} ponents confirmats. Professionals tècnics que compartiran el seu coneixement a GeeksCAT Conf 2026.`
-          : 'Els ponents de GeeksCAT Conf 2026 s\'anunciaran properament. El CFP és obert — potser ets tu el següent.'}
+          ? `${speakers.length} ${t('speakers.hero.confirmed')}`
+          : t('speakers.hero.coming-soon')}
       </p>
     </div>
   </header>
@@ -66,7 +66,7 @@ const placeholderCount = speakers.length < PLACEHOLDER_COUNT ? PLACEHOLDER_COUNT
   ═══════════════════════════════════════════════ -->
   <section class="py-20 px-6" aria-labelledby="speakers-grid-heading">
     <div class="max-w-5xl mx-auto">
-      <SectionHeader tag="LINEUP" title="PONENTS CONFIRMATS" />
+      <SectionHeader tag={t('speakers.grid.tag')} title={t('speakers.grid.title')} />
 
       <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 list-none">
         {/* Real confirmed speakers */}
@@ -83,7 +83,7 @@ const placeholderCount = speakers.length < PLACEHOLDER_COUNT ? PLACEHOLDER_COUNT
               data-speaker-topics={speaker.data.topic || ''}
               data-speaker-links={JSON.stringify(speaker.data.links)}
               onclick="openSpeakerModal(this)"
-              aria-label={`Ver detalles de ${speaker.data.name}`}
+              aria-label={`${t('speakers.modal.aria.view')} ${speaker.data.name}`}
             >
               <!-- Photo -->
               <div class="w-full aspect-square overflow-hidden bg-surface-container-high border-b border-outline-variant">
@@ -149,7 +149,7 @@ const placeholderCount = speakers.length < PLACEHOLDER_COUNT ? PLACEHOLDER_COUNT
                 )}
 
                 <div class="border-t border-outline-variant pt-3 mt-auto">
-                  <span class="font-mono text-code-sm text-primary-container group-hover:underline">VER BIO →</span>
+                  <span class="font-mono text-code-sm text-primary-container group-hover:underline">{t('speakers.grid.view-bio')}</span>
                 </div>
               </div>
             </button>
@@ -173,10 +173,10 @@ const placeholderCount = speakers.length < PLACEHOLDER_COUNT ? PLACEHOLDER_COUNT
                 <span class="font-mono text-code-sm text-primary-container">
                   PONENT_{String(speakers.length + i + 1).padStart(2, '0')}
                 </span>
-                <p class="font-display text-headline-md uppercase tracking-tight">PROPERAMENT</p>
-                <p class="font-body text-body-md text-on-surface-variant/50 text-sm">[ TBA ]</p>
+                <p class="font-display text-headline-md uppercase tracking-tight">{t('speakers.grid.placeholder')}</p>
+                <p class="font-body text-body-md text-on-surface-variant/50 text-sm">{t('speakers.grid.tba')}</p>
                 <div class="border-t border-outline-variant pt-3 mt-auto">
-                  <span class="font-mono text-code-sm text-on-surface-variant/40">STATUS: PENDING</span>
+                  <span class="font-mono text-code-sm text-on-surface-variant/40">{t('speakers.grid.status')}</span>
                 </div>
               </div>
             </div>
@@ -188,11 +188,11 @@ const placeholderCount = speakers.length < PLACEHOLDER_COUNT ? PLACEHOLDER_COUNT
       {placeholderCount > 0 && (
         <div class="bg-surface-container border border-primary-container/20 p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mt-8">
           <div>
-            <p class="font-mono text-code-sm text-primary-container uppercase tracking-widest mb-1">[ VOLS SER PONENT? ]</p>
-            <p class="font-body text-body-md text-on-surface-variant">El CFP és obert. Presenta la teva xerrada i forma part del lineup.</p>
+            <p class="font-mono text-code-sm text-primary-container uppercase tracking-widest mb-1">{t('speakers.cfp.tag')}</p>
+            <p class="font-body text-body-md text-on-surface-variant">{t('speakers.cfp.desc')}</p>
           </div>
           <CTAButton href={cfpPath} variant="outline" class="shrink-0">
-            PRESENTA LA TEVA XERRADA →
+            {t('speakers.cfp.cta')}
           </CTAButton>
         </div>
       )}
@@ -206,15 +206,15 @@ const placeholderCount = speakers.length < PLACEHOLDER_COUNT ? PLACEHOLDER_COUNT
     <div class="max-w-5xl mx-auto px-6 py-6">
       <dl class="flex flex-wrap gap-x-10 gap-y-3">
         <div class="flex items-center gap-3">
-          <dt class="font-mono text-code-sm text-on-surface-variant/60 uppercase">CFP_STATUS</dt>
+          <dt class="font-mono text-code-sm text-on-surface-variant/60 uppercase">{t('speakers.status.cfp')}</dt>
           <dd class="font-mono text-code-sm text-primary-container uppercase">{t('speakers.cfp-status')}</dd>
         </div>
         <div class="flex items-center gap-3">
-          <dt class="font-mono text-code-sm text-on-surface-variant/60 uppercase">ANY</dt>
+          <dt class="font-mono text-code-sm text-on-surface-variant/60 uppercase">{t('speakers.status.year')}</dt>
           <dd class="font-mono text-code-sm text-on-surface">2026</dd>
         </div>
         <div class="flex items-center gap-3">
-          <dt class="font-mono text-code-sm text-on-surface-variant/60 uppercase">LLOC</dt>
+          <dt class="font-mono text-code-sm text-on-surface-variant/60 uppercase">{t('speakers.status.venue')}</dt>
           <dd class="font-mono text-code-sm text-on-surface">
             <a href="https://osm.org/go/xU1FFgu" class="text-primary-container hover:underline" target="_blank" rel="noopner noreferrer">
               GIRONA
@@ -222,11 +222,11 @@ const placeholderCount = speakers.length < PLACEHOLDER_COUNT ? PLACEHOLDER_COUNT
           </dd>
         </div>
         <div class="flex items-center gap-3">
-          <dt class="font-mono text-code-sm text-on-surface-variant/60 uppercase">LANG</dt>
+          <dt class="font-mono text-code-sm text-on-surface-variant/60 uppercase">{t('speakers.status.lang')}</dt>
           <dd class="font-mono text-code-sm text-on-surface">CAT / ENG / ESP</dd>
         </div>
         <div class="flex items-center gap-3">
-          <dt class="font-mono text-code-sm text-on-surface-variant/60 uppercase">PONENTS</dt>
+          <dt class="font-mono text-code-sm text-on-surface-variant/60 uppercase">{t('speakers.status.speakers')}</dt>
           <dd class="font-mono text-code-sm text-on-surface">
             {speakers.length > 0 ? speakers.length : '[ TBA ]'}
           </dd>
@@ -254,21 +254,21 @@ const placeholderCount = speakers.length < PLACEHOLDER_COUNT ? PLACEHOLDER_COUNT
           type="button"
           onclick="closeSpeakerModal()"
           class="font-mono text-code-sm text-on-surface-variant hover:text-primary-container border border-outline-variant hover:border-primary-container px-3 py-2 transition-colors"
-          aria-label="Cerrar modal"
+          aria-label={t('speakers.modal.aria.close')}
         >
-          ✕ TANCAR
+          {t('speakers.modal.close')}
         </button>
       </div>
 
       <!-- Bio -->
       <div class="p-6">
-        <p class="font-mono text-code-sm text-primary-container uppercase tracking-widest mb-4">// BIOGRAFIA</p>
+        <p class="font-mono text-code-sm text-primary-container uppercase tracking-widest mb-4">{t('speakers.modal.bio')}</p>
         <div id="modal-bio" class="font-body text-body-lg text-on-surface leading-relaxed whitespace-pre-line space-y-4"></div>
       </div>
 
       <!-- Links -->
       <div id="modal-links-container" class="px-6 pb-6 hidden">
-        <p class="font-mono text-code-sm text-secondary-container uppercase tracking-widest mb-3">// ENLLAÇOS</p>
+        <p class="font-mono text-code-sm text-secondary-container uppercase tracking-widest mb-3">{t('speakers.modal.links')}</p>
         <div id="modal-links" class="flex flex-wrap gap-3"></div>
       </div>
     </div>

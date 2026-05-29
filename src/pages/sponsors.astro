@@ -89,13 +89,13 @@ const tierConfig = {
     <div class="absolute inset-0 grid-lines opacity-10 pointer-events-none" aria-hidden="true"></div>
     <div class="max-w-5xl mx-auto relative z-10">
       <span class="font-mono text-code-sm text-primary-container uppercase tracking-widest block mb-6">
-        [ INIT_SPONSOR_PROTOCOL ]
+        {t('sponsors.hero.badge')}
       </span>
       <h1 class="font-display text-headline-xl uppercase tracking-tighter mb-4 leading-none uppercase">
         {t('sponsors.title')}
       </h1>
       <p class="font-body text-body-lg text-on-surface-variant max-w-2xl">
-        L'aliança estratègica amb les empreses que impulsen el talent tech local. Gràcies a ells, GeeksCAT Conf és una realitat.
+        {t('sponsors.hero.desc')}
       </p>
     </div>
   </header>
@@ -105,18 +105,18 @@ const tierConfig = {
   ═══════════════════════════════════════════════ -->
   <section class="py-20 px-6 bg-surface-container-low" aria-labelledby="pitch-heading">
     <div class="max-w-5xl mx-auto">
-      <SectionHeader tag="PER QUÈ PATROCINAR" title="ARRIBA DIRECTAMENT ALS TEUS USUARIS" />
+      <SectionHeader tag={t('sponsors.pitch.tag')} title={t('sponsors.pitch.title')} />
 
       <div class="grid lg:grid-cols-2 gap-16">
         <div class="space-y-5">
           <p class="font-body text-body-lg text-on-surface leading-relaxed">
-            Connecta amb desenvolupadors, SREs, líders tecnològics, futurs professionals de sector, i entusiastes. Ajuda'ns a fer créixer la comunitat local i mostra el teu compromís en fer créixer a Catalunya un sector tecnològic d'excel·lència.
+            {t('sponsors.pitch.p1')}
           </p>
           <p class="font-body text-body-md text-on-surface-variant leading-relaxed">
-            No és una audiència genèrica. Són les persones que avaluen les teves eines, recomanen les teves plataformes i prenen decisions tècniques reals. Parla'ls directament, en un entorn de confiança i sense soroll.
+            {t('sponsors.pitch.p2')}
           </p>
           <p class="font-body text-body-md text-on-surface-variant leading-relaxed">
-            El patrocini de GeeksCAT Conf va més enllà de posar un logo. És formar part d'una comunitat que valora l'autenticitat, el coneixement tècnic i el compromís amb l'ecosistema local.
+            {t('sponsors.pitch.p3')}
           </p>
         </div>
 
@@ -124,22 +124,22 @@ const tierConfig = {
           <li class="flex gap-4 items-start">
             <span class="text-primary-container font-mono text-code-sm mt-1 shrink-0" aria-hidden="true">→</span>
             <div>
-              <p class="font-display text-headline-md uppercase tracking-tight mb-1">VISIBILITAT REAL</p>
-              <p class="font-body text-body-md text-on-surface-variant">Presència en web, xarxes socials, materials impresos i escenari durant tot l'event.</p>
+              <p class="font-display text-headline-md uppercase tracking-tight mb-1">{t('sponsors.pitch.visibility.title')}</p>
+              <p class="font-body text-body-md text-on-surface-variant">{t('sponsors.pitch.visibility.desc')}</p>
             </div>
           </li>
           <li class="flex gap-4 items-start">
             <span class="text-primary-container font-mono text-code-sm mt-1 shrink-0" aria-hidden="true">→</span>
             <div>
-              <p class="font-display text-headline-md uppercase tracking-tight mb-1">ACCÉS AL TALENT</p>
-              <p class="font-body text-body-md text-on-surface-variant">Connecta amb professionals que busquen nous reptes, eines i oportunitats.</p>
+              <p class="font-display text-headline-md uppercase tracking-tight mb-1">{t('sponsors.pitch.talent.title')}</p>
+              <p class="font-body text-body-md text-on-surface-variant">{t('sponsors.pitch.talent.desc')}</p>
             </div>
           </li>
           <li class="flex gap-4 items-start">
             <span class="text-primary-container font-mono text-code-sm mt-1 shrink-0" aria-hidden="true">→</span>
             <div>
-              <p class="font-display text-headline-md uppercase tracking-tight mb-1">IMPACTE DE COMUNITAT</p>
-              <p class="font-body text-body-md text-on-surface-variant">El teu patrocini ajuda a mantenir les entrades assequibles i la conferència accessible per a tothom.</p>
+              <p class="font-display text-headline-md uppercase tracking-tight mb-1">{t('sponsors.pitch.impact.title')}</p>
+              <p class="font-body text-body-md text-on-surface-variant">{t('sponsors.pitch.impact.desc')}</p>
             </div>
           </li>
         </ul>
@@ -152,7 +152,7 @@ const tierConfig = {
   ═══════════════════════════════════════════════ -->
   <section class="py-20 px-6" aria-labelledby="tiers-heading">
     <div class="max-w-5xl mx-auto">
-      <SectionHeader tag="ELS NOSTRES PATROCINADORS" title="" />
+      <SectionHeader tag={t('sponsors.tiers.tag')} title="" />
 
       <div class="space-y-16">
 
@@ -175,8 +175,8 @@ const tierConfig = {
               ) : (
                 <div class={`${tierConfig.pb.borderClass} ${tierConfig.pb.padding} flex items-center justify-center ${tierConfig.pb.minHeight} bg-surface-container`}>
                   <div class="text-center">
-                    <p class="font-mono text-code-sm text-primary-container uppercase tracking-widest mb-2">espai disponible</p>
-                    <p class="font-display text-headline-md text-on-surface-variant uppercase tracking-tight">TBA</p>
+                    <p class="font-mono text-code-sm text-primary-container uppercase tracking-widest mb-2">{t('sponsors.tiers.available')}</p>
+                    <p class="font-display text-headline-md text-on-surface-variant uppercase tracking-tight">{t('sponsors.tiers.tba')}</p>
                   </div>
                 </div>
               )
@@ -203,8 +203,8 @@ const tierConfig = {
               ) : (
                 <div class={`${tierConfig.tb.borderClass} ${tierConfig.tb.padding} flex items-center justify-center ${tierConfig.tb.minHeight} bg-surface-container ${tierConfig.tb.hoverClass} transition-colors duration-200`}>
                   <div class="text-center">
-                    <p class="font-mono text-code-sm text-primary-fixed-dim uppercase tracking-widest mb-1">espai disponible</p>
-                    <p class="font-display text-headline-md text-outline uppercase tracking-tight" aria-hidden="true">TBA</p>
+                    <p class="font-mono text-code-sm text-primary-fixed-dim uppercase tracking-widest mb-1">{t('sponsors.tiers.available')}</p>
+                    <p class="font-display text-headline-md text-outline uppercase tracking-tight" aria-hidden="true">{t('sponsors.tiers.tba')}</p>
                   </div>
                 </div>
               )
@@ -231,8 +231,8 @@ const tierConfig = {
               ) : (
                 <div class={`${tierConfig.gb.borderClass} ${tierConfig.gb.padding} flex items-center justify-center ${tierConfig.gb.minHeight} bg-surface-container ${tierConfig.gb.hoverClass} transition-colors duration-200`}>
                   <div class="text-center">
-                    <p class="font-mono text-code-sm text-outline uppercase tracking-widest mb-1">espai disponible</p>
-                    <p class="font-display text-label-md text-outline uppercase tracking-tight" aria-hidden="true">TBA</p>
+                    <p class="font-mono text-code-sm text-outline uppercase tracking-widest mb-1">{t('sponsors.tiers.available')}</p>
+                    <p class="font-display text-label-md text-outline uppercase tracking-tight" aria-hidden="true">{t('sponsors.tiers.tba')}</p>
                   </div>
                 </div>
               )
@@ -259,8 +259,8 @@ const tierConfig = {
               ) : (
                 <div class={`${tierConfig.mb.borderClass} ${tierConfig.mb.padding} flex items-center justify-center ${tierConfig.mb.minHeight} bg-surface-container ${tierConfig.mb.hoverClass} transition-colors duration-200`}>
                   <div class="text-center">
-                    <p class="font-mono text-code-sm text-outline uppercase tracking-widest text-xs mb-0.5">espai disponible</p>
-                    <p class="font-display text-label-md text-outline uppercase tracking-tight text-xs" aria-hidden="true">TBA</p>
+                    <p class="font-mono text-code-sm text-outline uppercase tracking-widest text-xs mb-0.5">{t('sponsors.tiers.available')}</p>
+                    <p class="font-display text-label-md text-outline uppercase tracking-tight text-xs" aria-hidden="true">{t('sponsors.tiers.tba')}</p>
                   </div>
                 </div>
               )
@@ -291,8 +291,8 @@ const tierConfig = {
                 <img src={collaborator.data.logo} alt={collaborator.data.name} class="max-w-full max-h-full object-contain p-4" />
               </a>
               <div>
-                <p class="font-mono text-code-sm text-on-surface-variant uppercase tracking-widest">COL·LABORADOR INSTITUCIONAL</p>
-                <p class="font-body text-body-md text-on-surface-variant mt-3">Suport institucional al foment de la cultura digital i tecnològica.</p>
+                <p class="font-mono text-code-sm text-on-surface-variant uppercase tracking-widest">{t('sponsors.collab.badge')}</p>
+                <p class="font-body text-body-md text-on-surface-variant mt-3">{t('sponsors.collab.desc')}</p>
               </div>
             </div>
           ))}
@@ -307,7 +307,7 @@ const tierConfig = {
   <section class="py-24 px-6 relative overflow-hidden" id="patrocinar" aria-labelledby="cta-sponsors-heading">
     <div class="absolute inset-0 terminal-grid opacity-5 pointer-events-none" aria-hidden="true"></div>
     <div class="max-w-3xl mx-auto relative z-10 text-center">
-      <p class="font-mono text-code-sm text-primary-container uppercase tracking-widest mb-6">[ EXECUTA_PATROCINI ]</p>
+      <p class="font-mono text-code-sm text-primary-container uppercase tracking-widest mb-6">{t('sponsors.cta.tag')}</p>
       <h2 id="cta-sponsors-heading" class="font-display text-headline-xl uppercase tracking-tighter mb-6 leading-none">
         {t('sponsors.become')}
       </h2>
@@ -320,7 +320,7 @@ const tierConfig = {
         </CTAButton>
       </div>
       <p class="font-mono text-code-sm text-outline mt-10">
-        conf@geekscat.org
+        {t('sponsors.cta.email')}
       </p>
     </div>
   </section>

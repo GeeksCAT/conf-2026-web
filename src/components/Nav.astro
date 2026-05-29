@@ -10,9 +10,9 @@ const pathname = Astro.url.pathname;
 const stripped = pathname.replace(/^\/(en|es)(?=\/|$)/, '') || '/';
 
 const routes = {
-  ca: { about: '/', cfp: '/cfp', speakers: '/ponents', agenda: '/agenda', sponsors: '/patrocinadors' },
+  ca: { about: '/', cfp: '/cfp', speakers: '/speakers', agenda: '/agenda', sponsors: '/sponsors' },
   en: { about: '/en/', cfp: '/en/cfp', speakers: '/en/speakers', agenda: '/en/agenda', sponsors: '/en/sponsors' },
-  es: { about: '/es/', cfp: '/es/cfp', speakers: '/es/ponentes', agenda: '/es/agenda', sponsors: '/es/patrocinadores' },
+  es: { about: '/es/', cfp: '/es/cfp', speakers: '/es/speakers', agenda: '/es/agenda', sponsors: '/es/sponsors' },
 } as const;
 
 const r = routes[locale];
@@ -20,9 +20,9 @@ const r = routes[locale];
 const navItems = [
   { label: t('nav.about'), href: r.about, active: stripped === '/' },
   { label: t('nav.cfp'), href: r.cfp, active: stripped.startsWith('/cfp') },
-  { label: t('nav.speakers'), href: r.speakers, active: stripped.startsWith('/ponents') || stripped.startsWith('/speakers') || stripped.startsWith('/ponentes') },
+  { label: t('nav.speakers'), href: r.speakers, active: stripped.startsWith('/speakers') },
   { label: t('nav.agenda'), href: r.agenda, active: stripped.startsWith('/agenda') },
-  { label: t('nav.sponsors'), href: r.sponsors, active: stripped.startsWith('/patrocinadors') || stripped.startsWith('/sponsors') || stripped.startsWith('/patrocinadores') },
+  { label: t('nav.sponsors'), href: r.sponsors, active: stripped.startsWith('/sponsors') },
 ];
 ---
 

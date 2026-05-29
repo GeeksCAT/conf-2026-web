@@ -1,0 +1,401 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../components/BaseLayout.astro';
+import CTAButton from '../components/CTAButton.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import { getLocale, useTranslations, localizedPath } from '../i18n/utils';
+
+const locale = getLocale(Astro.currentLocale);
+const t = useTranslations(locale);
+
+const cfpPath = localizedPath('/cfp', locale);
+
+const allSpeakers = await getCollection('speakers');
+const speakers = allSpeakers.filter((s) => s.data.locale === locale && !s.data.draft);
+
+const topicLabels: Record<string, string> = {
+  'open-source': 'Open Source',
+  'devops-sre': 'DevOps & SRE',
+  'ai-data': 'AI & Data',
+  'soft-engineering': 'Software Engineering',
+  'leadership': 'Lideratge',
+};
+
+const topicAccents: Record<string, string> = {
+  'open-source': 'primary-container',
+  'devops-sre': 'secondary-container',
+  'ai-data': 'primary-fixed-dim',
+  'soft-engineering': 'secondary-fixed-dim',
+  'leadership': 'tertiary-container',
+};
+
+const PLACEHOLDER_COUNT = 8;
+
+// Calculate how many placeholders to show (only if speakers < minimum)
+const placeholderCount = speakers.length < PLACEHOLDER_COUNT ? PLACEHOLDER_COUNT - speakers.length : 0;
+---
+
+<BaseLayout
+  title={t('speakers.title')}
+  description="Coneix els ponents de GeeksCAT Conf 2026. Professionals tècnics de referència de Catalunya i arreu."
+>
+
+  <!-- ═══════════════════════════════════════════════
+       HERO
+  ═══════════════════════════════════════════════ -->
+  <header class="relative pt-32 pb-16 px-6 border-b border-outline-variant overflow-hidden">
+    <div class="absolute inset-0 grid-lines opacity-10 pointer-events-none" aria-hidden="true"></div>
+    <div class="max-w-5xl mx-auto relative z-10">
+      <span class="font-mono text-code-sm text-primary-container uppercase tracking-widest block mb-6">
+        CFP_STATUS: {t('speakers.cfp-status')}
+      </span>
+      <h1 class="font-display uppercase tracking-tighter mb-4 leading-none uppercase"
+          style="font-size: clamp(2.5rem, 8vw, 5rem)">
+        {t('speakers.title')}
+      </h1>
+      <p class="font-body text-body-lg text-on-surface-variant max-w-xl">
+        {speakers.length > 0
+          ? `${speakers.length} ${t('speakers.hero.confirmed')}`
+          : t('speakers.hero.coming-soon')}
+      </p>
+    </div>
+  </header>
+
+  <!-- ═══════════════════════════════════════════════
+       GRID DE SPEAKERS
+  ═══════════════════════════════════════════════ -->
+  <section class="py-20 px-6" aria-labelledby="speakers-grid-heading">
+    <div class="max-w-5xl mx-auto">
+      <SectionHeader tag={t('speakers.grid.tag')} title={t('speakers.grid.title')} />
+
+      <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 list-none">
+        {/* Real confirmed speakers */}
+        {speakers.map((speaker) => (
+          <li>
+            <button
+              type="button"
+              class="w-full text-left bg-surface-container border border-outline-variant flex flex-col h-full group cursor-pointer hover:border-primary-container transition-colors"
+              data-speaker-slug={speaker.data.slug}
+              data-speaker-name={speaker.data.name}
+              data-speaker-role={speaker.data.role}
+              data-speaker-bio={speaker.data.bio}
+              data-speaker-photo={speaker.data.photo}
+              data-speaker-topics={speaker.data.topic || ''}
+              data-speaker-links={JSON.stringify(speaker.data.links)}
+              onclick="openSpeakerModal(this)"
+              aria-label={`${t('speakers.modal.aria.view')} ${speaker.data.name}`}
+            >
+              <!-- Photo -->
+              <div class="w-full aspect-square overflow-hidden bg-surface-container-high border-b border-outline-variant">
+                {speaker.data.photo ? (
+                  <img
+                    src={speaker.data.photo}
+                    alt={speaker.data.name}
+                    class="w-full h-full object-cover"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                ) : (
+                  <div class="w-full h-full flex items-center justify-center" aria-hidden="true">
+                    <span class="font-mono text-code-sm text-on-surface-variant/30">PHOTO_TBA</span>
+                  </div>
+                )}
+              </div>
+
+              <!-- Info -->
+              <div class="p-6 flex flex-col gap-3 flex-1">
+                <!-- Topic badge -->
+                {speaker.data.topic && (
+                  <div class="flex flex-wrap gap-2">
+                    <span class={`font-mono text-code-sm text-${topicAccents[speaker.data.topic] ?? 'on-surface-variant'} border border-current/30 px-2 py-0.5 text-xs`}>
+                      {topicLabels[speaker.data.topic] ?? speaker.data.topic}
+                    </span>
+                  </div>
+                )}
+
+                <div class="flex-1">
+                  <p class="font-display text-headline-md uppercase tracking-tight leading-tight">{speaker.data.name}</p>
+                  <p class="font-body text-body-md text-on-surface-variant mt-1">{speaker.data.role}</p>
+                </div>
+
+                <!-- Links -->
+                {Object.values(speaker.data.links).some(Boolean) && (
+                  <div class="flex gap-3 pt-2 border-t border-outline-variant">
+                    {speaker.data.links.web && (
+                      <a href={speaker.data.links.web} rel="noopener noreferrer" target="_blank"
+                         onclick="(e) => e.stopPropagation()"
+                         class="font-mono text-code-sm text-on-surface-variant hover:text-primary-container transition-colors duration-150"
+                         aria-label={`Web de ${speaker.data.name}`}>WEB</a>
+                    )}
+                    {speaker.data.links.github && (
+                      <a href={`https://github.com/${speaker.data.links.github}`} rel="noopener noreferrer" target="_blank"
+                         onclick="(e) => e.stopPropagation()"
+                         class="font-mono text-code-sm text-on-surface-variant hover:text-primary-container transition-colors duration-150"
+                         aria-label={`GitHub de ${speaker.data.name}`}>GH</a>
+                    )}
+                    {speaker.data.links.x && (
+                      <a href={`https://x.com/${speaker.data.links.x}`} rel="noopener noreferrer" target="_blank"
+                         onclick="(e) => e.stopPropagation()"
+                         class="font-mono text-code-sm text-on-surface-variant hover:text-primary-container transition-colors duration-150"
+                         aria-label={`X de ${speaker.data.name}`}>X</a>
+                    )}
+                    {speaker.data.links.linkedin && (
+                      <a href={`https://linkedin.com/in/${speaker.data.links.linkedin}`} rel="noopener noreferrer" target="_blank"
+                         onclick="(e) => e.stopPropagation()"
+                         class="font-mono text-code-sm text-on-surface-variant hover:text-primary-container transition-colors duration-150"
+                         aria-label={`LinkedIn de ${speaker.data.name}`}>LINKEDIN</a>
+                    )}
+                  </div>
+                )}
+
+                <div class="border-t border-outline-variant pt-3 mt-auto">
+                  <span class="font-mono text-code-sm text-primary-container group-hover:underline">{t('speakers.grid.view-bio')}</span>
+                </div>
+              </div>
+            </button>
+          </li>
+        ))}
+
+        {/* Placeholders to fill remaining slots */}
+        {Array.from({ length: placeholderCount }).map((_, i) => (
+          <li aria-label={`Speaker ${speakers.length + i + 1} - Per anunciar`}>
+            <div class="bg-surface-container border border-outline-variant flex flex-col">
+              <div class="w-full aspect-square bg-surface-container-high border-b border-outline-variant overflow-hidden">
+                <img 
+                  src="/img/speakers/anonymous-head-silhouette.webp" 
+                  alt="Speaker placeholder" 
+                  class="w-full h-full object-cover opacity-30"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+              <div class="p-6 flex flex-col gap-3">
+                <span class="font-mono text-code-sm text-primary-container">
+                  PONENT_{String(speakers.length + i + 1).padStart(2, '0')}
+                </span>
+                <p class="font-display text-headline-md uppercase tracking-tight">{t('speakers.grid.placeholder')}</p>
+                <p class="font-body text-body-md text-on-surface-variant/50 text-sm">{t('speakers.grid.tba')}</p>
+                <div class="border-t border-outline-variant pt-3 mt-auto">
+                  <span class="font-mono text-code-sm text-on-surface-variant/40">{t('speakers.grid.status')}</span>
+                </div>
+              </div>
+            </div>
+          </li>
+        ))}
+      </ul>
+
+      {/* CFP call-to-action - only show when there are placeholders */}
+      {placeholderCount > 0 && (
+        <div class="bg-surface-container border border-primary-container/20 p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mt-8">
+          <div>
+            <p class="font-mono text-code-sm text-primary-container uppercase tracking-widest mb-1">{t('speakers.cfp.tag')}</p>
+            <p class="font-body text-body-md text-on-surface-variant">{t('speakers.cfp.desc')}</p>
+          </div>
+          <CTAButton href={cfpPath} variant="outline" class="shrink-0">
+            {t('speakers.cfp.cta')}
+          </CTAButton>
+        </div>
+      )}
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       STATUS BAR
+  ═══════════════════════════════════════════════ -->
+  <aside class="border-t border-outline-variant bg-surface-container-lowest" aria-label="Estat de la conferència">
+    <div class="max-w-5xl mx-auto px-6 py-6">
+      <dl class="flex flex-wrap gap-x-10 gap-y-3">
+        <div class="flex items-center gap-3">
+          <dt class="font-mono text-code-sm text-on-surface-variant/60 uppercase">{t('speakers.status.cfp')}</dt>
+          <dd class="font-mono text-code-sm text-primary-container uppercase">{t('speakers.cfp-status')}</dd>
+        </div>
+        <div class="flex items-center gap-3">
+          <dt class="font-mono text-code-sm text-on-surface-variant/60 uppercase">{t('speakers.status.year')}</dt>
+          <dd class="font-mono text-code-sm text-on-surface">2026</dd>
+        </div>
+        <div class="flex items-center gap-3">
+          <dt class="font-mono text-code-sm text-on-surface-variant/60 uppercase">{t('speakers.status.venue')}</dt>
+          <dd class="font-mono text-code-sm text-on-surface">
+            <a href="https://osm.org/go/xU1FFgu" class="text-primary-container hover:underline" target="_blank" rel="noopner noreferrer">
+              GIRONA
+            </a>
+          </dd>
+        </div>
+        <div class="flex items-center gap-3">
+          <dt class="font-mono text-code-sm text-on-surface-variant/60 uppercase">{t('speakers.status.lang')}</dt>
+          <dd class="font-mono text-code-sm text-on-surface">CAT / ENG / ESP</dd>
+        </div>
+        <div class="flex items-center gap-3">
+          <dt class="font-mono text-code-sm text-on-surface-variant/60 uppercase">{t('speakers.status.speakers')}</dt>
+          <dd class="font-mono text-code-sm text-on-surface">
+            {speakers.length > 0 ? speakers.length : '[ TBA ]'}
+          </dd>
+        </div>
+      </dl>
+    </div>
+  </aside>
+
+  <!-- ═══════════════════════════════════════════════
+       SPEAKER MODAL
+  ═══════════════════════════════════════════════ -->
+  <div id="speaker-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/80" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="bg-surface-container border-2 border-primary-container max-w-2xl w-full max-h-[90vh] overflow-y-auto custom-scrollbar">
+      <!-- Header -->
+      <div class="sticky top-0 bg-surface-container border-b border-outline-variant p-6 flex items-start justify-between gap-4">
+        <div class="flex gap-4 items-start flex-1">
+          <img id="modal-photo" src="" alt="" class="w-20 h-20 object-cover border border-outline-variant">
+          <div class="flex-1">
+            <h2 id="modal-title" class="font-display text-headline-lg uppercase tracking-tight leading-tight"></h2>
+            <p id="modal-role" class="font-body text-body-md text-on-surface-variant mt-1"></p>
+            <div id="modal-topics" class="flex flex-wrap gap-2 mt-3"></div>
+          </div>
+        </div>
+        <button
+          type="button"
+          onclick="closeSpeakerModal()"
+          class="font-mono text-code-sm text-on-surface-variant hover:text-primary-container border border-outline-variant hover:border-primary-container px-3 py-2 transition-colors"
+          aria-label={t('speakers.modal.aria.close')}
+        >
+          {t('speakers.modal.close')}
+        </button>
+      </div>
+
+      <!-- Bio -->
+      <div class="p-6">
+        <p class="font-mono text-code-sm text-primary-container uppercase tracking-widest mb-4">{t('speakers.modal.bio')}</p>
+        <div id="modal-bio" class="font-body text-body-lg text-on-surface leading-relaxed whitespace-pre-line space-y-4"></div>
+      </div>
+
+      <!-- Links -->
+      <div id="modal-links-container" class="px-6 pb-6 hidden">
+        <p class="font-mono text-code-sm text-secondary-container uppercase tracking-widest mb-3">{t('speakers.modal.links')}</p>
+        <div id="modal-links" class="flex flex-wrap gap-3"></div>
+      </div>
+    </div>
+  </div>
+
+  <script is:inline>
+    const topicLabels = {
+      'open-source': 'Open Source',
+      'devops-sre': 'DevOps & SRE',
+      'ai-data': 'AI & Data',
+      'soft-engineering': 'Software Engineering',
+      'leadership': 'Lideratge',
+    };
+
+    const topicAccents = {
+      'open-source': 'primary-container',
+      'devops-sre': 'secondary-container',
+      'ai-data': 'primary-fixed-dim',
+      'soft-engineering': 'secondary-fixed-dim',
+      'leadership': 'tertiary-container',
+    };
+
+    function openSpeakerModal(button) {
+      const modal = document.getElementById('speaker-modal');
+      const name = button.dataset.speakerName;
+      const role = button.dataset.speakerRole;
+      const bio = button.dataset.speakerBio;
+      const photo = button.dataset.speakerPhoto;
+      const topic = button.dataset.speakerTopics || '';
+      const links = JSON.parse(button.dataset.speakerLinks || '{}');
+
+      // Set content
+      document.getElementById('modal-title').textContent = name;
+      document.getElementById('modal-role').textContent = role;
+      document.getElementById('modal-bio').textContent = bio;
+      document.getElementById('modal-photo').src = photo;
+      document.getElementById('modal-photo').alt = name;
+
+      // Set topic
+      const topicsContainer = document.getElementById('modal-topics');
+      topicsContainer.innerHTML = '';
+      if (topic) {
+        const span = document.createElement('span');
+        const accentClass = topicAccents[topic] || 'on-surface-variant';
+        span.className = `font-mono text-code-sm text-${accentClass} border border-current/30 px-2 py-0.5 text-xs`;
+        span.textContent = topicLabels[topic] || topic;
+        topicsContainer.appendChild(span);
+      }
+
+      // Set links
+      const linksContainer = document.getElementById('modal-links');
+      const linksWrapper = document.getElementById('modal-links-container');
+      linksContainer.innerHTML = '';
+
+      const hasLinks = Object.values(links).some(Boolean);
+      if (hasLinks) {
+        linksWrapper.classList.remove('hidden');
+
+        if (links.web) {
+          const a = document.createElement('a');
+          a.href = links.web;
+          a.target = '_blank';
+          a.rel = 'noopener noreferrer';
+          a.className = 'font-mono text-code-sm text-on-surface-variant hover:text-primary-container border border-outline-variant hover:border-primary-container px-4 py-2 transition-colors';
+          a.textContent = 'WEB →';
+          linksContainer.appendChild(a);
+        }
+
+        if (links.github) {
+          const a = document.createElement('a');
+          a.href = `https://github.com/${links.github}`;
+          a.target = '_blank';
+          a.rel = 'noopener noreferrer';
+          a.className = 'font-mono text-code-sm text-on-surface-variant hover:text-primary-container border border-outline-variant hover:border-primary-container px-4 py-2 transition-colors';
+          a.textContent = 'GITHUB →';
+          linksContainer.appendChild(a);
+        }
+
+        if (links.x) {
+          const a = document.createElement('a');
+          a.href = `https://x.com/${links.x}`;
+          a.target = '_blank';
+          a.rel = 'noopener noreferrer';
+          a.className = 'font-mono text-code-sm text-on-surface-variant hover:text-primary-container border border-outline-variant hover:border-primary-container px-4 py-2 transition-colors';
+          a.textContent = 'X →';
+          linksContainer.appendChild(a);
+        }
+
+        if (links.linkedin) {
+          const a = document.createElement('a');
+          a.href = `https://linkedin.com/in/${links.linkedin}`;
+          a.target = '_blank';
+          a.rel = 'noopener noreferrer';
+          a.className = 'font-mono text-code-sm text-on-surface-variant hover:text-primary-container border border-outline-variant hover:border-primary-container px-4 py-2 transition-colors';
+          a.textContent = 'LINKEDIN →';
+          linksContainer.appendChild(a);
+        }
+      } else {
+        linksWrapper.classList.add('hidden');
+      }
+
+      // Show modal
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeSpeakerModal() {
+      const modal = document.getElementById('speaker-modal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      document.body.style.overflow = '';
+    }
+
+    // Close on escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeSpeakerModal();
+      }
+    });
+
+    // Close on backdrop click
+    document.getElementById('speaker-modal')?.addEventListener('click', (e) => {
+      if (e.target.id === 'speaker-modal') {
+        closeSpeakerModal();
+      }
+    });
+  </script>
+
+</BaseLayout>

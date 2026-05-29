@@ -25,6 +25,67 @@ Cloudflare Pages — build command `pnpm build`, output directory `dist/`, Node 
 
 Canonical domain: `conf.geeks.cat` · Alias: `conf.geekscat.org`
 
+## Content Management
+
+The site uses two different approaches for managing page content, depending on the page type:
+
+### 1. Translation-based Pages (TypeScript i18n)
+
+Most pages use TypeScript translation files for their content. Translations are stored in modular files under `src/i18n/translations/` and imported by `src/i18n/ui.ts`.
+
+**Pages managed with i18n translations:**
+- **Home** (`index.astro`) — Uses `src/i18n/translations/index.ts` and `hero.ts`
+- **Call for Papers** (`cfp.astro`) — Uses `src/i18n/translations/cfp.ts`
+- **Agenda** (`agenda.astro`) — Uses `src/i18n/translations/agenda.ts`
+- **Speakers** (`speakers.astro`) — Uses `src/i18n/translations/speakers.ts`
+- **Sponsors** (`sponsors.astro`) — Uses `src/i18n/translations/sponsors.ts`
+- **Tickets** (`tickets.astro`) — Currently uses hardcoded content (should be migrated to i18n)
+
+**Common translations:**
+- Navigation, footer, and shared UI elements use `src/i18n/translations/nav.ts`, `common.ts`, and `footer.ts`
+
+**How to add/edit translations:**
+1. Locate the appropriate translation file in `src/i18n/translations/`
+2. Add or modify the translation keys for each locale (`ca`, `en`)
+3. Use the `t()` function in your Astro component: `t('page.key')`
+
+**Localized pages structure:**
+- Catalan pages (default locale): `src/pages/*.astro` (e.g., `/cfp`)
+- English pages: `src/pages/en/*.astro` (e.g., `/en/cfp`)
+
+### 2. Markdown Content Pages
+
+Some pages use Markdown files for their content, managed through Astro's content collections. This approach is ideal for long-form, policy-style content.
+
+**Pages managed with Markdown:**
+- **Code of Conduct** (`coc.astro`) — Uses `src/data/pages/coc-{locale}.md`
+
+**How to add/edit Markdown content:**
+1. Create or edit the Markdown file in `src/data/pages/`
+2. Add frontmatter with required fields:
+   ```yaml
+   ---
+   title: "Page Title"
+   badge: "[OPTIONAL BADGE]"
+   description: "Short description"
+   locale: "ca" # or "en"
+   ---
+   ```
+3. Write your content in Markdown below the frontmatter
+4. The page component loads the content using `getCollection('pages')` and renders it with Astro's content rendering
+
+**Markdown content benefits:**
+- Better for long-form content (policies, legal text, documentation)
+- Version control friendly (easier to review changes in plain text)
+- Supports full Markdown syntax (lists, headings, bold, links, etc.)
+- Automatically styled with custom prose CSS classes
+
+**Adding a new Markdown page:**
+1. Create Markdown files for each locale in `src/data/pages/` (e.g., `privacy-ca.md`, `privacy-en.md`)
+2. Define the schema in `src/content.config.ts` if needed
+3. Create the page component that loads and renders the content
+4. Follow the pattern used in `src/pages/coc.astro` as a template
+
 ## Data file schemas
 
 This repository stores content in small Markdown files under `src/data`. We maintain
@@ -170,3 +231,37 @@ Logo format:
 - Logos should have transparent backgrounds when possible.
 - The file body (Markdown after frontmatter) is available but not currently
   used by the site templates.
+
+### Pages (`src/data/pages/*.md`)
+
+Markdown-based page content for long-form policy and documentation pages.
+
+Required fields:
+- `title`: string (page title, used in hero and meta tags)
+- `locale`: one of `ca`, `en`, `es` (language of the content)
+
+Optional fields:
+- `badge`: string (optional badge text shown above the title, e.g. `[ POLICY ]`)
+- `description`: string (page description for hero and meta tags)
+
+File naming convention:
+- Use format: `{page-slug}-{locale}.md`
+- Example: `coc-ca.md`, `coc-en.md`, `privacy-ca.md`, `privacy-en.md`
+
+Markdown body:
+- Write the full page content in Markdown after the frontmatter
+- Supports all standard Markdown features (headings, lists, bold, links, etc.)
+- Lists are automatically styled with cyan bullet points (`.prose` styles)
+- Paragraphs have generous spacing (2rem) for readability
+
+Current pages using Markdown:
+- Code of Conduct: `coc-ca.md`, `coc-en.md`
+
+Validation:
+- The pages schema is enforced by `src/content.config.ts` (zod)
+- The build will fail if files don't match the schema
+
+Rendering:
+- Pages load content using `getCollection('pages')` and `render()`
+- See `src/pages/coc.astro` as a reference implementation
+- Custom prose CSS in `src/styles/global.css` provides consistent styling

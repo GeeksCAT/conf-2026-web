@@ -332,3 +332,45 @@ body {
     opacity: 0;
   }
 }
+
+/* ─── Prose content (markdown rendering) ─── */
+.prose {
+  /* Paragraphs */
+  & p {
+    margin-bottom: 2rem;
+  }
+
+  /* Lists */
+  & ul {
+    list-style-type: disc;
+    padding-left: 2rem;
+    margin-bottom: 2rem;
+    margin-top: 1rem;
+  }
+
+  & ol {
+    list-style-type: decimal;
+    padding-left: 2rem;
+    margin-bottom: 2rem;
+    margin-top: 1rem;
+  }
+
+  /* List items */
+  & li {
+    margin-bottom: 0.75rem;
+    padding-left: 0.5rem;
+  }
+
+  & li::marker {
+    color: var(--gc-primary-container);
+  }
+
+  /* Nested lists */
+  & ul ul,
+  & ol ul,
+  & ul ol,
+  & ol ol {
+    margin-top: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+}

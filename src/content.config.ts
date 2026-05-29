@@ -81,8 +81,9 @@ const sponsors = defineCollection({
 const pages = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/data/pages' }),
   schema: z.object({
-    slug: z.string(),
-    section: z.string(),
+    title: z.string(),
+    badge: z.string().optional(),
+    description: z.string().optional(),
     locale: z.enum(['ca', 'en', 'es']).default('ca'),
   }),
 });
