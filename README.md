@@ -21,9 +21,9 @@ pnpm check     # Astro type check + Biome
 
 ## Deploy
 
-Cloudflare Pages — build command `pnpm build`, output directory `dist/`, Node version `22`.
+GitHub Pages via GitHub Actions. The workflow at `.github/workflows/deploy.yml` builds on every push to `main` (and manual dispatch) and publishes `dist/` using the `withastro/action@v3` action with Node 22 and pnpm 11.
 
-Canonical domain: `conf.geeks.cat` · Alias: `conf.geekscat.org`
+Custom domain: `conf.geeks.cat` (declared in `public/CNAME`, picked up automatically at build time). The repo's GitHub Pages source must be set to **GitHub Actions** under Settings → Pages.
 
 ## Content Management
 
