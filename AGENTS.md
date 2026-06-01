@@ -26,8 +26,8 @@ Tooling and quirks
 - package.json uses "type": "module" — prefer ESM imports when editing Node scripts.
 
 Deployment
-- Hosted on Cloudflare Pages. Production build command: pnpm build. Output directory: dist/.
-- Use Node 22 runtime on the Pages environment.
+- Hosted on GitHub Pages via `.github/workflows/deploy.yml` (withastro/action@v3). Production build command: pnpm build. Output directory: dist/.
+- Use Node 22 runtime. Custom domain `conf.geeks.cat` is declared in `public/CNAME`.
 
 Files of truth
 - README.md and package.json are authoritative for scripts, engines, and high-level stack.
