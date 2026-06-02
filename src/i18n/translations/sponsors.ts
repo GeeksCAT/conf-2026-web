@@ -3,6 +3,7 @@ export const sponsors = {
     'sponsors.title': 'patrocinadors',
     'sponsors.cta.contact': '[ CONTACTA AMB NOSALTRES ]',
     'sponsors.cta.dossier': '[ DESCARREGA EL DOSSIER PDF ]',
+    'sponsors.dossier.document.url': '/docs/cataleg-patrocinis-ca.pdf',
     'sponsors.become': 'VOLS SER PATROCINADOR?',
     'sponsors.collaborators': 'COL·LABORADORS',
 
@@ -19,10 +20,10 @@ export const sponsors = {
 
     'sponsors.pitch.visibility.title': 'VISIBILITAT REAL',
     'sponsors.pitch.visibility.desc': "Presència en web, xarxes socials, materials impresos i escenari durant tot l'event.",
-    
+
     'sponsors.pitch.talent.title': 'ACCÉS AL TALENT',
     'sponsors.pitch.talent.desc': 'Connecta amb professionals que busquen nous reptes, eines i oportunitats.',
-    
+
     'sponsors.pitch.impact.title': 'IMPACTE DE COMUNITAT',
     'sponsors.pitch.impact.desc': 'El teu patrocini ajuda a mantenir les entrades assequibles i la conferència accessible per a tothom.',
 
@@ -43,6 +44,7 @@ export const sponsors = {
     'sponsors.title': 'sponsors',
     'sponsors.cta.contact': '[ CONTACT US ]',
     'sponsors.cta.dossier': '[ DOWNLOAD DOSSIER PDF ]',
+    'sponsors.dossier.document.url': '/docs/cataleg-patrocinis-en.pdf',
     'sponsors.become': 'WANT TO BE A SPONSOR?',
     'sponsors.collaborators': 'COLLABORATORS',
 
@@ -59,10 +61,10 @@ export const sponsors = {
 
     'sponsors.pitch.visibility.title': 'REAL VISIBILITY',
     'sponsors.pitch.visibility.desc': 'Presence on web, social media, printed materials and stage throughout the event.',
-    
+
     'sponsors.pitch.talent.title': 'ACCESS TO TALENT',
     'sponsors.pitch.talent.desc': 'Connect with professionals looking for new challenges, tools and opportunities.',
-    
+
     'sponsors.pitch.impact.title': 'COMMUNITY IMPACT',
     'sponsors.pitch.impact.desc': 'Your sponsorship helps keep tickets affordable and the conference accessible to everyone.',
 
@@ -83,6 +85,7 @@ export const sponsors = {
     'sponsors.title': 'patrocinadores',
     'sponsors.cta.contact': '[ CONTACTA CON NOSOTROS ]',
     'sponsors.cta.dossier': '[ DESCARGA EL DOSSIER PDF ]',
+    'sponsors.dossier.document.url': '/docs/cataleg-patrocinis-es.pdf',
     'sponsors.become': '¿QUIERES SER PATROCINADOR?',
     'sponsors.collaborators': 'COLABORADORES',
 
@@ -99,10 +102,10 @@ export const sponsors = {
 
     'sponsors.pitch.visibility.title': 'VISIBILIDAD REAL',
     'sponsors.pitch.visibility.desc': 'Presencia en web, redes sociales, materiales impresos y escenario durante todo el evento.',
-    
+
     'sponsors.pitch.talent.title': 'ACCESO AL TALENTO',
     'sponsors.pitch.talent.desc': 'Conecta con profesionales que buscan nuevos retos, herramientas y oportunidades.',
-    
+
     'sponsors.pitch.impact.title': 'IMPACTO DE COMUNIDAD',
     'sponsors.pitch.impact.desc': 'Tu patrocinio ayuda a mantener las entradas asequibles y la conferència accesible para todos.',
 
