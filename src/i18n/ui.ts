@@ -7,6 +7,7 @@ import { cfp } from './translations/cfp';
 import { agenda } from './translations/agenda';
 import { speakers } from './translations/speakers';
 import { sponsors } from './translations/sponsors';
+import { tickets } from './translations/tickets';
 
 export type Locale = 'ca' | 'en' | 'es';
 
@@ -23,6 +24,7 @@ export const ui = {
     ...agenda.ca,
     ...speakers.ca,
     ...sponsors.ca,
+    ...tickets.ca,
   },
   en: {
     ...common.en,
@@ -34,6 +36,7 @@ export const ui = {
     ...agenda.en,
     ...speakers.en,
     ...sponsors.en,
+    ...tickets.en,
   },
   es: {
     ...common.es,
@@ -45,6 +48,7 @@ export const ui = {
     ...agenda.es,
     ...speakers.es,
     ...sponsors.es,
+    ...tickets.es,
   },
 } as const;
 
