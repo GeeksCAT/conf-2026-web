@@ -1,5 +1,5 @@
 ---
-import { getLocale, useTranslations } from '../i18n/utils';
+import { getLocale, localizedPath, useTranslations } from '../i18n/utils';
 import LangSwitcher from './LangSwitcher.astro';
 import ThemeToggle from './ThemeToggle.astro';
 
@@ -7,22 +7,17 @@ const locale = getLocale(Astro.currentLocale);
 const t = useTranslations(locale);
 
 const pathname = Astro.url.pathname;
-const stripped = pathname.replace(/^\/(en|es)(?=\/|$)/, '') || '/';
+const stripped = pathname.replace(/^\/(ca|en|es)(?=\/|$)/, '') || '/';
 
-const routes = {
-  ca: { about: '/', cfp: '/cfp', speakers: '/speakers', agenda: '/agenda', sponsors: '/sponsors' },
-  en: { about: '/en/', cfp: '/en/cfp', speakers: '/en/speakers', agenda: '/en/agenda', sponsors: '/en/sponsors' },
-  es: { about: '/es/', cfp: '/es/cfp', speakers: '/es/speakers', agenda: '/es/agenda', sponsors: '/es/sponsors' },
-} as const;
-
-const r = routes[locale];
+const homePath = localizedPath('/', locale);
+const ticketsPath = localizedPath('/tickets', locale);
 
 const navItems = [
-  { label: t('nav.about'), href: r.about, active: stripped === '/' },
-  { label: t('nav.cfp'), href: r.cfp, active: stripped.startsWith('/cfp') },
-  { label: t('nav.speakers'), href: r.speakers, active: stripped.startsWith('/speakers') },
-  { label: t('nav.agenda'), href: r.agenda, active: stripped.startsWith('/agenda') },
-  { label: t('nav.sponsors'), href: r.sponsors, active: stripped.startsWith('/sponsors') },
+  { label: t('nav.about'),    href: homePath,                          active: stripped === '/' },
+  { label: t('nav.cfp'),      href: localizedPath('/cfp', locale),      active: stripped.startsWith('/cfp') },
+  { label: t('nav.speakers'), href: localizedPath('/speakers', locale), active: stripped.startsWith('/speakers') },
+  { label: t('nav.agenda'),   href: localizedPath('/agenda', locale),   active: stripped.startsWith('/agenda') },
+  { label: t('nav.sponsors'), href: localizedPath('/sponsors', locale), active: stripped.startsWith('/sponsors') },
 ];
 ---
 
@@ -33,7 +28,7 @@ const navItems = [
 >
   <div class="max-w-7xl mx-auto px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
 
-    <a href={r.about} class="font-display font-bold text-xl tracking-widest text-primary-container shrink-0">
+    <a href={homePath} class="font-display font-bold text-xl tracking-widest text-primary-container shrink-0">
       GEEKSCAT
     </a>
 
@@ -56,7 +51,7 @@ const navItems = [
         <ThemeToggle />
       </div>
       <a
-          href="/tickets"
+        href={ticketsPath}
         class="hidden md:inline-flex items-center bg-primary-container text-on-primary-container font-mono font-bold text-xs px-5 py-2 uppercase tracking-tighter hover:bg-primary-fixed-dim transition-colors duration-150 active:translate-y-px"
       >
         {t('nav.tickets')}
@@ -102,7 +97,7 @@ const navItems = [
         <ThemeToggle />
       </div>
       <a
-        href="#tickets"
+        href={ticketsPath}
         class="mt-2 inline-flex items-center justify-center bg-primary-container text-on-primary-container font-mono font-bold text-sm px-5 py-3 uppercase tracking-tighter"
       >
         {t('nav.tickets')}

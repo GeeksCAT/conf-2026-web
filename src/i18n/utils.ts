@@ -29,3 +29,14 @@ export function getAlternateLocales(currentPath: string, currentLocale: Locale) 
     isCurrent: locale === currentLocale,
   }));
 }
+
+// This function must be exported for any Astro page because it's required for dynamic routes.
+// To avoid to copy and paste this same function on each page, the pages must do for example
+// export { getStaticPaths } from  '../../i18n/utils';
+export function getStaticPaths() {
+  return [
+    { params: { lang: undefined } }, // serve the page on `/` instead of /[lang]
+    { params: { lang: 'en' } },
+    { params: { lang: 'es' } },
+  ];
+}
