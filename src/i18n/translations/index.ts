@@ -25,7 +25,7 @@ export const index = {
     'index.history.tag': '[ HISTORIA ]',
     'index.history.p1': 'GeeksCAT va néixer d\'una necessitat compartida per crear la comunitat tecnològica de Girona amb l\'ambició de ser-ho de Catalunya i continuen empenyent per aconseguir-ho.',
     'index.history.p2': 'Volem un espai on els apassionats de la tecnologia a Catalunya puguem compartir coneixement sense barreres corporatives i on totes les sòcies tinguin els recursos d\'una associació per crear esdeveniments, activitats, comunitats, i tot allò que requereix una estructura legal organizativa, sans sentir-se soles davant de tots els mal de caps burocràtics que comporten.',
-    'index.history.p3': 'El que va començar com una trobada informal de quatre entusiastes es va convertir en una associació sense ànim de lucre, des d\'on continuent fomentant i impulsant la tecnologia en activitats com la GeeksCAT Conf.',
+    'index.history.p3': 'El que va començar com una trobada informal de quatre entusiastes, es va convertir en una associació sense ànim de lucre, des d\'on continuent fomentant i impulsant la tecnologia en activitats com la GeeksCAT Conf.',
 
     'index.evolution.tag': '[ OS update ]',
     'index.evolution.title': 'De la "Festa Open Source" a la GeeksCAT Conf',
@@ -106,7 +106,7 @@ export const index = {
     'index.history.tag': '[ HISTORY ]',
     'index.history.p1': "GeeksCAT was born from a shared need to create Girona's technology community with the ambition to be Catalonia's and continue pushing to achieve it.",
     'index.history.p2': 'We want a space where technology enthusiasts in Catalonia can share knowledge without corporate barriers and where all members have the resources of an association to create events, activities, communities, and everything that requires a legal organizational structure, without feeling alone facing all the bureaucratic headaches they entail.',
-    'index.history.p3': 'What started as an informal gathering of four enthusiasts became a non-profit association, from which we continue to promote and drive technology in activities like GeeksCAT Conf.',
+    'index.history.p3': 'What started as an informal gathering of four enthusiasts, which became a non-profit association from which we continue to promote and drive technology in activities like GeeksCAT Conf.',
 
     'index.evolution.tag': '[ OS update ]',
     'index.evolution.title': 'From "Festa Open Source" to GeeksCAT Conf',
@@ -187,7 +187,7 @@ export const index = {
     'index.history.tag': '[ HISTORIA ]',
     'index.history.p1': 'GeeksCAT nació de una necesidad compartida por crear la comunidad tecnológica de Girona con la ambición de serlo de Cataluña y continúan empujando para conseguirlo.',
     'index.history.p2': 'Queremos un espacio donde los apasionados de la tecnología en Cataluña podamos compartir conocimiento sin barreras corporativas y donde todos los socios tengan los recursos de una asociación para crear eventos, actividades, comunidades, y todo lo que requiere una estructura legal organizativa, sin sentirse solos ante todos los dolores de cabeza burocráticos que conllevan.',
-    'index.history.p3': 'Lo que comenzó como un encuentro informal de cuatro entusiastas se convirtió en una asociación sin ánimo de lucro, desde donde continuamos fomentando e impulsando la tecnología en actividades como la GeeksCAT Conf.',
+    'index.history.p3': 'Lo que comenzó como un encuentro informal de cuatro entusiastas, se convirtió en una asociación sin ánimo de lucro desde donde continuamos fomentando e impulsando la tecnología en actividades como la GeeksCAT Conf.',
 
     'index.evolution.tag': '[ OS update ]',
     'index.evolution.title': 'De la "Festa Open Source" a la GeeksCAT Conf',
