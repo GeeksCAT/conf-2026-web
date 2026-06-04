@@ -1,27 +1,31 @@
 ---
 import BaseLayout from '../../components/BaseLayout.astro';
 import CTAButton from '../../components/CTAButton.astro';
+import { getLocale, useTranslations } from '../../i18n/utils';
 export { getStaticPaths } from '../../i18n/utils';
+
+const locale = getLocale(Astro.params.lang);
+const t = useTranslations(locale);
 
 const tiers = [
   {
     name: 'BIOS',
     price: '18€',
-    status: 'Pròximament disponibles',
+    status: t('tickets.tier.bios.status'),
     active: false,
     url: '#',
   },
   {
     name: 'KERNEL',
     price: '27€',
-    status: 'A partir del 1 d\'agost o BIOS exhaurides',
+    status: t('tickets.tier.kernel.status'),
     active: false,
     url: '#',
   },
   {
     name: 'USER SPACE',
     price: '35€',
-    status: 'A partir del 10 de setembre o KERNEL exhaurides',
+    status: t('tickets.tier.user-space.status'),
     active: false,
     url: '#',
   },
@@ -29,8 +33,8 @@ const tiers = [
 ---
 
 <BaseLayout
-  title="Entrades"
-  description="Aconsegueix la teva entrada per GeeksCAT Conf 2026."
+  title={t('tickets.title')}
+  description={t('tickets.description')}
 >
 
   <!-- ═══════════════════════════════════════════════
@@ -40,17 +44,16 @@ const tiers = [
     <div class="absolute inset-0 grid-lines opacity-10 pointer-events-none" aria-hidden="true"></div>
     <div class="max-w-5xl mx-auto relative z-10">
       <span class="font-mono text-code-sm text-primary-container uppercase tracking-widest block mb-6">
-        [ SUDO ACCESS ]
+        {t('tickets.badge')}
       </span>
       <h1 class="font-display uppercase tracking-tighter mb-4 leading-none"
           style="font-size: clamp(2.5rem, 8vw, 5rem)">
-        ENTRADES
+        {t('tickets.headline')}
       </h1>
-      <p class="font-body text-body-lg text-on-surface-variant mb-8 max-w-2xl">
-        Les <b>nostres sòcies no necessiten adquirir entrades</b>, fes-te sòcia abans de que obrim la compra d'entrades i gaudeix d'aquest benefici, i si ja l'hem obert, et farem un decompte especial en preu d'aquesta
+      <p class="font-body text-body-lg text-on-surface-variant mb-8 max-w-2xl" set:html={t('tickets.intro')}>
       </p>
       <div class="flex gap-4">
-        <CTAButton href="https://geekscat.org/#fes-te-soci" external>FES-TE SÒCIA</CTAButton>
+        <CTAButton href="https://geekscat.org/#fes-te-soci" external>{t('tickets.cta.member')}</CTAButton>
       </div>
     </div>
   </header>
@@ -86,14 +89,14 @@ const tiers = [
                   rel="noopener noreferrer"
                   class="inline-flex items-center justify-center font-mono font-bold text-sm px-4 py-3 uppercase tracking-tighter transition-colors duration-150 bg-primary-container text-on-primary-container hover:bg-primary-fixed-dim active:translate-y-px"
                 >
-                  COMPRAR →
+                  {t('tickets.buy')}
                 </a>
               ) : (
                 <button
                   disabled
                   class="inline-flex items-center justify-center font-mono font-bold text-sm px-4 py-3 uppercase tracking-tighter border border-outline text-outline opacity-50 cursor-not-allowed"
                 >
-                  NO DISPONIBLE
+                  {t('tickets.unavailable')}
                 </button>
               )}
             </div>
