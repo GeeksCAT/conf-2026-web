@@ -1,8 +1,10 @@
 ---
-import { getLocale, useTranslations } from '../i18n/utils';
+import { getLocale, localizedPath, useTranslations } from '../i18n/utils';
 
 const locale = getLocale(Astro.currentLocale);
 const t = useTranslations(locale);
+
+const cocPath = localizedPath('/coc', locale);
 ---
 
 <footer class="bg-surface-container-lowest border-t border-outline-variant">
@@ -18,7 +20,7 @@ const t = useTranslations(locale);
     </div>
 
     <nav aria-label="Footer" class="flex flex-wrap justify-center gap-x-6 gap-y-2 font-mono text-xs tracking-widest uppercase">
-      <a href="/coc" class="text-on-surface-variant hover:text-primary-container transition-colors duration-150">
+      <a href={cocPath} class="text-on-surface-variant hover:text-primary-container transition-colors duration-150">
         {t('footer.code-of-conduct')}
       </a>
       <a href="mailto:conf@geekscat.org?subject=Vull%20ser%20voluntari"target="_blank" rel="noopener noreferrer" class="text-on-surface-variant hover:text-primary-container transition-colors duration-150">

@@ -4,9 +4,11 @@ import BaseLayout from '../../components/BaseLayout.astro';
 import CTAButton from '../../components/CTAButton.astro';
 import SectionHeader from '../../components/SectionHeader.astro';
 import { getLocale, useTranslations, localizedPath } from '../../i18n/utils';
+export { getStaticPaths } from '../../i18n/utils';
+
 import { marked } from 'marked';
 
-const locale = getLocale(Astro.currentLocale);
+const locale = getLocale(Astro.params.lang);
 const t = useTranslations(locale);
 
 const cfpPath = localizedPath('/cfp', locale);
