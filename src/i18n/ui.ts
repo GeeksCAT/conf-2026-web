@@ -1,10 +1,10 @@
-import { common } from './translations/common';
-import { nav } from './translations/nav';
-import { hero } from './translations/hero';
-import { footer } from './translations/footer';
-import { index } from './translations/index';
-import { cfp } from './translations/cfp';
 import { agenda } from './translations/agenda';
+import { cfp } from './translations/cfp';
+import { common } from './translations/common';
+import { footer } from './translations/footer';
+import { hero } from './translations/hero';
+import { index } from './translations/index';
+import { nav } from './translations/nav';
 import { speakers } from './translations/speakers';
 import { sponsors } from './translations/sponsors';
 import { tickets } from './translations/tickets';

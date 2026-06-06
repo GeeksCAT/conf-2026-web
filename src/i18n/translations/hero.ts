@@ -28,4 +28,4 @@ export const hero = {
     'hero.cta.ticket': '>_ COMPRAR ENTRADA',
     'hero.cta.agenda': 'VER AGENDA',
   },
- } as const;
+} as const;

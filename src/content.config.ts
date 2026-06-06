@@ -9,7 +9,9 @@ const speakers = defineCollection({
     name: z.string(),
     role: z.string(),
     bio: z.string(),
-    topic: z.enum(['open-source', 'devops-sre', 'ai-data', 'soft-engineering', 'leadership']).optional(),
+    topic: z
+      .enum(['open-source', 'devops-sre', 'ai-data', 'soft-engineering', 'leadership'])
+      .optional(),
     links: z
       .object({
         web: z.url().optional(),
@@ -63,7 +65,6 @@ const talks = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/data/agenda' }),
   schema: z.discriminatedUnion('type', [sessionSchema, spacerSchema]),
 });
-
 
 const sponsors = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/data/sponsors' }),

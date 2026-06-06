@@ -4,8 +4,10 @@ export const speakers = {
     'speakers.cfp-status': 'obert',
 
     // Hero
-    'speakers.hero.confirmed': 'ponents confirmats. Professionals tècnics que compartiran el seu coneixement a GeeksCAT Conf 2026.',
-    'speakers.hero.coming-soon': "Els ponents de GeeksCAT Conf 2026 s'anunciaran properament. El CFP és obert — potser ets tu el següent.",
+    'speakers.hero.confirmed':
+      'ponents confirmats. Professionals tècnics que compartiran el seu coneixement a GeeksCAT Conf 2026.',
+    'speakers.hero.coming-soon':
+      "Els ponents de GeeksCAT Conf 2026 s'anunciaran properament. El CFP és obert — potser ets tu el següent.",
 
     // Grid
     'speakers.grid.tag': 'LINEUP',
@@ -39,8 +41,10 @@ export const speakers = {
     'speakers.cfp-status': 'open',
 
     // Hero
-    'speakers.hero.confirmed': 'confirmed speakers. Technical professionals who will share their knowledge at GeeksCAT Conf 2026.',
-    'speakers.hero.coming-soon': 'GeeksCAT Conf 2026 speakers will be announced soon. The CFP is open — maybe you\'re next.',
+    'speakers.hero.confirmed':
+      'confirmed speakers. Technical professionals who will share their knowledge at GeeksCAT Conf 2026.',
+    'speakers.hero.coming-soon':
+      "GeeksCAT Conf 2026 speakers will be announced soon. The CFP is open — maybe you're next.",
 
     // Grid
     'speakers.grid.tag': 'LINEUP',
@@ -74,8 +78,10 @@ export const speakers = {
     'speakers.cfp-status': 'abierto',
 
     // Hero
-    'speakers.hero.confirmed': 'ponentes confirmados. Profesionales técnicos que compartirán su conocimiento en GeeksCAT Conf 2026.',
-    'speakers.hero.coming-soon': 'Los ponentes de GeeksCAT Conf 2026 se anunciarán próximamente. El CFP está abierto — quizás seas tú el siguiente.',
+    'speakers.hero.confirmed':
+      'ponentes confirmados. Profesionales técnicos que compartirán su conocimiento en GeeksCAT Conf 2026.',
+    'speakers.hero.coming-soon':
+      'Los ponentes de GeeksCAT Conf 2026 se anunciarán próximamente. El CFP está abierto — quizás seas tú el siguiente.',
 
     // Grid
     'speakers.grid.tag': 'LINEUP',

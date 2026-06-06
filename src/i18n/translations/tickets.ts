@@ -13,8 +13,7 @@ export const tickets = {
     // Tier statuses
     'tickets.tier.bios.status': 'Pròximament disponibles',
     'tickets.tier.kernel.status': "A partir del 1 d'agost o BIOS exhaurides",
-    'tickets.tier.user-space.status':
-      'A partir del 10 de setembre o KERNEL exhaurides',
+    'tickets.tier.user-space.status': 'A partir del 10 de setembre o KERNEL exhaurides',
 
     // Buttons
     'tickets.buy': 'COMPRAR →',
@@ -34,8 +33,7 @@ export const tickets = {
     // Tier statuses
     'tickets.tier.bios.status': 'Coming soon',
     'tickets.tier.kernel.status': 'From August 1st or when BIOS sold out',
-    'tickets.tier.user-space.status':
-      'From September 10th or when KERNEL sold out',
+    'tickets.tier.user-space.status': 'From September 10th or when KERNEL sold out',
 
     // Buttons
     'tickets.buy': 'BUY →',
@@ -55,8 +53,7 @@ export const tickets = {
     // Tier statuses
     'tickets.tier.bios.status': 'Próximamente disponibles',
     'tickets.tier.kernel.status': 'A partir del 1 de agosto o BIOS agotadas',
-    'tickets.tier.user-space.status':
-      'A partir del 10 de septiembre o KERNEL agotadas',
+    'tickets.tier.user-space.status': 'A partir del 10 de septiembre o KERNEL agotadas',
 
     // Buttons
     'tickets.buy': 'COMPRAR →',

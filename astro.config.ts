@@ -9,7 +9,7 @@ export default defineConfig({
     defaultLocale: 'ca',
     locales: ['ca', 'en', 'es'],
     routing: {
-      prefixDefaultLocale: false
+      prefixDefaultLocale: false,
     },
   },
   integrations: [
