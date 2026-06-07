@@ -1,8 +1,8 @@
 export const sponsors = {
   ca: {
     'sponsors.title': 'patrocinadors',
-    'sponsors.cta.contact': '[ CONTACTA AMB NOSALTRES ]',
-    'sponsors.cta.dossier': '[ DESCARREGA EL DOSSIER PDF ]',
+    'sponsors.cta.contact': 'CONTACTA AMB NOSALTRES',
+    'sponsors.cta.dossier': 'DESCARREGA EL DOSSIER PDF',
     'sponsors.dossier.document.url': '/docs/cataleg-patrocinis-ca.pdf',
     'sponsors.become': 'VOLS SER PATROCINADOR?',
     'sponsors.collaborators': 'COL·LABORADORS',
@@ -49,8 +49,8 @@ export const sponsors = {
   },
   en: {
     'sponsors.title': 'sponsors',
-    'sponsors.cta.contact': '[ CONTACT US ]',
-    'sponsors.cta.dossier': '[ DOWNLOAD DOSSIER PDF ]',
+    'sponsors.cta.contact': 'CONTACT US',
+    'sponsors.cta.dossier': 'DOWNLOAD DOSSIER PDF',
     'sponsors.dossier.document.url': '/docs/cataleg-patrocinis-en.pdf',
     'sponsors.become': 'WANT TO BE A SPONSOR?',
     'sponsors.collaborators': 'COLLABORATORS',
@@ -98,8 +98,8 @@ export const sponsors = {
   },
   es: {
     'sponsors.title': 'patrocinadores',
-    'sponsors.cta.contact': '[ CONTACTA CON NOSOTROS ]',
-    'sponsors.cta.dossier': '[ DESCARGA EL DOSSIER PDF ]',
+    'sponsors.cta.contact': 'CONTACTA CON NOSOTROS',
+    'sponsors.cta.dossier': 'DESCARGA EL DOSSIER PDF',
     'sponsors.dossier.document.url': '/docs/cataleg-patrocinis-es.pdf',
     'sponsors.become': '¿QUIERES SER PATROCINADOR?',
     'sponsors.collaborators': 'COLABORADORES',

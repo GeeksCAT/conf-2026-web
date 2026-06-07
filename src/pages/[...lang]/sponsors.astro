@@ -313,11 +313,11 @@ const tierConfig = {
         {t('sponsors.become')}
       </h2>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <CTAButton href="mailto:conf@geekscat.org?subject=[PATROCINI%202026]%20Interessat%20en%20patrocinar%20GeeksCAT%20Conf" external>
-          {t('sponsors.cta.contact')}
-        </CTAButton>
-        <CTAButton href={t('sponsors.dossier.document.url')} variant="outline" external>
+        <CTAButton href={t('sponsors.dossier.document.url')} external>
           {t('sponsors.cta.dossier')}
+        </CTAButton>
+        <CTAButton href="mailto:conf@geekscat.org?subject=[PATROCINI%202026]%20Interessat%20en%20patrocinar%20GeeksCAT%20Conf" variant="outline" external>
+          {t('sponsors.cta.contact')}
         </CTAButton>
       </div>
       <p class="font-mono text-code-sm text-outline mt-10">
