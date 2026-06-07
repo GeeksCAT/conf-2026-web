@@ -97,7 +97,7 @@ export const cfp = {
 
     // CTA
     'cfp.submit.tag': '[ EXEC ]',
-    'cfp.submit.button': '>_ ENVIA LA TEVA PROPOSTA',
+    'cfp.submit.button': 'ENVIA LA TEVA PROPOSTA',
     'cfp.submit.url': 'https://forms.gle/gACrppp98vFCUHTP9',
   },
   en: {
@@ -197,7 +197,7 @@ export const cfp = {
 
     // CTA
     'cfp.submit.tag': '[ EXEC ]',
-    'cfp.submit.button': '>_ SUBMIT YOUR PROPOSAL',
+    'cfp.submit.button': 'SUBMIT YOUR PROPOSAL',
     'cfp.submit.url': 'https://forms.gle/rFWB8uXsDpMj9zGT6',
   },
   es: {
@@ -299,7 +299,7 @@ export const cfp = {
 
     // CTA
     'cfp.submit.tag': '[ EXEC ]',
-    'cfp.submit.button': '>_ ENVIA TU PROPUESTA',
+    'cfp.submit.button': 'ENVIA TU PROPUESTA',
     'cfp.submit.url': 'https://forms.gle/E4v1PfQw4XoXLbqz7',
   },
 } as const;
