@@ -59,8 +59,8 @@ export const index = {
     'index.values.community.tag': '// COMUNITAT',
     'index.values.community.desc':
       'Junts som més forts. La xarxa és la nostra millor infraestructura.',
-    'index.values.depth.tag': '// PROFUNDITAT',
-    'index.values.depth.desc': 'Zero superficialitat. Contingut de qualitat o res.',
+    'index.values.depth.tag': '// TECNOLOGIA',
+    'index.values.depth.desc': 'La tecnologia és el nostre nucli per crear valor, compartir coneixement i fer comunitat.',
 
     // Manifest
     'index.manifest.tag': '[ MANIFEST ]',
@@ -156,8 +156,8 @@ export const index = {
     'index.values.community.tag': '// COMMUNITY',
     'index.values.community.desc':
       'Together we are stronger. The network is our best infrastructure.',
-    'index.values.depth.tag': '// DEPTH',
-    'index.values.depth.desc': 'Zero superficiality. Quality content or nothing.',
+    'index.values.depth.tag': '// TECHNOLOGY',
+    'index.values.depth.desc': 'Technology is our core to create value, share knowledge, and make community.',
 
     // Manifest
     'index.manifest.tag': '[ MANIFESTO ]',
@@ -254,8 +254,8 @@ export const index = {
     'index.values.community.tag': '// COMUNIDAD',
     'index.values.community.desc':
       'Juntos somos más fuertes. La red es nuestra mejor infraestructura.',
-    'index.values.depth.tag': '// PROFUNDIDAD',
-    'index.values.depth.desc': 'Cero superficialidad. Contenido de calidad o nada.',
+    'index.values.depth.tag': '// TECNOLOGÍA',
+    'index.values.depth.desc': 'La tecnología es nuestro nucleo para crear valor, compartir conocimiento y hacer comunidad.',
 
     // Manifest
     'index.manifest.tag': '[ MANIFIESTO ]',
