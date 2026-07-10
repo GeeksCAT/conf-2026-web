@@ -7,7 +7,8 @@ export const tickets = {
     'tickets.badge': '[ SUDO ACCESS ]',
     'tickets.headline': 'ENTRADES',
     'tickets.intro':
-      "Les <b>nostres sòcies no necessiten adquirir entrades</b>, fes-te sòcia abans de que obrim la compra d'entrades i gaudeix d'aquest benefici, i si ja l'hem obert, et farem un descompte especial en el preu d'aquesta",
+      "Les <b>nostres sòcies no necessiten adquirir entrades</b>, fes-te sòcia abans de que obrim la compra d'entrades i gaudeix d'aquest benefici, i si ja l'hem obert, et farem un descompte especial en el preu d'aquesta.<br/><br/>" +
+      "Totes les nostres entrades inclouen l'assistència a totes les activitats dels dos dies i el dinar del segon dia.",
     'tickets.cta.member': 'FES-TE SÒCIA',
 
     // Tier statuses
@@ -27,7 +28,8 @@ export const tickets = {
     'tickets.badge': '[ SUDO ACCESS ]',
     'tickets.headline': 'TICKETS',
     'tickets.intro':
-      "<b>Our members don't need to buy tickets</b>, become a member before we open ticket sales and enjoy this benefit, and if we have already opened them, we will give you a special discount on the price",
+      "<b>Our members don't need to buy tickets</b>, become a member before we open ticket sales and enjoy this benefit, and if we have already opened them, we will give you a special discount on the price.<br/><br/>" +
+      "All our tickets include access to all activities for the two-day event and lunch for the second day.",
     'tickets.cta.member': 'BECOME A MEMBER',
 
     // Tier statuses
@@ -47,7 +49,8 @@ export const tickets = {
     'tickets.badge': '[ SUDO ACCESS ]',
     'tickets.headline': 'ENTRADAS',
     'tickets.intro':
-      '<b>Nuestros socios no necesitan adquirir entradas</b>, hazte socio antes de que abramos la compra de entradas y disfruta de este beneficio, y si ya la hemos abierto, te haremos un descuento especial en el precio de esta',
+      '<b>Nuestros socios no necesitan adquirir entradas</b>, hazte socio antes de que abramos la compra de entradas y disfruta de este beneficio, y si ya la hemos abierto, te haremos un descuento especial en el precio de esta.<br/><br/>' +
+    'Todas nuestras entrades incluyen la asistencia a todas las actividades de los dias y la comida del segundo dia.',
     'tickets.cta.member': 'HAZTE SOCIO',
 
     // Tier statuses
