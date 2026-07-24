@@ -280,16 +280,16 @@ const tierConfig = {
       <div class="max-w-5xl mx-auto">
         <SectionHeader tag={t('sponsors.collaborators')} title="" />
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {sponsorsByTier.collaborator.map((collaborator) => (
-            <div class="bg-surface-container border border-outline-variant p-4 flex flex-col gap-4 max-w-md mx-auto">
-              <a
-                href={collaborator.data.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="w-full aspect-video border border-outline-variant/60 flex items-center justify-center bg-surface-container-high hover:border-outline transition-colors"
-              >
-                <img src={collaborator.data.logo} alt={collaborator.data.name} class="max-w-full max-h-full object-contain p-4" />
+            <div class="bg-surface-container border border-outline-variant p-2 flex flex-col gap-2 max-w-lg mx-auto">
+                <a
+                  href={collaborator.data.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="w-full aspect-video border border-outline-variant/60 flex items-center justify-center bg-surface-container-high hover:border-outline transition-colors"
+                >
+                  <img src={collaborator.data.logo} alt={collaborator.data.name} class="max-w-full max-h-full object-contain p-2" />
               </a>
               <div>
                 <p class="font-mono text-code-sm text-on-surface-variant uppercase tracking-widest">{t('sponsors.collab.badge')}</p>
