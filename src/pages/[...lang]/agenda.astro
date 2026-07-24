@@ -320,9 +320,7 @@ function formatTimeRange(item: (typeof talks)[number] | undefined) {
         <div class="bg-surface-container border border-outline-variant p-6">
           <p class="font-mono text-code-sm text-on-surface-variant uppercase tracking-widest mb-4">{t('agenda.venue.accommodation.tag')}</p>
           <p class="font-display text-headline-md uppercase tracking-tight mb-3">{t('agenda.venue.accommodation.title')}</p>
-          <p class="font-body text-body-md text-on-surface-variant leading-relaxed">
-            {t('agenda.venue.accommodation.desc')}
-          </p>
+          <p class="font-body text-body-md text-on-surface-variant leading-relaxed" set:html={t('agenda.venue.accommodation.desc')}></p>
         </div>
       </div>
     </div>
