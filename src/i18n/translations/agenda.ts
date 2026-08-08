@@ -27,7 +27,7 @@ export const agenda = {
     'agenda.venue.accommodation.tag': '// ALLOTJAMENT',
     'agenda.venue.accommodation.title': 'ON DORMIR',
     'agenda.venue.accommodation.desc':
-      "Girona té una àmplia gama d'hotels i apartaments turístics. La nostra recomanció és l'hotel <a class=\"text-primary-container hover:underline\" href='https://www.hotelcarlemanygirona.com/' target='_blank' rel='noopener noreferrer'>Carelmany Girona</a>",
+      "Girona té una àmplia gama d'hotels i apartaments turístics. La nostra recomanció és l'hotel <a class=\"text-primary-container hover:underline\" href='https://www.hotelcarlemanygirona.com/' target='_blank' rel='noopener noreferrer'>Carlemany Girona</a>",
 
     // Status bar
     'agenda.status.date': 'DATA',
@@ -63,7 +63,7 @@ export const agenda = {
     'agenda.venue.accommodation.tag': '// ACCOMMODATION',
     'agenda.venue.accommodation.title': 'WHERE TO SLEEP',
     'agenda.venue.accommodation.desc':
-      "Girona has a wide range of hotels and tourist apartments. Our recommendation is the <a class=\"text-primary-container hover:underline\" href='https://www.hotelcarlemanygirona.com/' target='_blank' rel='noopener noreferrer'>Carelmany Girona</a> hotel.",
+      "Girona has a wide range of hotels and tourist apartments. Our recommendation is the <a class=\"text-primary-container hover:underline\" href='https://www.hotelcarlemanygirona.com/' target='_blank' rel='noopener noreferrer'>Carlemany Girona</a> hotel.",
 
     // Status bar
     'agenda.status.date': 'DATE',
@@ -99,7 +99,7 @@ export const agenda = {
     'agenda.venue.accommodation.tag': '// ALOJAMIENTO',
     'agenda.venue.accommodation.title': 'DÓNDE DORMIR',
     'agenda.venue.accommodation.desc':
-      "Girona tiene una amplia gama de hoteles y apartamentos turísticos. Nuestra recomendación es el hotel <a class=\"text-primary-container hover:underline\" href='https://www.hotelcarlemanygirona.com/' target='_blank' rel='noopener noreferrer'>Carelmany Girona</a>.",
+      "Girona tiene una amplia gama de hoteles y apartamentos turísticos. Nuestra recomendación es el hotel <a class=\"text-primary-container hover:underline\" href='https://www.hotelcarlemanygirona.com/' target='_blank' rel='noopener noreferrer'>Carlemany Girona</a>.",
 
     // Status bar
     'agenda.status.date': 'FECHA',

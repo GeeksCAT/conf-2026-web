@@ -1,4 +1,5 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseLayout from '../../components/BaseLayout.astro';
 import CTAButton from '../../components/CTAButton.astro';
 import SectionHeader from '../../components/SectionHeader.astro';
@@ -11,6 +12,16 @@ const t = useTranslations(locale);
 const agendaPath = localizedPath('/agenda', locale);
 const speakersPath = localizedPath('/speakers', locale);
 const ticketsPath = localizedPath('/tickets', locale);
+
+// The home shows a teaser of the lineup; the full list lives on /speakers.
+const SPEAKER_SLOTS = 4;
+
+const allSpeakers = await getCollection('speakers');
+const featuredSpeakers = allSpeakers
+  .filter((s) => s.data.locale === locale && !s.data.draft)
+  .slice(0, SPEAKER_SLOTS);
+
+const speakerPlaceholderCount = SPEAKER_SLOTS - featuredSpeakers.length;
 ---
 
 <BaseLayout title="" description="La conferència de geeks per a geeks de Catalunya. 2026.">
@@ -207,11 +218,27 @@ const ticketsPath = localizedPath('/tickets', locale);
       <SectionHeader tag={t('index.speakers.tag')} title="" />
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
-        {Array.from({ length: 4 }).map((_, i) => (
-          <article class="bg-surface-container border border-outline-variant p-6 flex flex-col" aria-label={`Ponent ${i + 1} - Per anunciar`}>
+        {featuredSpeakers.map((speaker) => (
+          <article class="bg-surface-container border border-outline-variant p-6 flex flex-col">
+            <div class="w-full aspect-square bg-surface-container-high border border-outline-variant mb-4 overflow-hidden">
+              <img
+                src={speaker.data.photo}
+                alt={speaker.data.name}
+                class="w-full h-full object-cover"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <p class="font-display text-headline-md uppercase tracking-tight leading-tight">{speaker.data.name}</p>
+            <p class="font-body text-body-md text-on-surface-variant mt-2 flex-1 text-sm">{speaker.data.role}</p>
+          </article>
+        ))}
+
+        {Array.from({ length: speakerPlaceholderCount }).map((_, i) => (
+          <article class="bg-surface-container border border-outline-variant p-6 flex flex-col" aria-label={`${t('index.speakers.placeholder')} ${featuredSpeakers.length + i + 1}`}>
             <div class="w-full aspect-square bg-surface-container-high border border-outline-variant mb-4" aria-hidden="true"></div>
             <p class="font-mono text-code-sm text-primary-container mb-1">
-              PONENT_{String(i + 1).padStart(2, '0')}
+              PONENT_{String(featuredSpeakers.length + i + 1).padStart(2, '0')}
             </p>
             <p class="font-display text-headline-md uppercase tracking-tight">{t('index.speakers.placeholder')}</p>
             <p class="font-body text-body-md text-on-surface-variant mt-2 flex-1 text-sm">{t('index.speakers.tba')}</p>
