@@ -76,7 +76,7 @@ export const index = {
     'index.speakers.placeholder': 'PROPERAMENT',
     'index.speakers.tba': '[ TBA ]',
     'index.speakers.status': '501 NOT IMPLEMENTED',
-    'index.speakers.cta': 'PRESENTA LA TEVA XERRADA →',
+    'index.speakers.cta': 'VEURE ELS PONENTS →',
 
     // Topics/Activities
     'index.topics.tag': 'ACTIVITATS',
@@ -174,7 +174,7 @@ export const index = {
     'index.speakers.placeholder': 'COMING SOON',
     'index.speakers.tba': '[ TBA ]',
     'index.speakers.status': '501 NOT IMPLEMENTED',
-    'index.speakers.cta': 'SUBMIT YOUR TALK →',
+    'index.speakers.cta': 'VIEW THE SPEAKERS →',
 
     // Topics/Activities
     'index.topics.tag': 'ACTIVITIES',
@@ -273,7 +273,7 @@ export const index = {
     'index.speakers.placeholder': 'PRÓXIMAMENTE',
     'index.speakers.tba': '[ TBA ]',
     'index.speakers.status': '501 NOT IMPLEMENTED',
-    'index.speakers.cta': 'PRESENTA TU CHARLA →',
+    'index.speakers.cta': 'VER LOS PONENTES →',
 
     // Topics/Activities
     'index.topics.tag': 'ACTIVIDADES',

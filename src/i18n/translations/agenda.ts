@@ -11,9 +11,6 @@ export const agenda = {
     'agenda.schedule.title': 'TÍTOL',
 
     // Empty state
-    'agenda.cfp.tag': '[ VOLS PARLAR? ]',
-    'agenda.cfp.desc': "El CFP és obert. La teva xerrada pot omplir un d'aquests slots.",
-    'agenda.cfp.cta': 'ENVIA LA TEVA PROPOSTA →',
 
     // Transport section
     'agenda.venue.tag': 'COM ARRIBAR',
@@ -50,9 +47,6 @@ export const agenda = {
     'agenda.schedule.title': 'TITLE',
 
     // Empty state
-    'agenda.cfp.tag': '[ WANT TO SPEAK? ]',
-    'agenda.cfp.desc': 'The CFP is open. Your talk can fill one of these slots.',
-    'agenda.cfp.cta': 'SUBMIT YOUR PROPOSAL →',
 
     // Transport section
     'agenda.venue.tag': 'HOW TO GET THERE',
@@ -89,9 +83,6 @@ export const agenda = {
     'agenda.schedule.title': 'TÍTULO',
 
     // Empty state
-    'agenda.cfp.tag': '[ ¿QUIERES HABLAR? ]',
-    'agenda.cfp.desc': 'El CFP está abierto. Tu charla puede llenar uno de estos slots.',
-    'agenda.cfp.cta': 'ENVIA TU PROPUESTA →',
 
     // Transport section
     'agenda.venue.tag': 'CÓMO LLEGAR',

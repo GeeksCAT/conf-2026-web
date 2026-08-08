@@ -2,18 +2,23 @@ export const cfp = {
   ca: {
     'cfp.title': 'CFP',
     'cfp.headline': 'SYSCALL PONENTS',
+    'cfp.closed.badge': 'CFP TANCAT',
+    'cfp.closed.intro':
+      "El període per enviar propostes de xerrada per a la GeeksCAT Conf 2026 s'ha tancat. Gràcies a tothom qui ens ha fet arribar una proposta.",
+    'cfp.closed.tag': '[ EOF ]',
+    'cfp.closed.title': 'PROPOSTES TANCADES',
+    'cfp.closed.desc':
+      'Ja no acceptem propostes noves. Anem publicant els ponents confirmats a mesura que els tanquem.',
+    'cfp.closed.cta': 'VEURE ELS PONENTS →',
     'cfp.deadline': '31 juliol 2026',
     'cfp.notification': '14 agost 2026',
-    'cfp.cta': 'ENVIA PROPOSTA',
 
     // Hero
-    'cfp.hero.intro':
-      'Tens un projecte, una experiència o una idea que val la pena compartir i inspirar la comunitat tècnica catalana? Presenta la teva xerrada a GeeksCAT Conf 2026.',
     'cfp.hero.languages': 'IDIOMES: CAT / ENG / ESP',
 
     // What we're looking for
-    'cfp.looking.tag': 'QUÈ BUSQUEM',
-    'cfp.looking.title': 'PRESENTA LA TEVA XERRADA',
+    'cfp.looking.tag': 'QUÈ BUSCÀVEM',
+    'cfp.looking.title': 'CRITERIS DE SELECCIÓ',
     'cfp.looking.p1':
       'No busquem presentacions corporatives. Busquem profunditat tècnica, lideratge, "live coding" arriscat, arquitectures complexes i històries de guerra reals. Si el teu codi fa coses increïbles (o ha explotat de forma èpica).',
     'cfp.looking.p2':
@@ -94,27 +99,27 @@ export const cfp = {
     'cfp.info.date': 'Data conf',
     'cfp.info.languages': 'Idiomes',
     'cfp.info.languages.value': 'CAT / ENG / ESP',
-
-    // CTA
-    'cfp.submit.tag': '[ EXEC ]',
-    'cfp.submit.button': 'ENVIA LA TEVA PROPOSTA',
-    'cfp.submit.url': 'https://forms.gle/gACrppp98vFCUHTP9',
   },
   en: {
     'cfp.title': 'CFP',
     'cfp.headline': 'SYSCALL SPEAKERS',
+    'cfp.closed.badge': 'CFP CLOSED',
+    'cfp.closed.intro':
+      'The call for proposals for GeeksCAT Conf 2026 is closed. Thank you to everyone who sent us a talk.',
+    'cfp.closed.tag': '[ EOF ]',
+    'cfp.closed.title': 'PROPOSALS CLOSED',
+    'cfp.closed.desc':
+      'We are no longer accepting new proposals. We announce confirmed speakers as we lock them in.',
+    'cfp.closed.cta': 'VIEW THE SPEAKERS →',
     'cfp.deadline': ' 31 July 2026 ',
     'cfp.notification': '14 August 2026',
-    'cfp.cta': 'SUBMIT TALK',
 
     // Hero
-    'cfp.hero.intro':
-      'Do you have a project, an experience or an idea worth sharing and inspiring the Catalan tech community? Submit your talk to GeeksCAT Conf 2026.',
     'cfp.hero.languages': 'LANGUAGES: CAT / ENG / ESP',
 
     // What we're looking for
-    'cfp.looking.tag': 'WHAT WE ARE LOOKING FOR',
-    'cfp.looking.title': 'SUBMIT YOUR TALK',
+    'cfp.looking.tag': 'WHAT WE LOOKED FOR',
+    'cfp.looking.title': 'SELECTION CRITERIA',
     'cfp.looking.p1':
       'We are not looking for corporate presentations. We seek technical depth, leadership, risky "live coding", complex architectures and real war stories. If your code does incredible things (or has exploded spectacularly).',
     'cfp.looking.p2':
@@ -194,27 +199,27 @@ export const cfp = {
     'cfp.info.date': 'Conf date',
     'cfp.info.languages': 'Languages',
     'cfp.info.languages.value': 'CAT / ENG / ESP',
-
-    // CTA
-    'cfp.submit.tag': '[ EXEC ]',
-    'cfp.submit.button': 'SUBMIT YOUR PROPOSAL',
-    'cfp.submit.url': 'https://forms.gle/rFWB8uXsDpMj9zGT6',
   },
   es: {
     'cfp.title': 'CFP',
     'cfp.headline': 'SYSCALL PONENTES',
+    'cfp.closed.badge': 'CFP CERRADO',
+    'cfp.closed.intro':
+      'El periodo para enviar propuestas de charla para la GeeksCAT Conf 2026 se ha cerrado. Gracias a todo el mundo que nos ha hecho llegar una propuesta.',
+    'cfp.closed.tag': '[ EOF ]',
+    'cfp.closed.title': 'PROPUESTAS CERRADAS',
+    'cfp.closed.desc':
+      'Ya no aceptamos propuestas nuevas. Vamos publicando los ponentes confirmados a medida que los cerramos.',
+    'cfp.closed.cta': 'VER LOS PONENTES →',
     'cfp.deadline': '31 julio 2026',
     'cfp.notification': '14 agosto 2026',
-    'cfp.cta': 'ENVIA PROPUESTA',
 
     // Hero
-    'cfp.hero.intro':
-      '¿Tienes un proyecto, una experiencia o una idea que vale la pena compartir e inspirar la comunidad técnica catalana? Presenta tu charla a GeeksCAT Conf 2026.',
     'cfp.hero.languages': 'IDIOMAS: CAT / ENG / ESP',
 
     // What we're looking for
-    'cfp.looking.tag': 'QUÉ BUSCAMOS',
-    'cfp.looking.title': 'PRESENTA TU CHARLA',
+    'cfp.looking.tag': 'QUÉ BUSCÁBAMOS',
+    'cfp.looking.title': 'CRITERIOS DE SELECCIÓN',
     'cfp.looking.p1':
       'No buscamos presentaciones corporativas. Buscamos profundidad técnica, liderazgo, "live coding" arriesgado, arquitecturas complejas e historias de guerra reales. Si tu código hace cosas increíbles (o ha explotado de forma épica).',
     'cfp.looking.p2':
@@ -296,10 +301,5 @@ export const cfp = {
     'cfp.info.date': 'Fecha conf',
     'cfp.info.languages': 'Idiomas',
     'cfp.info.languages.value': 'CAT / ENG / ESP',
-
-    // CTA
-    'cfp.submit.tag': '[ EXEC ]',
-    'cfp.submit.button': 'ENVIA TU PROPUESTA',
-    'cfp.submit.url': 'https://forms.gle/E4v1PfQw4XoXLbqz7',
   },
 } as const;

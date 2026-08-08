@@ -1,15 +1,14 @@
 export const speakers = {
   ca: {
     'speakers.title': 'ponents',
-    'speakers.cfp-status': 'obert',
+    'speakers.cfp-status': 'tancat',
 
     // Hero
     'speakers.hero.confirmed-one':
       'ponent confirmat. Perfil tècnic que compartirà el seu coneixement a GeeksCAT Conf 2026.',
     'speakers.hero.confirmed':
       'ponents confirmats. Professionals tècnics que compartiran el seu coneixement a GeeksCAT Conf 2026.',
-    'speakers.hero.coming-soon':
-      "Els ponents de GeeksCAT Conf 2026 s'anunciaran properament. El CFP és obert — potser ets tu el següent.",
+    'speakers.hero.coming-soon': "Els ponents de GeeksCAT Conf 2026 s'anunciaran properament.",
 
     // Grid
     'speakers.grid.tag': 'LINEUP',
@@ -18,11 +17,6 @@ export const speakers = {
     'speakers.grid.tba': '[ TBA ]',
     'speakers.grid.status': 'STATUS: PENDING',
     'speakers.grid.view-bio': 'VER BIO →',
-
-    // CFP CTA
-    'speakers.cfp.tag': '[ VOLS SER PONENT? ]',
-    'speakers.cfp.desc': 'El CFP és obert. Presenta la teva xerrada i forma part del lineup.',
-    'speakers.cfp.cta': 'PRESENTA LA TEVA XERRADA →',
 
     // Status bar
     'speakers.status.cfp': 'CFP_STATUS',
@@ -40,15 +34,14 @@ export const speakers = {
   },
   en: {
     'speakers.title': 'speakers',
-    'speakers.cfp-status': 'open',
+    'speakers.cfp-status': 'closed',
 
     // Hero
     'speakers.hero.confirmed-one':
       'confirmed speaker. A technical professional who will share their knowledge at GeeksCAT Conf 2026.',
     'speakers.hero.confirmed':
       'confirmed speakers. Technical professionals who will share their knowledge at GeeksCAT Conf 2026.',
-    'speakers.hero.coming-soon':
-      "GeeksCAT Conf 2026 speakers will be announced soon. The CFP is open — maybe you're next.",
+    'speakers.hero.coming-soon': 'GeeksCAT Conf 2026 speakers will be announced soon.',
 
     // Grid
     'speakers.grid.tag': 'LINEUP',
@@ -57,11 +50,6 @@ export const speakers = {
     'speakers.grid.tba': '[ TBA ]',
     'speakers.grid.status': 'STATUS: PENDING',
     'speakers.grid.view-bio': 'VIEW BIO →',
-
-    // CFP CTA
-    'speakers.cfp.tag': '[ WANT TO BE A SPEAKER? ]',
-    'speakers.cfp.desc': 'The CFP is open. Submit your talk and be part of the lineup.',
-    'speakers.cfp.cta': 'SUBMIT YOUR TALK →',
 
     // Status bar
     'speakers.status.cfp': 'CFP_STATUS',
@@ -79,15 +67,14 @@ export const speakers = {
   },
   es: {
     'speakers.title': 'ponentes',
-    'speakers.cfp-status': 'abierto',
+    'speakers.cfp-status': 'cerrado',
 
     // Hero
     'speakers.hero.confirmed-one':
       'ponente confirmado. Perfil técnico que compartirá su conocimiento en GeeksCAT Conf 2026.',
     'speakers.hero.confirmed':
       'ponentes confirmados. Profesionales técnicos que compartirán su conocimiento en GeeksCAT Conf 2026.',
-    'speakers.hero.coming-soon':
-      'Los ponentes de GeeksCAT Conf 2026 se anunciarán próximamente. El CFP está abierto — quizás seas tú el siguiente.',
+    'speakers.hero.coming-soon': 'Los ponentes de GeeksCAT Conf 2026 se anunciarán próximamente.',
 
     // Grid
     'speakers.grid.tag': 'LINEUP',
@@ -96,11 +83,6 @@ export const speakers = {
     'speakers.grid.tba': '[ TBA ]',
     'speakers.grid.status': 'STATUS: PENDIENTE',
     'speakers.grid.view-bio': 'VER BIO →',
-
-    // CFP CTA
-    'speakers.cfp.tag': '[ ¿QUIERES SER PONENTE? ]',
-    'speakers.cfp.desc': 'El CFP está abierto. Presenta tu charla y forma parte del lineup.',
-    'speakers.cfp.cta': 'PRESENTA TU CHARLA →',
 
     // Status bar
     'speakers.status.cfp': 'CFP_STATUS',

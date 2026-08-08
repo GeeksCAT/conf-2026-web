@@ -1,9 +1,8 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../components/BaseLayout.astro';
-import CTAButton from '../../components/CTAButton.astro';
 import SectionHeader from '../../components/SectionHeader.astro';
-import { getLocale, useTranslations, localizedPath } from '../../i18n/utils';
+import { getLocale, useTranslations } from '../../i18n/utils';
 export { getStaticPaths } from '../../i18n/utils';
 
 import { marked } from 'marked';
@@ -11,7 +10,6 @@ import { marked } from 'marked';
 const locale = getLocale(Astro.params.lang);
 const t = useTranslations(locale);
 
-const cfpPath = localizedPath('/cfp', locale);
 
 const allTalks = await getCollection('talks');
 const talks = allTalks.filter((tk) => tk.data.locale === locale);
@@ -235,18 +233,6 @@ function formatTimeRange(item: (typeof talks)[number] | undefined) {
         /* ── Estat buit ── */
         <div class="border border-outline-variant p-8 text-center">
           <p class="font-display text-headline-md uppercase tracking-tight text-on-surface-variant/40 terminal-cursor">{t('agenda.empty')}</p>
-        </div>
-      )}
-
-      {(day1Schedule.length === 0 && day2Schedule.length === 0) && (
-        <div class="mt-8 flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between bg-surface-container border border-primary-container/20 p-6">
-          <div>
-            <p class="font-mono text-code-sm text-primary-container uppercase tracking-widest mb-1">{t('agenda.cfp.tag')}</p>
-            <p class="font-body text-body-md text-on-surface-variant">{t('agenda.cfp.desc')}</p>
-          </div>
-          <CTAButton href={cfpPath} variant="outline" class="shrink-0">
-            {t('agenda.cfp.cta')}
-          </CTAButton>
         </div>
       )}
     </div>

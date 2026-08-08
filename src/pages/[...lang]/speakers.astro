@@ -1,15 +1,12 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../components/BaseLayout.astro';
-import CTAButton from '../../components/CTAButton.astro';
 import SectionHeader from '../../components/SectionHeader.astro';
-import { getLocale, useTranslations, localizedPath } from '../../i18n/utils';
+import { getLocale, useTranslations } from '../../i18n/utils';
 export { getStaticPaths } from '../../i18n/utils';
 
 const locale = getLocale(Astro.params.lang);
 const t = useTranslations(locale);
-
-const cfpPath = localizedPath('/cfp', locale);
 
 const allSpeakers = await getCollection('speakers');
 const speakers = allSpeakers.filter((s) => s.data.locale === locale && !s.data.draft);
@@ -197,18 +194,6 @@ const placeholderCount = speakers.length < PLACEHOLDER_COUNT ? PLACEHOLDER_COUNT
         ))}
       </ul>
 
-      {/* CFP call-to-action - only show when there are placeholders */}
-      {placeholderCount > 0 && (
-        <div class="bg-surface-container border border-primary-container/20 p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mt-8">
-          <div>
-            <p class="font-mono text-code-sm text-primary-container uppercase tracking-widest mb-1">{t('speakers.cfp.tag')}</p>
-            <p class="font-body text-body-md text-on-surface-variant">{t('speakers.cfp.desc')}</p>
-          </div>
-          <CTAButton href={cfpPath} variant="outline" class="shrink-0">
-            {t('speakers.cfp.cta')}
-          </CTAButton>
-        </div>
-      )}
     </div>
   </section>
 

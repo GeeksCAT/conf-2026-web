@@ -9,7 +9,7 @@ const locale = getLocale(Astro.params.lang);
 const t = useTranslations(locale);
 
 const agendaPath = localizedPath('/agenda', locale);
-const cfpPath = localizedPath('/cfp', locale);
+const speakersPath = localizedPath('/speakers', locale);
 const ticketsPath = localizedPath('/tickets', locale);
 ---
 
@@ -223,7 +223,7 @@ const ticketsPath = localizedPath('/tickets', locale);
       </div>
 
       <div class="flex justify-center">
-        <CTAButton href={cfpPath} variant="outline">{t('index.speakers.cta')}</CTAButton>
+        <CTAButton href={speakersPath} variant="outline">{t('index.speakers.cta')}</CTAButton>
       </div>
     </div>
   </section>

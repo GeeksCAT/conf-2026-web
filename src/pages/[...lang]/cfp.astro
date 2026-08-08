@@ -2,11 +2,13 @@
 import BaseLayout from '../../components/BaseLayout.astro';
 import CTAButton from '../../components/CTAButton.astro';
 import SectionHeader from '../../components/SectionHeader.astro';
-import { getLocale, useTranslations } from '../../i18n/utils';
+import { getLocale, useTranslations, localizedPath } from '../../i18n/utils';
 export { getStaticPaths } from '../../i18n/utils';
 
 const locale = getLocale(Astro.params.lang);
 const t = useTranslations(locale);
+
+const speakersPath = localizedPath('/speakers', locale);
 
 const topics = [
   {
@@ -52,7 +54,7 @@ const gratificacions = [
 
 <BaseLayout
     title={t('cfp.title')}
-  description="Presenta la teva xerrada a GeeksCAT Conf 2026. CFP obert fins al 31 d'agost de 2026."
+  description="El període de propostes de GeeksCAT Conf 2026 s'ha tancat. Consulta els ponents confirmats."
 >
 
   <!-- ═══════════════════════════════════════════════
@@ -69,11 +71,11 @@ const gratificacions = [
         {t('cfp.headline')}
       </h1>
       <p class="font-body text-body-lg text-on-surface-variant mb-8 max-w-xl">
-        {t('cfp.hero.intro')}
+        {t('cfp.closed.intro')}
       </p>
       <div class="flex flex-wrap gap-4 items-center">
-        <span class="font-mono text-code-sm border-2 border-primary-container text-primary-container px-5 py-2 uppercase">
-          DEADLINE: {t('cfp.deadline')}
+        <span class="font-mono text-code-sm border-2 border-outline text-outline px-5 py-2 uppercase">
+          {t('cfp.closed.badge')}
         </span>
         <span class="font-mono text-code-sm text-on-surface-variant border border-outline-variant px-5 py-2 uppercase">
           {t('cfp.hero.languages')}
@@ -235,19 +237,16 @@ const gratificacions = [
   <section class="py-24 px-6 bg-surface-container-low relative overflow-hidden border-t border-outline-variant" id="submit">
     <div class="absolute inset-0 terminal-grid opacity-5 pointer-events-none" aria-hidden="true"></div>
     <div class="max-w-3xl mx-auto relative z-10 text-center">
-      <p class="font-mono text-code-sm text-primary-container uppercase tracking-widest mb-6">{t('cfp.submit.tag')}</p>
-      <h2 class="font-display text-headline-xl uppercase tracking-tighter mb-6 leading-none terminal-cursor">
-        {t('cfp.cta')}
+      <p class="font-mono text-code-sm text-outline uppercase tracking-widest mb-6">{t('cfp.closed.tag')}</p>
+      <h2 class="font-display text-headline-xl uppercase tracking-tighter mb-6 leading-none">
+        {t('cfp.closed.title')}
       </h2>
-      <CTAButton
-        href={t('cfp.submit.url')}
-        external
-      >
-        {t('cfp.submit.button')}
-      </CTAButton>
-      <p class="font-mono text-code-sm text-outline mt-10">
-        {t('cfp.deadline')}
+      <p class="font-body text-body-lg text-on-surface-variant mb-10 max-w-xl mx-auto">
+        {t('cfp.closed.desc')}
       </p>
+      <CTAButton href={speakersPath}>
+        {t('cfp.closed.cta')}
+      </CTAButton>
     </div>
   </section>
 
