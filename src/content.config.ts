@@ -3,7 +3,14 @@ import { glob } from 'astro/loaders';
 import { z } from 'zod';
 
 const speakers = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './src/data/speakers' }),
+  // The default entry id is `data.slug`, which every locale variant of a speaker
+  // shares. Derive the id from the filename instead, so `name-surname-ca.md`,
+  // `-en.md` and `-es.md` are three entries rather than one overwriting another.
+  loader: glob({
+    pattern: '**/*.md',
+    base: './src/data/speakers',
+    generateId: ({ entry }) => entry.replace(/\.md$/, ''),
+  }),
   schema: z.object({
     slug: z.string(),
     name: z.string(),
@@ -18,6 +25,9 @@ const speakers = defineCollection({
         x: z.string().optional(),
         linkedin: z.string().optional(),
         github: z.string().optional(),
+        // Full URLs: both are federated and the instance is part of the identity.
+        mastodon: z.url().optional(),
+        bluesky: z.url().optional(),
       })
       .default({}),
     photo: z.string(),

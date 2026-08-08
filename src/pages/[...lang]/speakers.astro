@@ -56,7 +56,7 @@ const placeholderCount = speakers.length < PLACEHOLDER_COUNT ? PLACEHOLDER_COUNT
       </h1>
       <p class="font-body text-body-lg text-on-surface-variant max-w-xl">
         {speakers.length > 0
-          ? `${speakers.length} ${t('speakers.hero.confirmed')}`
+          ? `${speakers.length} ${t(speakers.length === 1 ? 'speakers.hero.confirmed-one' : 'speakers.hero.confirmed')}`
           : t('speakers.hero.coming-soon')}
       </p>
     </div>
@@ -145,6 +145,18 @@ const placeholderCount = speakers.length < PLACEHOLDER_COUNT ? PLACEHOLDER_COUNT
                          onclick="(e) => e.stopPropagation()"
                          class="font-mono text-code-sm text-on-surface-variant hover:text-primary-container transition-colors duration-150"
                          aria-label={`LinkedIn de ${speaker.data.name}`}>LINKEDIN</a>
+                    )}
+                    {speaker.data.links.mastodon && (
+                      <a href={speaker.data.links.mastodon} rel="me noopener noreferrer" target="_blank"
+                         onclick="(e) => e.stopPropagation()"
+                         class="font-mono text-code-sm text-on-surface-variant hover:text-primary-container transition-colors duration-150"
+                         aria-label={`Mastodon de ${speaker.data.name}`}>MASTODON</a>
+                    )}
+                    {speaker.data.links.bluesky && (
+                      <a href={speaker.data.links.bluesky} rel="noopener noreferrer" target="_blank"
+                         onclick="(e) => e.stopPropagation()"
+                         class="font-mono text-code-sm text-on-surface-variant hover:text-primary-container transition-colors duration-150"
+                         aria-label={`Bluesky de ${speaker.data.name}`}>BLUESKY</a>
                     )}
                   </div>
                 )}
@@ -365,6 +377,26 @@ const placeholderCount = speakers.length < PLACEHOLDER_COUNT ? PLACEHOLDER_COUNT
           a.rel = 'noopener noreferrer';
           a.className = 'font-mono text-code-sm text-on-surface-variant hover:text-primary-container border border-outline-variant hover:border-primary-container px-4 py-2 transition-colors';
           a.textContent = 'LINKEDIN →';
+          linksContainer.appendChild(a);
+        }
+
+        if (links.mastodon) {
+          const a = document.createElement('a');
+          a.href = links.mastodon;
+          a.target = '_blank';
+          a.rel = 'me noopener noreferrer';
+          a.className = 'font-mono text-code-sm text-on-surface-variant hover:text-primary-container border border-outline-variant hover:border-primary-container px-4 py-2 transition-colors';
+          a.textContent = 'MASTODON →';
+          linksContainer.appendChild(a);
+        }
+
+        if (links.bluesky) {
+          const a = document.createElement('a');
+          a.href = links.bluesky;
+          a.target = '_blank';
+          a.rel = 'noopener noreferrer';
+          a.className = 'font-mono text-code-sm text-on-surface-variant hover:text-primary-container border border-outline-variant hover:border-primary-container px-4 py-2 transition-colors';
+          a.textContent = 'BLUESKY →';
           linksContainer.appendChild(a);
         }
       } else {

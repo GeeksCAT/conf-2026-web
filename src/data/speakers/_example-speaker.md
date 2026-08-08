@@ -9,11 +9,15 @@ name: "Example Speaker Name"
 role: "Senior Software Engineer"
 
 # Social and contact links (all optional)
+# web, mastodon and bluesky take a full URL; x, linkedin and github take
+# just the handle.
 links:
   web: "https://example.com"
   x: "examplehandle"
   linkedin: "example-profile"
   github: "exampleuser"
+  mastodon: "https://mastodon.social/@examplehandle"
+  bluesky: "https://bsky.app/profile/example.com"
 
 # Path to speaker photo (place image in /public/assets/speakers/)
 photo: "/assets/speakers/example-speaker.jpg"

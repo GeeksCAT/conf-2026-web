@@ -151,12 +151,14 @@ file body so it appears in the expanded detail view.
 All speaker files follow a fixed schema with required and optional fields.
 
 Required fields:
-- `slug`: string (unique identifier, kebab-case, should match filename)
+- `slug`: string (unique identifier, kebab-case, shared by all locale variants of
+  the same speaker)
 - `name`: string (full name of the speaker)
 - `role`: string (job title or role)
 - `bio`: string (multi-line biography, use YAML pipe `|` syntax)
-- `photo`: string (path to speaker photo, e.g. `/assets/speakers/name.jpg`)
+- `photo`: string (path to speaker photo, e.g. `/img/speakers/name.webp`)
 - `locale`: one of `ca`, `en`, `es`
+- `draft`: boolean (drafts are hidden from the speakers page)
 
 Optional fields:
 - `topic`: string (optional, single value)
@@ -166,12 +168,21 @@ Optional fields:
   - `x`: string (X/Twitter handle, without @)
   - `linkedin`: string (LinkedIn profile identifier)
   - `github`: string (GitHub username)
+  - `mastodon`: URL string (full profile URL, the instance is part of the identity)
+  - `bluesky`: URL string (full profile URL)
+
+One file per locale:
+- The speakers page only lists entries whose `locale` matches the page language,
+  so a speaker needs one file per locale to appear on all three versions of the
+  site: `name-surname-ca.md`, `name-surname-en.md`, `name-surname-es.md`.
+- All three files share the same `slug` and `photo`; `name` and `bio` (and `role`
+  where it makes sense) are translated.
+- Agenda entries reference speakers through `speakerSlug`, which matches that
+  shared `slug`.
 
 Example template:
 - A complete example template is provided at `src/data/speakers/_example-speaker.md`
   with `draft: true`. Copy and edit it to create new speaker profiles.
-- Note: `draft` field is not currently in the schema but can be added if needed
-  for filtering speakers during development.
 
 Validation:
 - The speaker schema is enforced by `src/content.config.ts` (zod). The build

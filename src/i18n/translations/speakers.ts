@@ -4,6 +4,8 @@ export const speakers = {
     'speakers.cfp-status': 'obert',
 
     // Hero
+    'speakers.hero.confirmed-one':
+      'ponent confirmat. Perfil tècnic que compartirà el seu coneixement a GeeksCAT Conf 2026.',
     'speakers.hero.confirmed':
       'ponents confirmats. Professionals tècnics que compartiran el seu coneixement a GeeksCAT Conf 2026.',
     'speakers.hero.coming-soon':
@@ -41,6 +43,8 @@ export const speakers = {
     'speakers.cfp-status': 'open',
 
     // Hero
+    'speakers.hero.confirmed-one':
+      'confirmed speaker. A technical professional who will share their knowledge at GeeksCAT Conf 2026.',
     'speakers.hero.confirmed':
       'confirmed speakers. Technical professionals who will share their knowledge at GeeksCAT Conf 2026.',
     'speakers.hero.coming-soon':
@@ -78,6 +82,8 @@ export const speakers = {
     'speakers.cfp-status': 'abierto',
 
     // Hero
+    'speakers.hero.confirmed-one':
+      'ponente confirmado. Perfil técnico que compartirá su conocimiento en GeeksCAT Conf 2026.',
     'speakers.hero.confirmed':
       'ponentes confirmados. Profesionales técnicos que compartirán su conocimiento en GeeksCAT Conf 2026.',
     'speakers.hero.coming-soon':
