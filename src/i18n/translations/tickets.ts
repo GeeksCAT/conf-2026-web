@@ -29,7 +29,7 @@ export const tickets = {
     'tickets.headline': 'TICKETS',
     'tickets.intro':
       "<b>Our members don't need to buy tickets</b>, become a member before we open ticket sales and enjoy this benefit, and if we have already opened them, we will give you a special discount on the price.<br/><br/>" +
-      "All our tickets include access to all activities for the two-day event and lunch for the second day.",
+      'All our tickets include access to all activities for the two-day event and lunch for the second day.',
     'tickets.cta.member': 'BECOME A MEMBER',
 
     // Tier statuses
@@ -50,7 +50,7 @@ export const tickets = {
     'tickets.headline': 'ENTRADAS',
     'tickets.intro':
       '<b>Nuestros socios no necesitan adquirir entradas</b>, hazte socio antes de que abramos la compra de entradas y disfruta de este beneficio, y si ya la hemos abierto, te haremos un descuento especial en el precio de esta.<br/><br/>' +
-    'Todas nuestras entrades incluyen la asistencia a todas las actividades de los dias y la comida del segundo dia.',
+      'Todas nuestras entrades incluyen la asistencia a todas las actividades de los dias y la comida del segundo dia.',
     'tickets.cta.member': 'HAZTE SOCIO',
 
     // Tier statuses

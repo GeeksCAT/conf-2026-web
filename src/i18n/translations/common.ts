@@ -13,7 +13,8 @@ export const common = {
     'theme.light': 'LIGHT_MODE',
     'theme.dark': 'DARK_MODE',
 
-    'ogImage.alt': 'Ciutat de Girona al fons (edificis, la Catedral, etc.) i al davant el logo de GeeksCAT (cervell amb línies de circuit) tot això sobre un terra que represente un circuit imprès',
+    'ogImage.alt':
+      'Ciutat de Girona al fons (edificis, la Catedral, etc.) i al davant el logo de GeeksCAT (cervell amb línies de circuit) tot això sobre un terra que represente un circuit imprès',
   },
   en: {
     'tba.status': 'COMING SOON',
@@ -29,7 +30,8 @@ export const common = {
     'theme.light': 'LIGHT_MODE',
     'theme.dark': 'DARK_MODE',
 
-    'ogImage.alt': 'At the back, the Girona City (buldings, the Cathedral, etc.) and hovered by the GeeksCAT logo (brain with the integrated circuit lines), everything on a floor which represents a integrated circuit',
+    'ogImage.alt':
+      'At the back, the Girona City (buldings, the Cathedral, etc.) and hovered by the GeeksCAT logo (brain with the integrated circuit lines), everything on a floor which represents a integrated circuit',
   },
   es: {
     'tba.status': 'PRÓXIMAMENTE',
@@ -45,6 +47,7 @@ export const common = {
     'theme.light': 'LIGHT_MODE',
     'theme.dark': 'DARK_MODE',
 
-    'ogImage.alt': 'Ciudad de Girona al fondo (edificios, la Catedral, etc.) y delante el logo de GeeksCAT (celebro con las líneas de circuito) todo esto sobre un suleo que representa un circuito impreso',
+    'ogImage.alt':
+      'Ciudad de Girona al fondo (edificios, la Catedral, etc.) y delante el logo de GeeksCAT (celebro con las líneas de circuito) todo esto sobre un suleo que representa un circuito impreso',
   },
 } as const;
