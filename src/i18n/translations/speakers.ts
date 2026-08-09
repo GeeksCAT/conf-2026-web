@@ -15,8 +15,8 @@ export const speakers = {
     'speakers.grid.title': 'PONENTS CONFIRMATS',
     'speakers.grid.placeholder': 'PROPERAMENT',
     'speakers.grid.tba': '[ TBA ]',
-    'speakers.grid.status': 'STATUS: PENDING',
-    'speakers.grid.view-bio': 'VER BIO →',
+    'speakers.grid.status': 'STATUS: PENDENT',
+    'speakers.grid.view-bio': 'VEURE BIO →',
 
     // Status bar
     'speakers.status.cfp': 'CFP_STATUS',
@@ -29,8 +29,8 @@ export const speakers = {
     'speakers.modal.close': '✕ TANCAR',
     'speakers.modal.bio': '// BIOGRAFIA',
     'speakers.modal.links': '// ENLLAÇOS',
-    'speakers.modal.aria.close': 'Cerrar modal',
-    'speakers.modal.aria.view': 'Ver detalles de',
+    'speakers.modal.aria.close': 'Tancar la finestra',
+    'speakers.modal.aria.view': 'Veure els detalls de',
   },
   en: {
     'speakers.title': 'speakers',
