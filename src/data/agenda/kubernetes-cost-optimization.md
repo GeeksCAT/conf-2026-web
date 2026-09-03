@@ -5,7 +5,7 @@ slug: "kubernetes-cost-optimization"
 speakerSlug: "marc-giralt"
 time: "09:30"
 end: "10:00"
-day: 2
+day: 1
 draft: true
 lang: "es"
 locale: "es"

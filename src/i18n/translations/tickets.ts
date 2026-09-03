@@ -8,7 +8,7 @@ export const tickets = {
     'tickets.headline': 'ENTRADES',
     'tickets.intro':
       "La GeeksCAT Conf 2026 és un esdeveniment <b>100% gratuït</b>, però per motius d'aforament <b>és imprescindible reservar la teva entrada</b> a través de Pretix.<br/><br/>" +
-      "Totes les entrades inclouen l'assistència a totes les ponències, debats i espais de trobada durant els dos dies.",
+      "Totes les entrades inclouen l'assistència a totes les ponències, debats i espais de trobada durant la jornada.",
     'tickets.cta.member': 'FES-TE SÒCIA',
 
     // Ticket card
@@ -18,9 +18,9 @@ export const tickets = {
     'tickets.card.price_sub': 'GRATUÏTA',
     'tickets.card.status': 'Reserva prèvia obligatòria',
     'tickets.card.desc':
-      "Accés complet a les dues jornades de conferència (25 i 26 de setembre de 2026). Aforament limitat de l'espai.",
-    'tickets.card.item1': '25 i 26 de setembre de 2026',
-    'tickets.card.item2': 'Centre Cultural de la Mercè, Girona',
+      "Accés complet a la jornada de conferència (26 de setembre de 2026). Aforament limitat de l'espai.",
+    'tickets.card.item1': '26 de setembre de 2026',
+    'tickets.card.item2': "L'Estació Espai Jove, Girona",
     'tickets.card.item3': 'Accés a totes les ponències i debats',
 
     // Member card
@@ -42,7 +42,7 @@ export const tickets = {
     'tickets.headline': 'TICKETS',
     'tickets.intro':
       'GeeksCAT Conf 2026 is a <b>100% free event</b>, but due to venue capacity <b>booking your ticket in advance is mandatory</b> through Pretix.<br/><br/>' +
-      'All tickets include access to all talks, debates, and community spaces across both days.',
+      'All tickets include access to all talks, debates, and community spaces throughout the day.',
     'tickets.cta.member': 'BECOME A MEMBER',
 
     // Ticket card
@@ -52,9 +52,9 @@ export const tickets = {
     'tickets.card.price_sub': 'FREE',
     'tickets.card.status': 'Advance reservation required',
     'tickets.card.desc':
-      'Full access to both conference days (September 25th & 26th, 2026). Limited venue capacity.',
-    'tickets.card.item1': 'September 25th & 26th, 2026',
-    'tickets.card.item2': 'Centre Cultural de la Mercè, Girona',
+      'Full access to the conference day (September 26th, 2026). Limited venue capacity.',
+    'tickets.card.item1': 'September 26th, 2026',
+    'tickets.card.item2': "L'Estació Espai Jove, Girona",
     'tickets.card.item3': 'Access to all talks and debates',
 
     // Member card
@@ -76,7 +76,7 @@ export const tickets = {
     'tickets.headline': 'ENTRADAS',
     'tickets.intro':
       'La GeeksCAT Conf 2026 es un evento <b>100% gratuito</b>, pero por motivos de aforo <b>es imprescindible reservar tu entrada con antelación</b> a través de Pretix.<br/><br/>' +
-      'Todas las entradas incluyen la asistencia a todas las ponencias, debates y espacios de encuentro durante los dos días.',
+      'Todas las entradas incluyen la asistencia a todas las ponencias, debates y espacios de encuentro durante la jornada.',
     'tickets.cta.member': 'HAZTE SOCIO',
 
     // Ticket card
@@ -86,9 +86,9 @@ export const tickets = {
     'tickets.card.price_sub': 'GRATUITA',
     'tickets.card.status': 'Reserva previa obligatoria',
     'tickets.card.desc':
-      'Acceso completo a las dos jornadas de conferencia (25 y 26 de septiembre de 2026). Aforo limitado del espacio.',
-    'tickets.card.item1': '25 y 26 de septiembre de 2026',
-    'tickets.card.item2': 'Centre Cultural de la Mercè, Girona',
+      'Acceso completo a la jornada de conferencia (26 de septiembre de 2026). Aforo limitado del espacio.',
+    'tickets.card.item1': '26 de septiembre de 2026',
+    'tickets.card.item2': "L'Estació Espai Jove, Girona",
     'tickets.card.item3': 'Acceso a todas las ponencias y debates',
 
     // Member card

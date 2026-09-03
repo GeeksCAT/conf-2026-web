@@ -4,7 +4,7 @@ slug: "break-afternoon"
 title: "PAUSA"
 time: "15:30"
 end: "16:00"
-day: 2
+day: 1
 draft: true
 locale: "ca"
 ---
