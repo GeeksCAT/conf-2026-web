@@ -6,30 +6,7 @@ export { getStaticPaths } from '../../i18n/utils';
 
 const locale = getLocale(Astro.params.lang);
 const t = useTranslations(locale);
-
-const tiers = [
-  {
-    name: 'BIOS',
-    price: '18€',
-    status: t('tickets.tier.bios.status'),
-    active: false,
-    url: 'https://pretix.eu/geekscat/conf-2026/',
-  },
-  {
-    name: 'KERNEL',
-    price: '27€',
-    status: t('tickets.tier.kernel.status'),
-    active: true,
-    url: 'https://pretix.eu/geekscat/conf-2026/',
-  },
-  {
-    name: 'USER SPACE',
-    price: '35€',
-    status: t('tickets.tier.user-space.status'),
-    active: false,
-    url: 'https://pretix.eu/geekscat/conf-2026/',
-  },
-];
+const pretixUrl = 'https://pretix.eu/geekscat/conf-2026/';
 ---
 
 <BaseLayout
@@ -52,56 +29,83 @@ const tiers = [
       </h1>
       <p class="font-body text-body-lg text-on-surface-variant mb-8 max-w-2xl" set:html={t('tickets.intro')}>
       </p>
-      <div class="flex gap-4">
-        <CTAButton href="https://geeks.cat/#fes-te-soci" external>{t('tickets.cta.member')}</CTAButton>
+      <div class="flex flex-wrap gap-4">
+        <CTAButton href={pretixUrl} external>{t('tickets.buy')}</CTAButton>
+        <CTAButton href="https://geeks.cat/#fes-te-soci" variant="outline" external>{t('tickets.cta.member')}</CTAButton>
       </div>
     </div>
   </header>
 
   <!-- ═══════════════════════════════════════════════
-       REGISTRATION TIERS
+       REGISTRATION CARD & COMMUNITY
   ═══════════════════════════════════════════════ -->
-  <section class="py-20 px-6 bg-surface-container-low border-t border-outline-variant" id="tiers" aria-labelledby="tiers-heading">
+  <section class="py-20 px-6 bg-surface-container-low border-t border-outline-variant" id="reserva" aria-labelledby="reserva-heading">
     <div class="max-w-5xl mx-auto">
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-        {tiers.map(({ name, price, status, active, url }) => (
-          <article class={`bg-surface-container border p-8 flex flex-col gap-6 transition-all ${
-            active
-              ? 'border-primary-container neon-glow'
-              : 'border-outline-variant opacity-50'
-          }`}>
-            <div>
-              <h3 class={`font-display text-headline-md uppercase tracking-tight mb-3 ${
-                active ? 'text-on-surface' : 'text-on-surface-variant'
-              }`}>{name}</h3>
-              <p class={`font-mono text-code-lg ${
-                active ? 'text-primary-container' : 'text-on-surface-variant'
-              }`}>{price}</p>
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+
+        <!-- Targeta Principal: Reserva Gratuïta (col-7) -->
+        <article class="md:col-span-7 bg-surface-container border-2 border-primary-container neon-glow p-8 md:p-10 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="font-mono text-code-sm text-primary-container uppercase tracking-widest">{t('tickets.card.badge')}</span>
+              <span class="font-mono text-code-xs border border-primary-container/40 text-primary-container px-2.5 py-0.5 uppercase tracking-wider">{t('tickets.card.status')}</span>
             </div>
-            <div class="mt-auto flex flex-col gap-3">
-              <p class="font-mono text-code-xs text-on-surface-variant">
-                {status}
-              </p>
-              {active ? (
-                <a
-                  href={url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="inline-flex items-center justify-center font-mono font-bold text-sm px-4 py-3 uppercase tracking-tighter transition-colors duration-150 bg-primary-container text-on-primary-container hover:bg-primary-fixed-dim active:translate-y-px"
-                >
-                  {t('tickets.buy')}
-                </a>
-              ) : (
-                <button
-                  disabled
-                  class="inline-flex items-center justify-center font-mono font-bold text-sm px-4 py-3 uppercase tracking-tighter border border-outline text-outline opacity-50 cursor-not-allowed"
-                >
-                  {t('tickets.unavailable')}
-                </button>
-              )}
+            <h2 id="reserva-heading" class="font-display text-headline-lg uppercase tracking-tight mb-2">{t('tickets.card.title')}</h2>
+            <div class="flex items-baseline gap-3 mb-6">
+              <span class="font-mono text-5xl font-bold text-primary-container">{t('tickets.card.price')}</span>
+              <span class="font-mono text-code-sm text-on-surface-variant uppercase tracking-wider">/ {t('tickets.card.price_sub')}</span>
             </div>
-          </article>
-        ))}
+            <p class="font-body text-body-md text-on-surface-variant leading-relaxed mb-6">
+              {t('tickets.card.desc')}
+            </p>
+            <ul class="space-y-2.5 mb-8 list-none border-t border-outline-variant/60 pt-6">
+              <li class="flex items-center gap-3 text-on-surface text-sm font-mono">
+                <span class="text-primary-container">✓</span> {t('tickets.card.item1')}
+              </li>
+              <li class="flex items-center gap-3 text-on-surface text-sm font-mono">
+                <span class="text-primary-container">✓</span> {t('tickets.card.item2')}
+              </li>
+              <li class="flex items-center gap-3 text-on-surface text-sm font-mono">
+                <span class="text-primary-container">✓</span> {t('tickets.card.item3')}
+              </li>
+            </ul>
+          </div>
+          <div class="pt-4 border-t border-outline-variant">
+            <a
+              href={pretixUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="w-full inline-flex items-center justify-center font-mono font-bold text-base px-6 py-4 uppercase tracking-tighter transition-colors duration-150 bg-primary-container text-on-primary-container hover:bg-primary-fixed-dim active:translate-y-px"
+            >
+              {t('tickets.buy')}
+            </a>
+          </div>
+        </article>
+
+        <!-- Targeta Secundària: Comunitat i Socis (col-5) -->
+        <article class="md:col-span-5 bg-surface-container border border-outline-variant p-8 md:p-10 flex flex-col justify-between">
+          <div>
+            <span class="font-mono text-code-sm text-secondary-container uppercase tracking-widest block mb-4">{t('tickets.member.badge')}</span>
+            <h3 class="font-display text-headline-md uppercase tracking-tight mb-2">{t('tickets.member.title')}</h3>
+            <div class="flex items-baseline gap-2 mb-6">
+              <span class="font-mono text-2xl font-bold text-secondary-container">{t('tickets.member.price')}</span>
+            </div>
+            <p class="font-body text-body-md text-on-surface-variant leading-relaxed mb-6">
+              {t('tickets.member.desc')}
+            </p>
+          </div>
+          <div class="pt-4 border-t border-outline-variant mt-auto">
+            <a
+              href="https://geeks.cat/#fes-te-soci"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="w-full inline-flex items-center justify-center font-mono font-bold text-sm px-5 py-3.5 uppercase tracking-tighter transition-colors duration-150 border border-outline text-on-surface hover:border-secondary-container hover:text-secondary-container"
+            >
+              {t('tickets.cta.member')} →
+            </a>
+          </div>
+        </article>
+
       </div>
     </div>
   </section>

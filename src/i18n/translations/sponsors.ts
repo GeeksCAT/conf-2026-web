@@ -32,7 +32,7 @@ export const sponsors = {
 
     'sponsors.pitch.impact.title': 'IMPACTE DE COMUNITAT',
     'sponsors.pitch.impact.desc':
-      'El teu patrocini ajuda a mantenir les entrades assequibles i la conferència accessible per a tothom.',
+      'El teu patrocini fa possible que la conferència sigui gratuïta i accessible per a tothom.',
 
     // Tiers section
     'sponsors.tiers.tag': 'ELS NOSTRES PATROCINADORS',
@@ -80,7 +80,7 @@ export const sponsors = {
 
     'sponsors.pitch.impact.title': 'COMMUNITY IMPACT',
     'sponsors.pitch.impact.desc':
-      'Your sponsorship helps keep tickets affordable and the conference accessible to everyone.',
+      'Your sponsorship makes it possible for the conference to be free and accessible to everyone.',
 
     // Tiers section
     'sponsors.tiers.tag': 'OUR SPONSORS',
@@ -129,7 +129,7 @@ export const sponsors = {
 
     'sponsors.pitch.impact.title': 'IMPACTO DE COMUNIDAD',
     'sponsors.pitch.impact.desc':
-      'Tu patrocinio ayuda a mantener las entradas asequibles y la conferència accesible para todos.',
+      'Tu patrocinio hace posible que la conferencia sea gratuita y accesible para todos.',
 
     // Tiers section
     'sponsors.tiers.tag': 'NUESTROS PATROCINADORES',

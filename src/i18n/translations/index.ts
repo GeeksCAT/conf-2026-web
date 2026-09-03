@@ -27,7 +27,7 @@ export const index = {
     'index.about.feature3.tag': '// 10',
     'index.about.feature3.title': '100% OBERT',
     'index.about.feature3.desc':
-      'Codi de conducta, entrades asequibles i espai inclusiu per a tothom per fer xarxa, establir contactes i impulsar la comunitat.',
+      'Codi de conducta, esdeveniment gratuït i espai inclusiu per a tothom per fer xarxa, establir contactes i impulsar la comunitat.',
 
     // History bento grid
     'index.history.tag': '[ HISTORIA ]',
@@ -121,7 +121,7 @@ export const index = {
     'index.about.feature3.tag': '// 10',
     'index.about.feature3.title': '100% OPEN',
     'index.about.feature3.desc':
-      'Code of conduct, affordable tickets and inclusive space for everyone to network, make connections and boost the community.',
+      'Code of conduct, free event and inclusive space for everyone to network, make connections and boost the community.',
 
     // History bento grid
     'index.history.tag': '[ HISTORY ]',
@@ -216,7 +216,7 @@ export const index = {
     'index.about.feature3.tag': '// 10',
     'index.about.feature3.title': '100% ABIERTO',
     'index.about.feature3.desc':
-      'Código de conducta, entradas asequibles y espacio inclusivo para todos para hacer networking, establecer contactos e impulsar la comunidad.',
+      'Código de conducta, evento gratuito y espacio inclusivo para todos para hacer networking, establecer contactos e impulsar la comunidad.',
 
     // History bento grid
     'index.history.tag': '[ HISTORIA ]',

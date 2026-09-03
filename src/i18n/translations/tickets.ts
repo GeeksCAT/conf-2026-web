@@ -1,65 +1,104 @@
 export const tickets = {
   ca: {
     'tickets.title': 'Entrades',
-    'tickets.description': 'Aconsegueix la teva entrada per GeeksCAT Conf 2026.',
+    'tickets.description': 'Reserva la teva entrada gratuïta per a GeeksCAT Conf 2026.',
 
     // Hero
     'tickets.badge': '[ SUDO ACCESS ]',
     'tickets.headline': 'ENTRADES',
     'tickets.intro':
-      "Les <b>nostres sòcies no necessiten adquirir entrades</b>, fes-te sòcia abans de que obrim la compra d'entrades i gaudeix d'aquest benefici, i si ja l'hem obert, et farem un descompte especial en el preu d'aquesta.<br/><br/>" +
-      "Totes les nostres entrades inclouen l'assistència a totes les activitats dels dos dies i el dinar del segon dia.",
+      "La GeeksCAT Conf 2026 és un esdeveniment <b>100% gratuït</b>, però per motius d'aforament <b>és imprescindible reservar la teva entrada</b> a través de Pretix.<br/><br/>" +
+      "Totes les entrades inclouen l'assistència a totes les ponències, debats i espais de trobada durant els dos dies.",
     'tickets.cta.member': 'FES-TE SÒCIA',
 
-    // Tier statuses
-    'tickets.tier.bios.status': 'Pròximament disponibles',
-    'tickets.tier.kernel.status': "A partir del 1 d'agost o BIOS exhaurides",
-    'tickets.tier.user-space.status': 'A partir del 10 de setembre o KERNEL exhaurides',
+    // Ticket card
+    'tickets.card.badge': 'ACCÉS COMPLET',
+    'tickets.card.title': 'ENTRADA GENERAL',
+    'tickets.card.price': '0€',
+    'tickets.card.price_sub': 'GRATUÏTA',
+    'tickets.card.status': 'Reserva prèvia obligatòria',
+    'tickets.card.desc':
+      "Accés complet a les dues jornades de conferència (25 i 26 de setembre de 2026). Aforament limitat de l'espai.",
+    'tickets.card.item1': '25 i 26 de setembre de 2026',
+    'tickets.card.item2': 'Centre Cultural de la Mercè, Girona',
+    'tickets.card.item3': 'Accés a totes les ponències i debats',
+
+    // Member card
+    'tickets.member.badge': 'COMUNITAT GEEKSCAT',
+    'tickets.member.title': 'FES-TE SÒCIA',
+    'tickets.member.price': '40€ / any',
+    'tickets.member.desc':
+      'GeeksCAT és una associació sense ànim de lucre. Fent-te sòcia fas possible esdeveniments gratuïts com aquest i dones suport a la comunitat tecnològica de Catalunya.',
 
     // Buttons
-    'tickets.buy': 'COMPRAR →',
-    'tickets.unavailable': 'NO DISPONIBLE',
+    'tickets.buy': 'RESERVAR ENTRADA →',
   },
   en: {
     'tickets.title': 'Tickets',
-    'tickets.description': 'Get your ticket for GeeksCAT Conf 2026.',
+    'tickets.description': 'Book your free ticket for GeeksCAT Conf 2026.',
 
     // Hero
     'tickets.badge': '[ SUDO ACCESS ]',
     'tickets.headline': 'TICKETS',
     'tickets.intro':
-      "<b>Our members don't need to buy tickets</b>, become a member before we open ticket sales and enjoy this benefit, and if we have already opened them, we will give you a special discount on the price.<br/><br/>" +
-      'All our tickets include access to all activities for the two-day event and lunch for the second day.',
+      'GeeksCAT Conf 2026 is a <b>100% free event</b>, but due to venue capacity <b>booking your ticket in advance is mandatory</b> through Pretix.<br/><br/>' +
+      'All tickets include access to all talks, debates, and community spaces across both days.',
     'tickets.cta.member': 'BECOME A MEMBER',
 
-    // Tier statuses
-    'tickets.tier.bios.status': 'Coming soon',
-    'tickets.tier.kernel.status': 'From August 1st or when BIOS sold out',
-    'tickets.tier.user-space.status': 'From September 10th or when KERNEL sold out',
+    // Ticket card
+    'tickets.card.badge': 'FULL ACCESS',
+    'tickets.card.title': 'GENERAL TICKET',
+    'tickets.card.price': '0€',
+    'tickets.card.price_sub': 'FREE',
+    'tickets.card.status': 'Advance reservation required',
+    'tickets.card.desc':
+      'Full access to both conference days (September 25th & 26th, 2026). Limited venue capacity.',
+    'tickets.card.item1': 'September 25th & 26th, 2026',
+    'tickets.card.item2': 'Centre Cultural de la Mercè, Girona',
+    'tickets.card.item3': 'Access to all talks and debates',
+
+    // Member card
+    'tickets.member.badge': 'GEEKSCAT COMMUNITY',
+    'tickets.member.title': 'BECOME A MEMBER',
+    'tickets.member.price': '€40 / year',
+    'tickets.member.desc':
+      'GeeksCAT is a non-profit association. Becoming a member enables free events like this and supports the tech community in Catalonia.',
 
     // Buttons
-    'tickets.buy': 'BUY →',
-    'tickets.unavailable': 'NOT AVAILABLE',
+    'tickets.buy': 'RESERVE TICKET →',
   },
   es: {
     'tickets.title': 'Entradas',
-    'tickets.description': 'Consigue tu entrada para GeeksCAT Conf 2026.',
+    'tickets.description': 'Reserva tu entrada gratuita para GeeksCAT Conf 2026.',
 
     // Hero
     'tickets.badge': '[ SUDO ACCESS ]',
     'tickets.headline': 'ENTRADAS',
     'tickets.intro':
-      '<b>Nuestros socios no necesitan adquirir entradas</b>, hazte socio antes de que abramos la compra de entradas y disfruta de este beneficio, y si ya la hemos abierto, te haremos un descuento especial en el precio de esta.<br/><br/>' +
-      'Todas nuestras entrades incluyen la asistencia a todas las actividades de los dias y la comida del segundo dia.',
+      'La GeeksCAT Conf 2026 es un evento <b>100% gratuito</b>, pero por motivos de aforo <b>es imprescindible reservar tu entrada con antelación</b> a través de Pretix.<br/><br/>' +
+      'Todas las entradas incluyen la asistencia a todas las ponencias, debates y espacios de encuentro durante los dos días.',
     'tickets.cta.member': 'HAZTE SOCIO',
 
-    // Tier statuses
-    'tickets.tier.bios.status': 'Próximamente disponibles',
-    'tickets.tier.kernel.status': 'A partir del 1 de agosto o BIOS agotadas',
-    'tickets.tier.user-space.status': 'A partir del 10 de septiembre o KERNEL agotadas',
+    // Ticket card
+    'tickets.card.badge': 'ACCESO COMPLETO',
+    'tickets.card.title': 'ENTRADA GENERAL',
+    'tickets.card.price': '0€',
+    'tickets.card.price_sub': 'GRATUITA',
+    'tickets.card.status': 'Reserva previa obligatoria',
+    'tickets.card.desc':
+      'Acceso completo a las dos jornadas de conferencia (25 y 26 de septiembre de 2026). Aforo limitado del espacio.',
+    'tickets.card.item1': '25 y 26 de septiembre de 2026',
+    'tickets.card.item2': 'Centre Cultural de la Mercè, Girona',
+    'tickets.card.item3': 'Acceso a todas las ponencias y debates',
+
+    // Member card
+    'tickets.member.badge': 'COMUNIDAD GEEKSCAT',
+    'tickets.member.title': 'HAZTE SOCIO',
+    'tickets.member.price': '40€ / año',
+    'tickets.member.desc':
+      'GeeksCAT es una asociación sin ánimo de lucro. Haciéndote socio haces posible eventos gratuitos como este y apoyas a la comunidad tecnológica de Cataluña.',
 
     // Buttons
-    'tickets.buy': 'COMPRAR →',
-    'tickets.unavailable': 'NO DISPONIBLE',
+    'tickets.buy': 'RESERVAR ENTRADA →',
   },
 } as const;
