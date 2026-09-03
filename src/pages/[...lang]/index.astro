@@ -14,7 +14,7 @@ const speakersPath = localizedPath('/speakers', locale);
 const ticketsPath = localizedPath('/tickets', locale);
 
 // The home shows a teaser of the lineup; the full list lives on /speakers.
-const SPEAKER_SLOTS = 4;
+const SPEAKER_SLOTS = 8;
 
 const allSpeakers = await getCollection('speakers');
 const featuredSpeakers = allSpeakers
