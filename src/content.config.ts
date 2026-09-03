@@ -38,7 +38,7 @@ const speakers = defineCollection({
 
 // Fixed structure: all fields required and no defaults. Only fields currently
 // used by the site are present here.
-// Sessions cover talks/workshops/etc. Both session and spacer are required to
+// Sessions cover talks/etc. Both session and spacer are required to
 // provide start `time` and explicit `end` fields. Sessions represent speaker-led
 // items and no longer carry `duration`, `track`, or `level` metadata.
 const sessionSchema = z.object({

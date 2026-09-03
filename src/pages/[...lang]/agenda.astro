@@ -54,7 +54,7 @@ function formatTimeRange(item: (typeof talks)[number] | undefined) {
 
 <BaseLayout
   title={t('agenda.title')}
-  description="Agenda de GeeksCAT Conf 2026. Tallers, ponencies, debats i molt més"
+  description="Agenda de GeeksCAT Conf 2026. Ponències, debats i molt més"
 >
 
   <!-- ═══════════════════════════════════════════════
@@ -91,7 +91,7 @@ function formatTimeRange(item: (typeof talks)[number] | undefined) {
           <div class="w-full lg:w-1/2">
             <h3 class="font-display text-headline-md uppercase tracking-tight mb-4">{t('agenda.schedule.day1')}</h3>
             <div class="overflow-x-auto custom-scrollbar -mx-6 px-6">
-              <table class="w-full min-w-[320px] border-collapse" role="grid" aria-label="Tallers">
+              <table class="w-full min-w-[320px] border-collapse" role="grid" aria-label={t('agenda.schedule.day1')}>
                 <thead>
                   <tr>
                     <th class="w-20 shrink-0 font-mono text-code-sm text-on-surface-variant/60 uppercase tracking-widest text-left pb-4 pr-4">{t('agenda.schedule.time')}</th>
@@ -163,7 +163,7 @@ function formatTimeRange(item: (typeof talks)[number] | undefined) {
           <div class="w-full lg:w-1/2">
             <h3 class="font-display text-headline-md uppercase tracking-tight mb-4">{t('agenda.schedule.day2')}</h3>
             <div class="overflow-x-auto custom-scrollbar -mx-6 px-6">
-              <table class="w-full min-w-[320px] border-collapse" role="grid" aria-label="Ponencies">
+              <table class="w-full min-w-[320px] border-collapse" role="grid" aria-label={t('agenda.schedule.day2')}>
                 <thead>
                   <tr>
                     <th class="w-20 shrink-0 font-mono text-code-sm text-on-surface-variant/60 uppercase tracking-widest text-left pb-4 pr-4">{t('agenda.schedule.time')}</th>

@@ -22,7 +22,7 @@ export const index = {
     'index.about.feature2.tag': '// 01',
     'index.about.feature2.title': '100% TÈCNIC',
     'index.about.feature2.desc':
-      'Xerrades, tallers, taules rodones, espais compartits i de debat. Zero xerrades de vendes. Zero buzzwords buits.',
+      'Xerrades, taules rodones, espais compartits i de debat. Zero xerrades de vendes. Zero buzzwords buits.',
 
     'index.about.feature3.tag': '// 10',
     'index.about.feature3.title': '100% OBERT',
@@ -85,10 +85,6 @@ export const index = {
     'index.topics.dev.desc':
       'Arquitectures modernes, Infraestructura com a codi, observabilitat, CI/CD, Kubernetes, bones pràctiques, IA aplicada, LLMs, pipelines, ...',
 
-    'index.topics.workshops.tag': '/lib',
-    'index.topics.workshops.title': 'Tallers',
-    'index.topics.workshops.desc': 'Desenvolupament, optimitzacions, microcontroladors, ....',
-
     'index.topics.debates.tag': '/usr',
     'index.topics.debates.title': 'Debats',
     'index.topics.debates.desc':
@@ -120,7 +116,7 @@ export const index = {
     'index.about.feature2.tag': '// 01',
     'index.about.feature2.title': '100% TECHNICAL',
     'index.about.feature2.desc':
-      'Talks, workshops, round tables, shared spaces and debates. Zero sales pitches. Zero empty buzzwords.',
+      'Talks, round tables, shared spaces and debates. Zero sales pitches. Zero empty buzzwords.',
 
     'index.about.feature3.tag': '// 10',
     'index.about.feature3.title': '100% OPEN',
@@ -183,10 +179,6 @@ export const index = {
     'index.topics.dev.desc':
       'Modern architectures, Infrastructure as code, observability, CI/CD, Kubernetes, best practices, applied AI, LLMs, pipelines, ...',
 
-    'index.topics.workshops.tag': '/lib',
-    'index.topics.workshops.title': 'Workshops',
-    'index.topics.workshops.desc': 'Development, optimizations, microcontrollers, ....',
-
     'index.topics.debates.tag': '/usr',
     'index.topics.debates.title': 'Debates',
     'index.topics.debates.desc':
@@ -219,7 +211,7 @@ export const index = {
     'index.about.feature2.tag': '// 01',
     'index.about.feature2.title': '100% TÉCNICO',
     'index.about.feature2.desc':
-      'Charlas, talleres, mesas redondas, espacios compartidos y de debate. Cero charlas de ventas. Cero buzzwords vacíos.',
+      'Charlas, mesas redondas, espacios compartidos y de debate. Cero charlas de ventas. Cero buzzwords vacíos.',
 
     'index.about.feature3.tag': '// 10',
     'index.about.feature3.title': '100% ABIERTO',
@@ -281,10 +273,6 @@ export const index = {
     'index.topics.dev.title': 'Dev, Ops, Data, AI',
     'index.topics.dev.desc':
       'Arquitecturas modernas, Infraestructura como código, observabilidad, CI/CD, Kubernetes, buenas prácticas, IA aplicada, LLMs, pipelines, ...',
-
-    'index.topics.workshops.tag': '/lib',
-    'index.topics.workshops.title': 'Talleres',
-    'index.topics.workshops.desc': 'Desarrollo, optimizaciones, microcontroladores, ....',
 
     'index.topics.debates.tag': '/usr',
     'index.topics.debates.title': 'Debates',

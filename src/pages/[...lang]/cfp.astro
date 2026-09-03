@@ -40,7 +40,6 @@ const topics = [
 const formats = [
   { label: t('cfp.formats.talk'), duration: t('cfp.formats.talk.duration'), description: t('cfp.formats.talk.desc') },
   { label: t('cfp.formats.lightning'), duration: t('cfp.formats.lightning.duration'), description: t('cfp.formats.lightning.desc') },
-  { label: t('cfp.formats.workshop'), duration: t('cfp.formats.workshop.duration'), description: t('cfp.formats.workshop.desc') },
 ] as const;
 
 const gratificacions = [
@@ -143,7 +142,7 @@ const gratificacions = [
     <div class="max-w-5xl mx-auto">
       <SectionHeader tag={t('cfp.formats.tag')} title={t('cfp.formats.title')} />
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         {formats.map(({ label, duration, description }) => (
           <div class="bg-surface-container border border-outline-variant p-8 flex flex-col gap-4">
             <div>

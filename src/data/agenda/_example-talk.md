@@ -1,7 +1,7 @@
 ---
 type: session
 slug: example-session
-title: "Example Session: Short Workshop"
+title: "Example Session: Short Talk"
 speakerSlug: "laura-puig"
 time: "14:00"
 end: "14:45"

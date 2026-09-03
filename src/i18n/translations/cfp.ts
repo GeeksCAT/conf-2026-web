@@ -50,9 +50,6 @@ export const cfp = {
     'cfp.formats.lightning.duration': '10 min + 10 mins per preguntes',
     'cfp.formats.lightning.desc':
       "Presentació ràpida d'una idea, eina o experiment. Alt impacte, baix temps.",
-    'cfp.formats.workshop': 'TALLER',
-    'cfp.formats.workshop.duration': '120 min <= X <= 180 min',
-    'cfp.formats.workshop.desc': 'Sessió pràctica amb participants. Requereix proposta detallada.',
 
     // Topics
     'cfp.topics.tag': 'ALGUNES DE LES ÀREES TEMÀTIQUES PROPOSADES',
@@ -150,9 +147,6 @@ export const cfp = {
     'cfp.formats.lightning.duration': '10 min + 10 mins for questions',
     'cfp.formats.lightning.desc':
       'Quick presentation of an idea, tool or experiment. High impact, low time.',
-    'cfp.formats.workshop': 'WORKSHOP',
-    'cfp.formats.workshop.duration': '120 min <= X <= 180 min',
-    'cfp.formats.workshop.desc': 'Hands-on session with participants. Requires detailed proposal.',
 
     // Topics
     'cfp.topics.tag': 'SOME OF THE PROPOSED THEMATIC AREAS',
@@ -251,9 +245,6 @@ export const cfp = {
     'cfp.formats.lightning.duration': '10 min + 10 mins para preguntas',
     'cfp.formats.lightning.desc':
       'Presentación rápida de una idea, herramienta o experimento. Alto impacto, bajo tiempo.',
-    'cfp.formats.workshop': 'TALLER',
-    'cfp.formats.workshop.duration': '120 min <= X <= 180 min',
-    'cfp.formats.workshop.desc': 'Sesión práctica con participantes. Requiere propuesta detallada.',
 
     // Topics
     'cfp.topics.tag': 'ALGUNAS DE LAS ÁREAS TEMÁTICAS PROPUESTAS',

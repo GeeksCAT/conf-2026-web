@@ -262,21 +262,13 @@ const speakerPlaceholderCount = SPEAKER_SLOTS - featuredSpeakers.length;
     <div class="max-w-5xl mx-auto">
       <SectionHeader tag={t('index.topics.tag')} title="" />
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
 
         <article class="bg-surface-container border-l-4 border-secondary-container p-8 hover:bg-surface-container-high transition-colors duration-200">
           <p class="font-mono text-code-sm text-secondary-container uppercase tracking-widest mb-4">{t('index.topics.dev.tag')}</p>
           <h3 class="font-display text-headline-md uppercase tracking-tight mb-3">{t('index.topics.dev.title')}</h3>
           <p class="font-body text-body-md text-on-surface-variant leading-relaxed">
             {t('index.topics.dev.desc')}
-          </p>
-        </article>
-
-        <article class="bg-surface-container border-l-4 border-primary-fixed-dim p-8 hover:bg-surface-container-high transition-colors duration-200">
-          <p class="font-mono text-code-sm text-primary-fixed-dim uppercase tracking-widest mb-4">{t('index.topics.workshops.tag')}</p>
-          <h3 class="font-display text-headline-md uppercase tracking-tight mb-3">{t('index.topics.workshops.title')}</h3>
-          <p class="font-body text-body-md text-on-surface-variant leading-relaxed">
-            {t('index.topics.workshops.desc')}
           </p>
         </article>
 
