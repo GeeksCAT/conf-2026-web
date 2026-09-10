@@ -8,4 +8,4 @@ locale: "es"
 draft: false
 ---
 
-Alojamiento de excelente calidad a un buen precio para nuestros organizadores, ponentes y asistentes.
+Alojamiento de excelente calidad a un buen precio para nuestros organizadores, ponentes y asistentes

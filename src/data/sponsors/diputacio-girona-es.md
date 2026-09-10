@@ -8,4 +8,4 @@ locale: "es"
 draft: false
 ---
 
-Soporte institucional al fommento de la cultura digital y tenológica al territorio de Girona.
+Soporte institucional al fommento de la cultura digital y tenológica al territorio de Girona

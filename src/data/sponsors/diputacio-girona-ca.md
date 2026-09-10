@@ -8,4 +8,4 @@ locale: "ca"
 draft: false
 ---
 
-Suport institucional al foment de la cultura digital i tecnològica al territori de Girona.
+Suport institucional al foment de la cultura digital i tecnològica al territori de Girona
