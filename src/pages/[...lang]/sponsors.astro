@@ -25,12 +25,15 @@ const sponsorsByTier = {
 };
 
 // Define minimum slots per tier (for placeholders)
+// Tiers with 0 slots and no sponsors are hidden (title + grid not rendered)
 const tierSlots = {
   pb: 1,
-  tb: 1,
-  gb: 2,
-  mb: 3,
-};
+  tb: 0,
+  gb: 0,
+  mb: 0,
+} as const;
+
+type TierKey = keyof typeof tierSlots;
 
 // Helper to get items + placeholders
 function getItemsWithPlaceholders(items: any[], minSlots: number) {
@@ -38,44 +41,81 @@ function getItemsWithPlaceholders(items: any[], minSlots: number) {
   return Array.from({ length: count }, (_, i) => items[i] || null);
 }
 
-const tierConfig = {
+const tierConfig: Record<
+  TierKey,
+  {
+    label: string;
+    titleClass: string;
+    borderClass: string;
+    hoverClass: string;
+    gridClass: string;
+    gapClass: string;
+    minHeight: string;
+    padding: string;
+    badgeClass: string;
+    tbaClass: string;
+    placeholderExtraClass: string;
+  }
+> = {
   pb: {
     label: '[ PETABYTE ]',
-    color: 'primary-container',
+    titleClass: 'text-primary-container',
     borderClass: 'border-2 border-primary-container neon-glow',
     hoverClass: 'hover:border-primary-container',
     gridClass: 'grid grid-cols-1',
+    gapClass: 'gap-4',
     minHeight: 'min-h-45',
     padding: 'p-12',
+    badgeClass: 'font-mono text-code-sm text-primary-container uppercase tracking-widest mb-2',
+    tbaClass: 'font-display text-headline-md text-on-surface-variant uppercase tracking-tight',
+    placeholderExtraClass: '',
   },
   tb: {
     label: '[ TERABYTE ]',
-    color: 'primary-fixed-dim',
+    titleClass: 'text-primary-fixed-dim',
     borderClass: 'border border-primary-fixed-dim/40',
     hoverClass: 'hover:border-primary-fixed-dim',
     gridClass: 'grid grid-cols-1 sm:grid-cols-1',
+    gapClass: 'gap-4',
     minHeight: 'min-h-35',
     padding: 'p-8',
+    badgeClass: 'font-mono text-code-sm text-primary-fixed-dim uppercase tracking-widest mb-1',
+    tbaClass: 'font-display text-headline-md text-outline uppercase tracking-tight',
+    placeholderExtraClass: 'hover:border-primary-fixed-dim transition-colors duration-200',
   },
   gb: {
     label: '[ GIGABYTE ]',
-    color: 'on-surface',
+    titleClass: '',
     borderClass: 'border border-outline-variant',
     hoverClass: 'hover:border-on-surface-variant',
     gridClass: 'grid grid-cols-2 lg:grid-cols-2',
+    gapClass: 'gap-4',
     minHeight: 'min-h-30',
     padding: 'p-6',
+    badgeClass: 'font-mono text-code-sm text-outline uppercase tracking-widest mb-1',
+    tbaClass: 'font-display text-label-md text-outline uppercase tracking-tight',
+    placeholderExtraClass: 'hover:border-on-surface-variant transition-colors duration-200',
   },
   mb: {
     label: '[ MEGABYTE ]',
-    color: 'on-surface-variant',
+    titleClass: 'text-on-surface-variant',
     borderClass: 'border border-outline-variant/60',
     hoverClass: 'hover:border-outline-variant',
     gridClass: 'grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3',
+    gapClass: 'gap-3',
     minHeight: 'min-h-20',
     padding: 'p-4',
+    badgeClass: 'font-mono text-code-sm text-outline uppercase tracking-widest text-xs mb-0.5',
+    tbaClass: 'font-display text-label-md text-outline uppercase tracking-tight text-xs',
+    placeholderExtraClass: 'hover:border-outline-variant transition-colors duration-200',
   },
 };
+
+// Only show tiers that have sponsors or reserved slots.
+// This prevents rendering empty tier titles for tiers set to 0 in tierSlots.
+const visibleTiers = (Object.keys(tierConfig) as TierKey[]).filter(
+  (key) => sponsorsByTier[key].length > 0 || tierSlots[key] > 0,
+);
 ---
 
 <BaseLayout
@@ -104,126 +144,48 @@ const tierConfig = {
   <!-- ═══════════════════════════════════════════════
        TIERS
   ═══════════════════════════════════════════════ -->
+  {visibleTiers.length > 0 && (
   <section class="py-20 px-6" aria-labelledby="tiers-heading">
     <div class="max-w-5xl mx-auto">
       <SectionHeader tag={t('sponsors.tiers.tag')} title="" />
 
       <div class="space-y-16">
-
-        <!-- PETABYTE — 1 slot, màxima prominència -->
-        <div>
-          <div class="flex items-baseline gap-4 mb-6">
-            <h2 class="font-display text-headline-lg uppercase tracking-tighter text-primary-container">{tierConfig.pb.label}</h2>
-          </div>
-          <div class={tierConfig.pb.gridClass + ' gap-4'}>
-            {getItemsWithPlaceholders(sponsorsByTier.pb, tierSlots.pb).map((sponsor) => (
-              sponsor ? (
-                <a
-                  href={sponsor.data.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class={`${tierConfig.pb.borderClass} ${tierConfig.pb.padding} flex items-center justify-center ${tierConfig.pb.minHeight} bg-surface-container ${tierConfig.pb.hoverClass} transition-colors duration-200`}
-                >
-                  <img src={sponsor.data.logo} alt={sponsor.data.name} class="max-w-full max-h-full object-contain" />
-                </a>
-              ) : (
-                <div class={`${tierConfig.pb.borderClass} ${tierConfig.pb.padding} flex items-center justify-center ${tierConfig.pb.minHeight} bg-surface-container`}>
-                  <div class="text-center">
-                    <p class="font-mono text-code-sm text-primary-container uppercase tracking-widest mb-2">{t('sponsors.tiers.available')}</p>
-                    <p class="font-display text-headline-md text-on-surface-variant uppercase tracking-tight">{t('sponsors.tiers.tba')}</p>
-                  </div>
-                </div>
-              )
-            ))}
-          </div>
-        </div>
-
-        <!-- TERABYTE — 1 slot -->
-        <div>
-          <div class="flex items-baseline gap-4 mb-6">
-            <h2 class="font-display text-headline-lg uppercase tracking-tighter text-primary-fixed-dim">{tierConfig.tb.label}</h2>
-          </div>
-          <div class={tierConfig.tb.gridClass + ' gap-4'}>
-            {getItemsWithPlaceholders(sponsorsByTier.tb, tierSlots.tb).map((sponsor) => (
-              sponsor ? (
-                <a
-                  href={sponsor.data.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class={`${tierConfig.tb.borderClass} ${tierConfig.tb.padding} flex items-center justify-center ${tierConfig.tb.minHeight} bg-surface-container ${tierConfig.tb.hoverClass} transition-colors duration-200`}
-                >
-                  <img src={sponsor.data.logo} alt={sponsor.data.name} class="max-w-full max-h-full object-contain" />
-                </a>
-              ) : (
-                <div class={`${tierConfig.tb.borderClass} ${tierConfig.tb.padding} flex items-center justify-center ${tierConfig.tb.minHeight} bg-surface-container ${tierConfig.tb.hoverClass} transition-colors duration-200`}>
-                  <div class="text-center">
-                    <p class="font-mono text-code-sm text-primary-fixed-dim uppercase tracking-widest mb-1">{t('sponsors.tiers.available')}</p>
-                    <p class="font-display text-headline-md text-outline uppercase tracking-tight" aria-hidden="true">{t('sponsors.tiers.tba')}</p>
-                  </div>
-                </div>
-              )
-            ))}
-          </div>
-        </div>
-
-        <!-- GIGABYTE — 2 slots -->
-        <div>
-          <div class="flex items-baseline gap-4 mb-6">
-            <h2 class="font-display text-headline-lg uppercase tracking-tighter">{tierConfig.gb.label}</h2>
-          </div>
-          <div class={tierConfig.gb.gridClass + ' gap-4'}>
-            {getItemsWithPlaceholders(sponsorsByTier.gb, tierSlots.gb).map((sponsor) => (
-              sponsor ? (
-                <a
-                  href={sponsor.data.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class={`${tierConfig.gb.borderClass} ${tierConfig.gb.padding} flex items-center justify-center ${tierConfig.gb.minHeight} bg-surface-container ${tierConfig.gb.hoverClass} transition-colors duration-200`}
-                >
-                  <img src={sponsor.data.logo} alt={sponsor.data.name} class="max-w-full max-h-full object-contain" />
-                </a>
-              ) : (
-                <div class={`${tierConfig.gb.borderClass} ${tierConfig.gb.padding} flex items-center justify-center ${tierConfig.gb.minHeight} bg-surface-container ${tierConfig.gb.hoverClass} transition-colors duration-200`}>
-                  <div class="text-center">
-                    <p class="font-mono text-code-sm text-outline uppercase tracking-widest mb-1">{t('sponsors.tiers.available')}</p>
-                    <p class="font-display text-label-md text-outline uppercase tracking-tight" aria-hidden="true">{t('sponsors.tiers.tba')}</p>
-                  </div>
-                </div>
-              )
-            ))}
-          </div>
-        </div>
-
-        <!-- MEGABYTE — 3 slots -->
-        <div>
-          <div class="flex items-baseline gap-4 mb-6">
-            <h2 class="font-display text-headline-lg uppercase tracking-tighter text-on-surface-variant">{tierConfig.mb.label}</h2>
-          </div>
-          <div class={tierConfig.mb.gridClass + ' gap-3'}>
-            {getItemsWithPlaceholders(sponsorsByTier.mb, tierSlots.mb).map((sponsor) => (
-              sponsor ? (
-                <a
-                  href={sponsor.data.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class={`${tierConfig.mb.borderClass} ${tierConfig.mb.padding} flex items-center justify-center ${tierConfig.mb.minHeight} bg-surface-container ${tierConfig.mb.hoverClass} transition-colors duration-200`}
-                >
-                  <img src={sponsor.data.logo} alt={sponsor.data.name} class="max-w-full max-h-full object-contain" />
-                </a>
-              ) : (
-                <div class={`${tierConfig.mb.borderClass} ${tierConfig.mb.padding} flex items-center justify-center ${tierConfig.mb.minHeight} bg-surface-container ${tierConfig.mb.hoverClass} transition-colors duration-200`}>
-                  <div class="text-center">
-                    <p class="font-mono text-code-sm text-outline uppercase tracking-widest text-xs mb-0.5">{t('sponsors.tiers.available')}</p>
-                    <p class="font-display text-label-md text-outline uppercase tracking-tight text-xs" aria-hidden="true">{t('sponsors.tiers.tba')}</p>
-                  </div>
-                </div>
-              )
-            ))}
-          </div>
-        </div>
+        {visibleTiers.map((key) => {
+          const config = tierConfig[key];
+          const items = getItemsWithPlaceholders(sponsorsByTier[key], tierSlots[key]);
+          return (
+            <div>
+              <div class="flex items-baseline gap-4 mb-6">
+                <h2 class={`font-display text-headline-lg uppercase tracking-tighter ${config.titleClass}`}>{config.label}</h2>
+              </div>
+              <div class={`${config.gridClass} ${config.gapClass}`}>
+                {items.map((sponsor) => (
+                  sponsor ? (
+                    <a
+                      href={sponsor.data.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class={`${config.borderClass} ${config.padding} flex items-center justify-center ${config.minHeight} bg-surface-container ${config.hoverClass} transition-colors duration-200`}
+                    >
+                      <img src={sponsor.data.logo} alt={sponsor.data.name} class="max-w-full max-h-full object-contain" />
+                    </a>
+                  ) : (
+                    <div class={`${config.borderClass} ${config.padding} flex items-center justify-center ${config.minHeight} bg-surface-container ${config.placeholderExtraClass}`}>
+                      <div class="text-center">
+                        <p class={config.badgeClass}>{t('sponsors.tiers.available')}</p>
+                        <p class={config.tbaClass} aria-hidden="true">{t('sponsors.tiers.tba')}</p>
+                      </div>
+                    </div>
+                  )
+                ))}
+              </div>
+            </div>
+          );
+        })}
       </div>
     </div>
   </section>
+  )}
 
   <!-- ═══════════════════════════════════════════════
        COL·LABORADORS
