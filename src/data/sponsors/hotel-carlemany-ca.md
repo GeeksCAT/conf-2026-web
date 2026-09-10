@@ -8,4 +8,4 @@ locale: "ca"
 draft: false
 ---
 
-Allotajament de excelent qualitat a un bon preu per els nostres organitzadors, ponents i assistents.
+Allotajament de excelent qualitat a un bon preu per els nostres organitzadors, ponents i assistents

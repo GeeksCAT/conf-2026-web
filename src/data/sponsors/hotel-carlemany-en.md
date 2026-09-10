@@ -8,4 +8,4 @@ locale: "en"
 draft: false
 ---
 
-Excellent quality accommodation for an affordable price for our organizers, speakers, and attendees.
+Excellent quality accommodation for an affordable price for our organizers, speakers, and attendees

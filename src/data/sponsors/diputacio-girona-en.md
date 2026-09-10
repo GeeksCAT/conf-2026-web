@@ -8,4 +8,4 @@ locale: "en"
 draft: false
 ---
 
-Institutional support to foster the digital culture and technology in Girona region.
+Institutional support to foster the digital culture and technology in Girona region
