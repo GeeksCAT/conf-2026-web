@@ -1,5 +1,5 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../components/BaseLayout.astro';
 import CTAButton from '../../components/CTAButton.astro';
 import SectionHeader from '../../components/SectionHeader.astro';
@@ -14,6 +14,13 @@ const allSponsors = await getCollection('sponsors');
 const sponsors = allSponsors
   .filter((s) => s.data.locale === locale && !s.data.draft)
   .sort((a, b) => a.data.order - b.data.order);
+
+// Pre-render markdown bodies (text after front-matter) for sponsors + collaborators
+const sponsorBodies = new Map();
+for (const s of sponsors) {
+  const { Content } = await render(s);
+  sponsorBodies.set(s.id, Content);
+}
 
 // Group by tier
 const sponsorsByTier = {
@@ -159,16 +166,28 @@ const visibleTiers = (Object.keys(tierConfig) as TierKey[]).filter(
                 <h2 class={`font-display text-headline-lg uppercase tracking-tighter ${config.titleClass}`}>{config.label}</h2>
               </div>
               <div class={`${config.gridClass} ${config.gapClass}`}>
-                {items.map((sponsor) => (
-                  sponsor ? (
-                    <a
-                      href={sponsor.data.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class={`${config.borderClass} ${config.padding} flex items-center justify-center ${config.minHeight} bg-surface-container ${config.hoverClass} transition-colors duration-200`}
-                    >
-                      <img src={sponsor.data.logo} alt={sponsor.data.name} class="max-w-full max-h-full object-contain" />
-                    </a>
+                {items.map((sponsor) => {
+                  const SponsorBody = sponsor ? sponsorBodies.get(sponsor.id) : null;
+                  const hasBody = !!sponsor?.body?.trim();
+                  return sponsor ? (
+                    <div class="bg-surface-container border border-outline-variant p-2 flex flex-col gap-2">
+                      <a
+                        href={sponsor.data.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class={`w-full ${config.borderClass} ${config.padding} flex items-center justify-center ${config.minHeight} bg-surface-container-high ${config.hoverClass} transition-colors duration-200`}
+                      >
+                        <img src={sponsor.data.logo} alt={sponsor.data.name} class="max-w-full max-h-full object-contain" />
+                      </a>
+                      <div>
+                        <p class="font-mono text-code-sm text-on-surface-variant uppercase tracking-widest">{sponsor.data.name}</p>
+                        {SponsorBody && hasBody && (
+                          <div class="font-body text-body-md text-on-surface-variant mt-3 [&_p]:m-0 [&_a]:underline">
+                            <SponsorBody />
+                          </div>
+                        )}
+                      </div>
+                    </div>
                   ) : (
                     <div class={`${config.borderClass} ${config.padding} flex items-center justify-center ${config.minHeight} bg-surface-container ${config.placeholderExtraClass}`}>
                       <div class="text-center">
@@ -176,8 +195,8 @@ const visibleTiers = (Object.keys(tierConfig) as TierKey[]).filter(
                         <p class={config.tbaClass} aria-hidden="true">{t('sponsors.tiers.tba')}</p>
                       </div>
                     </div>
-                  )
-                ))}
+                  );
+                })}
               </div>
             </div>
           );
@@ -196,7 +215,10 @@ const visibleTiers = (Object.keys(tierConfig) as TierKey[]).filter(
         <SectionHeader tag={t('sponsors.collaborators')} title="" />
 
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {sponsorsByTier.collaborator.map((collaborator) => (
+          {sponsorsByTier.collaborator.map((collaborator) => {
+            const CollabBody = sponsorBodies.get(collaborator.id);
+            const hasBody = !!collaborator?.body?.trim();
+            return (
             <div class="bg-surface-container border border-outline-variant p-2 flex flex-col gap-2 max-w-lg mx-auto">
                 <a
                   href={collaborator.data.url}
@@ -207,11 +229,16 @@ const visibleTiers = (Object.keys(tierConfig) as TierKey[]).filter(
                   <img src={collaborator.data.logo} alt={collaborator.data.name} class="max-w-full max-h-full object-contain p-2" />
               </a>
               <div>
-                <p class="font-mono text-code-sm text-on-surface-variant uppercase tracking-widest">{t('sponsors.collab.badge')}</p>
-                <p class="font-body text-body-md text-on-surface-variant mt-3">{t('sponsors.collab.desc')}</p>
+                <p class="font-mono text-code-sm text-on-surface-variant uppercase tracking-widest">{collaborator.data.name}</p>
+                {CollabBody && hasBody && (
+                  <div class="font-body text-body-md text-on-surface-variant mt-3 [&_p]:m-0 [&_a]:underline">
+                    <CollabBody />
+                  </div>
+                )}
               </div>
             </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

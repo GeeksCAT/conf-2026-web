@@ -21,4 +21,4 @@ locale: "ca"
 draft: true
 ---
 
-Optional additional content or description about the sponsor (not currently used in schema).
+Optional additional content or description about the sponsor.
