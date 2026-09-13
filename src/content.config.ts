@@ -72,7 +72,11 @@ const spacerSchema = z.object({
 });
 
 const talks = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './src/data/agenda' }),
+  loader: glob({
+    pattern: '**/*.md',
+    base: './src/data/agenda',
+    generateId: ({ entry }) => entry.replace(/\.md$/, ''),
+  }),
   schema: z.discriminatedUnion('type', [sessionSchema, spacerSchema]),
 });
 

@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import { marked } from 'marked';
 import BaseLayout from '../../components/BaseLayout.astro';
+import Icon from '../../components/Icon.astro';
 import SectionHeader from '../../components/SectionHeader.astro';
 import { getLocale, useTranslations } from '../../i18n/utils';
 export { getStaticPaths } from '../../i18n/utils';
@@ -13,7 +14,11 @@ const allTalks = await getCollection('talks');
 const talks = allTalks.filter((tk) => tk.data.locale === locale);
 
 const allSpeakers = await getCollection('speakers');
-const speakerMap = new Map(allSpeakers.map((s) => [s.data.slug, s.data]));
+const speakerMap = new Map(
+  allSpeakers
+    .filter((s) => s.data.locale === locale)
+    .map((s) => [s.data.slug, s.data]),
+);
 
 // Parse markdown body to HTML
 const parseMarkdown = (markdown: string | undefined) => {
@@ -66,6 +71,14 @@ function formatTimeRange(item: (typeof talks)[number] | undefined) {
     <div class="max-w-5xl mx-auto">
       <SectionHeader tag={t('agenda.schedule.tag')} title="" />
 
+      <!-- Nota de possibles canvis en l'agenda -->
+      <div class="mb-8 p-4 bg-surface-container border-l-4 border-secondary-container flex items-start gap-3">
+        <span class="font-mono text-code-sm text-secondary-container select-none shrink-0" aria-hidden="true">[ ! ]</span>
+        <p class="font-body text-body-md text-on-surface-variant">
+          {t('agenda.disclaimer')}
+        </p>
+      </div>
+
       {schedule.length > 0 ? (
         <div class="overflow-x-auto custom-scrollbar -mx-6 px-6">
           <table class="w-full min-w-[320px] border-collapse" role="grid" aria-label={t('agenda.schedule.tag')}>
@@ -79,48 +92,50 @@ function formatTimeRange(item: (typeof talks)[number] | undefined) {
               {schedule.map((item) => (
                 <tr>
                   <td class="py-4 pr-4 align-top">
-                    <span class="font-mono text-code-sm text-on-surface-variant/60 whitespace-nowrap">{formatTimeRange(item) ?? '—'}</span>
+                    <span class="font-mono text-code-sm text-on-surface-variant/70 whitespace-nowrap">{formatTimeRange(item) ?? '—'}</span>
                   </td>
                   <td class="py-4 px-3 align-top">
-                    {(item.body && String(item.body).trim().length > 0) ? (
-                      <details class="group" id={`entry-${item.data.slug}`}>
-                        <summary class="list-none cursor-pointer">
-                          {item.data.type === 'spacer' ? (
-                            <div class="bg-surface-container-low border border-outline-variant p-3 rounded">
-                              {item.data.title && <p class="font-display text-label-sm uppercase tracking-tight mb-1">{item.data.title}</p>}
-                              <div class="prose max-w-none text-on-surface-variant" set:html={parseMarkdown(item.body)} />
-                            </div>
-                          ) : (
-                            <div>
-                              <p class="font-display text-label-md uppercase tracking-tight leading-snug mb-1">{item.data.title}</p>
-                              {speakerMap.get(item.data.speakerSlug) && (
-                                <p class="font-body text-body-md text-on-surface-variant text-sm mb-2">{speakerMap.get(item.data.speakerSlug)?.name}</p>
-                              )}
-                              <div class="flex flex-wrap gap-2 items-center">
-                                <span class="font-mono text-xs text-on-surface-variant/60 border border-outline-variant/60 px-2 py-0.5 uppercase">{item.data.lang}</span>
-                              </div>
-                            </div>
-                          )}
-                        </summary>
-                        <div class="mt-3 prose max-w-none text-on-surface-variant" set:html={parseMarkdown(item.body)} />
-                      </details>
+                    {item.data.type === 'spacer' ? (
+                      <div class="bg-surface-container-low border border-outline-variant/60 p-3">
+                        <p class="font-mono text-code-sm uppercase tracking-wider text-primary-container">{item.data.title}</p>
+                        {item.body && <div class="prose max-w-none text-on-surface-variant text-sm mt-1" set:html={parseMarkdown(item.body)} />}
+                      </div>
                     ) : (
-                      item.data.type === 'spacer' ? (
-                        <div class="bg-surface-container-low border border-outline-variant p-3 rounded">
-                          {item.data.title && <p class="font-display text-label-sm uppercase tracking-tight mb-1">{item.data.title}</p>}
-                          <div class="prose max-w-none text-on-surface-variant" set:html={parseMarkdown(item.body)} />
+                      <button
+                        type="button"
+                        class="w-full text-left p-3 -m-3 cursor-pointer group hover:bg-surface-container transition-colors flex flex-col gap-1 focus-visible:outline-2 focus-visible:outline-primary-container"
+                        data-open-modal={`modal-${item.data.slug}`}
+                        aria-haspopup="dialog"
+                      >
+                        <div class="flex items-start justify-between gap-4">
+                          <p class="font-display text-headline-sm uppercase tracking-tight leading-snug group-hover:text-primary-container transition-colors">
+                            {item.data.title}
+                          </p>
+                          <span class="font-mono text-xs text-primary-container opacity-0 group-hover:opacity-100 transition-opacity shrink-0 pt-0.5" aria-hidden="true">
+                            [+] INFO
+                          </span>
                         </div>
-                      ) : (
-                        <div>
-                          <p class="font-display text-label-md uppercase tracking-tight leading-snug mb-1">{item.data.title}</p>
-                          {speakerMap.get(item.data.speakerSlug) && (
-                            <p class="font-body text-body-md text-on-surface-variant text-sm mb-2">{speakerMap.get(item.data.speakerSlug)?.name}</p>
+                        {speakerMap.get(item.data.speakerSlug) && (
+                          <p class="font-body text-body-md text-on-surface-variant text-sm font-medium">
+                            {speakerMap.get(item.data.speakerSlug)?.name}
+                          </p>
+                        )}
+                        <div class="flex flex-wrap gap-2 items-center mt-1">
+                          <span class="font-mono text-xs text-on-surface-variant/70 border border-outline-variant/60 px-2 py-0.5 uppercase">
+                            {item.data.lang}
+                          </span>
+                          {item.data.slug === 'ia-lliure-local-eficient' && (
+                            <span class="font-mono text-xs text-primary-container border border-primary-container/40 px-2 py-0.5 uppercase font-bold">
+                              KEYNOTE
+                            </span>
                           )}
-                          <div class="flex flex-wrap gap-2 items-center">
-                            <span class="font-mono text-xs text-on-surface-variant/60 border border-outline-variant/60 px-2 py-0.5 uppercase">{item.data.lang}</span>
-                          </div>
+                          {(item.data.slug === 'angel-guardia' || item.data.slug === 'sobirania-personal-ia-local') && (
+                            <span class="font-mono text-xs text-secondary-container border border-secondary-container/40 px-2 py-0.5 uppercase">
+                              LIGHTNING (15M)
+                            </span>
+                          )}
                         </div>
-                      )
+                      </button>
                     )}
                   </td>
                 </tr>
@@ -136,6 +151,141 @@ function formatTimeRange(item: (typeof talks)[number] | undefined) {
       )}
     </div>
   </section>
+
+  <!-- ═══════════════════════════════════════════════
+       MODALS DE LES SESSIONS
+  ═══════════════════════════════════════════════ -->
+  {schedule.map((item) => {
+    if (item.data.type !== 'session') return null;
+    const speaker = speakerMap.get(item.data.speakerSlug);
+    return (
+      <dialog
+        id={`modal-${item.data.slug}`}
+        closedby="any"
+        aria-labelledby={`modal-title-${item.data.slug}`}
+        class="fixed inset-0 m-auto bg-surface-container border-2 border-primary-container neon-glow text-on-surface max-w-2xl w-[calc(100%-2rem)] max-h-[85vh] overflow-y-auto p-0 z-50 backdrop:bg-black/80 backdrop:backdrop-blur-sm"
+      >
+        <div class="p-6 md:p-8 flex flex-col gap-6 relative">
+          <!-- Close button -->
+          <form method="dialog" class="absolute top-4 right-4">
+            <button
+              type="submit"
+              aria-label={t('agenda.modal.close')}
+              class="p-2 text-on-surface-variant hover:text-primary-container hover:bg-surface-container-high transition-colors cursor-pointer border border-outline-variant/40"
+            >
+              <Icon name="close" size={20} />
+            </button>
+          </form>
+
+          <!-- Badges -->
+          <div class="flex flex-wrap gap-2 items-center pr-12">
+            <span class="font-mono text-code-sm text-primary-container border border-primary-container px-2.5 py-0.5">
+              {formatTimeRange(item)}
+            </span>
+            <span class="font-mono text-code-sm text-on-surface-variant border border-outline-variant px-2.5 py-0.5 uppercase">
+              {item.data.lang}
+            </span>
+            {item.data.slug === 'ia-lliure-local-eficient' && (
+              <span class="font-mono text-code-sm text-primary-container border border-primary-container/50 px-2.5 py-0.5 uppercase font-bold">
+                KEYNOTE
+              </span>
+            )}
+            {(item.data.slug === 'angel-guardia' || item.data.slug === 'sobirania-personal-ia-local') && (
+              <span class="font-mono text-code-sm text-secondary-container border border-secondary-container/50 px-2.5 py-0.5 uppercase">
+                LIGHTNING TALK (15 MIN)
+              </span>
+            )}
+          </div>
+
+          <!-- Talk Title -->
+          <div>
+            <span class="font-mono text-code-sm text-primary-container uppercase tracking-widest block mb-2">
+              // {t('agenda.modal.talk')}
+            </span>
+            <h2 id={`modal-title-${item.data.slug}`} class="font-display text-headline-md uppercase tracking-tight leading-tight">
+              {item.data.title}
+            </h2>
+          </div>
+
+          <!-- Talk Description -->
+          {item.body && (
+            <div class="font-body text-body-md text-on-surface-variant leading-relaxed [&_p]:mb-4 [&_p:last-child]:mb-0 [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:mb-4 [&_li]:mb-1 [&_a]:text-primary-container [&_a]:underline">
+              <div set:html={parseMarkdown(item.body)} />
+            </div>
+          )}
+
+          <!-- Speaker details -->
+          {speaker && (
+            <div class="border-t border-outline-variant pt-6">
+              <span class="font-mono text-code-sm text-secondary-container uppercase tracking-widest block mb-4">
+                // {t('agenda.modal.speaker')}
+              </span>
+              <div class="flex flex-col sm:flex-row gap-5 items-start">
+                {speaker.photo && (
+                  <div class="w-24 h-24 shrink-0 bg-surface-container-high border border-outline-variant overflow-hidden">
+                    <img
+                      src={speaker.photo}
+                      alt={speaker.name}
+                      class="w-full h-full object-cover"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                )}
+                <div class="flex-1 min-w-0">
+                  <h3 class="font-display text-headline-md uppercase tracking-tight">
+                    {speaker.name}
+                  </h3>
+                  <p class="font-body text-body-md text-on-surface-variant mb-2 text-sm">
+                    {speaker.role}
+                  </p>
+                  {speaker.bio && (
+                    <p class="font-body text-body-md text-on-surface-variant/90 leading-relaxed mb-4 text-sm whitespace-pre-line">
+                      {speaker.bio}
+                    </p>
+                  )}
+                  {speaker.links && Object.values(speaker.links).some(Boolean) && (
+                    <div class="flex flex-wrap gap-3 font-mono text-xs">
+                      {speaker.links.web && (
+                        <a href={speaker.links.web} target="_blank" rel="noopener noreferrer" class="text-primary-container hover:underline">
+                          WEB ↗
+                        </a>
+                      )}
+                      {speaker.links.github && (
+                        <a href={`https://github.com/${speaker.links.github}`} target="_blank" rel="noopener noreferrer" class="text-primary-container hover:underline">
+                          GITHUB ↗
+                        </a>
+                      )}
+                      {speaker.links.x && (
+                        <a href={`https://x.com/${speaker.links.x}`} target="_blank" rel="noopener noreferrer" class="text-primary-container hover:underline">
+                          X ↗
+                        </a>
+                      )}
+                      {speaker.links.linkedin && (
+                        <a href={speaker.links.linkedin.startsWith('http') ? speaker.links.linkedin : `https://linkedin.com/in/${speaker.links.linkedin}`} target="_blank" rel="noopener noreferrer" class="text-primary-container hover:underline">
+                          LINKEDIN ↗
+                        </a>
+                      )}
+                      {speaker.links.mastodon && (
+                        <a href={speaker.links.mastodon} target="_blank" rel="noopener noreferrer" class="text-primary-container hover:underline">
+                          MASTODON ↗
+                        </a>
+                      )}
+                      {speaker.links.bluesky && (
+                        <a href={speaker.links.bluesky} target="_blank" rel="noopener noreferrer" class="text-primary-container hover:underline">
+                          BLUESKY ↗
+                        </a>
+                      )}
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+      </dialog>
+    );
+  })}
 
   <!-- ═══════════════════════════════════════════════
        VENUE GUIDE
@@ -183,11 +333,42 @@ function formatTimeRange(item: (typeof talks)[number] | undefined) {
           <dd class="font-mono text-code-sm text-on-surface">{t('hero.venue')}</dd>
         </div>
         <div class="flex items-center gap-3">
-          <dt class="font-mono text-code-sm text-on-surface-variant/60 uppercase">{t('agenda.status.cfp')}</dt>
-          <dd class="font-mono text-code-sm text-primary-container uppercase">{t('speakers.cfp-status')}</dd>
+          <dt class="font-mono text-code-sm text-on-surface-variant/60 uppercase">{t('agenda.status.talks')}</dt>
+          <dd class="font-mono text-code-sm text-primary-container uppercase">9 SESSIONS</dd>
         </div>
       </dl>
     </div>
   </aside>
+
+  <!-- Script per obrir les modals i suport de tancament -->
+  <script>
+    document.querySelectorAll('[data-open-modal]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const modalId = btn.getAttribute('data-open-modal');
+        if (!modalId) return;
+        const modal = document.getElementById(modalId) as HTMLDialogElement | null;
+        modal?.showModal();
+      });
+    });
+
+    // Fallback per a navegadors sense closedby natiu
+    document.querySelectorAll('dialog').forEach((dialog) => {
+      if (!('closedBy' in HTMLDialogElement.prototype)) {
+        dialog.addEventListener('click', (event) => {
+          if (event.target !== dialog) return;
+          const rect = dialog.getBoundingClientRect();
+          const isDialogContent = (
+            rect.top <= event.clientY &&
+            event.clientY <= rect.top + rect.height &&
+            rect.left <= event.clientX &&
+            event.clientX <= rect.left + rect.width
+          );
+          if (!isDialogContent) {
+            dialog.close();
+          }
+        });
+      }
+    });
+  </script>
 
 </BaseLayout>

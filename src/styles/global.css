@@ -374,3 +374,14 @@ body {
     margin-bottom: 0.75rem;
   }
 }
+
+/* ─── Modal Dialogs ─── */
+dialog:not([open]) {
+  display: none;
+}
+
+dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(4px);
+}
+

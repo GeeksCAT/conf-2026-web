@@ -9,6 +9,12 @@ export const agenda = {
     'agenda.schedule.day2': 'DIA 2',
     'agenda.schedule.time': 'HORA',
     'agenda.schedule.title': 'TÍTOL',
+    'agenda.disclaimer':
+      "Els horaris i l'ordre de les sessions poden patir modificacions segons la disponibilitat dels ponents o canvis per part de l'organització.",
+    'agenda.modal.close': 'Tancar',
+    'agenda.modal.speaker': 'SOBRE EL PONENT',
+    'agenda.modal.talk': 'SOBRE LA XERRADA',
+    'agenda.modal.view_profile': 'VEURE FITXA DE PONENT →',
 
     // Empty state
 
@@ -45,6 +51,12 @@ export const agenda = {
     'agenda.schedule.day2': 'DAY 2',
     'agenda.schedule.time': 'TIME',
     'agenda.schedule.title': 'TITLE',
+    'agenda.disclaimer':
+      'Schedule and session order are subject to change depending on speaker availability or organizational adjustments.',
+    'agenda.modal.close': 'Close',
+    'agenda.modal.speaker': 'ABOUT THE SPEAKER',
+    'agenda.modal.talk': 'ABOUT THE TALK',
+    'agenda.modal.view_profile': 'VIEW SPEAKER PROFILE →',
 
     // Empty state
 
@@ -81,6 +93,12 @@ export const agenda = {
     'agenda.schedule.day2': 'DÍA 2',
     'agenda.schedule.time': 'HORA',
     'agenda.schedule.title': 'TÍTULO',
+    'agenda.disclaimer':
+      'Los horarios y el orden de las sesiones pueden sufrir modificaciones según la disponibilidad de los ponentes o cambios por parte de la organización.',
+    'agenda.modal.close': 'Cerrar',
+    'agenda.modal.speaker': 'SOBRE EL PONENTE',
+    'agenda.modal.talk': 'SOBRE LA CHARLA',
+    'agenda.modal.view_profile': 'VER FICHA DE PONENTE →',
 
     // Empty state
 
