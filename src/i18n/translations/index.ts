@@ -78,6 +78,12 @@ export const index = {
     'index.speakers.status': '501 NOT IMPLEMENTED',
     'index.speakers.cta': 'VEURE ELS PONENTS →',
 
+    // Sponsor section
+    'index.sponsor.tag': 'PATROCINI',
+    'index.sponsor.title': 'PATROCINADOR PRINCIPAL',
+    'index.sponsor.tier': '[ PETABYTE ]',
+    'index.sponsor.cta': 'VISITA EL WEB →',
+
     // Topics/Activities
     'index.topics.tag': 'ACTIVITATS',
     'index.topics.dev.tag': '/dev',
@@ -171,6 +177,12 @@ export const index = {
     'index.speakers.tba': '[ TBA ]',
     'index.speakers.status': '501 NOT IMPLEMENTED',
     'index.speakers.cta': 'VIEW THE SPEAKERS →',
+
+    // Sponsor section
+    'index.sponsor.tag': 'SPONSORSHIP',
+    'index.sponsor.title': 'MAIN SPONSOR',
+    'index.sponsor.tier': '[ PETABYTE ]',
+    'index.sponsor.cta': 'VISIT WEBSITE →',
 
     // Topics/Activities
     'index.topics.tag': 'ACTIVITIES',
@@ -266,6 +278,12 @@ export const index = {
     'index.speakers.tba': '[ TBA ]',
     'index.speakers.status': '501 NOT IMPLEMENTED',
     'index.speakers.cta': 'VER LOS PONENTES →',
+
+    // Sponsor section
+    'index.sponsor.tag': 'PATROCINIO',
+    'index.sponsor.title': 'PATROCINADOR PRINCIPAL',
+    'index.sponsor.tier': '[ PETABYTE ]',
+    'index.sponsor.cta': 'VISITA LA WEB →',
 
     // Topics/Activities
     'index.topics.tag': 'ACTIVIDADES',

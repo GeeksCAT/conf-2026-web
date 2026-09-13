@@ -1,5 +1,5 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../components/BaseLayout.astro';
 import CTAButton from '../../components/CTAButton.astro';
 import SectionHeader from '../../components/SectionHeader.astro';
@@ -22,6 +22,14 @@ const featuredSpeakers = allSpeakers
   .slice(0, SPEAKER_SLOTS);
 
 const speakerPlaceholderCount = SPEAKER_SLOTS - featuredSpeakers.length;
+
+// Main sponsor (Petabyte tier)
+const allSponsors = await getCollection('sponsors');
+const mainSponsor = allSponsors.find(
+  (s) => s.data.locale === locale && !s.data.draft && s.data.tier === 'pb',
+);
+const MainSponsorBody = mainSponsor ? (await render(mainSponsor)).Content : null;
+const hasMainSponsorBody = !!mainSponsor?.body?.trim();
 ---
 
 <BaseLayout title="" description="La conferència de geeks per a geeks de Catalunya. 2026.">
@@ -254,6 +262,62 @@ const speakerPlaceholderCount = SPEAKER_SLOTS - featuredSpeakers.length;
       </div>
     </div>
   </section>
+
+  <!-- ═══════════════════════════════════════════════
+       PATROCINADOR PRINCIPAL / SPONSOR
+  ═══════════════════════════════════════════════ -->
+  {mainSponsor && (
+    <section class="py-20 px-6 border-t border-outline-variant" id="patrocinador">
+      <div class="max-w-5xl mx-auto">
+        <SectionHeader tag={t('index.sponsor.tag')} title={t('index.sponsor.title')} />
+
+        <article class="bg-surface-container border border-outline-variant p-6 sm:p-10 relative overflow-hidden" data-watermark="SPONSOR.PB">
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+
+            <!-- Logo container -->
+            <div class="md:col-span-5 flex justify-center">
+              <a
+                href={mainSponsor.data.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-full border-2 border-primary-container neon-glow bg-surface-container-high p-8 flex items-center justify-center min-h-45 hover:border-primary-container transition-all duration-200 group"
+                aria-label={mainSponsor.data.name}
+              >
+                <img
+                  src={mainSponsor.data.logo}
+                  alt={mainSponsor.data.name}
+                  class="max-w-full max-h-24 object-contain transition-transform duration-300 group-hover:scale-105"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </a>
+            </div>
+
+            <!-- Sponsor details -->
+            <div class="md:col-span-7 flex flex-col justify-center">
+              <span class="font-mono text-code-sm text-primary-container uppercase tracking-widest mb-2">
+                {t('index.sponsor.tier')}
+              </span>
+              <h3 class="font-display text-headline-md uppercase tracking-tight mb-4">
+                {mainSponsor.data.name}
+              </h3>
+              {MainSponsorBody && hasMainSponsorBody && (
+                <div class="font-body text-body-lg text-on-surface-variant leading-relaxed mb-6 [&_p]:m-0 [&_a]:text-primary-container [&_a]:underline">
+                  <MainSponsorBody />
+                </div>
+              )}
+              <div>
+                <CTAButton href={mainSponsor.data.url} external>
+                  {t('index.sponsor.cta')}
+                </CTAButton>
+              </div>
+            </div>
+
+          </div>
+        </article>
+      </div>
+    </section>
+  )}
 
   <!-- ═══════════════════════════════════════════════
        03 _TOPICS
