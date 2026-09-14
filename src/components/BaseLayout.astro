@@ -73,6 +73,10 @@ const fullTitle = title === '' ? 'GEEKSCAT CONF 2026' : `${title} · GEEKSCAT CO
     <link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
     <link rel="manifest" href="/site.webmanifest"/>
 
+    <!-- AI / WebMCP Discovery & Tool Provider -->
+    <link rel="mcp-manifest" href="/.well-known/webmcp.json" />
+    <script is:inline src="/scripts/webmcp.js" defer></script>
+
     <!-- Preload critical font (Space Grotesk variable, used in headings/nav) -->
     <link
       rel="preload"
