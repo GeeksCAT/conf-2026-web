@@ -3,8 +3,8 @@ type: session
 slug: observant-dns
 title: "Observant el sistema de noms de domini (DNS)"
 speakerSlug: evilham
-time: "17:20"
-end: "18:00"
+time: "17:05"
+end: "17:45"
 day: 1
 draft: false
 lang: ca

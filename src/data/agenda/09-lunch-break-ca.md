@@ -2,7 +2,7 @@
 type: spacer
 slug: lunch-break
 title: "PAUSA DINAR"
-time: "13:30"
+time: "13:45"
 end: "15:00"
 day: 1
 draft: false

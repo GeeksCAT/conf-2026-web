@@ -3,8 +3,8 @@ type: session
 slug: rebuilding-marketplace-architecture
 title: "Rebuilding a 7-Year-Old Marketplace from the Architecture Up"
 speakerSlug: luis-castro
-time: "15:30"
-end: "16:10"
+time: "15:15"
+end: "15:55"
 day: 1
 draft: false
 lang: en

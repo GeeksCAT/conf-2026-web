@@ -3,8 +3,8 @@ type: session
 slug: sobirania-personal-ia-local
 title: "Sobirania personal, IA local"
 speakerSlug: marti-segarra
-time: "15:15"
-end: "15:30"
+time: "10:55"
+end: "11:10"
 day: 1
 draft: false
 lang: ca

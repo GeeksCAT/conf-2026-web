@@ -2,8 +2,8 @@
 type: spacer
 slug: closing
 title: "CLOENDA & FOTO DE COMUNITAT"
-time: "18:00"
-end: "18:20"
+time: "17:45"
+end: "18:05"
 day: 1
 draft: false
 locale: ca

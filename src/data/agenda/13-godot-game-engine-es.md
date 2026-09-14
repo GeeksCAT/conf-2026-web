@@ -3,8 +3,8 @@ type: session
 slug: godot-game-engine
 title: "Godot, motor de jocs de codi obert"
 speakerSlug: ivan-reyne
-time: "16:40"
-end: "17:20"
+time: "16:25"
+end: "17:05"
 day: 1
 draft: false
 lang: ca

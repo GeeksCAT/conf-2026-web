@@ -2,8 +2,8 @@
 type: spacer
 slug: break-afternoon
 title: "PAUSA TARDE & NETWORKING"
-time: "16:10"
-end: "16:40"
+time: "15:55"
+end: "16:25"
 day: 1
 draft: false
 locale: es
