@@ -3,8 +3,8 @@ type: session
 slug: angel-guardia
 title: "Angel Guardià"
 speakerSlug: eduard-vidal
-time: "15:00"
-end: "15:15"
+time: "15:30"
+end: "15:45"
 day: 1
 draft: false
 lang: ca

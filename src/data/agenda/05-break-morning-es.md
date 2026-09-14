@@ -2,8 +2,8 @@
 type: spacer
 slug: break-morning
 title: "PAUSA CAFÉ & NETWORKING"
-time: "11:10"
-end: "11:45"
+time: "11:25"
+end: "12:00"
 day: 1
 draft: false
 locale: es

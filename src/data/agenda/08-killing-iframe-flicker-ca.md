@@ -3,8 +3,8 @@ type: session
 slug: killing-iframe-flicker
 title: "Killing the iframe flicker: com esquivem una limitació del navegador per evitar una UX pèssima"
 speakerSlug: carles-nunyez
-time: "13:05"
-end: "13:45"
+time: "13:20"
+end: "14:00"
 day: 1
 draft: false
 lang: ca

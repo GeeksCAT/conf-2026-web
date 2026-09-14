@@ -3,8 +3,8 @@ type: session
 slug: cross-origin-storage-api
 title: "The Cross-Origin Storage API"
 speakerSlug: thomas-steiner
-time: "12:25"
-end: "13:05"
+time: "12:40"
+end: "13:20"
 day: 1
 draft: false
 lang: en

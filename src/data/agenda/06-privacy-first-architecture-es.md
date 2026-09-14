@@ -3,8 +3,8 @@ type: session
 slug: privacy-first-architecture
 title: "Privacy-first architecture: local-first and alternatives to GDPR popup"
 speakerSlug: andrey-sitnik
-time: "11:45"
-end: "12:25"
+time: "12:00"
+end: "12:40"
 day: 1
 draft: false
 lang: en

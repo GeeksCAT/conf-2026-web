@@ -1,16 +1,16 @@
 ---
 type: session
 slug: rebuilding-marketplace-architecture
-title: "Rebuilding a 7-Year-Old Marketplace from the Architecture Up"
+title: "Rebuilding a 15-Year-Old Marketplace: Moving to an Event-Driven Architecture"
 speakerSlug: luis-castro
-time: "15:15"
-end: "15:55"
+time: "15:45"
+end: "16:25"
 day: 1
 draft: false
 lang: en
 locale: ca
 ---
 
-Vam construir un marketplace d'èxit durant els darrers 7 anys. Més de 50 enginyers van deixar la seva empremta al codi base i la majoria ja no formen part de l'empresa: cada cop que miràvem sota el capó, teníem por. La IA va amagar el problema un moment, però després vam topar amb la paret. Cada actualització feia la nostra aplicació React més lenta, difícil de mantenir i impossible d'actualitzar.
+Com vam reconstruir un marketplace de 15 anys de vida des de l'arquitectura. Amb desenes d'enginyers que havien passat pel codi base i canvis acumulats, cada actualització feia l'aplicació React més lenta i complexa.
 
-Aquesta xerrada s'endinsa en com vam reconstruir el sistema des de zero amb una lent completament nova sobre com dissenyar funcionalitats. Desglossarem els patrons, la investigació i les lliçons apreses durant el camí.
+Aquesta xerrada s'endinsa en com vam redissenyar el sistema des de zero cap a una arquitectura orientada a esdeveniments, analitzant patrons, decisions de disseny i lliçons apreses.

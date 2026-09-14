@@ -1,12 +1,12 @@
 ---
 type: spacer
 slug: lunch-break
-title: "PAUSA DINAR"
-time: "13:45"
-end: "15:00"
+title: "DINAR & NETWORKING"
+time: "14:00"
+end: "15:30"
 day: 1
 draft: false
 locale: ca
 ---
 
-Temps lliure per dinar als voltants de la seu, reposar forces i continuar compartint converses amb ponents i assistents.
+Pausa de 90 minuts per dinar als voltants de la seu, reposar forces i compartir xerrades i networking amb la comunitat.

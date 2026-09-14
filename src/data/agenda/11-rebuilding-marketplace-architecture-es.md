@@ -1,16 +1,16 @@
 ---
 type: session
 slug: rebuilding-marketplace-architecture
-title: "Rebuilding a 7-Year-Old Marketplace from the Architecture Up"
+title: "Rebuilding a 15-Year-Old Marketplace: Moving to an Event-Driven Architecture"
 speakerSlug: luis-castro
-time: "15:15"
-end: "15:55"
+time: "15:45"
+end: "16:25"
 day: 1
 draft: false
 lang: en
 locale: es
 ---
 
-Construimos un marketplace exitoso durante los últimos 7 años. Más de 50 ingenieros dejaron su huella en el código y la mayoría ya no está en la empresa: cada cambio producía temor. Cada despliegue hacía que nuestra app React fuera más lenta y difícil de mantener.
+Cómo reconstruimos un marketplace de 15 años desde los cimientos arquitectónicos. Con docenas de ingenieros que habían pasado por el código base, cada actualización volvía la app React más lenta y difícil de mantener.
 
-Esta charla profundiza en cómo reconstruimos la arquitectura desde cero con una nueva visión modular, analizando los patrones, decisiones técnicas y lecciones aprendidas.
+Esta charla analiza cómo rediseñamos el sistema desde cero hacia una arquitectura orientada a eventos, los patrones clave y las lecciones aprendidas.

@@ -1,12 +1,12 @@
 ---
 type: spacer
 slug: lunch-break
-title: "LUNCH BREAK"
-time: "13:45"
-end: "15:00"
+title: "LUNCH BREAK & NETWORKING"
+time: "14:00"
+end: "15:30"
 day: 1
 draft: false
 locale: en
 ---
 
-Free time for lunch around the venue, recharge, and keep connecting with attendees and speakers.
+90-minute lunch break to enjoy local food around the venue, recharge, and network with speakers and attendees.
