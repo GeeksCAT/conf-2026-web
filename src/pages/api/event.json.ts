@@ -6,7 +6,7 @@ export const GET: APIRoute = async () => {
   const eventInfo = {
     name: 'GeeksCAT Conf 2026',
     edition: 2026,
-    date: '2026-06-14',
+    date: '2026-09-26',
     location: {
       city: 'Girona',
       region: 'Catalonia',

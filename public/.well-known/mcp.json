@@ -46,7 +46,7 @@
     },
     {
       "name": "get_conference_info",
-      "description": "Returns key conference details: date (14 June 2026), location (Girona, Catalonia), ticket sales, venue, and Code of Conduct.",
+      "description": "Returns key conference details: date (26 September 2026), location (Girona, Catalonia), ticket sales, venue, and Code of Conduct.",
       "inputSchema": {
         "type": "object",
         "properties": {}
