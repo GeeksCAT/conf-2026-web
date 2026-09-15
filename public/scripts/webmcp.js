@@ -99,26 +99,25 @@
     window.__webmcpTools = tools;
   }
 
-  // Feature detection for W3C WebMCP API
+  // Feature detection for W3C WebMCP API.
+  // document.modelContext is where the spec places the API;
+  // navigator.modelContext is where early Chrome builds exposed it.
   const ctx =
     (typeof document !== 'undefined' && document.modelContext) ||
-    (typeof navigator !== 'undefined' && navigator.modelContext) ||
-    (typeof window !== 'undefined' && window.modelContext);
+    (typeof navigator !== 'undefined' && navigator.modelContext);
 
   if (ctx && typeof ctx.registerTool === 'function') {
-    try {
-      for (const key of Object.keys(tools)) {
-        const tool = tools[key];
+    // registerTool() returns a promise, so failures surface as rejections
+    Promise.all(
+      Object.values(tools).map((tool) =>
         ctx.registerTool({
-          name: tool.name,
-          description: tool.description,
-          inputSchema: tool.inputSchema,
-          execute: tool.execute,
-        });
-      }
-      console.info('[WebMCP] Successfully registered tools for GeeksCAT 2026');
-    } catch (err) {
-      console.warn('[WebMCP] Tool registration failed:', err);
-    }
+          ...tool,
+          // All three tools only read public data
+          annotations: { readOnlyHint: true },
+        })
+      )
+    )
+      .then(() => console.info('[WebMCP] Registered tools for GeeksCAT 2026'))
+      .catch((err) => console.warn('[WebMCP] Tool registration failed:', err));
   }
 })();

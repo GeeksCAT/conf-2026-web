@@ -1,5 +1,4 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
   "name": "GeeksCAT Conf 2026",
   "description": "The unconference of geeks for geeks in Girona, Catalonia. Talks, debates, and community.",
   "url": "https://conf.geeks.cat",
