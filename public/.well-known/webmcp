@@ -1,0 +1,55 @@
+{
+  "name": "GeeksCAT Conf 2026",
+  "description": "The unconference of geeks for geeks in Girona, Catalonia. Talks, debates, and community.",
+  "url": "https://conf.geeks.cat",
+  "version": "1.0.0",
+  "endpoints": {
+    "agenda": "/api/agenda.json",
+    "speakers": "/api/speakers.json",
+    "event": "/api/event.json"
+  },
+  "tools": [
+    {
+      "name": "get_agenda",
+      "description": "Returns the complete conference schedule (sessions, timings, titles, speakers, and abstracts) for GeeksCAT 2026 in Girona.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "locale": {
+            "type": "string",
+            "enum": ["ca", "en", "es"],
+            "description": "Language of the schedule (defaults to 'ca').",
+            "default": "ca"
+          }
+        }
+      }
+    },
+    {
+      "name": "get_speakers",
+      "description": "Returns the list of confirmed speakers for GeeksCAT 2026, including their bio, talk topics, and social links.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "locale": {
+            "type": "string",
+            "enum": ["ca", "en", "es"],
+            "description": "Language of speaker biographies (defaults to 'ca').",
+            "default": "ca"
+          },
+          "speaker_slug": {
+            "type": "string",
+            "description": "Optional speaker slug to get a single speaker (e.g. 'jordi-mas', 'dario-castane', 'andrey-sitnik')."
+          }
+        }
+      }
+    },
+    {
+      "name": "get_conference_info",
+      "description": "Returns key conference details: date (26 September 2026), location (Girona, Catalonia), ticket sales, venue, and Code of Conduct.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {}
+      }
+    }
+  ]
+}
