@@ -1,0 +1,119 @@
+---
+import { getCollection } from 'astro:content';
+import { defaultLocale, type Locale } from '../i18n/ui';
+import { localizedPath, useTranslations } from '../i18n/utils';
+
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = defaultLocale } = Astro.props;
+const t = useTranslations(locale);
+const siteUrl = 'https://conf.geeks.cat';
+
+const allTalks = await getCollection('talks');
+const allSpeakers = await getCollection('speakers');
+
+const speakers = allSpeakers.filter((s) => s.data.locale === locale && !s.data.draft);
+const speakerMap = new Map(speakers.map((s) => [s.data.slug, s.data]));
+
+function toUrl(handleOrUrl: string | undefined, prefix: string): string | undefined {
+  if (!handleOrUrl) return undefined;
+  if (handleOrUrl.startsWith('http://') || handleOrUrl.startsWith('https://')) {
+    return handleOrUrl;
+  }
+  return `${prefix}${handleOrUrl}`;
+}
+
+function getSpeakerSameAs(links: Record<string, string | undefined>): string[] {
+  const sameAs: string[] = [];
+  if (links.web) sameAs.push(links.web);
+  const github = toUrl(links.github, 'https://github.com/');
+  if (github) sameAs.push(github);
+  const x = toUrl(links.x, 'https://x.com/');
+  if (x) sameAs.push(x);
+  const linkedin = toUrl(links.linkedin, 'https://linkedin.com/in/');
+  if (linkedin) sameAs.push(linkedin);
+  if (links.mastodon) sameAs.push(links.mastodon);
+  if (links.bluesky) sameAs.push(links.bluesky);
+  return sameAs;
+}
+
+function formatPerformer(speaker: (typeof speakers)[number]['data']) {
+  const sameAs = getSpeakerSameAs(speaker.links ?? {});
+  return {
+    '@type': 'Person',
+    name: speaker.name,
+    jobTitle: speaker.role,
+    image: speaker.photo ? `${siteUrl}${speaker.photo}` : undefined,
+    ...(sameAs.length > 0 ? { sameAs } : {}),
+  };
+}
+
+const venueLocation = {
+  '@type': 'Place',
+  name: "L'Estació Espai Jove",
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Carrer de Santa Eugènia, 17',
+    addressLocality: 'Girona',
+    postalCode: '17005',
+    addressCountry: 'ES',
+  },
+};
+
+const performers = speakers
+  .sort((a, b) => a.data.name.localeCompare(b.data.name))
+  .map((s) => formatPerformer(s.data));
+
+const subEvents = allTalks
+  .filter((t) => t.data.locale === locale && !t.data.draft)
+  .flatMap((talk) => {
+    if (talk.data.type !== 'session') return [];
+    const speaker = speakerMap.get(talk.data.speakerSlug);
+    return [
+      {
+        '@type': 'Event',
+        name: talk.data.title,
+        description: talk.body?.trim() || undefined,
+        startDate: `2026-09-26T${talk.data.time}:00+02:00`,
+        endDate: `2026-09-26T${talk.data.end}:00+02:00`,
+        eventStatus: 'https://schema.org/EventScheduled',
+        eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+        location: venueLocation,
+        url: `${siteUrl}${localizedPath('/agenda', locale)}#modal-${talk.data.slug}`,
+        inLanguage: talk.data.lang,
+        ...(speaker ? { performer: formatPerformer(speaker) } : {}),
+      },
+    ];
+  })
+  .sort((a, b) => a.startDate.localeCompare(b.startDate));
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Event',
+  name: 'GeeksCAT Conf 2026',
+  description: t('hero.tagline') || 'La conferència de geeks per a geeks de Catalunya.',
+  startDate: '2026-09-26T09:00:00+02:00',
+  endDate: '2026-09-26T19:00:00+02:00',
+  eventStatus: 'https://schema.org/EventScheduled',
+  eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+  location: venueLocation,
+  image: [`${siteUrl}/geekscatconf-2026-social-media.png`],
+  organizer: {
+    '@type': 'Organization',
+    name: 'GeeksCAT',
+    url: siteUrl,
+  },
+  offers: {
+    '@type': 'Offer',
+    url: `${siteUrl}${localizedPath('/tickets', locale)}`,
+    availability: 'https://schema.org/InStock',
+  },
+  inLanguage: ['ca', 'en', 'es'],
+  performer: performers,
+  subEvent: subEvents,
+};
+---
+
+<script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
