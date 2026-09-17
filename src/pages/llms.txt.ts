@@ -45,6 +45,7 @@ ${schedule.join('\n')}
 
 ## Endpoints estructurats per a agents d'IA i WebMCP
 
+- [Context complet per a LLMs (llms-full.txt)](https://conf.geeks.cat/llms-full.txt): Document exhaustiu amb tots els abstracts complets de les xerrades, biografies de ponents i codi de conducta per a models amb finestres de context grans.
 - [Informació de l'esdeveniment (JSON)](https://conf.geeks.cat/api/event.json): Dades bàsiques, dates, ubicació i xarxes.
 - [Agenda completa (JSON)](https://conf.geeks.cat/api/agenda.json): Sessions, horaris, descripcions i ponents per idioma (ca, en, es).
 - [Llistat de ponents (JSON)](https://conf.geeks.cat/api/speakers.json): Dades detallades de cada ponent (bio, foto, enllaços).
