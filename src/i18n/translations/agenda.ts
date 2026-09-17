@@ -16,6 +16,12 @@ export const agenda = {
     'agenda.modal.talk': 'SOBRE LA XERRADA',
     'agenda.modal.view_profile': 'VEURE FITXA DE PONENT →',
 
+    // Search / Filter
+    'agenda.search.label': 'Cercar sessions',
+    'agenda.search.placeholder': 'Filtra per paraula clau, ponent o tecnologia…',
+    'agenda.search.clear': 'Netejar',
+    'agenda.search.no_results': 'Cap sessió coincideix amb la cerca.',
+
     // Empty state
 
     // Transport section
@@ -58,6 +64,12 @@ export const agenda = {
     'agenda.modal.talk': 'ABOUT THE TALK',
     'agenda.modal.view_profile': 'VIEW SPEAKER PROFILE →',
 
+    // Search / Filter
+    'agenda.search.label': 'Search sessions',
+    'agenda.search.placeholder': 'Filter by keyword, speaker or tech…',
+    'agenda.search.clear': 'Clear',
+    'agenda.search.no_results': 'No sessions match your search.',
+
     // Empty state
 
     // Transport section
@@ -99,6 +111,12 @@ export const agenda = {
     'agenda.modal.speaker': 'SOBRE EL PONENTE',
     'agenda.modal.talk': 'SOBRE LA CHARLA',
     'agenda.modal.view_profile': 'VER FICHA DE PONENTE →',
+
+    // Search / Filter
+    'agenda.search.label': 'Buscar sesiones',
+    'agenda.search.placeholder': 'Filtrar por palabra clave, ponente o tecnología…',
+    'agenda.search.clear': 'Limpiar',
+    'agenda.search.no_results': 'Ninguna sesión coincide con la búsqueda.',
 
     // Empty state
 

@@ -99,6 +99,86 @@
     window.__webmcpTools = tools;
   }
 
+  /**
+   * Discovers and registers declarative WebMCP forms (HTML forms with toolname, tooldescription, etc.)
+   * according to the W3C Web Machine Learning Community Group WebMCP draft specification.
+   * If the browser doesn't natively expose declarative form tools, bridges them into registerTool.
+   */
+  function registerDeclarativeForms(ctx) {
+    if (typeof document === 'undefined') return;
+    const forms = document.querySelectorAll('form[toolname]');
+
+    for (const form of forms) {
+      const toolName = form.getAttribute('toolname');
+      if (!toolName) continue;
+      if (tools[toolName]) continue;
+
+      const description = form.getAttribute('tooldescription') || `Interact with ${toolName} form`;
+      const inputs = form.querySelectorAll('input[name], select[name], textarea[name]');
+      const properties = {};
+
+      for (const input of inputs) {
+        const name = input.getAttribute('name');
+        if (!name) continue;
+        const paramDesc =
+          input.getAttribute('toolparamdescription') || input.getAttribute('placeholder') || name;
+        properties[name] = {
+          type: 'string',
+          description: paramDesc,
+        };
+      }
+
+      const declarativeTool = {
+        name: toolName,
+        description,
+        inputSchema: {
+          type: 'object',
+          properties,
+        },
+        execute: async (params) => {
+          if (params && typeof params === 'object') {
+            for (const [k, v] of Object.entries(params)) {
+              const field = form.querySelector(`[name="${k}"]`);
+              if (field) {
+                field.value = String(v);
+                field.dispatchEvent(new Event('input', { bubbles: true }));
+                field.dispatchEvent(new Event('change', { bubbles: true }));
+              }
+            }
+          }
+          if (form.getAttribute('toolautosubmit') !== null) {
+            if (typeof form.requestSubmit === 'function') {
+              form.requestSubmit();
+            } else {
+              form.dispatchEvent(new Event('submit', { bubbles: true, cancelable: true }));
+            }
+          }
+          return { success: true, tool: toolName, values: params };
+        },
+      };
+
+      tools[toolName] = declarativeTool;
+
+      if (ctx && typeof ctx.registerTool === 'function') {
+        try {
+          const res = ctx.registerTool({
+            name: declarativeTool.name,
+            description: declarativeTool.description,
+            inputSchema: declarativeTool.inputSchema,
+            execute: declarativeTool.execute,
+          });
+          if (res && typeof res.catch === 'function') {
+            res.catch((err) =>
+              console.warn(`[WebMCP] Failed to register declarative tool "${toolName}":`, err)
+            );
+          }
+        } catch (err) {
+          console.warn(`[WebMCP] Declarative tool registration failed for "${toolName}":`, err);
+        }
+      }
+    }
+  }
+
   // Feature detection for W3C WebMCP API.
   // document.modelContext is where the current W3C spec places the API;
   // navigator.modelContext is where early Chrome builds exposed it;
@@ -108,6 +188,9 @@
       (typeof document !== 'undefined' && document.modelContext) ||
       (typeof navigator !== 'undefined' && navigator.modelContext) ||
       (typeof window !== 'undefined' && window.modelContext);
+
+    // Register declarative forms found in the DOM
+    registerDeclarativeForms(ctx);
 
     if (!ctx || typeof ctx.registerTool !== 'function') {
       return false;
@@ -135,8 +218,13 @@
     }
   }
 
-  if (!registerTools() && typeof window !== 'undefined') {
-    window.addEventListener('DOMContentLoaded', () => registerTools(), { once: true });
-    window.addEventListener('load', () => registerTools(), { once: true });
+  function init() {
+    registerTools();
+  }
+
+  if (typeof window !== 'undefined') {
+    init();
+    window.addEventListener('DOMContentLoaded', () => init(), { once: true });
+    window.addEventListener('load', () => init(), { once: true });
   }
 })();

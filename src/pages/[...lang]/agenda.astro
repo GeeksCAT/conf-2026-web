@@ -80,7 +80,47 @@ function formatTimeRange(item: (typeof talks)[number] | undefined) {
       </div>
 
       {schedule.length > 0 ? (
-        <div class="overflow-x-auto custom-scrollbar -mx-6 px-6">
+        <!-- Formulari de cerca / Declarative WebMCP -->
+        <form
+          id="agenda-search-form"
+          role="search"
+          toolname="filter_agenda"
+          tooldescription="Filter or search the conference agenda by keyword, topic, or speaker name"
+          toolautosubmit
+          class="mb-6 flex items-center gap-3"
+        >
+          <div class="relative flex-1">
+            <label for="agenda-search-input" class="sr-only">
+              {t('agenda.search.label')}
+            </label>
+            <span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none font-mono text-code-sm text-primary-container" aria-hidden="true">
+              &gt;
+            </span>
+            <input
+              id="agenda-search-input"
+              type="search"
+              name="query"
+              autocomplete="off"
+              placeholder={t('agenda.search.placeholder')}
+              toolparamdescription="Keyword to search in session titles, descriptions, or speaker names"
+              class="w-full pl-8 pr-10 py-2.5 bg-surface-container border border-outline-variant text-on-surface font-mono text-code-sm focus:outline-none focus:border-primary-container placeholder:text-on-surface-variant/50"
+            />
+            <button
+              type="button"
+              id="agenda-search-clear"
+              aria-label={t('agenda.search.clear')}
+              class="hidden absolute inset-y-0 right-0 pr-3 flex items-center font-mono text-code-sm text-on-surface-variant hover:text-primary-container cursor-pointer"
+            >
+              [×]
+            </button>
+          </div>
+        </form>
+
+        <div id="agenda-search-empty" class="hidden p-8 border border-outline-variant bg-surface-container-low text-center my-6">
+          <p class="font-mono text-code-sm text-secondary-container">{t('agenda.search.no_results')}</p>
+        </div>
+
+        <div id="agenda-table-wrapper" class="overflow-x-auto custom-scrollbar -mx-6 px-6">
           <table class="w-full min-w-[320px] border-collapse" role="grid" aria-label={t('agenda.schedule.tag')}>
             <thead>
               <tr>
@@ -90,7 +130,10 @@ function formatTimeRange(item: (typeof talks)[number] | undefined) {
             </thead>
             <tbody class="divide-y divide-outline-variant/40">
               {schedule.map((item) => (
-                <tr>
+                <tr
+                  data-agenda-row
+                  data-search-text={`${item.data.title} ${item.data.type === 'session' ? (speakerMap.get(item.data.speakerSlug)?.name ?? '') : ''} ${item.body ?? ''}`.toLowerCase()}
+                >
                   <td class="py-4 pr-4 align-top">
                     <span class="font-mono text-code-sm text-on-surface-variant/70 whitespace-nowrap">{formatTimeRange(item) ?? '—'}</span>
                   </td>
@@ -369,6 +412,63 @@ function formatTimeRange(item: (typeof talks)[number] | undefined) {
         });
       }
     });
+
+    // Agenda search / filter logic (Declarative WebMCP handler)
+    const searchForm = document.getElementById('agenda-search-form') as HTMLFormElement | null;
+    const searchInput = document.getElementById('agenda-search-input') as HTMLInputElement | null;
+    const clearBtn = document.getElementById('agenda-search-clear') as HTMLButtonElement | null;
+    const emptyState = document.getElementById('agenda-search-empty');
+    const tableRows = document.querySelectorAll<HTMLTableRowElement>('[data-agenda-row]');
+
+    function filterAgenda() {
+      if (!searchInput) return;
+      const query = searchInput.value.trim().toLowerCase();
+      let visibleCount = 0;
+
+      if (clearBtn) {
+        if (query) {
+          clearBtn.classList.remove('hidden');
+        } else {
+          clearBtn.classList.add('hidden');
+        }
+      }
+
+      tableRows.forEach((row) => {
+        const text = row.getAttribute('data-search-text') || '';
+        const match = !query || text.includes(query);
+        row.style.display = match ? '' : 'none';
+        if (match) visibleCount++;
+      });
+
+      if (emptyState) {
+        if (visibleCount === 0) {
+          emptyState.classList.remove('hidden');
+        } else {
+          emptyState.classList.add('hidden');
+        }
+      }
+    }
+
+    searchInput?.addEventListener('input', filterAgenda);
+    searchForm?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      filterAgenda();
+    });
+    clearBtn?.addEventListener('click', () => {
+      if (searchInput) {
+        searchInput.value = '';
+        filterAgenda();
+        searchInput.focus();
+      }
+    });
+
+    // Initialize from URL query parameter if present (e.g. ?q=... or ?query=...)
+    const urlParams = new URLSearchParams(window.location.search);
+    const initialQuery = urlParams.get('q') || urlParams.get('query');
+    if (initialQuery && searchInput) {
+      searchInput.value = initialQuery;
+      filterAgenda();
+    }
   </script>
 
 </BaseLayout>
