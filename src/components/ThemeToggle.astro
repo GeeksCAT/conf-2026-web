@@ -1,10 +1,21 @@
 ---
+import { getLocale, useTranslations } from '../i18n/utils';
 import Icon from './Icon.astro';
+
+const locale = getLocale(Astro.currentLocale);
+const t = useTranslations(locale);
+
+const labelLight = t('theme.toggle.light');
+const labelDark = t('theme.toggle.dark');
 ---
 
 <button
+  type="button"
   data-theme-toggle
-  aria-label="Toggle theme"
+  data-label-light={labelLight}
+  data-label-dark={labelDark}
+  aria-pressed="true"
+  aria-label={labelLight}
   class="p-2 text-on-surface-variant hover:text-primary-container transition-colors duration-150 cursor-pointer flex items-center"
 >
   <span class="icon-sun"><Icon name="sun" size={18} /></span>
@@ -12,12 +23,26 @@ import Icon from './Icon.astro';
 </button>
 
 <script>
+  function updateThemeToggles() {
+    const isDark = document.documentElement.dataset.theme !== 'light';
+    document.querySelectorAll<HTMLButtonElement>('[data-theme-toggle]').forEach((btn) => {
+      btn.setAttribute('aria-pressed', String(isDark));
+      const nextLabel = isDark ? btn.dataset.labelLight : btn.dataset.labelDark;
+      if (nextLabel) {
+        btn.setAttribute('aria-label', nextLabel);
+      }
+    });
+  }
+
+  updateThemeToggles();
+
   document.addEventListener('click', (e) => {
     if ((e.target as Element).closest('[data-theme-toggle]')) {
       const html = document.documentElement;
-      const next = html.dataset.theme === 'dark' ? 'light' : 'dark';
+      const next = html.dataset.theme === 'light' ? 'dark' : 'light';
       html.dataset.theme = next;
       localStorage.setItem('theme', next);
+      updateThemeToggles();
     }
   });
 </script>
