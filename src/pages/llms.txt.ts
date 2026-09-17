@@ -1,8 +1,37 @@
-# GeeksCAT Conf 2026
+import { getCollection } from 'astro:content';
+import type { APIRoute } from 'astro';
+
+export const prerender = true;
+
+export const GET: APIRoute = async () => {
+  const allTalks = await getCollection('talks');
+  const allSpeakers = await getCollection('speakers');
+
+  const speakerMap = new Map<string, string>(
+    allSpeakers.filter((s) => s.data.locale === 'ca').map((s) => [s.data.slug, s.data.name])
+  );
+
+  const schedule = allTalks
+    .filter((tk) => tk.data.locale === 'ca' && !tk.data.draft)
+    .sort((a, b) => a.data.time.localeCompare(b.data.time))
+    .map((item) => {
+      if (item.data.type === 'session') {
+        const speakerName = speakerMap.get(item.data.speakerSlug) ?? '';
+        const by = speakerName ? ` — ${speakerName}` : '';
+        return `- **${item.data.time} - ${item.data.end}**: ${item.data.title}${by}`;
+      }
+      return `- **${item.data.time} - ${item.data.end}**: ${item.data.title}`;
+    });
+
+  const content = `# GeeksCAT Conf 2026
 
 > La conferència de geeks per a geeks de Catalunya. Una jornada de programació, arquitectura, IA lliure, sistemes i comunitat a Girona el 26 de setembre de 2026.
 
 GeeksCAT Conf 2026 és l'evolució de la mítica "Festa Open Source". Manté el mateix esperit comunitari i afronta nous reptes tecnològics. L'esdeveniment tindrà lloc el dissabte 26 de setembre de 2026 a L'Estació Espai Jove de Girona (Carrer de Santa Eugènia, 17, 17005 Girona).
+
+## Agenda i Horaris (26 de setembre de 2026)
+
+${schedule.join('\n')}
 
 ## Seccions principals
 
@@ -21,3 +50,12 @@ GeeksCAT Conf 2026 és l'evolució de la mítica "Festa Open Source". Manté el 
 - [Llistat de ponents (JSON)](https://conf.geeks.cat/api/speakers.json): Dades detallades de cada ponent (bio, foto, enllaços).
 - [Manifest WebMCP](https://conf.geeks.cat/.well-known/webmcp.json): Manifest de capacitats i eines WebMCP per a agents d'IA.
 - [Eines client WebMCP](https://conf.geeks.cat/scripts/webmcp.js): Proveïdor d'eines W3C WebMCP per al navegador.
+`;
+
+  return new Response(content, {
+    headers: {
+      'Content-Type': 'text/plain; charset=utf-8',
+      'Cache-Control': 'public, max-age=3600',
+    },
+  });
+};
