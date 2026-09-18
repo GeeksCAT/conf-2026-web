@@ -10,6 +10,8 @@ export const common = {
     'lang.switcher.aria': 'Canviar idioma',
 
     'theme.toggle.aria': 'Canviar tema clar/fosc',
+    'theme.toggle.light': 'Activa el mode clar',
+    'theme.toggle.dark': 'Activa el mode fosc',
     'theme.light': 'LIGHT_MODE',
     'theme.dark': 'DARK_MODE',
 
@@ -27,6 +29,8 @@ export const common = {
     'lang.switcher.aria': 'Switch language',
 
     'theme.toggle.aria': 'Toggle light/dark theme',
+    'theme.toggle.light': 'Switch to light theme',
+    'theme.toggle.dark': 'Switch to dark theme',
     'theme.light': 'LIGHT_MODE',
     'theme.dark': 'DARK_MODE',
 
@@ -44,6 +48,8 @@ export const common = {
     'lang.switcher.aria': 'Cambiar idioma',
 
     'theme.toggle.aria': 'Cambiar tema claro/oscuro',
+    'theme.toggle.light': 'Activar tema claro',
+    'theme.toggle.dark': 'Activar tema oscuro',
     'theme.light': 'LIGHT_MODE',
     'theme.dark': 'DARK_MODE',
 

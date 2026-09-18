@@ -36,6 +36,7 @@ const navItems = [
       {navItems.map(({ label, href, active }) => (
         <a
           href={href}
+          aria-current={active ? 'page' : undefined}
           class={active
             ? 'text-primary-container border-b-2 border-primary-container pb-0.5 transition-none'
             : 'text-on-surface-variant hover:text-on-surface transition-colors duration-150 active:translate-y-px'}
@@ -59,9 +60,12 @@ const navItems = [
 
       <button
         id="mobile-menu-btn"
-        aria-label="Menú"
+        type="button"
+        aria-label={t('nav.menu.open')}
         aria-expanded="false"
         aria-controls="mobile-menu"
+        data-label-open={t('nav.menu.open')}
+        data-label-close={t('nav.menu.close')}
         class="md:hidden p-2 text-on-surface-variant hover:text-on-surface transition-colors duration-150 cursor-pointer"
       >
         <span class="burger-open">
@@ -80,6 +84,8 @@ const navItems = [
 
   <div
     id="mobile-menu"
+    role="region"
+    aria-label={t('nav.mobile.aria')}
     hidden
     class="md:hidden bg-surface-container-lowest border-t border-outline-variant"
   >
@@ -87,6 +93,7 @@ const navItems = [
       {navItems.map(({ label, href, active }) => (
         <a
           href={href}
+          aria-current={active ? 'page' : undefined}
           class={`font-mono text-sm uppercase tracking-tighter py-3 border-b border-outline-variant/40 ${active ? 'text-primary-container' : 'text-on-surface-variant'}`}
         >
           {label}
@@ -110,11 +117,25 @@ const navItems = [
   const btn = document.getElementById('mobile-menu-btn');
   const menu = document.getElementById('mobile-menu');
 
+  function setMenuState(open: boolean) {
+    if (!menu || !btn) return;
+    menu.hidden = !open;
+    btn.setAttribute('aria-expanded', String(open));
+    const label = open ? btn.dataset.labelClose : btn.dataset.labelOpen;
+    if (label) btn.setAttribute('aria-label', label);
+    btn.querySelector('.burger-open')?.classList.toggle('hidden', open);
+    btn.querySelector('.burger-close')?.classList.toggle('hidden', !open);
+  }
+
   btn?.addEventListener('click', () => {
     const isOpen = !menu?.hidden;
-    if (menu) menu.hidden = isOpen;
-    btn.setAttribute('aria-expanded', String(!isOpen));
-    btn.querySelector('.burger-open')?.classList.toggle('hidden', !isOpen);
-    btn.querySelector('.burger-close')?.classList.toggle('hidden', isOpen);
+    setMenuState(!isOpen);
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && menu && !menu.hidden) {
+      setMenuState(false);
+      btn?.focus();
+    }
   });
 </script>

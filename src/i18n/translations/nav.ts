@@ -7,6 +7,9 @@ export const nav = {
     'nav.sponsors': '05_PATROCINADORS',
     'nav.tickets': 'ENTRADES',
     'nav.aria': 'Navegació principal',
+    'nav.menu.open': 'Obre el menú principal',
+    'nav.menu.close': 'Tanca el menú principal',
+    'nav.mobile.aria': 'Menú principal mòbil',
   },
   en: {
     'nav.about': '01_ABOUT',
@@ -16,6 +19,9 @@ export const nav = {
     'nav.sponsors': '05_SPONSORS',
     'nav.tickets': 'TICKETS',
     'nav.aria': 'Main navigation',
+    'nav.menu.open': 'Open main menu',
+    'nav.menu.close': 'Close main menu',
+    'nav.mobile.aria': 'Mobile navigation menu',
   },
   es: {
     'nav.about': '01_SOBRE',
@@ -25,5 +31,8 @@ export const nav = {
     'nav.sponsors': '05_PATROCINADORES',
     'nav.tickets': 'ENTRADAS',
     'nav.aria': 'Navegación principal',
+    'nav.menu.open': 'Abrir menú principal',
+    'nav.menu.close': 'Cerrar menú principal',
+    'nav.mobile.aria': 'Menú principal móvil',
   },
 } as const;
