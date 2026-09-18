@@ -154,7 +154,7 @@ const visibleTiers = (Object.keys(tierConfig) as TierKey[]).filter(
   {visibleTiers.length > 0 && (
   <section class="py-20 px-6" aria-labelledby="tiers-heading">
     <div class="max-w-5xl mx-auto">
-      <SectionHeader tag={t('sponsors.tiers.tag')} title="" />
+      <SectionHeader id="tiers-heading" tag={t('sponsors.tiers.tag')} title="" />
 
       <div class="space-y-16">
         {visibleTiers.map((key) => {
@@ -221,7 +221,7 @@ const visibleTiers = (Object.keys(tierConfig) as TierKey[]).filter(
   {sponsorsByTier.collaborator.length > 0 && (
     <section class="py-20 px-6 bg-surface-container-low border-t border-outline-variant" aria-labelledby="collaborators-heading">
       <div class="max-w-5xl mx-auto">
-        <SectionHeader tag={t('sponsors.collaborators')} title="" />
+        <SectionHeader id="collaborators-heading" tag={t('sponsors.collaborators')} title="" />
 
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {sponsorsByTier.collaborator.map((collaborator) => {
@@ -266,7 +266,7 @@ const visibleTiers = (Object.keys(tierConfig) as TierKey[]).filter(
   ═══════════════════════════════════════════════ -->
   <section class="py-20 px-6 bg-surface-container-low" aria-labelledby="pitch-heading">
     <div class="max-w-5xl mx-auto">
-      <SectionHeader tag={t('sponsors.pitch.tag')} title={t('sponsors.pitch.title')} />
+      <SectionHeader id="pitch-heading" tag={t('sponsors.pitch.tag')} title={t('sponsors.pitch.title')} />
 
       <div class="grid lg:grid-cols-2 gap-16">
         <div class="space-y-5">

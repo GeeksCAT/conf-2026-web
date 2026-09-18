@@ -88,7 +88,7 @@ const gratificacions = [
   ═══════════════════════════════════════════════ -->
   <section class="py-20 px-6 bg-surface-container-low border-t border-outline-variant" aria-labelledby="present-heading">
     <div class="max-w-5xl mx-auto">
-      <SectionHeader tag={t('cfp.looking.tag')} title={t('cfp.looking.title')} />
+      <SectionHeader id="present-heading" tag={t('cfp.looking.tag')} title={t('cfp.looking.title')} />
 
       <div class="grid lg:grid-cols-2 gap-16">
         <div class="space-y-5">
@@ -140,7 +140,7 @@ const gratificacions = [
   ═══════════════════════════════════════════════ -->
   <section class="py-20 px-6" aria-labelledby="formats-heading">
     <div class="max-w-5xl mx-auto">
-      <SectionHeader tag={t('cfp.formats.tag')} title={t('cfp.formats.title')} />
+      <SectionHeader id="formats-heading" tag={t('cfp.formats.tag')} title={t('cfp.formats.title')} />
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         {formats.map(({ label, duration, description }) => (
@@ -193,7 +193,7 @@ const gratificacions = [
   ═══════════════════════════════════════════════ -->
   <section class="py-20 px-6" aria-labelledby="gratificacions-heading">
     <div class="max-w-5xl mx-auto">
-      <SectionHeader tag={t('cfp.benefits.tag')} title={t('cfp.benefits.title')} />
+      <SectionHeader id="gratificacions-heading" tag={t('cfp.benefits.tag')} title={t('cfp.benefits.title')} />
 
       <div class="grid lg:grid-cols-2 gap-16 items-start">
         <ul class="space-y-4 list-none">
