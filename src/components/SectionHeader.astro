@@ -2,17 +2,31 @@
 interface Props {
   tag: string;
   title: string;
+  id?: string;
   class?: string;
 }
 
-const { tag, title, class: className = '' } = Astro.props;
+const { tag, title, id, class: className = '' } = Astro.props;
+const hasTitle = Boolean(title && title.trim());
 ---
 
 <header class={`mb-12 ${className}`}>
-  <span class="font-mono text-code-sm text-primary-container uppercase tracking-widest block mb-3">
+  <span
+    class="font-mono text-code-sm text-primary-container uppercase tracking-widest block mb-3"
+    aria-hidden={!hasTitle ? 'true' : undefined}
+  >
     [ {tag} ]
   </span>
-  <h2 class="font-display text-headline-lg uppercase tracking-tighter border-l-4 border-primary-container pl-6">
-    {title}
-  </h2>
+  {hasTitle ? (
+    <h2
+      id={id}
+      class="font-display text-headline-lg uppercase tracking-tighter border-l-4 border-primary-container pl-6"
+    >
+      {title}
+    </h2>
+  ) : (
+    <h2 id={id} class="sr-only">
+      {tag}
+    </h2>
+  )}
 </header>
