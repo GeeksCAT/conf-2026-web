@@ -1,5 +1,6 @@
 export const common = {
   ca: {
+    'a11y.skipToContent': 'Saltar al contingut principal',
     'tba.status': 'PROPERAMENT',
     'tba.placeholder': '[ TBA ]',
     'tba.pending': 'STATUS: PENDING',
@@ -19,6 +20,7 @@ export const common = {
       'Ciutat de Girona al fons (edificis, la Catedral, etc.) i al davant el logo de GeeksCAT (cervell amb línies de circuit) tot això sobre un terra que represente un circuit imprès',
   },
   en: {
+    'a11y.skipToContent': 'Skip to main content',
     'tba.status': 'COMING SOON',
     'tba.placeholder': '[ TBA ]',
     'tba.pending': 'STATUS: PENDING',
@@ -38,6 +40,7 @@ export const common = {
       'At the back, the Girona City (buldings, the Cathedral, etc.) and hovered by the GeeksCAT logo (brain with the integrated circuit lines), everything on a floor which represents a integrated circuit',
   },
   es: {
+    'a11y.skipToContent': 'Saltar al contenido principal',
     'tba.status': 'PRÓXIMAMENTE',
     'tba.placeholder': '[ TBA ]',
     'tba.pending': 'STATUS: PENDIENTE',
