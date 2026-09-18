@@ -177,7 +177,16 @@ const visibleTiers = (Object.keys(tierConfig) as TierKey[]).filter(
                         rel="noopener noreferrer"
                         class={`w-full ${config.borderClass} ${config.padding} flex items-center justify-center ${config.minHeight} bg-surface-container-high ${config.hoverClass} transition-colors duration-200`}
                       >
-                        <img src={sponsor.data.logo} alt={sponsor.data.name} class="max-w-full max-h-full object-contain" />
+                        <img
+                          src={sponsor.data.logo}
+                          alt={sponsor.data.name}
+                          width={key === 'pb' ? 289 : 320}
+                          height={key === 'pb' ? 181 : 180}
+                          loading={key === 'pb' ? 'eager' : 'lazy'}
+                          fetchpriority={key === 'pb' ? 'high' : undefined}
+                          decoding="async"
+                          class="max-w-full max-h-full object-contain"
+                        />
                       </a>
                       <div>
                         <p class="font-mono text-code-sm text-on-surface-variant uppercase tracking-widest">{sponsor.data.name}</p>
@@ -226,7 +235,15 @@ const visibleTiers = (Object.keys(tierConfig) as TierKey[]).filter(
                   rel="noopener noreferrer"
                   class="w-full aspect-video border border-outline-variant/60 flex items-center justify-center bg-surface-container-high hover:border-outline transition-colors"
                 >
-                  <img src={collaborator.data.logo} alt={collaborator.data.name} class="max-w-full max-h-full object-contain p-2" />
+                  <img
+                    src={collaborator.data.logo}
+                    alt={collaborator.data.name}
+                    width={600}
+                    height={338}
+                    loading="lazy"
+                    decoding="async"
+                    class="max-w-full max-h-full object-contain p-2"
+                  />
               </a>
               <div>
                 <p class="font-mono text-code-sm text-on-surface-variant uppercase tracking-widest">{collaborator.data.name}</p>

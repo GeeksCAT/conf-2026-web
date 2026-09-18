@@ -1,7 +1,7 @@
 ---
 name: "Diputació de Girona"
 tier: "collaborator"
-logo: "/img/sponsors/logo-diputacio-girona.jpg"
+logo: "/img/sponsors/logo-diputacio-girona.webp"
 url: "https://www.ddgi.cat"
 order: 1
 locale: "en"

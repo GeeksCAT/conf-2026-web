@@ -1,7 +1,7 @@
 ---
 name: "Hotel Carlemany Girona"
 tier: "collaborator"
-logo: "/img/sponsors/logo-hotel-carlemany.jpg"
+logo: "/img/sponsors/logo-hotel-carlemany.webp"
 url: "https://www.hotelcarlemanygirona.com/"
 order: 2
 locale: "en"
