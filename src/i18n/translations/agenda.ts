@@ -34,12 +34,12 @@ export const agenda = {
     'agenda.venue.parking.tag': '// APARCAMENT',
     'agenda.venue.parking.title': 'VEHICLE PRIVAT',
     'agenda.venue.parking.desc':
-      'Girona disposa de diversos aparcaments públics a tota la ciutat. Fomentem l\'ús del transport compartit — coordineu-vos al canal <i>#general</i> del grup de Telegram <a class="text-primary-container hover:underline" href="https://t.me/silicongirona" target="_blank" rel="noopener noreferrer">Silicon Girona</a>.',
+      'Girona disposa de diversos aparcaments públics a tota la ciutat. Fomentem l\'ús del transport compartit — coordineu-vos al canal <i>#general</i> del grup de Telegram <a class="text-primary-container underline decoration-primary-container underline-offset-2 hover:opacity-80 transition-opacity" href="https://t.me/silicongirona" target="_blank" rel="noopener noreferrer">Silicon Girona</a>.',
 
     'agenda.venue.accommodation.tag': '// ALLOTJAMENT',
     'agenda.venue.accommodation.title': 'ON DORMIR',
     'agenda.venue.accommodation.desc':
-      "Girona té una àmplia gama d'hotels i apartaments turístics. La nostra recomanció és l'hotel <a class=\"text-primary-container hover:underline\" href='https://www.hotelcarlemanygirona.com/' target='_blank' rel='noopener noreferrer'>Carlemany Girona</a>",
+      "Girona té una àmplia gama d'hotels i apartaments turístics. La nostra recomanció és l'hotel <a class=\"text-primary-container underline decoration-primary-container underline-offset-2 hover:opacity-80 transition-opacity\" href='https://www.hotelcarlemanygirona.com/' target='_blank' rel='noopener noreferrer'>Carlemany Girona</a>",
 
     // Status bar
     'agenda.status.date': 'DATA',
@@ -82,12 +82,12 @@ export const agenda = {
     'agenda.venue.parking.tag': '// PARKING',
     'agenda.venue.parking.title': 'PRIVATE VEHICLE',
     'agenda.venue.parking.desc':
-      'Girona has several public parking lots throughout the city. We encourage the use of shared transport — coordinate on the <i>#general</i> channel of the Telegram group <a class="text-primary-container hover:underline" href="https://t.me/silicongirona" target="_blank" rel="noopener noreferrer">Silicon Girona</a>.',
+      'Girona has several public parking lots throughout the city. We encourage the use of shared transport — coordinate on the <i>#general</i> channel of the Telegram group <a class="text-primary-container underline decoration-primary-container underline-offset-2 hover:opacity-80 transition-opacity" href="https://t.me/silicongirona" target="_blank" rel="noopener noreferrer">Silicon Girona</a>.',
 
     'agenda.venue.accommodation.tag': '// ACCOMMODATION',
     'agenda.venue.accommodation.title': 'WHERE TO SLEEP',
     'agenda.venue.accommodation.desc':
-      "Girona has a wide range of hotels and tourist apartments. Our recommendation is the <a class=\"text-primary-container hover:underline\" href='https://www.hotelcarlemanygirona.com/' target='_blank' rel='noopener noreferrer'>Carlemany Girona</a> hotel.",
+      "Girona has a wide range of hotels and tourist apartments. Our recommendation is the <a class=\"text-primary-container underline decoration-primary-container underline-offset-2 hover:opacity-80 transition-opacity\" href='https://www.hotelcarlemanygirona.com/' target='_blank' rel='noopener noreferrer'>Carlemany Girona</a> hotel.",
 
     // Status bar
     'agenda.status.date': 'DATE',
@@ -130,12 +130,12 @@ export const agenda = {
     'agenda.venue.parking.tag': '// APARCAMIENTO',
     'agenda.venue.parking.title': 'VEHÍCULO PRIVADO',
     'agenda.venue.parking.desc':
-      'Girona dispone de diversos aparcamientos públicos en toda la ciudad. Fomentamos el uso del transporte compartido — coordinaros en el canal <i>#general</i> del grupo de Telegram <a class="text-primary-container hover:underline" href="https://t.me/silicongirona" target="_blank" rel="noopener noreferrer">Silicon Girona</a>.',
+      'Girona dispone de diversos aparcamientos públicos en toda la ciudad. Fomentamos el uso del transporte compartido — coordinaros en el canal <i>#general</i> del grupo de Telegram <a class="text-primary-container underline decoration-primary-container underline-offset-2 hover:opacity-80 transition-opacity" href="https://t.me/silicongirona" target="_blank" rel="noopener noreferrer">Silicon Girona</a>.',
 
     'agenda.venue.accommodation.tag': '// ALOJAMIENTO',
     'agenda.venue.accommodation.title': 'DÓNDE DORMIR',
     'agenda.venue.accommodation.desc':
-      "Girona tiene una amplia gama de hoteles y apartamentos turísticos. Nuestra recomendación es el hotel <a class=\"text-primary-container hover:underline\" href='https://www.hotelcarlemanygirona.com/' target='_blank' rel='noopener noreferrer'>Carlemany Girona</a>.",
+      "Girona tiene una amplia gama de hoteles y apartamentos turísticos. Nuestra recomendación es el hotel <a class=\"text-primary-container underline decoration-primary-container underline-offset-2 hover:opacity-80 transition-opacity\" href='https://www.hotelcarlemanygirona.com/' target='_blank' rel='noopener noreferrer'>Carlemany Girona</a>.",
 
     // Status bar
     'agenda.status.date': 'FECHA',
