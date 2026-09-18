@@ -70,25 +70,13 @@ const placeholderCount = speakers.length < PLACEHOLDER_COUNT ? PLACEHOLDER_COUNT
         {/* Real confirmed speakers */}
         {speakers.map((speaker) => (
           <li>
-            <button
-              type="button"
-              class="w-full text-left bg-surface-container border border-outline-variant flex flex-col h-full group cursor-pointer hover:border-primary-container transition-colors"
-              data-speaker-slug={speaker.data.slug}
-              data-speaker-name={speaker.data.name}
-              data-speaker-role={speaker.data.role}
-              data-speaker-bio={speaker.data.bio}
-              data-speaker-photo={speaker.data.photo}
-              data-speaker-topics={speaker.data.topic || ''}
-              data-speaker-links={JSON.stringify(speaker.data.links)}
-              onclick="openSpeakerModal(this)"
-              aria-label={`${t('speakers.modal.aria.view')} ${speaker.data.name}`}
-            >
+            <article class="relative bg-surface-container border border-outline-variant flex flex-col h-full group hover:border-primary-container transition-colors">
               <!-- Photo -->
               <div class="w-full aspect-square overflow-hidden bg-surface-container-high border-b border-outline-variant">
                 {speaker.data.photo ? (
                   <img
                     src={speaker.data.photo}
-                    alt={speaker.data.name}
+                    alt=""
                     class="w-full h-full object-cover"
                     loading="lazy"
                     decoding="async"
@@ -112,57 +100,78 @@ const placeholderCount = speakers.length < PLACEHOLDER_COUNT ? PLACEHOLDER_COUNT
                 )}
 
                 <div class="flex-1">
-                  <p class="font-display text-headline-md uppercase tracking-tight leading-tight">{speaker.data.name}</p>
+                  <h3 class="font-display text-headline-md uppercase tracking-tight leading-tight">{speaker.data.name}</h3>
                   <p class="font-body text-body-md text-on-surface-variant mt-1">{speaker.data.role}</p>
                 </div>
 
                 <!-- Links -->
                 {Object.values(speaker.data.links).some(Boolean) && (
-                  <div class="flex gap-3 pt-2 border-t border-outline-variant">
+                  <ul class="relative z-10 flex flex-wrap gap-2 pt-2 border-t border-outline-variant list-none p-0 m-0" aria-label={`Xarxes socials de ${speaker.data.name}`}>
                     {speaker.data.links.web && (
-                      <a href={speaker.data.links.web} rel="noopener noreferrer" target="_blank"
-                         onclick="(e) => e.stopPropagation()"
-                         class="font-mono text-code-sm text-on-surface-variant hover:text-primary-container transition-colors duration-150"
-                         aria-label={`Web de ${speaker.data.name}`}>WEB</a>
+                      <li>
+                        <a href={speaker.data.links.web} rel="noopener noreferrer" target="_blank"
+                           class="min-h-[24px] min-w-[24px] px-2.5 py-1 inline-flex items-center justify-center font-mono text-code-sm text-on-surface-variant hover:text-primary-container border border-outline-variant hover:border-primary-container transition-colors duration-150"
+                           aria-label={`${speaker.data.name} — Web`}>WEB</a>
+                      </li>
                     )}
                     {speaker.data.links.github && (
-                      <a href={`https://github.com/${speaker.data.links.github}`} rel="noopener noreferrer" target="_blank"
-                         onclick="(e) => e.stopPropagation()"
-                         class="font-mono text-code-sm text-on-surface-variant hover:text-primary-container transition-colors duration-150"
-                         aria-label={`GitHub de ${speaker.data.name}`}>GH</a>
+                      <li>
+                        <a href={`https://github.com/${speaker.data.links.github}`} rel="noopener noreferrer" target="_blank"
+                           class="min-h-[24px] min-w-[24px] px-2.5 py-1 inline-flex items-center justify-center font-mono text-code-sm text-on-surface-variant hover:text-primary-container border border-outline-variant hover:border-primary-container transition-colors duration-150"
+                           aria-label={`${speaker.data.name} — GitHub`}>GH</a>
+                      </li>
                     )}
                     {speaker.data.links.x && (
-                      <a href={`https://x.com/${speaker.data.links.x}`} rel="noopener noreferrer" target="_blank"
-                         onclick="(e) => e.stopPropagation()"
-                         class="font-mono text-code-sm text-on-surface-variant hover:text-primary-container transition-colors duration-150"
-                         aria-label={`X de ${speaker.data.name}`}>X</a>
+                      <li>
+                        <a href={`https://x.com/${speaker.data.links.x}`} rel="noopener noreferrer" target="_blank"
+                           class="min-h-[24px] min-w-[24px] px-2.5 py-1 inline-flex items-center justify-center font-mono text-code-sm text-on-surface-variant hover:text-primary-container border border-outline-variant hover:border-primary-container transition-colors duration-150"
+                           aria-label={`${speaker.data.name} — X`}>X</a>
+                      </li>
                     )}
                     {speaker.data.links.linkedin && (
-                      <a href={`https://linkedin.com/in/${speaker.data.links.linkedin}`} rel="noopener noreferrer" target="_blank"
-                         onclick="(e) => e.stopPropagation()"
-                         class="font-mono text-code-sm text-on-surface-variant hover:text-primary-container transition-colors duration-150"
-                         aria-label={`LinkedIn de ${speaker.data.name}`}>LINKEDIN</a>
+                      <li>
+                        <a href={`https://linkedin.com/in/${speaker.data.links.linkedin}`} rel="noopener noreferrer" target="_blank"
+                           class="min-h-[24px] min-w-[24px] px-2.5 py-1 inline-flex items-center justify-center font-mono text-code-sm text-on-surface-variant hover:text-primary-container border border-outline-variant hover:border-primary-container transition-colors duration-150"
+                           aria-label={`${speaker.data.name} — LinkedIn`}>LINKEDIN</a>
+                      </li>
                     )}
                     {speaker.data.links.mastodon && (
-                      <a href={speaker.data.links.mastodon} rel="me noopener noreferrer" target="_blank"
-                         onclick="(e) => e.stopPropagation()"
-                         class="font-mono text-code-sm text-on-surface-variant hover:text-primary-container transition-colors duration-150"
-                         aria-label={`Mastodon de ${speaker.data.name}`}>MASTODON</a>
+                      <li>
+                        <a href={speaker.data.links.mastodon} rel="me noopener noreferrer" target="_blank"
+                           class="min-h-[24px] min-w-[24px] px-2.5 py-1 inline-flex items-center justify-center font-mono text-code-sm text-on-surface-variant hover:text-primary-container border border-outline-variant hover:border-primary-container transition-colors duration-150"
+                           aria-label={`${speaker.data.name} — Mastodon`}>MASTODON</a>
+                      </li>
                     )}
                     {speaker.data.links.bluesky && (
-                      <a href={speaker.data.links.bluesky} rel="noopener noreferrer" target="_blank"
-                         onclick="(e) => e.stopPropagation()"
-                         class="font-mono text-code-sm text-on-surface-variant hover:text-primary-container transition-colors duration-150"
-                         aria-label={`Bluesky de ${speaker.data.name}`}>BLUESKY</a>
+                      <li>
+                        <a href={speaker.data.links.bluesky} rel="noopener noreferrer" target="_blank"
+                           class="min-h-[24px] min-w-[24px] px-2.5 py-1 inline-flex items-center justify-center font-mono text-code-sm text-on-surface-variant hover:text-primary-container border border-outline-variant hover:border-primary-container transition-colors duration-150"
+                           aria-label={`${speaker.data.name} — Bluesky`}>BLUESKY</a>
+                      </li>
                     )}
-                  </div>
+                  </ul>
                 )}
 
                 <div class="border-t border-outline-variant pt-3 mt-auto">
-                  <span class="font-mono text-code-sm text-primary-container group-hover:underline">{t('speakers.grid.view-bio')}</span>
+                  <button
+                    type="button"
+                    class="w-full text-left font-mono text-code-sm text-primary-container group-hover:underline cursor-pointer flex items-center justify-between py-1 focus-visible:outline-2 focus-visible:outline-primary-container after:absolute after:inset-0 after:content-['']"
+                    data-speaker-slug={speaker.data.slug}
+                    data-speaker-name={speaker.data.name}
+                    data-speaker-role={speaker.data.role}
+                    data-speaker-bio={speaker.data.bio}
+                    data-speaker-photo={speaker.data.photo}
+                    data-speaker-topics={speaker.data.topic || ''}
+                    data-speaker-links={JSON.stringify(speaker.data.links)}
+                    onclick="openSpeakerModal(this)"
+                    aria-haspopup="dialog"
+                  >
+                    <span>{t('speakers.grid.view-bio')}</span>
+                    <span class="sr-only"> ({speaker.data.name})</span>
+                  </button>
                 </div>
               </div>
-            </button>
+            </article>
           </li>
         ))}
 
@@ -236,10 +245,15 @@ const placeholderCount = speakers.length < PLACEHOLDER_COUNT ? PLACEHOLDER_COUNT
   <!-- ═══════════════════════════════════════════════
        SPEAKER MODAL
   ═══════════════════════════════════════════════ -->
-  <div id="speaker-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/80" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-    <div class="bg-surface-container border-2 border-primary-container max-w-2xl w-full max-h-[90vh] overflow-y-auto custom-scrollbar">
+  <dialog
+    id="speaker-modal"
+    closedby="any"
+    aria-labelledby="modal-title"
+    class="fixed inset-0 m-auto bg-surface-container border-2 border-primary-container neon-glow text-on-surface max-w-2xl w-[calc(100%-2rem)] max-h-[85vh] overflow-y-auto p-0 z-50 backdrop:bg-black/80 backdrop:backdrop-blur-sm"
+  >
+    <div class="custom-scrollbar">
       <!-- Header -->
-      <div class="sticky top-0 bg-surface-container border-b border-outline-variant p-6 flex items-start justify-between gap-4">
+      <div class="sticky top-0 bg-surface-container border-b border-outline-variant p-6 flex items-start justify-between gap-4 z-10">
         <div class="flex gap-4 items-start flex-1">
           <img id="modal-photo" src="" alt="" class="w-20 h-20 object-cover border border-outline-variant">
           <div class="flex-1">
@@ -248,14 +262,14 @@ const placeholderCount = speakers.length < PLACEHOLDER_COUNT ? PLACEHOLDER_COUNT
             <div id="modal-topics" class="flex flex-wrap gap-2 mt-3"></div>
           </div>
         </div>
-        <button
-          type="button"
-          onclick="closeSpeakerModal()"
-          class="font-mono text-code-sm text-on-surface-variant hover:text-primary-container border border-outline-variant hover:border-primary-container px-3 py-2 transition-colors"
-          aria-label={t('speakers.modal.aria.close')}
-        >
-          {t('speakers.modal.close')}
-        </button>
+        <form method="dialog">
+          <button
+            type="submit"
+            class="font-mono text-code-sm text-on-surface-variant hover:text-primary-container border border-outline-variant hover:border-primary-container px-3 py-2 transition-colors cursor-pointer"
+          >
+            {t('speakers.modal.close')}
+          </button>
+        </form>
       </div>
 
       <!-- Bio -->
@@ -270,7 +284,7 @@ const placeholderCount = speakers.length < PLACEHOLDER_COUNT ? PLACEHOLDER_COUNT
         <div id="modal-links" class="flex flex-wrap gap-3"></div>
       </div>
     </div>
-  </div>
+  </dialog>
 
   <script is:inline>
     const topicLabels = {
@@ -289,8 +303,13 @@ const placeholderCount = speakers.length < PLACEHOLDER_COUNT ? PLACEHOLDER_COUNT
       'leadership': 'tertiary-container',
     };
 
+    let activeTrigger = null;
+
     function openSpeakerModal(button) {
+      activeTrigger = button;
       const modal = document.getElementById('speaker-modal');
+      if (!modal) return;
+
       const name = button.dataset.speakerName;
       const role = button.dataset.speakerRole;
       const bio = button.dataset.speakerBio;
@@ -303,7 +322,7 @@ const placeholderCount = speakers.length < PLACEHOLDER_COUNT ? PLACEHOLDER_COUNT
       document.getElementById('modal-role').textContent = role;
       document.getElementById('modal-bio').textContent = bio;
       document.getElementById('modal-photo').src = photo;
-      document.getElementById('modal-photo').alt = name;
+      document.getElementById('modal-photo').alt = '';
 
       // Set topic
       const topicsContainer = document.getElementById('modal-topics');
@@ -332,6 +351,7 @@ const placeholderCount = speakers.length < PLACEHOLDER_COUNT ? PLACEHOLDER_COUNT
           a.rel = 'noopener noreferrer';
           a.className = 'font-mono text-code-sm text-on-surface-variant hover:text-primary-container border border-outline-variant hover:border-primary-container px-4 py-2 transition-colors';
           a.textContent = 'WEB →';
+          a.setAttribute('aria-label', `${name} — Web`);
           linksContainer.appendChild(a);
         }
 
@@ -342,6 +362,7 @@ const placeholderCount = speakers.length < PLACEHOLDER_COUNT ? PLACEHOLDER_COUNT
           a.rel = 'noopener noreferrer';
           a.className = 'font-mono text-code-sm text-on-surface-variant hover:text-primary-container border border-outline-variant hover:border-primary-container px-4 py-2 transition-colors';
           a.textContent = 'GITHUB →';
+          a.setAttribute('aria-label', `${name} — GitHub`);
           linksContainer.appendChild(a);
         }
 
@@ -352,6 +373,7 @@ const placeholderCount = speakers.length < PLACEHOLDER_COUNT ? PLACEHOLDER_COUNT
           a.rel = 'noopener noreferrer';
           a.className = 'font-mono text-code-sm text-on-surface-variant hover:text-primary-container border border-outline-variant hover:border-primary-container px-4 py-2 transition-colors';
           a.textContent = 'X →';
+          a.setAttribute('aria-label', `${name} — X`);
           linksContainer.appendChild(a);
         }
 
@@ -362,6 +384,7 @@ const placeholderCount = speakers.length < PLACEHOLDER_COUNT ? PLACEHOLDER_COUNT
           a.rel = 'noopener noreferrer';
           a.className = 'font-mono text-code-sm text-on-surface-variant hover:text-primary-container border border-outline-variant hover:border-primary-container px-4 py-2 transition-colors';
           a.textContent = 'LINKEDIN →';
+          a.setAttribute('aria-label', `${name} — LinkedIn`);
           linksContainer.appendChild(a);
         }
 
@@ -372,6 +395,7 @@ const placeholderCount = speakers.length < PLACEHOLDER_COUNT ? PLACEHOLDER_COUNT
           a.rel = 'me noopener noreferrer';
           a.className = 'font-mono text-code-sm text-on-surface-variant hover:text-primary-container border border-outline-variant hover:border-primary-container px-4 py-2 transition-colors';
           a.textContent = 'MASTODON →';
+          a.setAttribute('aria-label', `${name} — Mastodon`);
           linksContainer.appendChild(a);
         }
 
@@ -382,38 +406,53 @@ const placeholderCount = speakers.length < PLACEHOLDER_COUNT ? PLACEHOLDER_COUNT
           a.rel = 'noopener noreferrer';
           a.className = 'font-mono text-code-sm text-on-surface-variant hover:text-primary-container border border-outline-variant hover:border-primary-container px-4 py-2 transition-colors';
           a.textContent = 'BLUESKY →';
+          a.setAttribute('aria-label', `${name} — Bluesky`);
           linksContainer.appendChild(a);
         }
       } else {
         linksWrapper.classList.add('hidden');
       }
 
-      // Show modal
-      modal.classList.remove('hidden');
-      modal.classList.add('flex');
-      document.body.style.overflow = 'hidden';
+      // Show modal natively
+      modal.showModal();
     }
 
     function closeSpeakerModal() {
       const modal = document.getElementById('speaker-modal');
-      modal.classList.add('hidden');
-      modal.classList.remove('flex');
-      document.body.style.overflow = '';
+      if (modal?.open) {
+        modal.close();
+      }
     }
 
-    // Close on escape key
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        closeSpeakerModal();
+    window.openSpeakerModal = openSpeakerModal;
+    window.closeSpeakerModal = closeSpeakerModal;
+
+    const speakerModal = document.getElementById('speaker-modal');
+
+    // Restore focus to trigger button when modal closes
+    speakerModal?.addEventListener('close', () => {
+      if (activeTrigger) {
+        activeTrigger.focus();
+        activeTrigger = null;
       }
     });
 
-    // Close on backdrop click
-    document.getElementById('speaker-modal')?.addEventListener('click', (e) => {
-      if (e.target.id === 'speaker-modal') {
-        closeSpeakerModal();
-      }
-    });
+    // Fallback backdrop click for browsers without closedby="any"
+    if (speakerModal && !('closedBy' in HTMLDialogElement.prototype)) {
+      speakerModal.addEventListener('click', (event) => {
+        if (event.target !== speakerModal) return;
+        const rect = speakerModal.getBoundingClientRect();
+        const isDialogContent = (
+          rect.top <= event.clientY &&
+          event.clientY <= rect.top + rect.height &&
+          rect.left <= event.clientX &&
+          event.clientX <= rect.left + rect.width
+        );
+        if (!isDialogContent) {
+          speakerModal.close();
+        }
+      });
+    }
   </script>
 
 </BaseLayout>
