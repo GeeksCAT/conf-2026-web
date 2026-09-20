@@ -1,7 +1,7 @@
 ---
 name: "Ivan Reyne"
 slug: "ivan-reyne"
-role: "Desarrollador de Videojuegos Inide"
+role: "Desarrollador de Videojuegos Indie"
 links:
   web: "https://irigames.com"
   linkedin: "ivanreyne"
