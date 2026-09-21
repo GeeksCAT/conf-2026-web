@@ -5,7 +5,7 @@ role: "Desenvolupador de Videojocs Indie"
 links:
   web: "https://irigames.com"
   linkedin: "ivanreyne"
-photo: "/img/speakers/anonymous-head-silhouette.webp"
+photo: "/img/speakers/ivan-reyne.webp"
 bio: |
     Apassionat de la tecnologia des de l'època dels monitors en verd i negre, és enginyer informàtic amb més de dos decennis d'experiència professional a l'estranger. Més enllà del seu recorregut a la indústria, sempre ha mantingut viva la flama del desenvolupament de videojocs, apostant de manera constant per l'ecosistema i les eines Open Source
 topic: "open-source"
