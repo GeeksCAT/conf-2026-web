@@ -48,24 +48,44 @@ export const resum = {
       'El cor d’una conferència són les seves ponències, i el programa d’aquesta edició va oferir una varietat i una profunditat tècnica excel·lents. Volem expressar el nostre reconeixement i agraïment als 10 ponents que van compartir el seu coneixement i experiència:',
     'resum.s4.speaker.jordi_mas':
       'Per obrir la jornada analitzant la IA lliure, local i eficient davant dels gegants del núvol, i el paper clau de la nostra llengua en els models oberts.',
+    'resum.s4.speaker.jordi_mas_photo_alt':
+      'Jordi Mas parlant amb un micròfon, assegut davant del portàtil durant la seva xerrada',
     'resum.s4.speaker.marti_segarra':
       'Per la reflexió sobre la sobirania personal i com l’ús d’eines i models locals ens permet recuperar la privadesa digital.',
+    'resum.s4.speaker.marti_segarra_photo_alt':
+      'Martí Segarra parlant amb un micròfon davant de la diapositiva inicial de la seva xerrada',
     'resum.s4.speaker.andrey_sitnik':
       'Per mostrar-nos com concebre arquitectures "Privacy-First" i local-first, oferint alternatives sòlides i elegants als molestos popups de cookies.',
+    'resum.s4.speaker.andrey_sitnik_photo_alt':
+      'Andrey Sitnik parlant amb un micròfon al costat del cartell de GeeksCAT durant la seva xerrada',
     'resum.s4.speaker.thomas_steiner':
       'Per desgranar amb precisió la nova Cross-Origin Storage API del W3C per evitar descàrregues redundants de fitxers pesats a la web.',
+    'resum.s4.speaker.thomas_steiner_photo_alt':
+      'Thomas Steiner parlant amb un micròfon davant de la projecció de la seva xerrada',
     'resum.s4.speaker.carles_nunyez':
       'Per explicar-nos com van esquivar una limitació històrica del navegador a Framer per eliminar completament el parpelleig dels iframes.',
+    'resum.s4.speaker.carles_nunyez_photo_alt':
+      'Carles Núñez parlant amb un micròfon davant de la projecció de la seva xerrada',
     'resum.s4.speaker.eduard_vidal':
       'Per sorprendre’ns amb el projecte d’Angel Guardià i el contrast entre el mode cel per treballar i el mode infern per a intrusos.',
+    'resum.s4.speaker.eduard_vidal_photo_alt':
+      'Eduard Vidal parlant, assegut davant d’un micròfon i un portàtil durant la seva xerrada',
     'resum.s4.speaker.luis_castro':
       'Per compartir les lliçons reals de reconstruir l’arquitectura d’un gran marketplace de 10 anys de vida cap a un model orientat a esdeveniments.',
+    'resum.s4.speaker.luis_castro_photo_alt':
+      'Luis Castro parlant, assegut davant d’un micròfon i un portàtil durant la seva xerrada',
     'resum.s4.speaker.dario_castane':
       'Per posar el dit a la llaga sobre per què el teu AGENTS.md sovint és una mentida i com establir regles i convencions que realment funcionin.',
+    'resum.s4.speaker.dario_castane_photo_alt':
+      'Darío Castañé parlant, assegut davant d’un micròfon i el seu portàtil durant la seva xerrada',
     'resum.s4.speaker.ivan_reyne':
       'Per transmetre la passió pel motor lliure Godot i demostrar com podem començar a desenvolupar videojocs així com mons interactius.',
+    'resum.s4.speaker.ivan_reyne_photo_alt':
+      'Ivan Reyné parlant amb un micròfon i un comandament de presentació durant la seva xerrada',
     'resum.s4.speaker.evilham':
       'Per la demostració audiovisual en directe de com observar el trànsit DNS i entendre la petjada que deixen els nostres dispositius sense envair la intimitat de les persones.',
+    'resum.s4.speaker.evilham_photo_alt':
+      'evilham gesticulant davant de la projecció durant la seva xerrada',
     'resum.s4.outro':
       'Gràcies a tots deu pel rigor, la generositat a l’hora de respondre preguntes i per les converses que vau mantenir als espais de trobada.',
 
@@ -130,24 +150,44 @@ export const resum = {
       "The heart of a conference is its talks, and this year's lineup delivered outstanding technical depth and variety. We want to extend our heartfelt appreciation to the 10 speakers who shared their knowledge and experience on stage:",
     'resum.s4.speaker.jordi_mas':
       'For opening the day analyzing free, local, and efficient AI against cloud giants, and the vital role of open models in linguistic diversity.',
+    'resum.s4.speaker.jordi_mas_photo_alt':
+      'Jordi Mas speaking into a microphone while seated in front of his laptop during his talk',
     'resum.s4.speaker.marti_segarra':
       'For reflecting on personal sovereignty and how local tools and models empower us to reclaim digital privacy.',
+    'resum.s4.speaker.marti_segarra_photo_alt':
+      'Martí Segarra speaking into a microphone in front of the opening slide of his talk',
     'resum.s4.speaker.andrey_sitnik':
       'For showing us how to build Privacy-First and local-first architectures, offering solid, elegant alternatives to intrusive cookie banners.',
+    'resum.s4.speaker.andrey_sitnik_photo_alt':
+      'Andrey Sitnik speaking into a microphone beside the GeeksCAT banner during his talk',
     'resum.s4.speaker.thomas_steiner':
       'For breaking down the W3C’s new Cross-Origin Storage API to eliminate redundant downloads of heavy assets on the web.',
+    'resum.s4.speaker.thomas_steiner_photo_alt':
+      'Thomas Steiner speaking into a microphone in front of his projected slides',
     'resum.s4.speaker.carles_nunyez':
       'For explaining how they bypassed a longstanding browser limitation at Framer to completely eliminate iframe flickering.',
+    'resum.s4.speaker.carles_nunyez_photo_alt':
+      'Carles Núñez speaking into a microphone in front of his projected slides',
     'resum.s4.speaker.eduard_vidal':
       'For surprising us with the Angel Guardià project and the contrast between heaven mode for work and hell mode for intruders.',
+    'resum.s4.speaker.eduard_vidal_photo_alt':
+      'Eduard Vidal speaking while seated in front of a microphone and laptop during his talk',
     'resum.s4.speaker.luis_castro':
       'For sharing real-world lessons from re-architecting a 10-year-old marketplace towards an event-driven model.',
+    'resum.s4.speaker.luis_castro_photo_alt':
+      'Luis Castro speaking while seated in front of a microphone and laptop during his talk',
     'resum.s4.speaker.dario_castane':
       'For calling out why your AGENTS.md is often a lie and how to set up conventions and rules that actually work.',
+    'resum.s4.speaker.dario_castane_photo_alt':
+      'Darío Castañé speaking while seated in front of a microphone and his laptop during his talk',
     'resum.s4.speaker.ivan_reyne':
       'For sharing his passion for the open-source Godot engine and showing how anyone can start building games and interactive worlds.',
+    'resum.s4.speaker.ivan_reyne_photo_alt':
+      'Ivan Reyné speaking into a microphone and holding a presentation remote during his talk',
     'resum.s4.speaker.evilham':
       'For the live audiovisual demonstration of DNS traffic monitoring and the footprint our devices leave behind without intruding on people’s privacy.',
+    'resum.s4.speaker.evilham_photo_alt':
+      'evilham gesturing in front of the projected screen during their talk',
     'resum.s4.outro':
       'Thank you to all ten of you for your rigor, your generosity in answering questions, and the great conversations you had in the halls.',
 
@@ -213,24 +253,44 @@ export const resum = {
       'El corazón de una conferencia son sus ponencias, y el programa de esta edición ofreció una variedad y una profundidad técnica excelentes. Queremos expresar nuestro reconocimiento y agradecimiento a los 10 ponentes que compartieron su conocimiento y experiencia:',
     'resum.s4.speaker.jordi_mas':
       'Por abrir la jornada analizando la IA libre, local y eficiente frente a los gigantes de la nube, y el papel clave de nuestra lengua en los modelos abiertos.',
+    'resum.s4.speaker.jordi_mas_photo_alt':
+      'Jordi Mas durante su charla, sentado ante un micrófono y su portátil',
     'resum.s4.speaker.marti_segarra':
       'Por la reflexión sobre la soberanía personal y cómo el uso de herramientas y modelos locales nos permite recuperar la privacidad digital.',
+    'resum.s4.speaker.marti_segarra_photo_alt':
+      'Martí Segarra impartiendo su charla ante la diapositiva inicial, con un micrófono en la mano',
     'resum.s4.speaker.andrey_sitnik':
       'Por mostrarnos cómo concebir arquitecturas "Privacy-First" y local-first, ofreciendo alternativas sólidas y elegantes a los molestos popups de cookies.',
+    'resum.s4.speaker.andrey_sitnik_photo_alt':
+      'Andrey Sitnik durante su charla, con un micrófono en la mano junto al cartel de GeeksCAT',
     'resum.s4.speaker.thomas_steiner':
       'Por desgranar con precisión la nueva Cross-Origin Storage API del W3C para evitar descargas redundantes de archivos pesados en la web.',
+    'resum.s4.speaker.thomas_steiner_photo_alt':
+      'Thomas Steiner impartiendo su charla ante la proyección, con un micrófono en la mano',
     'resum.s4.speaker.carles_nunyez':
       'Por explicarnos cómo esquivaron una limitación histórica del navegador en Framer para eliminar por completo el parpadeo de los iframes.',
+    'resum.s4.speaker.carles_nunyez_photo_alt':
+      'Carles Núñez durante su charla, con un micrófono en la mano ante la proyección',
     'resum.s4.speaker.eduard_vidal':
       'Por sorprendernos con el proyecto de Angel Guardià y el contraste entre el modo cielo para trabajar y el modo infierno para intrusos.',
+    'resum.s4.speaker.eduard_vidal_photo_alt':
+      'Eduard Vidal impartiendo su charla, sentado ante un micrófono y un portátil',
     'resum.s4.speaker.luis_castro':
       'Por compartir las lecciones reales de reconstruir la arquitectura de un gran marketplace de 10 años de vida hacia un modelo orientado a eventos.',
+    'resum.s4.speaker.luis_castro_photo_alt':
+      'Luis Castro durante su charla, sentado ante un micrófono y un portátil',
     'resum.s4.speaker.dario_castane':
       'Por poner el dedo en la llaga sobre por qué tu AGENTS.md a menudo es una mentira y cómo establecer reglas y convenciones que realmente funcionen.',
+    'resum.s4.speaker.dario_castane_photo_alt':
+      'Darío Castañé impartiendo su charla, sentado ante un micrófono y su portátil',
     'resum.s4.speaker.ivan_reyne':
       'Por transmitir la pasión por el motor libre Godot y demostrar cómo podemos empezar a desarrollar videojuegos así como mundos interactivos.',
+    'resum.s4.speaker.ivan_reyne_photo_alt':
+      'Ivan Reyné durante su charla, con un micrófono y un mando de presentación en las manos',
     'resum.s4.speaker.evilham':
       'Por la demostración audiovisual en directo de cómo observar el tráfico DNS y entender la huella que dejan nuestros dispositivos sin invadir la intimidad de las personas.',
+    'resum.s4.speaker.evilham_photo_alt':
+      'evilham impartiendo su charla, gesticulando ante la proyección',
     'resum.s4.outro':
       'Gracias a los diez por el rigor, la generosidad al responder preguntas y por las conversaciones que mantuvisteis en los espacios de encuentro.',
 

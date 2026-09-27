@@ -17,60 +17,70 @@ const speakersList = [
     id: 'jordi-mas',
     name: 'Jordi Mas',
     photo: '/img/resum/jordi-mas.jpg',
+    photoAlt: t('resum.s4.speaker.jordi_mas_photo_alt'),
     description: t('resum.s4.speaker.jordi_mas'),
   },
   {
     id: 'marti-segarra',
     name: 'Martí Segarra',
     photo: '/img/resum/marti-segarra.jpg',
+    photoAlt: t('resum.s4.speaker.marti_segarra_photo_alt'),
     description: t('resum.s4.speaker.marti_segarra'),
   },
   {
     id: 'andrey-sitnik',
     name: 'Andrey Sitnik',
     photo: '/img/resum/andrey-sitnik.jpg',
+    photoAlt: t('resum.s4.speaker.andrey_sitnik_photo_alt'),
     description: t('resum.s4.speaker.andrey_sitnik'),
   },
   {
     id: 'thomas-steiner',
     name: 'Thomas Steiner',
     photo: '/img/resum/thomas-steiner.jpg',
+    photoAlt: t('resum.s4.speaker.thomas_steiner_photo_alt'),
     description: t('resum.s4.speaker.thomas_steiner'),
   },
   {
     id: 'carles-nunyez',
     name: 'Carles Núñez',
     photo: '/img/resum/carles-nunyez.jpg',
+    photoAlt: t('resum.s4.speaker.carles_nunyez_photo_alt'),
     description: t('resum.s4.speaker.carles_nunyez'),
   },
   {
     id: 'eduard-vidal',
     name: 'Eduard Vidal',
     photo: '/img/resum/eduard-vidal.jpg',
+    photoAlt: t('resum.s4.speaker.eduard_vidal_photo_alt'),
     description: t('resum.s4.speaker.eduard_vidal'),
   },
   {
     id: 'luis-castro',
     name: 'Luis Castro',
     photo: '/img/resum/luis-castro.jpg',
+    photoAlt: t('resum.s4.speaker.luis_castro_photo_alt'),
     description: t('resum.s4.speaker.luis_castro'),
   },
   {
     id: 'dario-castane',
     name: 'Darío Castañé',
     photo: '/img/resum/dario-castane.jpg',
+    photoAlt: t('resum.s4.speaker.dario_castane_photo_alt'),
     description: t('resum.s4.speaker.dario_castane'),
   },
   {
     id: 'ivan-reyne',
     name: 'Ivan Reyné',
     photo: '/img/resum/ivan-reyne.jpg',
+    photoAlt: t('resum.s4.speaker.ivan_reyne_photo_alt'),
     description: t('resum.s4.speaker.ivan_reyne'),
   },
   {
     id: 'evilham',
     name: 'evilham',
     photo: '/img/resum/evilham.jpg',
+    photoAlt: t('resum.s4.speaker.evilham_photo_alt'),
     description: t('resum.s4.speaker.evilham'),
   },
 ];
@@ -315,7 +325,7 @@ const speakersList = [
             <div class="sm:w-44 shrink-0 aspect-square sm:aspect-auto bg-surface-container-high border-b sm:border-b-0 sm:border-r border-outline-variant overflow-hidden">
               <img
                 src={speaker.photo}
-                alt={speaker.name}
+                alt={speaker.photoAlt}
                 class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                 loading="lazy"
                 decoding="async"
