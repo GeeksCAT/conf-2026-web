@@ -7,6 +7,7 @@ export const hero = {
     'hero.venue': "L'Estació Espai Jove - Carrer de Santa Eugènia, 17, 17005 Girona",
     'hero.cta.ticket': 'RESERVAR ENTRADA',
     'hero.cta.agenda': 'VEURE AGENDA',
+    'hero.cta.speakers': 'VEURE PONENTS',
   },
   en: {
     'hero.badge': '[ INIT_SYSTEM_ROOT ]',
@@ -17,6 +18,7 @@ export const hero = {
     'hero.venue': "L'Estació Espai Jove - Carrer de Santa Eugènia, 17, 17005 Girona",
     'hero.cta.ticket': 'RESERVE TICKET',
     'hero.cta.agenda': 'VIEW AGENDA',
+    'hero.cta.speakers': 'VIEW SPEAKERS',
   },
   es: {
     'hero.badge': '[ INIT_SYSTEM_ROOT ]',
@@ -27,5 +29,6 @@ export const hero = {
     'hero.venue': "L'Estació Espai Jove - Carrer de Santa Eugènia, 17, 17005 Girona",
     'hero.cta.ticket': 'RESERVAR ENTRADA',
     'hero.cta.agenda': 'VER AGENDA',
+    'hero.cta.speakers': 'VER PONENTES',
   },
 } as const;

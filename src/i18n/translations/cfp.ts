@@ -1,15 +1,17 @@
 export const cfp = {
   ca: {
     'cfp.title': 'CFP',
-    'cfp.headline': 'SYSCALL PONENTS',
-    'cfp.closed.badge': 'CFP TANCAT',
+    'cfp.headline': 'MOLTES GRÀCIES!',
+    'cfp.closed.badge': 'CFP FINALITZAT',
     'cfp.closed.intro':
-      "El període per enviar propostes de xerrada per a la GeeksCAT Conf 2026 s'ha tancat. Gràcies a tothom qui ens ha fet arribar una proposta.",
+      'Volem expressar el nostre sincer agraïment a totes les persones que vau dedicar temps i esforç a preparar i enviar una proposta de xerrada o taller per a GeeksCAT Conf 2026.',
+    'cfp.badge.community': 'COMUNITAT ACTIVA',
     'cfp.closed.tag': '[ EOF ]',
-    'cfp.closed.title': 'PROPOSTES TANCADES',
+    'cfp.closed.title': 'DESCOBREIX LES XERRADES I ELS PONENTS',
     'cfp.closed.desc':
-      'Ja no acceptem propostes noves. Anem publicant els ponents confirmats a mesura que els tanquem.',
+      'Pots consultar totes les ponències que van formar part de la jornada i conèixer els perfils de les persones ponents.',
     'cfp.closed.cta': 'VEURE ELS PONENTS →',
+    'cfp.closed.cta.agenda': "VEURE L'AGENDA →",
     'cfp.deadline': '31 juliol 2026',
     'cfp.notification': '14 agost 2026',
 
@@ -17,14 +19,12 @@ export const cfp = {
     'cfp.hero.languages': 'IDIOMES: CAT / ENG / ESP',
 
     // What we're looking for
-    'cfp.looking.tag': 'QUÈ BUSCÀVEM',
-    'cfp.looking.title': 'CRITERIS DE SELECCIÓ',
+    'cfp.looking.tag': '[ COMUNITAT_GEEK ]',
+    'cfp.looking.title': 'EL TALENT I LA GENEROSITAT DE COMPARTIR',
     'cfp.looking.p1':
-      'No busquem presentacions corporatives. Busquem profunditat tècnica, lideratge, "live coding" arriscat, arquitectures complexes i històries de guerra reals. Si el teu codi fa coses increïbles (o ha explotat de forma èpica).',
+      "El procés de selecció d'aquesta edició va ser un repte apassionant. Vam rebre propostes d'un nivell tècnic, pràctic i humà extraordinari, cobrint des d'arquitectures de sistemes, DevOps i IA lliure fins a lideratge tècnic i cultura hacker.",
     'cfp.looking.p2':
-      'Geeks apassionats per compartir coneixement sobre qualsevol aspecte tècnic (Arquitectura i Enginyeria de Programari / Sistemes, SRE, AI & Data, ...), i si hi ha Open Source, encara millor. No cal que tinguis experiència, només ganes.',
-    'cfp.looking.p3':
-      "L'aspecte tècnic no ho és tot, el seu lideratge i inspiracions també, per tant, si líderes un equip tècnic o saps com inspirar la comunitat catalana per impulsar el seu talent o fer ús conscient de la tecnologia, aquesta és la teva conferència.",
+      "Tant si la teva proposta va formar part del programa com si aquesta vegada no va poder entrar per limitació d'espai i temps, el teu interès per compartir coneixement és el motor essencial de la comunitat. Moltes gràcies per fer possible GeeksCAT!",
 
     // Criteria
     'cfp.criteria.tag': '[ CRITERIS ]',
@@ -99,15 +99,17 @@ export const cfp = {
   },
   en: {
     'cfp.title': 'CFP',
-    'cfp.headline': 'SYSCALL SPEAKERS',
-    'cfp.closed.badge': 'CFP CLOSED',
+    'cfp.headline': 'THANK YOU!',
+    'cfp.closed.badge': 'CFP CONCLUDED',
     'cfp.closed.intro':
-      'The call for proposals for GeeksCAT Conf 2026 is closed. Thank you to everyone who sent us a talk.',
+      'We want to express our heartfelt gratitude to everyone who took the time and effort to submit a talk or workshop proposal for GeeksCAT Conf 2026.',
+    'cfp.badge.community': 'ACTIVE COMMUNITY',
     'cfp.closed.tag': '[ EOF ]',
-    'cfp.closed.title': 'PROPOSALS CLOSED',
+    'cfp.closed.title': 'DISCOVER THE TALKS AND SPEAKERS',
     'cfp.closed.desc':
-      'We are no longer accepting new proposals. We announce confirmed speakers as we lock them in.',
+      'You can check all the talks that were part of the conference and get to know the speakers.',
     'cfp.closed.cta': 'VIEW THE SPEAKERS →',
+    'cfp.closed.cta.agenda': 'VIEW SCHEDULE →',
     'cfp.deadline': ' 31 July 2026 ',
     'cfp.notification': '14 August 2026',
 
@@ -115,14 +117,12 @@ export const cfp = {
     'cfp.hero.languages': 'LANGUAGES: CAT / ENG / ESP',
 
     // What we're looking for
-    'cfp.looking.tag': 'WHAT WE LOOKED FOR',
-    'cfp.looking.title': 'SELECTION CRITERIA',
+    'cfp.looking.tag': '[ GEEK_COMMUNITY ]',
+    'cfp.looking.title': 'THE TALENT AND GENEROSITY OF SHARING',
     'cfp.looking.p1':
-      'We are not looking for corporate presentations. We seek technical depth, leadership, risky "live coding", complex architectures and real war stories. If your code does incredible things (or has exploded spectacularly).',
+      'The selection process for this edition was an inspiring challenge. We received proposals of extraordinary technical, practical, and human quality, covering system architectures, DevOps, open AI, technical leadership, and hacker culture.',
     'cfp.looking.p2':
-      "Geeks passionate about sharing knowledge on any technical aspect (Software/Systems Architecture and Engineering, SRE, AI & Data, ...), and if there is Open Source, even better. You don't need experience, just enthusiasm.",
-    'cfp.looking.p3':
-      'The technical aspect is not everything, leadership and inspirations too, so if you lead a technical team or know how to inspire the Catalan community to boost their talent or make conscious use of technology, this is your conference.',
+      'Whether your proposal was part of the program or could not be included this time due to schedule limitations, your drive to share knowledge is the core engine of our community. Thank you for making GeeksCAT possible!',
 
     // Criteria
     'cfp.criteria.tag': '[ CRITERIA ]',
@@ -196,15 +196,17 @@ export const cfp = {
   },
   es: {
     'cfp.title': 'CFP',
-    'cfp.headline': 'SYSCALL PONENTES',
-    'cfp.closed.badge': 'CFP CERRADO',
+    'cfp.headline': '¡MUCHAS GRACIAS!',
+    'cfp.closed.badge': 'CFP FINALIZADO',
     'cfp.closed.intro':
-      'El periodo para enviar propuestas de charla para la GeeksCAT Conf 2026 se ha cerrado. Gracias a todo el mundo que nos ha hecho llegar una propuesta.',
+      'Queremos expresar nuestro sincero agradecimiento a todas las personas que dedicasteis tiempo y esfuerzo a preparar y enviar una propuesta de charla o taller para GeeksCAT Conf 2026.',
+    'cfp.badge.community': 'COMUNIDAD ACTIVA',
     'cfp.closed.tag': '[ EOF ]',
-    'cfp.closed.title': 'PROPUESTAS CERRADAS',
+    'cfp.closed.title': 'DESCUBRE LAS PONENCIAS Y LOS PONENTES',
     'cfp.closed.desc':
-      'Ya no aceptamos propuestas nuevas. Vamos publicando los ponentes confirmados a medida que los cerramos.',
+      'Puedes consultar todas las ponencias que formaron parte de la jornada y conocer los perfiles de los ponentes.',
     'cfp.closed.cta': 'VER LOS PONENTES →',
+    'cfp.closed.cta.agenda': 'VER AGENDA →',
     'cfp.deadline': '31 julio 2026',
     'cfp.notification': '14 agosto 2026',
 
@@ -212,14 +214,12 @@ export const cfp = {
     'cfp.hero.languages': 'IDIOMAS: CAT / ENG / ESP',
 
     // What we're looking for
-    'cfp.looking.tag': 'QUÉ BUSCÁBAMOS',
-    'cfp.looking.title': 'CRITERIOS DE SELECCIÓN',
+    'cfp.looking.tag': '[ COMUNIDAD_GEEK ]',
+    'cfp.looking.title': 'EL TALENTO Y LA GENEROSIDAD DE COMPARTIR',
     'cfp.looking.p1':
-      'No buscamos presentaciones corporativas. Buscamos profundidad técnica, liderazgo, "live coding" arriesgado, arquitecturas complejas e historias de guerra reales. Si tu código hace cosas increíbles (o ha explotado de forma épica).',
+      'El proceso de selección de esta edición fue un reto apasionante. Recibimos propuestas de un nivel técnico, práctico y humano extraordinario, abarcando desde arquitecturas de sistemas, DevOps e IA libre hasta liderazgo técnico y cultura hacker.',
     'cfp.looking.p2':
-      'Geeks apasionados por compartir conocimiento sobre cualquier aspecto técnico (Arquitectura e Ingeniería de Software / Sistemas, SRE, AI & Data, ...), y si hay Open Source, aún mejor. No hace falta que tengas experiencia, solo ganas.',
-    'cfp.looking.p3':
-      'El aspecto técnico no lo es todo, su liderazgo e inspiraciones también, por tanto, si lideras un equipo técnico o sabes cómo inspirar la comunidad catalana para impulsar su talento o hacer uso consciente de la tecnología, esta es tu conferència.',
+      'Tanto si tu propuesta formó parte del programa como si esta vez no pudo entrar por limitación de horario y espacio, tu interés por compartir conocimiento es el motor esencial de la comunidad. ¡Muchas gracias por hacer posible GeeksCAT!',
 
     // Criteria
     'cfp.criteria.tag': '[ CRITERIOS ]',

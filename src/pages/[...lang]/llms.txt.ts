@@ -44,11 +44,15 @@ const strings: Record<Locale, LocaleStrings> = {
         path: '/speakers',
         desc: 'Llistat de ponents confirmats, perfils i biografies.',
       },
-      { name: 'Entrades', path: '/tickets', desc: "Informació sobre reserva i compra d'entrades." },
+      {
+        name: 'Entrades',
+        path: '/tickets',
+        desc: "Informació sobre les entrades de l'esdeveniment (registre tancat).",
+      },
       {
         name: 'Crida a ponències (CFP)',
         path: '/cfp',
-        desc: 'Propostes de xerrades obertes a la comunitat.',
+        desc: 'Agraïment a les persones que van presentar propostes de xerrades.',
       },
       {
         name: 'Patrocinadors',
@@ -115,12 +119,12 @@ const strings: Record<Locale, LocaleStrings> = {
       {
         name: 'Tickets',
         path: '/tickets',
-        desc: 'Information on reserving and purchasing tickets.',
+        desc: 'Information about conference tickets (registration closed).',
       },
       {
         name: 'Call for Proposals (CFP)',
         path: '/cfp',
-        desc: 'Talk proposals open to the community.',
+        desc: 'Gratitude to everyone who submitted talk and workshop proposals.',
       },
       { name: 'Sponsors', path: '/sponsors', desc: 'Sponsorship packages and partner companies.' },
       {
@@ -187,12 +191,12 @@ const strings: Record<Locale, LocaleStrings> = {
       {
         name: 'Entradas',
         path: '/tickets',
-        desc: 'Información sobre reserva y compra de entradas.',
+        desc: 'Información sobre las entradas del evento (registro cerrado).',
       },
       {
         name: 'Llamada a ponencias (CFP)',
         path: '/cfp',
-        desc: 'Propuestas de charlas abiertas a la comunidad.',
+        desc: 'Agradecimiento a las personas que presentaron propuestas de charlas.',
       },
       {
         name: 'Patrocinadores',

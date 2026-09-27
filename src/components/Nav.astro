@@ -10,7 +10,6 @@ const pathname = Astro.url.pathname;
 const stripped = pathname.replace(/^\/(ca|en|es)(?=\/|$)/, '') || '/';
 
 const homePath = localizedPath('/', locale);
-const ticketsPath = localizedPath('/tickets', locale);
 
 const navItems = [
   { label: t('nav.about'),    href: homePath,                          active: stripped === '/' },
@@ -51,12 +50,6 @@ const navItems = [
         <LangSwitcher />
         <ThemeToggle />
       </div>
-      <a
-        href={ticketsPath}
-        class="hidden md:inline-flex items-center bg-primary-container text-on-primary-container font-mono font-bold text-xs px-5 py-2 uppercase tracking-tighter hover:bg-primary-fixed-dim transition-colors duration-150 active:translate-y-px"
-      >
-        {t('nav.tickets')}
-      </a>
 
       <button
         id="mobile-menu-btn"
@@ -103,12 +96,6 @@ const navItems = [
         <LangSwitcher />
         <ThemeToggle />
       </div>
-      <a
-        href={ticketsPath}
-        class="mt-2 inline-flex items-center justify-center bg-primary-container text-on-primary-container font-mono font-bold text-sm px-5 py-3 uppercase tracking-tighter"
-      >
-        {t('nav.tickets')}
-      </a>
     </div>
   </div>
 </nav>

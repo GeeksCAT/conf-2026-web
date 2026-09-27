@@ -11,7 +11,6 @@ const t = useTranslations(locale);
 
 const agendaPath = localizedPath('/agenda', locale);
 const speakersPath = localizedPath('/speakers', locale);
-const ticketsPath = localizedPath('/tickets', locale);
 
 // The home shows a teaser of the lineup; the full list lives on /speakers.
 const SPEAKER_SLOTS = 9;
@@ -46,7 +45,7 @@ const hasMainSponsorBody = !!mainSponsor?.body?.trim();
       </span>
 
       <h1 class="font-display uppercase tracking-tighter mb-6 leading-none"
-          style="font-size: clamp(2.5rem, 8vw, 5rem)">
+          style="font-size: clamp(1.75rem, 7.5vw, 5rem)">
         GEEKSCAT_CONF_<span class="text-primary-container terminal-cursor">2026</span>
       </h1>
 
@@ -68,8 +67,8 @@ const hasMainSponsorBody = !!mainSponsor?.body?.trim();
       </div>
 
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <CTAButton href={ticketsPath}>{t('hero.cta.ticket')}</CTAButton>
-        <CTAButton href={agendaPath} variant="outline">{t('hero.cta.agenda')}</CTAButton>
+        <CTAButton href={agendaPath}>{t('hero.cta.agenda')}</CTAButton>
+        <CTAButton href={speakersPath} variant="outline">{t('hero.cta.speakers')}</CTAButton>
       </div>
     </div>
 

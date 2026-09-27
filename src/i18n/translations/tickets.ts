@@ -1,14 +1,13 @@
 export const tickets = {
   ca: {
     'tickets.title': 'Entrades',
-    'tickets.description': 'Reserva la teva entrada gratuïta per a GeeksCAT Conf 2026.',
+    'tickets.description': 'Informació sobre les entrades de GeeksCAT Conf 2026.',
 
     // Hero
-    'tickets.badge': '[ SUDO ACCESS ]',
+    'tickets.badge': '[ STATUS: CONCLUDED ]',
     'tickets.headline': 'ENTRADES',
     'tickets.intro':
-      "La GeeksCAT Conf 2026 és un esdeveniment <b>100% gratuït</b>, però per motius d'aforament <b>és imprescindible reservar la teva entrada</b> a través de Pretix.<br/><br/>" +
-      "Totes les entrades inclouen l'assistència a totes les ponències, debats i espais de trobada durant la jornada.",
+      "L'esdeveniment GeeksCAT Conf 2026 ja ha finalitzat. Moltes gràcies a totes les persones assistents, ponents, voluntàries i patrocinadores per fer-ho possible!",
     'tickets.cta.member': 'FES-TE SÒCIA',
 
     // Ticket card
@@ -16,9 +15,9 @@ export const tickets = {
     'tickets.card.title': 'ENTRADA GENERAL',
     'tickets.card.price': '0€',
     'tickets.card.price_sub': 'GRATUÏTA',
-    'tickets.card.status': 'Reserva prèvia obligatòria',
+    'tickets.card.status': 'Esdeveniment finalitzat',
     'tickets.card.desc':
-      "Accés complet a la jornada de conferència (26 de setembre de 2026). Aforament limitat de l'espai.",
+      "Les inscripcions per a l'edició 2026 estan tancades. Pots consultar les ponències i el contingut de les sessions a l'agenda.",
     'tickets.card.item1': '26 de setembre de 2026',
     'tickets.card.item2': "L'Estació Espai Jove, Girona",
     'tickets.card.item3': 'Accés a totes les ponències i debats',
@@ -31,18 +30,17 @@ export const tickets = {
       'GeeksCAT és una associació sense ànim de lucre. Fent-te sòcia fas possible esdeveniments gratuïts com aquest i dones suport a la comunitat tecnològica de Catalunya.',
 
     // Buttons
-    'tickets.buy': 'RESERVAR ENTRADA →',
+    'tickets.buy': 'VEURE AGENDA →',
   },
   en: {
     'tickets.title': 'Tickets',
-    'tickets.description': 'Book your free ticket for GeeksCAT Conf 2026.',
+    'tickets.description': 'Information about tickets for GeeksCAT Conf 2026.',
 
     // Hero
-    'tickets.badge': '[ SUDO ACCESS ]',
+    'tickets.badge': '[ STATUS: CONCLUDED ]',
     'tickets.headline': 'TICKETS',
     'tickets.intro':
-      'GeeksCAT Conf 2026 is a <b>100% free event</b>, but due to venue capacity <b>booking your ticket in advance is mandatory</b> through Pretix.<br/><br/>' +
-      'All tickets include access to all talks, debates, and community spaces throughout the day.',
+      'GeeksCAT Conf 2026 has concluded. A huge thank you to all attendees, speakers, volunteers, and sponsors for making it happen!',
     'tickets.cta.member': 'BECOME A MEMBER',
 
     // Ticket card
@@ -50,9 +48,9 @@ export const tickets = {
     'tickets.card.title': 'GENERAL TICKET',
     'tickets.card.price': '0€',
     'tickets.card.price_sub': 'FREE',
-    'tickets.card.status': 'Advance reservation required',
+    'tickets.card.status': 'Event concluded',
     'tickets.card.desc':
-      'Full access to the conference day (September 26th, 2026). Limited venue capacity.',
+      'Registration for the 2026 edition is closed. You can explore the talks and session contents in the agenda.',
     'tickets.card.item1': 'September 26th, 2026',
     'tickets.card.item2': "L'Estació Espai Jove, Girona",
     'tickets.card.item3': 'Access to all talks and debates',
@@ -65,18 +63,17 @@ export const tickets = {
       'GeeksCAT is a non-profit association. Becoming a member enables free events like this and supports the tech community in Catalonia.',
 
     // Buttons
-    'tickets.buy': 'RESERVE TICKET →',
+    'tickets.buy': 'VIEW SCHEDULE →',
   },
   es: {
     'tickets.title': 'Entradas',
-    'tickets.description': 'Reserva tu entrada gratuita para GeeksCAT Conf 2026.',
+    'tickets.description': 'Información sobre las entradas de GeeksCAT Conf 2026.',
 
     // Hero
-    'tickets.badge': '[ SUDO ACCESS ]',
+    'tickets.badge': '[ STATUS: CONCLUDED ]',
     'tickets.headline': 'ENTRADAS',
     'tickets.intro':
-      'La GeeksCAT Conf 2026 es un evento <b>100% gratuito</b>, pero por motivos de aforo <b>es imprescindible reservar tu entrada con antelación</b> a través de Pretix.<br/><br/>' +
-      'Todas las entradas incluyen la asistencia a todas las ponencias, debates y espacios de encuentro durante la jornada.',
+      'El evento GeeksCAT Conf 2026 ha finalizado. ¡Muchas gracias a todas las personas asistentes, ponentes, voluntarias y patrocinadoras por hacerlo posible!',
     'tickets.cta.member': 'HAZTE SOCIO',
 
     // Ticket card
@@ -84,9 +81,9 @@ export const tickets = {
     'tickets.card.title': 'ENTRADA GENERAL',
     'tickets.card.price': '0€',
     'tickets.card.price_sub': 'GRATUITA',
-    'tickets.card.status': 'Reserva previa obligatoria',
+    'tickets.card.status': 'Evento finalizado',
     'tickets.card.desc':
-      'Acceso completo a la jornada de conferencia (26 de septiembre de 2026). Aforo limitado del espacio.',
+      'Las inscripciones para la edición 2026 están cerradas. Puedes consultar las ponencias y el contenido de las sesiones en la agenda.',
     'tickets.card.item1': '26 de septiembre de 2026',
     'tickets.card.item2': "L'Estació Espai Jove, Girona",
     'tickets.card.item3': 'Acceso a todas las ponencias y debates',
@@ -99,6 +96,6 @@ export const tickets = {
       'GeeksCAT es una asociación sin ánimo de lucro. Haciéndote socio haces posible eventos gratuitos como este y apoyas a la comunidad tecnológica de Cataluña.',
 
     // Buttons
-    'tickets.buy': 'RESERVAR ENTRADA →',
+    'tickets.buy': 'VER AGENDA →',
   },
 } as const;

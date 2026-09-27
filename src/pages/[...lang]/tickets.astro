@@ -1,12 +1,12 @@
 ---
 import BaseLayout from '../../components/BaseLayout.astro';
 import CTAButton from '../../components/CTAButton.astro';
-import { getLocale, useTranslations } from '../../i18n/utils';
+import { getLocale, useTranslations, localizedPath } from '../../i18n/utils';
 export { getStaticPaths } from '../../i18n/utils';
 
 const locale = getLocale(Astro.params.lang);
 const t = useTranslations(locale);
-const pretixUrl = 'https://pretix.eu/geekscat/conf-2026/';
+const agendaPath = localizedPath('/agenda', locale);
 ---
 
 <BaseLayout
@@ -30,7 +30,7 @@ const pretixUrl = 'https://pretix.eu/geekscat/conf-2026/';
       <p class="font-body text-body-lg text-on-surface-variant mb-8 max-w-2xl" set:html={t('tickets.intro')}>
       </p>
       <div class="flex flex-wrap gap-4">
-        <CTAButton href={pretixUrl} external>{t('tickets.buy')}</CTAButton>
+        <CTAButton href={agendaPath}>{t('tickets.buy')}</CTAButton>
         <CTAButton href="https://geeks.cat/#fes-te-soci" variant="outline" external>{t('tickets.cta.member')}</CTAButton>
       </div>
     </div>
@@ -72,9 +72,7 @@ const pretixUrl = 'https://pretix.eu/geekscat/conf-2026/';
           </div>
           <div class="pt-4 border-t border-outline-variant">
             <a
-              href={pretixUrl}
-              target="_blank"
-              rel="noopener noreferrer"
+              href={agendaPath}
               class="w-full inline-flex items-center justify-center font-mono font-bold text-base px-6 py-4 uppercase tracking-tighter transition-colors duration-150 bg-primary-container text-on-primary-container hover:bg-primary-fixed-dim active:translate-y-px"
             >
               {t('tickets.buy')}
