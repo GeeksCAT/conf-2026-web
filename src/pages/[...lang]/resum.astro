@@ -1,0 +1,407 @@
+---
+import BaseLayout from '../../components/BaseLayout.astro';
+import CTAButton from '../../components/CTAButton.astro';
+import SectionHeader from '../../components/SectionHeader.astro';
+import { getLocale, localizedPath, useTranslations } from '../../i18n/utils';
+export { getStaticPaths } from '../../i18n/utils';
+
+const locale = getLocale(Astro.params.lang);
+const t = useTranslations(locale);
+
+const agendaPath = localizedPath('/agenda', locale);
+const speakersPath = localizedPath('/speakers', locale);
+const homePath = localizedPath('/', locale);
+
+const speakersList = [
+  {
+    id: 'jordi-mas',
+    name: 'Jordi Mas',
+    photo: '/img/resum/jordi-mas.jpg',
+    description: t('resum.s4.speaker.jordi_mas'),
+  },
+  {
+    id: 'marti-segarra',
+    name: 'Martí Segarra',
+    photo: '/img/resum/marti-segarra.jpg',
+    description: t('resum.s4.speaker.marti_segarra'),
+  },
+  {
+    id: 'andrey-sitnik',
+    name: 'Andrey Sitnik',
+    photo: '/img/resum/andrey-sitnik.jpg',
+    description: t('resum.s4.speaker.andrey_sitnik'),
+  },
+  {
+    id: 'thomas-steiner',
+    name: 'Thomas Steiner',
+    photo: '/img/resum/thomas-steiner.jpg',
+    description: t('resum.s4.speaker.thomas_steiner'),
+  },
+  {
+    id: 'carles-nunyez',
+    name: 'Carles Núñez',
+    photo: '/img/resum/carles-nunyez.jpg',
+    description: t('resum.s4.speaker.carles_nunyez'),
+  },
+  {
+    id: 'eduard-vidal',
+    name: 'Eduard Vidal',
+    photo: '/img/resum/eduard-vidal.jpg',
+    description: t('resum.s4.speaker.eduard_vidal'),
+  },
+  {
+    id: 'luis-castro',
+    name: 'Luis Castro',
+    photo: '/img/resum/luis-castro.jpg',
+    description: t('resum.s4.speaker.luis_castro'),
+  },
+  {
+    id: 'dario-castane',
+    name: 'Darío Castañé',
+    photo: '/img/resum/dario-castane.jpg',
+    description: t('resum.s4.speaker.dario_castane'),
+  },
+  {
+    id: 'ivan-reyne',
+    name: 'Ivan Reyné',
+    photo: '/img/resum/ivan-reyne.jpg',
+    description: t('resum.s4.speaker.ivan_reyne'),
+  },
+  {
+    id: 'evilham',
+    name: 'evilham',
+    photo: '/img/resum/evilham.jpg',
+    description: t('resum.s4.speaker.evilham'),
+  },
+];
+---
+
+<BaseLayout
+  title={t('resum.page.title')}
+  description={t('resum.page.desc')}
+>
+
+  <!-- ═══════════════════════════════════════════════
+       HERO
+  ═══════════════════════════════════════════════ -->
+  <header class="relative pt-32 pb-20 px-6 overflow-hidden border-b border-outline-variant">
+    <div class="absolute inset-0 grid-lines opacity-10 pointer-events-none" aria-hidden="true"></div>
+    <div class="max-w-5xl mx-auto relative z-10">
+      <span class="font-mono text-code-sm text-primary-container uppercase tracking-widest block mb-6">
+        [ {t('resum.badge')} ]
+      </span>
+      <h1 class="font-display uppercase tracking-tighter mb-6 leading-none"
+          style="font-size: clamp(2rem, 7vw, 4.5rem)">
+        {t('resum.headline')}
+      </h1>
+      <p class="font-body text-body-lg text-on-surface-variant max-w-3xl leading-relaxed mb-8">
+        {t('resum.intro')}
+      </p>
+
+      <div class="flex flex-wrap gap-4 items-center font-mono text-code-sm uppercase">
+        <span class="border border-primary-container/40 text-primary-container px-4 py-1.5">
+          26_09_2026 // GIRONA
+        </span>
+        <span class="border border-outline-variant text-on-surface-variant px-4 py-1.5">
+          10_PONENTS // 10_TALKS
+        </span>
+        <span class="border border-outline-variant text-on-surface-variant px-4 py-1.5">
+          100%_OPEN_COMMUNITY
+        </span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ═══════════════════════════════════════════════
+       01_L'INICI: OBRINT PORTES A GIRONA
+  ═══════════════════════════════════════════════ -->
+  <section class="py-20 px-6 bg-surface-container-low" aria-labelledby="inici-heading">
+    <div class="max-w-5xl mx-auto">
+      <SectionHeader id="inici-heading" tag={t('resum.s1.tag')} title={t('resum.s1.title')} />
+
+      <div class="space-y-8">
+        <p class="font-body text-body-lg text-on-surface leading-relaxed max-w-4xl">
+          {t('resum.s1.p1')}
+        </p>
+
+        <!-- Foto d'obertura -->
+        <figure class="bg-surface-container border border-outline-variant overflow-hidden group">
+          <div class="w-full aspect-16/9 bg-surface-container-high overflow-hidden">
+            <img
+              src="/img/resum/obertura.jpg"
+              alt={t('resum.s1.img_alt')}
+              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.01]"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <figcaption class="p-4 bg-surface-container-high border-t border-outline-variant flex flex-col sm:flex-row sm:items-center justify-between gap-2 font-mono text-code-sm text-on-surface-variant">
+            <span>{t('resum.s1.img_caption')}</span>
+            <span class="text-primary-container text-xs opacity-75">L'ESTACIÓ ESPAI JOVE</span>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       02_RERE ELS BYTES: UN EQUIP DE 5 PERSONES
+  ═══════════════════════════════════════════════ -->
+  <section class="py-20 px-6 border-t border-outline-variant" aria-labelledby="equip-heading">
+    <div class="max-w-5xl mx-auto">
+      <SectionHeader id="equip-heading" tag={t('resum.s2.tag')} title={t('resum.s2.title')} />
+
+      <div class="grid lg:grid-cols-12 gap-12 items-start">
+        <div class="lg:col-span-6 space-y-6">
+          <p class="font-body text-body-lg text-on-surface leading-relaxed">
+            {t('resum.s2.p1')}
+          </p>
+          <p class="font-body text-body-md text-on-surface-variant leading-relaxed">
+            {t('resum.s2.p2')}
+          </p>
+
+          <div class="p-6 bg-surface-container border-l-4 border-primary-container neon-glow mt-8">
+            <p class="font-mono text-code-sm text-primary-container uppercase tracking-wider mb-2">
+              // RECONEIXEMENT_DIRECTE
+            </p>
+            <p class="font-body text-body-lg font-medium text-on-surface">
+              {t('resum.s2.thanks')}
+            </p>
+          </div>
+        </div>
+
+        <div class="lg:col-span-6 space-y-4">
+          <article class="bg-surface-container border border-outline-variant p-6 flex gap-4 items-start">
+            <span class="font-mono text-primary-container text-lg mt-0.5" aria-hidden="true">→</span>
+            <div>
+              <h3 class="font-display text-headline-sm uppercase tracking-tight mb-1 text-on-surface">
+                ACREDITACIONS & RECEPCIÓ
+              </h3>
+              <p class="font-body text-body-md text-on-surface-variant leading-relaxed">
+                {t('resum.s2.b1')}
+              </p>
+            </div>
+          </article>
+
+          <article class="bg-surface-container border border-outline-variant p-6 flex gap-4 items-start">
+            <span class="font-mono text-primary-container text-lg mt-0.5" aria-hidden="true">→</span>
+            <div>
+              <h3 class="font-display text-headline-sm uppercase tracking-tight mb-1 text-on-surface">
+                ATENCIÓ ALS PONENTS
+              </h3>
+              <p class="font-body text-body-md text-on-surface-variant leading-relaxed">
+                {t('resum.s2.b2')}
+              </p>
+            </div>
+          </article>
+
+          <article class="bg-surface-container border border-outline-variant p-6 flex gap-4 items-start">
+            <span class="font-mono text-primary-container text-lg mt-0.5" aria-hidden="true">→</span>
+            <div>
+              <h3 class="font-display text-headline-sm uppercase tracking-tight mb-1 text-on-surface">
+                LOGÍSTICA & AVITUALLAMENT
+              </h3>
+              <p class="font-body text-body-md text-on-surface-variant leading-relaxed">
+                {t('resum.s2.b3')}
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       03_PATROCINADORS I COL·LABORADORS
+  ═══════════════════════════════════════════════ -->
+  <section class="py-20 px-6 bg-surface-container-low border-t border-outline-variant" aria-labelledby="sponsors-heading">
+    <div class="max-w-5xl mx-auto">
+      <SectionHeader id="sponsors-heading" tag={t('resum.s3.tag')} title={t('resum.s3.title')} />
+
+      <p class="font-body text-body-lg text-on-surface-variant leading-relaxed max-w-3xl mb-12">
+        {t('resum.s3.intro')}
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+        <!-- GISCE: Patrocinador Petabyte -->
+        <article class="md:col-span-12 bg-surface-container border-2 border-primary-container neon-glow p-8 md:p-10 relative overflow-hidden" data-watermark="PETABYTE">
+          <div class="grid md:grid-cols-12 gap-8 items-center">
+            <div class="md:col-span-4 flex items-center justify-center bg-surface-container-high p-8 border border-outline-variant">
+              <img
+                src="/img/sponsors/gisce.webp"
+                alt="GISCE"
+                class="max-h-20 max-w-full object-contain"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="md:col-span-8 space-y-3">
+              <span class="font-mono text-code-sm text-primary-container uppercase tracking-widest block">
+                [ TIER_PETABYTE // PATROCINADOR_PRINCIPAL ]
+              </span>
+              <h3 class="font-display text-headline-md uppercase tracking-tight">
+                {t('resum.s3.gisce_title')}
+              </h3>
+              <p class="font-body text-body-lg text-on-surface-variant leading-relaxed">
+                {t('resum.s3.gisce_desc')}
+              </p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Diputació de Girona & Hotel Carlemany -->
+        <article class="md:col-span-6 bg-surface-container border border-outline-variant p-8 flex flex-col justify-between">
+          <div>
+            <span class="font-mono text-code-sm text-secondary-container uppercase tracking-widest block mb-4">
+              [ COL·LABORADORS ]
+            </span>
+            <div class="flex flex-wrap gap-6 items-center mb-6">
+              <img
+                src="/img/sponsors/logo-diputacio-girona.webp"
+                alt="Diputació de Girona"
+                class="h-10 object-contain brightness-90 hover:brightness-100 transition-all"
+                loading="lazy"
+                decoding="async"
+              />
+              <img
+                src="/img/sponsors/logo-hotel-carlemany.webp"
+                alt="Hotel Carlemany"
+                class="h-10 object-contain brightness-90 hover:brightness-100 transition-all"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <h3 class="font-display text-headline-sm uppercase tracking-tight mb-2">
+              {t('resum.s3.collab_title')}
+            </h3>
+            <p class="font-body text-body-md text-on-surface-variant leading-relaxed">
+              {t('resum.s3.collab_desc')}
+            </p>
+          </div>
+        </article>
+
+        <!-- L'Estació Espai Jove -->
+        <article class="md:col-span-6 bg-surface-container border border-outline-variant p-8 flex flex-col justify-between">
+          <div>
+            <span class="font-mono text-code-sm text-secondary-fixed-dim uppercase tracking-widest block mb-4">
+              [ SEU_OFICIAL // VENUE ]
+            </span>
+            <h3 class="font-display text-headline-sm uppercase tracking-tight mb-2">
+              {t('resum.s3.estacio_title')}
+            </h3>
+            <p class="font-body text-body-md text-on-surface-variant leading-relaxed">
+              {t('resum.s3.estacio_desc')}
+            </p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       04_PONENTS QUE DEIXEN PETJADA
+  ═══════════════════════════════════════════════ -->
+  <section class="py-20 px-6 border-t border-outline-variant" aria-labelledby="ponents-heading">
+    <div class="max-w-5xl mx-auto">
+      <SectionHeader id="ponents-heading" tag={t('resum.s4.tag')} title={t('resum.s4.title')} />
+
+      <p class="font-body text-body-lg text-on-surface-variant leading-relaxed max-w-3xl mb-12">
+        {t('resum.s4.intro')}
+      </p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 mb-12">
+        {speakersList.map((speaker) => (
+          <article class="bg-surface-container border border-outline-variant hover:border-primary-container transition-colors duration-200 flex flex-col sm:flex-row overflow-hidden group">
+            <div class="sm:w-44 shrink-0 aspect-square sm:aspect-auto bg-surface-container-high border-b sm:border-b-0 sm:border-r border-outline-variant overflow-hidden">
+              <img
+                src={speaker.photo}
+                alt={speaker.name}
+                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="p-6 flex flex-col justify-between flex-1">
+              <div>
+                <p class="font-mono text-code-sm text-primary-container uppercase tracking-wider mb-1">
+                  // {speaker.id}
+                </p>
+                <h3 class="font-display text-headline-sm uppercase tracking-tight mb-3 text-on-surface">
+                  {speaker.name}
+                </h3>
+                <p class="font-body text-body-sm text-on-surface-variant leading-relaxed">
+                  {speaker.description}
+                </p>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <div class="p-6 bg-surface-container-low border border-outline-variant text-center">
+        <p class="font-body text-body-md text-on-surface-variant leading-relaxed max-w-2xl mx-auto">
+          {t('resum.s4.outro')}
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       05_I ARA QUÈ? EL FEEDBACK CAP AL 2027
+  ═══════════════════════════════════════════════ -->
+  <section class="py-24 px-6 bg-surface-container-low border-t border-outline-variant" aria-labelledby="futur-heading">
+    <div class="max-w-5xl mx-auto">
+      <SectionHeader id="futur-heading" tag={t('resum.s5.tag')} title={t('resum.s5.title')} />
+
+      <div class="space-y-12">
+        <div class="space-y-6 max-w-4xl">
+          <p class="font-body text-body-lg text-on-surface leading-relaxed">
+            {t('resum.s5.p1')}
+          </p>
+          <p class="font-body text-body-lg text-primary-container font-medium leading-relaxed">
+            {t('resum.s5.p2')}
+          </p>
+          <div class="pt-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-t border-outline-variant">
+            <p class="font-display text-headline-sm uppercase tracking-tight text-on-surface">
+              {t('resum.s5.closing')}
+            </p>
+            <p class="font-mono text-code-sm text-on-surface-variant">
+              {t('resum.s5.signoff')}
+            </p>
+          </div>
+        </div>
+
+        <!-- Foto de grup de cloenda -->
+        <figure class="bg-surface-container border-2 border-primary-container neon-glow overflow-hidden group">
+          <div class="w-full aspect-16/9 bg-surface-container-high overflow-hidden">
+            <img
+              src="/img/resum/grup.jpg"
+              alt={t('resum.s5.img_alt')}
+              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.01]"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <figcaption class="p-4 bg-surface-container-high border-t border-outline-variant flex flex-col sm:flex-row sm:items-center justify-between gap-2 font-mono text-code-sm text-on-surface-variant">
+            <span>{t('resum.s5.img_caption')}</span>
+            <span class="text-primary-container text-xs">GEEKSCAT_CONF_2026 // DONE</span>
+          </figcaption>
+        </figure>
+
+        <!-- CTA bar -->
+        <div class="flex flex-wrap gap-4 justify-center pt-8">
+          <CTAButton href={homePath} variant="outline">
+            ← INICI
+          </CTAButton>
+          <CTAButton href={speakersPath} variant="outline">
+            VEURE PONENTS
+          </CTAButton>
+          <CTAButton href={agendaPath}>
+            VEURE AGENDA
+          </CTAButton>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

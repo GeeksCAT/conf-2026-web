@@ -11,6 +11,7 @@ const t = useTranslations(locale);
 
 const agendaPath = localizedPath('/agenda', locale);
 const speakersPath = localizedPath('/speakers', locale);
+const resumPath = localizedPath('/resum', locale);
 
 // The home shows a teaser of the lineup; the full list lives on /speakers.
 const SPEAKER_SLOTS = 9;
@@ -67,7 +68,8 @@ const hasMainSponsorBody = !!mainSponsor?.body?.trim();
       </div>
 
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <CTAButton href={agendaPath}>{t('hero.cta.agenda')}</CTAButton>
+        <CTAButton href={resumPath}>{t('hero.cta.resum')}</CTAButton>
+        <CTAButton href={agendaPath} variant="outline">{t('hero.cta.agenda')}</CTAButton>
         <CTAButton href={speakersPath} variant="outline">{t('hero.cta.speakers')}</CTAButton>
       </div>
     </div>

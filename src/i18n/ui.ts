@@ -5,6 +5,7 @@ import { footer } from './translations/footer';
 import { hero } from './translations/hero';
 import { index } from './translations/index';
 import { nav } from './translations/nav';
+import { resum } from './translations/resum';
 import { speakers } from './translations/speakers';
 import { sponsors } from './translations/sponsors';
 import { tickets } from './translations/tickets';
@@ -25,6 +26,7 @@ export const ui = {
     ...speakers.ca,
     ...sponsors.ca,
     ...tickets.ca,
+    ...resum.ca,
   },
   en: {
     ...common.en,
@@ -37,6 +39,7 @@ export const ui = {
     ...speakers.en,
     ...sponsors.en,
     ...tickets.en,
+    ...resum.en,
   },
   es: {
     ...common.es,
@@ -49,6 +52,7 @@ export const ui = {
     ...speakers.es,
     ...sponsors.es,
     ...tickets.es,
+    ...resum.es,
   },
 } as const;
 

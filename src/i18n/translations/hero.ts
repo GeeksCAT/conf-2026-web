@@ -8,6 +8,7 @@ export const hero = {
     'hero.cta.ticket': 'RESERVAR ENTRADA',
     'hero.cta.agenda': 'VEURE AGENDA',
     'hero.cta.speakers': 'VEURE PONENTS',
+    'hero.cta.resum': 'CRÒNICA I RESUM 2026',
   },
   en: {
     'hero.badge': '[ INIT_SYSTEM_ROOT ]',
@@ -19,6 +20,7 @@ export const hero = {
     'hero.cta.ticket': 'RESERVE TICKET',
     'hero.cta.agenda': 'VIEW AGENDA',
     'hero.cta.speakers': 'VIEW SPEAKERS',
+    'hero.cta.resum': '2026 RECAP & HIGHLIGHTS',
   },
   es: {
     'hero.badge': '[ INIT_SYSTEM_ROOT ]',
@@ -30,5 +32,6 @@ export const hero = {
     'hero.cta.ticket': 'RESERVAR ENTRADA',
     'hero.cta.agenda': 'VER AGENDA',
     'hero.cta.speakers': 'VER PONENTES',
+    'hero.cta.resum': 'CRÓNICA Y RESUMEN 2026',
   },
 } as const;
