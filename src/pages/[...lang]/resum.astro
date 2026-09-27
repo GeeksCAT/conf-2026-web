@@ -17,60 +17,70 @@ const speakersList = [
     id: 'jordi-mas',
     name: 'Jordi Mas',
     photo: '/img/resum/jordi-mas.jpg',
+    photoAlt: t('resum.s4.speaker.jordi_mas_photo_alt'),
     description: t('resum.s4.speaker.jordi_mas'),
   },
   {
     id: 'marti-segarra',
     name: 'Martí Segarra',
     photo: '/img/resum/marti-segarra.jpg',
+    photoAlt: t('resum.s4.speaker.marti_segarra_photo_alt'),
     description: t('resum.s4.speaker.marti_segarra'),
   },
   {
     id: 'andrey-sitnik',
     name: 'Andrey Sitnik',
     photo: '/img/resum/andrey-sitnik.jpg',
+    photoAlt: t('resum.s4.speaker.andrey_sitnik_photo_alt'),
     description: t('resum.s4.speaker.andrey_sitnik'),
   },
   {
     id: 'thomas-steiner',
     name: 'Thomas Steiner',
     photo: '/img/resum/thomas-steiner.jpg',
+    photoAlt: t('resum.s4.speaker.thomas_steiner_photo_alt'),
     description: t('resum.s4.speaker.thomas_steiner'),
   },
   {
     id: 'carles-nunyez',
     name: 'Carles Núñez',
     photo: '/img/resum/carles-nunyez.jpg',
+    photoAlt: t('resum.s4.speaker.carles_nunyez_photo_alt'),
     description: t('resum.s4.speaker.carles_nunyez'),
   },
   {
     id: 'eduard-vidal',
     name: 'Eduard Vidal',
     photo: '/img/resum/eduard-vidal.jpg',
+    photoAlt: t('resum.s4.speaker.eduard_vidal_photo_alt'),
     description: t('resum.s4.speaker.eduard_vidal'),
   },
   {
     id: 'luis-castro',
     name: 'Luis Castro',
     photo: '/img/resum/luis-castro.jpg',
+    photoAlt: t('resum.s4.speaker.luis_castro_photo_alt'),
     description: t('resum.s4.speaker.luis_castro'),
   },
   {
     id: 'dario-castane',
     name: 'Darío Castañé',
     photo: '/img/resum/dario-castane.jpg',
+    photoAlt: t('resum.s4.speaker.dario_castane_photo_alt'),
     description: t('resum.s4.speaker.dario_castane'),
   },
   {
     id: 'ivan-reyne',
     name: 'Ivan Reyné',
     photo: '/img/resum/ivan-reyne.jpg',
+    photoAlt: t('resum.s4.speaker.ivan_reyne_photo_alt'),
     description: t('resum.s4.speaker.ivan_reyne'),
   },
   {
     id: 'evilham',
     name: 'evilham',
     photo: '/img/resum/evilham.jpg',
+    photoAlt: t('resum.s4.speaker.evilham_photo_alt'),
     description: t('resum.s4.speaker.evilham'),
   },
 ];
@@ -103,9 +113,12 @@ const speakersList = [
           26_09_2026 // GIRONA
         </span>
         <span class="border border-outline-variant text-on-surface-variant px-4 py-1.5">
-          10_PONENTS // 10_TALKS
+          <span lang="ca">10_PONENTS</span> // <span lang="en">10_TALKS</span>
         </span>
-        <span class="border border-outline-variant text-on-surface-variant px-4 py-1.5">
+        <span
+          lang="en"
+          class="border border-outline-variant text-on-surface-variant px-4 py-1.5"
+        >
           100%_OPEN_COMMUNITY
         </span>
       </div>
@@ -161,7 +174,10 @@ const speakersList = [
           </p>
 
           <div class="p-6 bg-surface-container border-l-4 border-primary-container neon-glow mt-8">
-            <p class="font-mono text-code-sm text-primary-container uppercase tracking-wider mb-2">
+            <p
+              lang="ca"
+              class="font-mono text-code-sm text-primary-container uppercase tracking-wider mb-2"
+            >
               // RECONEIXEMENT_DIRECTE
             </p>
             <p class="font-body text-body-lg font-medium text-on-surface">
@@ -174,7 +190,10 @@ const speakersList = [
           <article class="bg-surface-container border border-outline-variant p-6 flex gap-4 items-start">
             <span class="font-mono text-primary-container text-lg mt-0.5" aria-hidden="true">→</span>
             <div>
-              <h3 class="font-display text-headline-sm uppercase tracking-tight mb-1 text-on-surface">
+              <h3
+                lang="ca"
+                class="font-display text-headline-sm uppercase tracking-tight mb-1 text-on-surface"
+              >
                 ACREDITACIONS & RECEPCIÓ
               </h3>
               <p class="font-body text-body-md text-on-surface-variant leading-relaxed">
@@ -186,7 +205,10 @@ const speakersList = [
           <article class="bg-surface-container border border-outline-variant p-6 flex gap-4 items-start">
             <span class="font-mono text-primary-container text-lg mt-0.5" aria-hidden="true">→</span>
             <div>
-              <h3 class="font-display text-headline-sm uppercase tracking-tight mb-1 text-on-surface">
+              <h3
+                lang="ca"
+                class="font-display text-headline-sm uppercase tracking-tight mb-1 text-on-surface"
+              >
                 ATENCIÓ ALS PONENTS
               </h3>
               <p class="font-body text-body-md text-on-surface-variant leading-relaxed">
@@ -198,7 +220,10 @@ const speakersList = [
           <article class="bg-surface-container border border-outline-variant p-6 flex gap-4 items-start">
             <span class="font-mono text-primary-container text-lg mt-0.5" aria-hidden="true">→</span>
             <div>
-              <h3 class="font-display text-headline-sm uppercase tracking-tight mb-1 text-on-surface">
+              <h3
+                lang="ca"
+                class="font-display text-headline-sm uppercase tracking-tight mb-1 text-on-surface"
+              >
                 LOGÍSTICA & AVITUALLAMENT
               </h3>
               <p class="font-body text-body-md text-on-surface-variant leading-relaxed">
@@ -237,7 +262,7 @@ const speakersList = [
             </div>
             <div class="md:col-span-8 space-y-3">
               <span class="font-mono text-code-sm text-primary-container uppercase tracking-widest block">
-                [ TIER_PETABYTE // PATROCINADOR_PRINCIPAL ]
+                [ <span lang="en">TIER_PETABYTE</span> // <span lang="ca">PATROCINADOR_PRINCIPAL</span> ]
               </span>
               <h3 class="font-display text-headline-md uppercase tracking-tight">
                 {t('resum.s3.gisce_title')}
@@ -252,7 +277,10 @@ const speakersList = [
         <!-- Diputació de Girona & Hotel Carlemany -->
         <article class="md:col-span-6 bg-surface-container border border-outline-variant p-8 flex flex-col justify-between">
           <div>
-            <span class="font-mono text-code-sm text-secondary-container uppercase tracking-widest block mb-4">
+            <span
+              lang="ca"
+              class="font-mono text-code-sm text-secondary-container uppercase tracking-widest block mb-4"
+            >
               [ COL·LABORADORS ]
             </span>
             <div class="flex flex-wrap gap-6 items-center mb-6">
@@ -284,7 +312,7 @@ const speakersList = [
         <article class="md:col-span-6 bg-surface-container border border-outline-variant p-8 flex flex-col justify-between">
           <div>
             <span class="font-mono text-code-sm text-secondary-fixed-dim uppercase tracking-widest block mb-4">
-              [ SEU_OFICIAL // VENUE ]
+              [ <span lang="ca">SEU_OFICIAL</span> // <span lang="en">VENUE</span> ]
             </span>
             <h3 class="font-display text-headline-sm uppercase tracking-tight mb-2">
               {t('resum.s3.estacio_title')}
@@ -315,7 +343,7 @@ const speakersList = [
             <div class="sm:w-44 shrink-0 aspect-square sm:aspect-auto bg-surface-container-high border-b sm:border-b-0 sm:border-r border-outline-variant overflow-hidden">
               <img
                 src={speaker.photo}
-                alt={speaker.name}
+                alt={speaker.photoAlt}
                 class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                 loading="lazy"
                 decoding="async"
@@ -323,7 +351,10 @@ const speakersList = [
             </div>
             <div class="p-6 flex flex-col justify-between flex-1">
               <div>
-                <p class="font-mono text-code-sm text-primary-container uppercase tracking-wider mb-1">
+                <p
+                  class="font-mono text-code-sm text-primary-container uppercase tracking-wider mb-1"
+                  aria-hidden="true"
+                >
                   // {speaker.id}
                 </p>
                 <h3 class="font-display text-headline-sm uppercase tracking-tight mb-3 text-on-surface">
@@ -384,20 +415,20 @@ const speakersList = [
           </div>
           <figcaption class="p-4 bg-surface-container-high border-t border-outline-variant flex flex-col sm:flex-row sm:items-center justify-between gap-2 font-mono text-code-sm text-on-surface-variant">
             <span>{t('resum.s5.img_caption')}</span>
-            <span class="text-primary-container text-xs">GEEKSCAT_CONF_2026 // DONE</span>
+            <span lang="en" class="text-primary-container text-xs">GEEKSCAT_CONF_2026 // DONE</span>
           </figcaption>
         </figure>
 
         <!-- CTA bar -->
         <div class="flex flex-wrap gap-4 justify-center pt-8">
           <CTAButton href={homePath} variant="outline">
-            ← INICI
+            ← <span lang="ca">INICI</span>
           </CTAButton>
           <CTAButton href={speakersPath} variant="outline">
-            VEURE PONENTS
+            <span lang="ca">VEURE PONENTS</span>
           </CTAButton>
           <CTAButton href={agendaPath}>
-            VEURE AGENDA
+            <span lang="ca">VEURE AGENDA</span>
           </CTAButton>
         </div>
       </div>
