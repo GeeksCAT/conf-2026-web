@@ -8,4 +8,4 @@ locale: "es"
 draft: false
 ---
 
-Soporte institucional al fommento de la cultura digital y tenológica al territorio de Girona
+Esta actividad ha sido realizada con el apoyo económico de la Diputació de Girona.

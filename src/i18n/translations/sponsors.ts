@@ -40,8 +40,9 @@ export const sponsors = {
     'sponsors.tiers.tba': 'TBA',
 
     // Collaborators
-    'sponsors.collab.badge': 'COL·LABORADOR INSTITUCIONAL',
-    'sponsors.collab.desc': 'Suport institucional al foment de la cultura digital i tecnològica.',
+    'sponsors.collab.badge': 'SUPORT ECONÒMIC',
+    'sponsors.collab.desc':
+      'Aquesta activitat ha estat realitzada amb el suport econòmic de la Diputació de Girona.',
 
     // CTA
     'sponsors.cta.tag': '[ EXECUTA_PATROCINI ]',
@@ -88,9 +89,9 @@ export const sponsors = {
     'sponsors.tiers.tba': 'TBA',
 
     // Collaborators
-    'sponsors.collab.badge': 'INSTITUTIONAL COLLABORATOR',
+    'sponsors.collab.badge': 'FINANCIAL SUPPORT',
     'sponsors.collab.desc':
-      'Institutional support for the promotion of digital and technological culture.',
+      'This activity has been carried out with the financial support of the Diputació de Girona.',
 
     // CTA
     'sponsors.cta.tag': '[ EXECUTE_SPONSORSHIP ]',
@@ -137,8 +138,9 @@ export const sponsors = {
     'sponsors.tiers.tba': 'TBA',
 
     // Collaborators
-    'sponsors.collab.badge': 'COLABORADOR INSTITUCIONAL',
-    'sponsors.collab.desc': 'Apoyo institucional al fomento de la cultura digital y tecnológica.',
+    'sponsors.collab.badge': 'APOYO ECONÓMICO',
+    'sponsors.collab.desc':
+      'Esta actividad ha sido realizada con el apoyo económico de la Diputació de Girona.',
 
     // CTA
     'sponsors.cta.tag': '[ EJECUTA_PATROCINIO ]',

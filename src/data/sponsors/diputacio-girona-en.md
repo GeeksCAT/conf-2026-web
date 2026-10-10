@@ -8,4 +8,4 @@ locale: "en"
 draft: false
 ---
 
-Institutional support to foster the digital culture and technology in Girona region
+This activity has been carried out with the financial support of the Diputació de Girona.

@@ -37,7 +37,8 @@ export const resum = {
     'resum.s3.gisce_desc':
       'El vostre suport com a patrocinador principal ha estat essencial per fer realitat aquesta edició. Gràcies per la confiança i per acompanyar GeeksCAT.',
     'resum.s3.collab_title': 'Diputació de Girona & Hotel Carlemany',
-    'resum.s3.collab_desc': 'Gràcies per sumar-vos com a col·laboradors.',
+    'resum.s3.collab_desc':
+      'Gràcies a l’Hotel Carlemany per sumar-se com a col·laborador i a la Diputació de Girona pel seu suport. Aquesta activitat ha estat realitzada amb el suport econòmic de la Diputació de Girona.',
     'resum.s3.estacio_title': "L'Estació Espai Jove de Girona",
     'resum.s3.estacio_desc':
       'Per la vostra hospitalitat, acollida i per oferir-nos un espai idoni que es va convertir en el punt de trobada ideal per a la comunitat.',
@@ -139,7 +140,8 @@ export const resum = {
     'resum.s3.gisce_desc':
       'Your support as main sponsor was essential to making this edition a reality. Thank you for your trust and for standing by GeeksCAT.',
     'resum.s3.collab_title': 'Diputació de Girona & Hotel Carlemany',
-    'resum.s3.collab_desc': 'Thank you for joining us as partners.',
+    'resum.s3.collab_desc':
+      'Thank you to Hotel Carlemany for joining us as a partner, and to Diputació de Girona for their support. This activity has been carried out with the financial support of the Diputació de Girona.',
     'resum.s3.estacio_title': "L'Estació Espai Jove de Girona",
     'resum.s3.estacio_desc':
       'For your hospitality, welcome, and for providing an ideal venue that became the perfect home for the community.',
@@ -242,7 +244,8 @@ export const resum = {
     'resum.s3.gisce_desc':
       'Vuestro apoyo como patrocinador principal ha sido esencial para hacer realidad esta edición. Gracias por la confianza y por acompañar a GeeksCAT.',
     'resum.s3.collab_title': 'Diputació de Girona & Hotel Carlemany',
-    'resum.s3.collab_desc': 'Gracias por sumaros como colaboradores.',
+    'resum.s3.collab_desc':
+      'Gracias al Hotel Carlemany por sumarse como colaborador y a la Diputació de Girona por su apoyo. Esta actividad ha sido realizada con el apoyo económico de la Diputació de Girona.',
     'resum.s3.estacio_title': "L'Estació Espai Jove de Girona",
     'resum.s3.estacio_desc':
       'Por vuestra hospitalidad, acogida y por ofrecernos un espacio idóneo que se convirtió en el punto de encuentro ideal para la comunidad.',
